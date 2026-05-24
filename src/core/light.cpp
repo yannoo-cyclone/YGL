@@ -18,7 +18,7 @@ float Light::getIntensity() const { return m_intensity; }
 void Light::setIntensity(float intensity) { m_intensity = intensity; }
 
 const Vec3& Light::getDirection() const { return m_direction; }
-void Light::setDirection(const Vec3& direction) { m_direction = direction.normalize(); }
+void Light::setDirection(const Vec3& direction) { m_direction = direction.normalized(); }
 
 const Vec3& Light::getPosition() const { return Object3D::getPosition(); }
 void Light::setPosition(const Vec3& position) { Object3D::setPosition(position); }

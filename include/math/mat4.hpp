@@ -54,8 +54,8 @@ public:
     }
 
     static mat4 lookAt(const Vec3& eye, const Vec3& target, const Vec3& up) {
-        Vec3 forward = (target - eye).normalize();
-        Vec3 right = cross(forward, up).normalize();
+        Vec3 forward = (target - eye).normalized();
+        Vec3 right = cross(forward, up).normalized();
         Vec3 newUp = cross(right, forward);
 
         mat4 view;
