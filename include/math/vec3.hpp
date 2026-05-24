@@ -7,10 +7,14 @@
 namespace ygl {
 class Vec3 {
 public:
+    #pragma GCC diagnostic push
+    #pragma GCC diagnostic ignored "-Wpedantic"
     union {
         struct { float x, y, z; };
         struct { float r, g, b; };
     };
+    #pragma GCC diagnostic pop
+
     Vec3() : x(0), y(0), z(0) {}
     explicit Vec3(float scalar) : x(scalar), y(scalar), z(scalar) {}
     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}

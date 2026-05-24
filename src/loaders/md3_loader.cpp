@@ -1,4 +1,4 @@
-#include "loaders/md3_loader.hp"
+#include "loaders/md3_loader.hpp"
 #include "loaders/loader.hpp"
 #include "core/mesh.hpp"
 #include "math/vec3.hpp"

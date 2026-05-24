@@ -6,11 +6,15 @@ namespace ygl {
 class Vec3;
 class Vec2 {
 public:
+    #pragma GCC diagnostic push
+    #pragma GCC diagnostic ignored "-Wpedantic"
     union {
         struct { float x, y; };
         struct { float u, v; };
         float data[2];
     };
+    #pragma GCC diagnostic pop
+
     Vec2() : x(0.0f), y(0.0f) {}
     Vec2(float scalar) : x(scalar), y(scalar) {}
     Vec2(float x, float y) : x(x), y(y) {}

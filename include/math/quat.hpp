@@ -8,9 +8,13 @@ class Vec3;
 class mat4;
 class Quat {
 public:
+    #pragma GCC diagnostic push
+    #pragma GCC diagnostic ignored "-Wpedantic"
     union {
         struct { float x, y, z, w; };
     };
+    #pragma GCC diagnostic pop
+
     Quat() : x(0), y(0), z(0), w(1) {}
     Quat(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
     Quat(const Vec3& axis, float angle) {

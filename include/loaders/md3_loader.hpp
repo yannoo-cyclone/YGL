@@ -43,7 +43,7 @@ public:
     struct MD3Tag {
         std::string name;
         Vec3 origin;
-        Mat4 rotationMatrix;
+        mat4 rotationMatrix;  // Corrigé: Mat4 → mat4
     };
 
     struct MD3Surface {

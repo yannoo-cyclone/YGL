@@ -43,142 +43,17 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   GLEW Include: /usr/include
 --   GLFW3 Include: 
 --   OpenGL Include: 
--- Configuring done (0.8s)
+-- Configuring done (0.5s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
 [  2%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
-[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
+[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
 [  8%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
-[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
-In file included from /home/yannoo/Dev/YGL/include/core/bounding_box.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/core/bounding_box.cpp:1:
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:11:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   11 |         struct { float x, y, z; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float r, g, b; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/core/camera.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/core/camera.cpp:1:
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:11:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   11 |         struct { float x, y, z; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float r, g, b; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
-/home/yannoo/Dev/YGL/include/math/quat.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float x, y, z, w; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/core/light.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/core/light.cpp:1:
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:11:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   11 |         struct { float x, y, z; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float r, g, b; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
-/home/yannoo/Dev/YGL/include/math/quat.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float x, y, z, w; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/core/mesh.cpp:1:
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:11:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   11 |         struct { float x, y, z; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float r, g, b; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
-/home/yannoo/Dev/YGL/include/math/quat.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float x, y, z, w; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/mesh.hpp:5:
-/home/yannoo/Dev/YGL/include/math/vec2.hpp:10:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   10 |         struct { float x, y; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec2.hpp:11:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   11 |         struct { float u, v; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/light.hpp:5:
-/home/yannoo/Dev/YGL/include/math/vec2.hpp:10:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   10 |         struct { float x, y; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec2.hpp:11:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   11 |         struct { float u, v; };
-      |                ^
+[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
 [ 13%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
 [ 16%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
 [ 19%] Building CXX object CMakeFiles/ygl.dir/src/loaders/loader.cpp.o
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/core/object3d.cpp:1:
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:11:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   11 |         struct { float x, y, z; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float r, g, b; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
-/home/yannoo/Dev/YGL/include/math/quat.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float x, y, z, w; };
-      |                ^
 [ 22%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md2_loader.cpp.o
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/core/scene.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/core/scene.cpp:1:
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:11:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   11 |         struct { float x, y, z; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float r, g, b; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
-/home/yannoo/Dev/YGL/include/math/quat.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float x, y, z, w; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/loaders/loader.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/loaders/loader.cpp:1:
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:11:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   11 |         struct { float x, y, z; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float r, g, b; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
-/home/yannoo/Dev/YGL/include/math/quat.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float x, y, z, w; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/mesh.hpp:5,
-                 from /home/yannoo/Dev/YGL/include/core/scene.hpp:4:
-/home/yannoo/Dev/YGL/include/math/vec2.hpp:10:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   10 |         struct { float x, y; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec2.hpp:11:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   11 |         struct { float u, v; };
-      |                ^
-/home/yannoo/Dev/YGL/include/core/object3d.hpp:58:18: warning: ‘virtual void ygl::Object3D::render()’ was hidden [-Woverloaded-virtual=]
-   58 |     virtual void render() {}
-      |                  ^~~~~~
-/home/yannoo/Dev/YGL/include/core/scene.hpp:37:10: note:   by ‘void ygl::Scene::render(const ygl::Camera&)’
-   37 |     void render(const Camera& camera);  // Camera est maintenant inclus
-      |          ^~~~~~
-/home/yannoo/Dev/YGL/src/core/scene.cpp: In member function ‘void ygl::Scene::render(const ygl::Camera&)’:
-/home/yannoo/Dev/YGL/src/core/scene.cpp:95:34: warning: unused parameter ‘camera’ [-Wunused-parameter]
-   95 | void Scene::render(const Camera& camera) {
-      |                    ~~~~~~~~~~~~~~^~~~~~
-In file included from /home/yannoo/Dev/YGL/include/core/mesh.hpp:5:
-/home/yannoo/Dev/YGL/include/math/vec2.hpp:10:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   10 |         struct { float x, y; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec2.hpp:11:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   11 |         struct { float u, v; };
-      |                ^
 /home/yannoo/Dev/YGL/src/loaders/loader.cpp: In member function ‘virtual bool ygl::Loader::LoadMesh(const std::string&, ygl::Mesh&)’:
 /home/yannoo/Dev/YGL/src/loaders/loader.cpp:7:42: warning: unused parameter ‘filepath’ [-Wunused-parameter]
     7 | bool Loader::LoadMesh(const std::string& filepath, Mesh& mesh) {
@@ -186,34 +61,82 @@ In file included from /home/yannoo/Dev/YGL/include/core/mesh.hpp:5:
 /home/yannoo/Dev/YGL/src/loaders/loader.cpp:7:58: warning: unused parameter ‘mesh’ [-Wunused-parameter]
     7 | bool Loader::LoadMesh(const std::string& filepath, Mesh& mesh) {
       |                                                    ~~~~~~^~~~
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/loaders/loader.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/loaders/md2_loader.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/loaders/md2_loader.cpp:1:
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:11:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   11 |         struct { float x, y, z; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float r, g, b; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
-/home/yannoo/Dev/YGL/include/math/quat.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float x, y, z, w; };
-      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/scene.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/scene.cpp:1:
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:58:18: warning: ‘virtual void ygl::Object3D::render()’ was hidden [-Woverloaded-virtual=]
+   58 |     virtual void render() {}
+      |                  ^~~~~~
+/home/yannoo/Dev/YGL/include/core/scene.hpp:37:10: note:   by ‘void ygl::Scene::render(const ygl::Camera&)’
+   37 |     void render(const Camera& camera);  // Camera est maintenant inclus
+      |          ^~~~~~
 [ 25%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md3_loader.cpp.o
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:1:10: fatal error: loaders/md3_loader.hp: Aucun fichier ou dossier de ce nom
-    1 | #include "loaders/md3_loader.hp"
-      |          ^~~~~~~~~~~~~~~~~~~~~~~
-compilation terminated.
+/home/yannoo/Dev/YGL/src/core/scene.cpp: In member function ‘void ygl::Scene::render(const ygl::Camera&)’:
+/home/yannoo/Dev/YGL/src/core/scene.cpp:95:34: warning: unused parameter ‘camera’ [-Wunused-parameter]
+   95 | void Scene::render(const Camera& camera) {
+      |                    ~~~~~~~~~~~~~~^~~~~~
+[ 27%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md5_loader.cpp.o
+[ 30%] Building CXX object CMakeFiles/ygl.dir/src/loaders/obj_loader.cpp.o
+In file included from /home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:1:
+/home/yannoo/Dev/YGL/include/loaders/md3_loader.hpp:16:40: error: ‘std::vector<std::shared_ptr<ygl::Mesh> > ygl::MD3Loader::load(const std::string&)’ marked ‘override’, but does not override
+   16 |     std::vector<std::shared_ptr<Mesh>> load(const std::string& filename) override;
+      |                                        ^~~~
+/home/yannoo/Dev/YGL/include/loaders/md3_loader.hpp:17:27: error: ‘std::shared_ptr<ygl::Mesh> ygl::MD3Loader::loadSingle(const std::string&)’ marked ‘override’, but does not override
+   17 |     std::shared_ptr<Mesh> loadSingle(const std::string& filename) override;
+      |                           ^~~~~~~~~~
+/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:19:6: error: no declaration matches ‘bool ygl::MD3Loader::LoadMD3(const std::string&, ygl::Mesh&)’
+   19 | bool MD3Loader::LoadMD3(const std::string& filepath, Mesh& mesh) {
+      |      ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:19:6: note: no functions named ‘bool ygl::MD3Loader::LoadMD3(const std::string&, ygl::Mesh&)’
+/home/yannoo/Dev/YGL/include/loaders/md3_loader.hpp:11:7: note: ‘class ygl::MD3Loader’ defined here
+   11 | class MD3Loader : public Loader {
+      |       ^~~~~~~~~
 gmake[2]: *** [CMakeFiles/ygl.dir/build.make:188 : CMakeFiles/ygl.dir/src/loaders/md3_loader.cpp.o] Erreur 1
 gmake[2]: *** Attente des tâches non terminées....
-In file included from /home/yannoo/Dev/YGL/include/core/mesh.hpp:5:
-/home/yannoo/Dev/YGL/include/math/vec2.hpp:10:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   10 |         struct { float x, y; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec2.hpp:11:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   11 |         struct { float u, v; };
-      |                ^
+In file included from /home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:1:
+/home/yannoo/Dev/YGL/include/loaders/md5_loader.hpp:18:40: error: ‘std::vector<std::shared_ptr<ygl::Mesh> > ygl::MD5Loader::load(const std::string&)’ marked ‘override’, but does not override
+   18 |     std::vector<std::shared_ptr<Mesh>> load(const std::string& filename) override;
+      |                                        ^~~~
+/home/yannoo/Dev/YGL/include/loaders/md5_loader.hpp:19:27: error: ‘std::shared_ptr<ygl::Mesh> ygl::MD5Loader::loadSingle(const std::string&)’ marked ‘override’, but does not override
+   19 |     std::shared_ptr<Mesh> loadSingle(const std::string& filename) override;
+      |                           ^~~~~~~~~~
+/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:12:31: error: ‘vec2’ does not name a type; did you mean ‘Vec2’?
+   12 | struct MD5Vertex { int index; vec2 texcoord; int start_weight, count_weight; };
+      |                               ^~~~
+      |                               Vec2
+/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:13:43: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+   13 | struct MD5Weight { int joint; float bias; vec3 position; };
+      |                                           ^~~~
+      |                                           Vec3
+/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:14:49: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+   14 | struct MD5Joint { std::string name; int parent; vec3 position; quat orientation; };
+      |                                                 ^~~~
+      |                                                 Vec3
+/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:14:64: error: ‘quat’ does not name a type; did you mean ‘Quat’?
+   14 | struct MD5Joint { std::string name; int parent; vec3 position; quat orientation; };
+      |                                                                ^~~~
+      |                                                                Quat
+/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:17:6: error: no declaration matches ‘bool ygl::MD5Loader::LoadMD5(const std::string&, ygl::Mesh&)’
+   17 | bool MD5Loader::LoadMD5(const std::string& filepath, Mesh& mesh) {
+      |      ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:17:6: note: no functions named ‘bool ygl::MD5Loader::LoadMD5(const std::string&, ygl::Mesh&)’
+/home/yannoo/Dev/YGL/include/loaders/md5_loader.hpp:13:7: note: ‘class ygl::MD5Loader’ defined here
+   13 | class MD5Loader : public Loader {
+      |       ^~~~~~~~~
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:202 : CMakeFiles/ygl.dir/src/loaders/md5_loader.cpp.o] Erreur 1
+In file included from /home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:1:
+/home/yannoo/Dev/YGL/include/loaders/obj_loader.hpp:14:40: error: ‘std::vector<std::shared_ptr<ygl::Mesh> > ygl::OBJLoader::load(const std::string&)’ marked ‘override’, but does not override
+   14 |     std::vector<std::shared_ptr<Mesh>> load(const std::string& filename) override;
+      |                                        ^~~~
+/home/yannoo/Dev/YGL/include/loaders/obj_loader.hpp:15:27: error: ‘std::shared_ptr<ygl::Mesh> ygl::OBJLoader::loadSingle(const std::string&)’ marked ‘override’, but does not override
+   15 |     std::shared_ptr<Mesh> loadSingle(const std::string& filename) override;
+      |                           ^~~~~~~~~~
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:12:6: error: no declaration matches ‘bool ygl::OBJLoader::LoadOBJ(const std::string&, ygl::Mesh&)’
+   12 | bool OBJLoader::LoadOBJ(const std::string& filepath, Mesh& mesh) {
+      |      ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:12:6: note: no functions named ‘bool ygl::OBJLoader::LoadOBJ(const std::string&, ygl::Mesh&)’
+/home/yannoo/Dev/YGL/include/loaders/obj_loader.hpp:9:7: note: ‘class ygl::OBJLoader’ defined here
+    9 | class OBJLoader : public Loader {
+      |       ^~~~~~~~~
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:216 : CMakeFiles/ygl.dir/src/loaders/obj_loader.cpp.o] Erreur 1
 gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
 gmake: *** [Makefile:91 : all] Erreur 2
