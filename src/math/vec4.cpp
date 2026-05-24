@@ -22,21 +22,6 @@ Vec4& Vec4::operator/=(float scalar) {
     float inv = 1.0f / scalar; x *= inv; y *= inv; z *= inv; w *= inv; return *this;
 }
 
-// Arithmetic
-Vec4 Vec4::operator+(const Vec4& other) const {
-    return Vec4(x+other.x, y+other.y, z+other.z, w+other.w);
-}
-Vec4 Vec4::operator-(const Vec4& other) const {
-    return Vec4(x-other.x, y-other.y, z-other.z, w-other.w);
-}
-Vec4 Vec4::operator-() const { return Vec4(-x, -y, -z, -w); }
-Vec4 Vec4::operator*(float scalar) const {
-    return Vec4(x*scalar, y*scalar, z*scalar, w*scalar);
-}
-Vec4 Vec4::operator/(float scalar) const {
-    float inv = 1.0f / scalar; return Vec4(x*inv, y*inv, z*inv, w*inv);
-}
-
 // Comparison
 bool Vec4::operator==(const Vec4& other) const {
     return x == other.x && y == other.y && z == other.z && w == other.w;

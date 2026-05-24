@@ -1,23 +1,54 @@
 #pragma once
+
 #include <string>
 #include <vector>
+#include <ostream>
 
 namespace ygl {
 
 class Texture {
 public:
     enum class Type {
-        DIFFUSE, NORMAL, SPECULAR, EMISSIVE, METALLIC, ROUGHNESS,
-        AMBIENT_OCCLUSION, HEIGHT, CUBEMAP, GENERIC
+        DIFFUSE,
+        NORMAL,
+        SPECULAR,
+        EMISSIVE,
+        METALLIC,
+        ROUGHNESS,
+        AMBIENT_OCCLUSION,
+        HEIGHT,
+        CUBEMAP,
+        GENERIC
     };
+
     enum class Format {
-        RGB8, RGBA8, RGB16F, RGBA16F, RGB32F, RGBA32F,
-        R8, R16F, R32F, DEPTH, DEPTH_STENCIL
+        RGB8,
+        RGBA8,
+        RGB16F,
+        RGBA16F,
+        RGB32F,
+        RGBA32F,
+        R8,
+        R16F,
+        R32F,
+        DEPTH,
+        DEPTH_STENCIL
     };
-    enum class WrapMode { REPEAT, MIRRORED_REPEAT, CLAMP_TO_EDGE, CLAMP_TO_BORDER };
+
+    enum class WrapMode {
+        REPEAT,
+        MIRRORED_REPEAT,
+        CLAMP_TO_EDGE,
+        CLAMP_TO_BORDER
+    };
+
     enum class FilterMode {
-        NEAREST, LINEAR, NEAREST_MIPMAP_NEAREST, LINEAR_MIPMAP_NEAREST,
-        NEAREST_MIPMAP_LINEAR, LINEAR_MIPMAP_LINEAR
+        NEAREST,
+        LINEAR,
+        NEAREST_MIPMAP_NEAREST,
+        LINEAR_MIPMAP_NEAREST,
+        NEAREST_MIPMAP_LINEAR,
+        LINEAR_MIPMAP_LINEAR
     };
 
     Texture(Type type = Type::GENERIC, const std::string& name = "");
@@ -45,25 +76,28 @@ public:
     void setWrapMode(WrapMode s, WrapMode t);
     void setFilterMode(FilterMode minFilter, FilterMode magFilter);
     void setAnisotropicFiltering(float level);
+
     void generateMipmaps();
 
 private:
-    unsigned int m_id;
-    int m_width;
-    int m_height;
-    Format m_format;
-    Type m_type;
+    unsigned int m_id = 0;
+    int m_width = 0;
+    int m_height = 0;
+    Format m_format = Format::RGBA8;
+    Type m_type = Type::GENERIC;
     std::string m_name;
     std::string m_filename;
-    WrapMode m_wrapS;
-    WrapMode m_wrapT;
-    FilterMode m_minFilter;
-    FilterMode m_magFilter;
-    float m_anisotropicLevel;
 
+    WrapMode m_wrapS = WrapMode::REPEAT;
+    WrapMode m_wrapT = WrapMode::REPEAT;
+    FilterMode m_minFilter = FilterMode::LINEAR;
+    FilterMode m_magFilter = FilterMode::LINEAR;
+    float m_anisotropicLevel = 1.0f;
+
+    std::vector<unsigned char> loadImageData(const std::string& filename, int& width, int& height, int& channels);
     int getGLInternalFormat(Format format) const;
     int getGLFormat(Format format) const;
     int getGLType(Format format) const;
-    std::vector<unsigned char> loadImageData(const std::string& filename, int& width, int& height, int& channels);
 };
+
 } // namespace ygl
