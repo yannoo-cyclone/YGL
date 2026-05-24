@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <algorithm>
+#include "math/vec3.hpp"  // AJOUTÉ pour accéder à Vec3::x/y/z
 
 namespace ygl {
 
