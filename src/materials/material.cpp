@@ -42,7 +42,7 @@ bool Material::HasMetallicTexture() const { return has_metallic_texture; }
 bool Material::HasEmissionTexture() const { return has_emission_texture; }
 
 Vec3 Material::Sample(const Vec3& /*wi*/, const Vec3& /*wo*/, const Vec3& /*normal*/, const Vec2& /*texcoord*/, const Vec3& /*position*/) const {
-    return Vec3(albedo) * (1.0f / M_PI);
+    return Vec3(albedo.x, albedo.y, albedo.z) * (1.0f / M_PI);
 }
 float Material::PDF(const Vec3& /*wi*/, const Vec3& /*wo*/, const Vec3& /*normal*/) const {
     return 1.0f / (2.0f * M_PI);
