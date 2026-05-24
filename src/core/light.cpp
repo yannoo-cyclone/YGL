@@ -5,7 +5,7 @@ namespace ygl {
 Light::Light(Type type)
     : Object3D("Light"),
       m_type(type), m_color(1.0f, 1.0f, 1.0f), m_intensity(1.0f),
-      m_direction(0.0f, -1.0f, 0.0f), m_range(10.0f) {}  // Supprimé m_position (hérité de Object3D)
+      m_direction(0.0f, -1.0f, 0.0f), m_range(10.0f) {}
 
 Type Light::getType() const { return m_type; }
 void Light::setType(Type type) { m_type = type; }
@@ -19,7 +19,6 @@ void Light::setIntensity(float intensity) { m_intensity = intensity; }
 const Vec3& Light::getDirection() const { return m_direction; }
 void Light::setDirection(const Vec3& direction) { m_direction = direction.Normalize(); }
 
-// Utilisation des méthodes héritées de Object3D :
 const Vec3& Light::getPosition() const { return Object3D::getPosition(); }
 void Light::setPosition(const Vec3& position) { Object3D::setPosition(position); }
 
