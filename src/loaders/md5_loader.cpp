@@ -1,5 +1,6 @@
 #include "loaders/md5_loader.hpp"
 #include "core/mesh.hpp"
+#include "core/vertex.hpp"
 #include <fstream>
 
 namespace ygl {
@@ -113,19 +114,28 @@ bool MD5Loader::LoadMD5(const std::string& filepath, Mesh& mesh) {
     }
     for (auto& v : vertices) v.normal = normalize(v.normal);
 
-    mesh.SetVertices(vertices);
-    mesh.SetIndices(indices);
-    mesh.ComputeBoundingBox();
+    std::vector<Vec3> positions, normals;
+    std::vector<Vec2> texcoords;
+    for (const auto& v : vertices) {
+        positions.push_back(v.position);
+        normals.push_back(v.normal);
+        texcoords.push_back(v.texcoord);
+    }
+    mesh.setPositions(positions);
+    mesh.setNormals(normals);
+    mesh.setTexCoords(texcoords);
+    mesh.setIndices(indices);
+    mesh.updateBoundingBox();
     return true;
 }
 
 std::vector<std::shared_ptr<Mesh>> MD5Loader::load(const std::string& filename) {
-    Mesh mesh;
-    return LoadMD5(filename, mesh) ? std::vector{std::make_shared<Mesh>(mesh)} : std::vector<std::shared_ptr<Mesh>>();
+    auto m = std::make_shared<Mesh>();
+    return LoadMD5(filename, *m) ? std::vector{m} : std::vector<std::shared_ptr<Mesh>>();
 }
 std::shared_ptr<Mesh> MD5Loader::loadSingle(const std::string& filename) {
-    Mesh mesh;
-    return LoadMD5(filename, mesh) ? std::make_shared<Mesh>(mesh) : nullptr;
+    auto m = std::make_shared<Mesh>();
+    return LoadMD5(filename, *m) ? m : nullptr;
 }
 MD5Loader::MD5Loader() = default;
 MD5Loader::~MD5Loader() = default;

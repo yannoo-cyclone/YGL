@@ -1,5 +1,6 @@
 #include "loaders/obj_loader.hpp"
 #include "core/mesh.hpp"
+#include "core/vertex.hpp"
 #include <fstream>
 #include <sstream>
 #include <unordered_map>
@@ -78,19 +79,28 @@ bool OBJLoader::LoadOBJ(const std::string& filepath, Mesh& mesh) {
         for (auto& v : vertices) v.normal = normalize(v.normal);
     }
 
-    mesh.SetVertices(vertices);
-    mesh.SetIndices(indices);
-    mesh.ComputeBoundingBox();
+    std::vector<Vec3> positions, normals;
+    std::vector<Vec2> texcoords;
+    for (const auto& v : vertices) {
+        positions.push_back(v.position);
+        normals.push_back(v.normal);
+        texcoords.push_back(v.texcoord);
+    }
+    mesh.setPositions(positions);
+    mesh.setNormals(normals);
+    mesh.setTexCoords(texcoords);
+    mesh.setIndices(indices);
+    mesh.updateBoundingBox();
     return true;
 }
 
 std::vector<std::shared_ptr<Mesh>> OBJLoader::load(const std::string& filename) {
-    Mesh mesh;
-    return LoadOBJ(filename, mesh) ? std::vector{std::make_shared<Mesh>(mesh)} : std::vector<std::shared_ptr<Mesh>>();
+    auto m = std::make_shared<Mesh>();
+    return LoadOBJ(filename, *m) ? std::vector{m} : std::vector<std::shared_ptr<Mesh>>();
 }
 std::shared_ptr<Mesh> OBJLoader::loadSingle(const std::string& filename) {
-    Mesh mesh;
-    return LoadOBJ(filename, mesh) ? std::make_shared<Mesh>(mesh) : nullptr;
+    auto m = std::make_shared<Mesh>();
+    return LoadOBJ(filename, *m) ? m : nullptr;
 }
 OBJLoader::OBJLoader() = default;
 OBJLoader::~OBJLoader() = default;

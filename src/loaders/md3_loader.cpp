@@ -1,8 +1,11 @@
 #include "loaders/md3_loader.hpp"
 #include "core/mesh.hpp"
+#include "core/vertex.hpp"
 #include <fstream>
+#include <vector>
 
 namespace ygl {
+
 bool MD3Loader::LoadMD3(const std::string& filepath, Mesh& mesh) {
     std::ifstream file(filepath, std::ios::binary);
     if (!file.is_open()) return false;
@@ -61,22 +64,30 @@ bool MD3Loader::LoadMD3(const std::string& filepath, Mesh& mesh) {
     }
     for (auto& v : vertices) v.normal = normalize(v.normal);
 
-    mesh.SetVertices(vertices);
-    mesh.SetIndices(indices);
-    mesh.ComputeBoundingBox();
+    // Extraction des données pour Mesh
+    std::vector<Vec3> positions, normals;
+    std::vector<Vec2> texcoords;
+    for (const auto& v : vertices) {
+        positions.push_back(v.position);
+        normals.push_back(v.normal);
+        texcoords.push_back(v.texcoord);
+    }
+    mesh.setPositions(positions);
+    mesh.setNormals(normals);
+    mesh.setTexCoords(texcoords);
+    mesh.setIndices(indices);
+    mesh.updateBoundingBox();
     return true;
 }
 
 std::vector<std::shared_ptr<Mesh>> MD3Loader::load(const std::string& filename) {
-    Mesh mesh;
-    return LoadMD3(filename, mesh) ? std::vector{std::make_shared<Mesh>(mesh)} : std::vector<std::shared_ptr<Mesh>>();
+    auto m = std::make_shared<Mesh>();
+    return LoadMD3(filename, *m) ? std::vector{m} : std::vector<std::shared_ptr<Mesh>>();
 }
-
 std::shared_ptr<Mesh> MD3Loader::loadSingle(const std::string& filename) {
-    Mesh mesh;
-    return LoadMD3(filename, mesh) ? std::make_shared<Mesh>(mesh) : nullptr;
+    auto m = std::make_shared<Mesh>();
+    return LoadMD3(filename, *m) ? m : nullptr;
 }
-
 MD3Loader::MD3Loader() = default;
 MD3Loader::~MD3Loader() = default;
 void MD3Loader::setCurrentFrame(int frame) { if (frame >= 0 && frame < static_cast<int>(m_frames.size())) m_currentFrame = frame; }

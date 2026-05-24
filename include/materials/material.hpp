@@ -1,32 +1,80 @@
 #pragma once
-
+#include "math/vec3.hpp"
+#include "math/vec4.hpp"
+#include "math/vec2.hpp"
 #include <algorithm>
 #include <memory>
 
 namespace ygl {
+enum class MaterialType {
+    PBR_METALLIC_ROUGHNESS,
+    PBR_SPECULAR_GLOSSINESS,
+    PHONG,
+    FLAT
+};
 
 class Material {
 public:
-    Material() : m_roughness(0.5f), m_metallic(0.5f), m_opacity(1.0f) {}
-
-    // Getters
-    float getRoughness() const { return m_roughness; }
-    float getMetallic() const { return m_metallic; }
-    float getOpacity() const { return m_opacity; }
+    Material();
+    Material(const Vec4& color);
+    ~Material();
 
     // Setters
-    void setRoughness(float roughness) { m_roughness = std::clamp(roughness, 0.0f, 1.0f); }
-    void setMetallic(float metallic) { m_metallic = std::clamp(metallic, 0.0f, 1.0f); }
-    void setOpacity(float opacity) { m_opacity = std::clamp(opacity, 0.0f, 1.0f); }
+    void SetAlbedo(const Vec4& color);
+    void SetRoughness(float roughness);
+    void SetMetallic(float metallic);
+    void SetEmission(const Vec3& emission, float strength);
+    void SetIOR(float index);
+    void SetAlbedoTexture(unsigned int id);
+    void SetNormalTexture(unsigned int id);
+    void SetRoughnessTexture(unsigned int id);
+    void SetMetallicTexture(unsigned int id);
+    void SetEmissionTexture(unsigned int id);
+    void SetType(MaterialType type);
 
-    // Méthodes virtuelles pour bind/unbind
-    virtual void bind() const {}
-    virtual void unbind() const {}
+    // Getters
+    Vec4 GetAlbedo() const;
+    float GetRoughness() const;
+    float GetMetallic() const;
+    Vec3 GetEmission() const;
+    float GetIOR() const;
+    unsigned int GetAlbedoTexture() const;
+    unsigned int GetNormalTexture() const;
+    unsigned int GetRoughnessTexture() const;
+    unsigned int GetMetallicTexture() const;
+    unsigned int GetEmissionTexture() const;
+    MaterialType GetType() const;
+    bool HasAlbedoTexture() const;
+    bool HasNormalTexture() const;
+    bool HasRoughnessTexture() const;
+    bool HasMetallicTexture() const;
+    bool HasEmissionTexture() const;
+
+    // Sampling
+    Vec3 Sample(const Vec3& wi, const Vec3& wo, const Vec3& normal, const Vec2& texcoord, const Vec3& position) const;
+    float PDF(const Vec3& wi, const Vec3& wo, const Vec3& normal) const;
+
+    // Bind/Unbind
+    virtual void bind() const;
+    virtual void unbind() const;
 
 private:
-    float m_roughness;
-    float m_metallic;
-    float m_opacity;
+    Vec4 albedo;
+    float roughness;
+    float metallic;
+    Vec3 emission;
+    float ior;
+    float emission_strength;
+    bool has_albedo_texture;
+    bool has_normal_texture;
+    bool has_roughness_texture;
+    bool has_metallic_texture;
+    bool has_emission_texture;
+    unsigned int albedo_texture_id;
+    unsigned int normal_texture_id;
+    unsigned int roughness_texture_id;
+    unsigned int metallic_texture_id;
+    unsigned int emission_texture_id;
+    MaterialType type;
 };
-
 } // namespace ygl

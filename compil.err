@@ -43,501 +43,96 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   GLEW Include: /usr/include
 --   GLFW3 Include: 
 --   OpenGL Include: 
--- Configuring done (0.7s)
+-- Configuring done (0.5s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
 [  2%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
 [  5%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
-[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
-[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
+[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
+[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
 [ 13%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
-[ 16%] Building CXX object CMakeFiles/ygl.dir/src/loaders/loader.cpp.o
-[ 19%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
+[ 16%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
+[ 19%] Building CXX object CMakeFiles/ygl.dir/src/loaders/loader.cpp.o
 [ 22%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md2_loader.cpp.o
-[ 25%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md3_loader.cpp.o
 /home/yannoo/Dev/YGL/src/core/scene.cpp: In member function ‘void ygl::Scene::renderScene(const ygl::Camera&)’:
 /home/yannoo/Dev/YGL/src/core/scene.cpp:29:39: warning: unused parameter ‘camera’ [-Wunused-parameter]
    29 | void Scene::renderScene(const Camera& camera) {
       |                         ~~~~~~~~~~~~~~^~~~~~
+[ 25%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md3_loader.cpp.o
 [ 27%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md5_loader.cpp.o
 [ 30%] Building CXX object CMakeFiles/ygl.dir/src/loaders/obj_loader.cpp.o
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp: In member function ‘bool ygl::MD3Loader::LoadMD3(const std::string&, ygl::Mesh&)’:
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:19:17: error: ‘Vertex’ was not declared in this scope; did you mean ‘MD3Vertex’?
-   19 |     std::vector<Vertex> vertices;
-      |                 ^~~~~~
-      |                 MD3Vertex
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:19:23: error: template argument 1 is invalid
-   19 |     std::vector<Vertex> vertices;
-      |                       ^
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:19:23: error: template argument 2 is invalid
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:38:32: error: request for member ‘size’ in ‘vertices’, which is of non-class type ‘int’
-   38 |         size_t base = vertices.size();
-      |                                ^~~~
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:40:19: error: expected ‘;’ before ‘v’
-   40 |             Vertex v;
-      |                   ^~
-      |                   ;
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:41:13: error: ‘v’ was not declared in this scope
-   41 |             v.position = Vec3(verts[i].xyz[0] / 64.0f, verts[i].xyz[1] / 64.0f, verts[i].xyz[2] / 64.0f);
-      |             ^
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:44:22: error: request for member ‘push_back’ in ‘vertices’, which is of non-class type ‘int’
-   44 |             vertices.push_back(v);
-      |                      ^~~~~~~~~
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:55:27: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   55 |         Vec3 e1 = vertices[indices[i+1]].position - vertices[indices[i]].position;
-      |                           ^
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:55:61: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   55 |         Vec3 e1 = vertices[indices[i+1]].position - vertices[indices[i]].position;
-      |                                                             ^
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:56:27: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   56 |         Vec3 e2 = vertices[indices[i+2]].position - vertices[indices[i]].position;
-      |                           ^
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:56:61: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   56 |         Vec3 e2 = vertices[indices[i+2]].position - vertices[indices[i]].position;
-      |                                                             ^
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:58:17: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   58 |         vertices[indices[i]].normal += n;
-      |                 ^
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:59:17: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   59 |         vertices[indices[i+1]].normal += n;
-      |                 ^
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:60:17: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   60 |         vertices[indices[i+2]].normal += n;
-      |                 ^
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:62:20: error: ‘begin’ was not declared in this scope; did you mean ‘std::begin’?
-   62 |     for (auto& v : vertices) v.normal = normalize(v.normal);
-      |                    ^~~~~~~~
-      |                    std::begin
-In file included from /usr/include/c++/13/string:53,
-                 from /usr/include/c++/13/bits/locale_classes.h:40,
-                 from /usr/include/c++/13/bits/ios_base.h:41,
-                 from /usr/include/c++/13/ios:44,
-                 from /usr/include/c++/13/ostream:40,
-                 from /home/yannoo/Dev/YGL/include/math/vec3.hpp:5,
-                 from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/loaders/loader.hpp:2,
-                 from /home/yannoo/Dev/YGL/include/loaders/md3_loader.hpp:2,
-                 from /home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:1:
-/usr/include/c++/13/bits/range_access.h:114:37: note: ‘std::begin’ declared here
-  114 |   template<typename _Tp> const _Tp* begin(const valarray<_Tp>&) noexcept;
-      |                                     ^~~~~
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:62:20: error: ‘end’ was not declared in this scope; did you mean ‘std::end’?
-   62 |     for (auto& v : vertices) v.normal = normalize(v.normal);
-      |                    ^~~~~~~~
-      |                    std::end
-/usr/include/c++/13/bits/range_access.h:116:37: note: ‘std::end’ declared here
-  116 |   template<typename _Tp> const _Tp* end(const valarray<_Tp>&) noexcept;
-      |                                     ^~~
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:64:10: error: ‘class ygl::Mesh’ has no member named ‘SetVertices’
-   64 |     mesh.SetVertices(vertices);
-      |          ^~~~~~~~~~~
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:65:10: error: ‘class ygl::Mesh’ has no member named ‘SetIndices’; did you mean ‘setIndices’?
-   65 |     mesh.SetIndices(indices);
-      |          ^~~~~~~~~~
-      |          setIndices
-/home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:66:10: error: ‘class ygl::Mesh’ has no member named ‘ComputeBoundingBox’; did you mean ‘updateBoundingBox’?
-   66 |     mesh.ComputeBoundingBox();
-      |          ^~~~~~~~~~~~~~~~~~
-      |          updateBoundingBox
 [ 33%] Building CXX object CMakeFiles/ygl.dir/src/materials/material.cpp.o
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp: In member function ‘bool ygl::MD5Loader::LoadMD5(const std::string&, ygl::Mesh&)’:
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:86:17: error: ‘Vertex’ was not declared in this scope; did you mean ‘MD5Vertex’?
-   86 |     std::vector<Vertex> vertices;
-      |                 ^~~~~~
-      |                 MD5Vertex
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:86:23: error: template argument 1 is invalid
-   86 |     std::vector<Vertex> vertices;
+/home/yannoo/Dev/YGL/src/materials/material.cpp: In constructor ‘ygl::Material::Material()’:
+/home/yannoo/Dev/YGL/src/materials/material.cpp:6:7: error: no matching function for call to ‘ygl::Vec4::Vec4(float)’
+    6 |     : albedo(1.0f), roughness(0.5f), metallic(0.0f), emission(0.0f), ior(1.5f),
+      |       ^~~~~~~~~~~~
+In file included from /home/yannoo/Dev/YGL/include/materials/material.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/materials/material.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:18:5: note: candidate: ‘ygl::Vec4::Vec4(float, float, float, float)’
+   18 |     Vec4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
+      |     ^~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:18:5: note:   candidate expects 4 arguments, 1 provided
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:17:5: note: candidate: ‘ygl::Vec4::Vec4()’
+   17 |     Vec4() : x(0), y(0), z(0), w(0) {}
+      |     ^~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:17:5: note:   candidate expects 0 arguments, 1 provided
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: candidate: ‘constexpr ygl::Vec4::Vec4(const ygl::Vec4&)’
+    7 | class Vec4 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note:   no known conversion for argument 1 from ‘float’ to ‘const ygl::Vec4&’
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: candidate: ‘constexpr ygl::Vec4::Vec4(ygl::Vec4&&)’
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note:   no known conversion for argument 1 from ‘float’ to ‘ygl::Vec4&&’
+/home/yannoo/Dev/YGL/src/materials/material.cpp: In member function ‘ygl::Vec3 ygl::Material::Sample(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec2&, const ygl::Vec3&) const’:
+/home/yannoo/Dev/YGL/src/materials/material.cpp:45:23: error: no matching function for call to ‘ygl::Vec3::Vec3(const ygl::Vec4&)’
+   45 |     return Vec3(albedo) * (1.0f / M_PI);
       |                       ^
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:86:23: error: template argument 2 is invalid
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:102:18: error: request for member ‘push_back’ in ‘vertices’, which is of non-class type ‘int’
-  102 |         vertices.push_back({pos, Vec2(vert.u, vert.v), Vec3(0.0f)});
-      |                  ^~~~~~~~~
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:107:27: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-  107 |         Vec3 e1 = vertices[indices[i+1]].position - vertices[indices[i]].position;
-      |                           ^
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:107:61: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-  107 |         Vec3 e1 = vertices[indices[i+1]].position - vertices[indices[i]].position;
-      |                                                             ^
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:108:27: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-  108 |         Vec3 e2 = vertices[indices[i+2]].position - vertices[indices[i]].position;
-      |                           ^
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:108:61: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-  108 |         Vec3 e2 = vertices[indices[i+2]].position - vertices[indices[i]].position;
-      |                                                             ^
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:110:17: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-  110 |         vertices[indices[i]].normal += n;
-      |                 ^
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:111:17: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-  111 |         vertices[indices[i+1]].normal += n;
-      |                 ^
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:112:17: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-  112 |         vertices[indices[i+2]].normal += n;
-      |                 ^
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:114:20: error: ‘begin’ was not declared in this scope; did you mean ‘std::begin’?
-  114 |     for (auto& v : vertices) v.normal = normalize(v.normal);
-      |                    ^~~~~~~~
-      |                    std::begin
-In file included from /usr/include/c++/13/string:53,
-                 from /usr/include/c++/13/bits/locale_classes.h:40,
-                 from /usr/include/c++/13/bits/ios_base.h:41,
-                 from /usr/include/c++/13/ios:44,
-                 from /usr/include/c++/13/ostream:40,
-                 from /home/yannoo/Dev/YGL/include/math/vec3.hpp:5,
-                 from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/loaders/loader.hpp:2,
-                 from /home/yannoo/Dev/YGL/include/loaders/md5_loader.hpp:2,
-                 from /home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:1:
-/usr/include/c++/13/bits/range_access.h:114:37: note: ‘std::begin’ declared here
-  114 |   template<typename _Tp> const _Tp* begin(const valarray<_Tp>&) noexcept;
-      |                                     ^~~~~
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:114:20: error: ‘end’ was not declared in this scope; did you mean ‘std::end’?
-  114 |     for (auto& v : vertices) v.normal = normalize(v.normal);
-      |                    ^~~~~~~~
-      |                    std::end
-/usr/include/c++/13/bits/range_access.h:116:37: note: ‘std::end’ declared here
-  116 |   template<typename _Tp> const _Tp* end(const valarray<_Tp>&) noexcept;
-      |                                     ^~~
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:116:10: error: ‘class ygl::Mesh’ has no member named ‘SetVertices’
-  116 |     mesh.SetVertices(vertices);
-      |          ^~~~~~~~~~~
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:117:10: error: ‘class ygl::Mesh’ has no member named ‘SetIndices’; did you mean ‘setIndices’?
-  117 |     mesh.SetIndices(indices);
-      |          ^~~~~~~~~~
-      |          setIndices
-/home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:118:10: error: ‘class ygl::Mesh’ has no member named ‘ComputeBoundingBox’; did you mean ‘updateBoundingBox’?
-  118 |     mesh.ComputeBoundingBox();
-      |          ^~~~~~~~~~~~~~~~~~
-      |          updateBoundingBox
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:188 : CMakeFiles/ygl.dir/src/loaders/md3_loader.cpp.o] Erreur 1
-gmake[2]: *** Attente des tâches non terminées....
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:202 : CMakeFiles/ygl.dir/src/loaders/md5_loader.cpp.o] Erreur 1
-In file included from /home/yannoo/Dev/YGL/src/materials/material.cpp:3:
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   12 |         struct { float x, y, z, w; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   13 |         struct { float r, g, b, a; };
-      |                ^
-/home/yannoo/Dev/YGL/src/materials/material.cpp:8:1: error: redefinition of ‘ygl::Material::Material()’
-    8 | Material::Material()
-      | ^~~~~~~~
-In file included from /home/yannoo/Dev/YGL/src/materials/material.cpp:1:
-/home/yannoo/Dev/YGL/include/materials/material.hpp:10:5: note: ‘ygl::Material::Material()’ previously defined here
-   10 |     Material() : m_roughness(0.5f), m_metallic(0.5f), m_opacity(1.0f) {}
-      |     ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:15:26: error: ‘vec4’ does not name a type; did you mean ‘Vec4’?
-   15 | Material::Material(const vec4& color)
-      |                          ^~~~
-      |                          Vec4
-/home/yannoo/Dev/YGL/src/materials/material.cpp:15:1: error: no declaration matches ‘ygl::Material::Material(const int&)’
-   15 | Material::Material(const vec4& color)
-      | ^~~~~~~~
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: candidates are: ‘constexpr ygl::Material::Material(ygl::Material&&)’
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note:                 ‘constexpr ygl::Material::Material(const ygl::Material&)’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:10:5: note:                 ‘ygl::Material::Material()’
-   10 |     Material() : m_roughness(0.5f), m_metallic(0.5f), m_opacity(1.0f) {}
-      |     ^~~~~~~~
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:18:21: error: definition of implicitly-declared ‘ygl::Material::~Material()’
-   18 | Material::~Material() {}
-      |                     ^
-/home/yannoo/Dev/YGL/src/materials/material.cpp:21:32: error: ‘vec4’ does not name a type; did you mean ‘Vec4’?
-   21 | void Material::SetAlbedo(const vec4& color) { albedo = color; }
-      |                                ^~~~
-      |                                Vec4
-/home/yannoo/Dev/YGL/src/materials/material.cpp:21:6: error: no declaration matches ‘void ygl::Material::SetAlbedo(const int&)’
-   21 | void Material::SetAlbedo(const vec4& color) { albedo = color; }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:21:6: note: no functions named ‘void ygl::Material::SetAlbedo(const int&)’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:22:6: error: no declaration matches ‘void ygl::Material::SetRoughness(float)’
-   22 | void Material::SetRoughness(float r) { roughness = std::clamp(r, 0.0f, 1.0f); }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:22:6: note: no functions named ‘void ygl::Material::SetRoughness(float)’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:23:6: error: no declaration matches ‘void ygl::Material::SetMetallic(float)’
-   23 | void Material::SetMetallic(float m) { metallic = std::clamp(m, 0.0f, 1.0f); }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:23:6: note: no functions named ‘void ygl::Material::SetMetallic(float)’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:24:34: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
-   24 | void Material::SetEmission(const vec3& e, float strength) { emission = e; emission_strength = strength; }
-      |                                  ^~~~
-      |                                  Vec3
-/home/yannoo/Dev/YGL/src/materials/material.cpp:24:6: error: no declaration matches ‘void ygl::Material::SetEmission(const int&, float)’
-   24 | void Material::SetEmission(const vec3& e, float strength) { emission = e; emission_strength = strength; }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:24:6: note: no functions named ‘void ygl::Material::SetEmission(const int&, float)’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:25:6: error: no declaration matches ‘void ygl::Material::SetIOR(float)’
-   25 | void Material::SetIOR(float index) { ior = index; }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:25:6: note: no functions named ‘void ygl::Material::SetIOR(float)’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:26:6: error: no declaration matches ‘void ygl::Material::SetAlbedoTexture(unsigned int)’
-   26 | void Material::SetAlbedoTexture(unsigned int id) { albedo_texture_id = id; has_albedo_texture = true; }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:26:6: note: no functions named ‘void ygl::Material::SetAlbedoTexture(unsigned int)’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:27:6: error: no declaration matches ‘void ygl::Material::SetNormalTexture(unsigned int)’
-   27 | void Material::SetNormalTexture(unsigned int id) { normal_texture_id = id; has_normal_texture = true; }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:27:6: note: no functions named ‘void ygl::Material::SetNormalTexture(unsigned int)’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:28:6: error: no declaration matches ‘void ygl::Material::SetRoughnessTexture(unsigned int)’
-   28 | void Material::SetRoughnessTexture(unsigned int id) { roughness_texture_id = id; has_roughness_texture = true; }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:28:6: note: no functions named ‘void ygl::Material::SetRoughnessTexture(unsigned int)’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:29:6: error: no declaration matches ‘void ygl::Material::SetMetallicTexture(unsigned int)’
-   29 | void Material::SetMetallicTexture(unsigned int id) { metallic_texture_id = id; has_metallic_texture = true; }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:29:6: note: no functions named ‘void ygl::Material::SetMetallicTexture(unsigned int)’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:30:6: error: no declaration matches ‘void ygl::Material::SetEmissionTexture(unsigned int)’
-   30 | void Material::SetEmissionTexture(unsigned int id) { emission_texture_id = id; has_emission_texture = true; }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:30:6: note: no functions named ‘void ygl::Material::SetEmissionTexture(unsigned int)’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:31:6: error: variable or field ‘SetType’ declared void
-   31 | void Material::SetType(MaterialType t) { type = t; }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:31:24: error: ‘MaterialType’ was not declared in this scope; did you mean ‘Material’?
-   31 | void Material::SetType(MaterialType t) { type = t; }
-      |                        ^~~~~~~~~~~~
-      |                        Material
-/home/yannoo/Dev/YGL/src/materials/material.cpp:34:1: error: ‘vec4’ does not name a type; did you mean ‘Vec4’?
-   34 | vec4 Material::GetAlbedo() const { return albedo; }
-      | ^~~~
-      | Vec4
-/home/yannoo/Dev/YGL/src/materials/material.cpp:35:7: error: no declaration matches ‘float ygl::Material::GetRoughness() const’
-   35 | float Material::GetRoughness() const { return roughness; }
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:35:7: note: no functions named ‘float ygl::Material::GetRoughness() const’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:36:7: error: no declaration matches ‘float ygl::Material::GetMetallic() const’
-   36 | float Material::GetMetallic() const { return metallic; }
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:36:7: note: no functions named ‘float ygl::Material::GetMetallic() const’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:37:1: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
-   37 | vec3 Material::GetEmission() const { return emission * emission_strength; }
-      | ^~~~
-      | Vec3
-/home/yannoo/Dev/YGL/src/materials/material.cpp:38:7: error: no declaration matches ‘float ygl::Material::GetIOR() const’
-   38 | float Material::GetIOR() const { return ior; }
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:38:7: note: no functions named ‘float ygl::Material::GetIOR() const’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:39:14: error: no declaration matches ‘unsigned int ygl::Material::GetAlbedoTexture() const’
-   39 | unsigned int Material::GetAlbedoTexture() const { return albedo_texture_id; }
-      |              ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:39:14: note: no functions named ‘unsigned int ygl::Material::GetAlbedoTexture() const’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:40:14: error: no declaration matches ‘unsigned int ygl::Material::GetNormalTexture() const’
-   40 | unsigned int Material::GetNormalTexture() const { return normal_texture_id; }
-      |              ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:40:14: note: no functions named ‘unsigned int ygl::Material::GetNormalTexture() const’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:41:14: error: no declaration matches ‘unsigned int ygl::Material::GetRoughnessTexture() const’
-   41 | unsigned int Material::GetRoughnessTexture() const { return roughness_texture_id; }
-      |              ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:41:14: note: no functions named ‘unsigned int ygl::Material::GetRoughnessTexture() const’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:42:14: error: no declaration matches ‘unsigned int ygl::Material::GetMetallicTexture() const’
-   42 | unsigned int Material::GetMetallicTexture() const { return metallic_texture_id; }
-      |              ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:42:14: note: no functions named ‘unsigned int ygl::Material::GetMetallicTexture() const’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:43:14: error: no declaration matches ‘unsigned int ygl::Material::GetEmissionTexture() const’
-   43 | unsigned int Material::GetEmissionTexture() const { return emission_texture_id; }
-      |              ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:43:14: note: no functions named ‘unsigned int ygl::Material::GetEmissionTexture() const’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:44:1: error: ‘MaterialType’ does not name a type; did you mean ‘Material’?
-   44 | MaterialType Material::GetType() const { return type; }
-      | ^~~~~~~~~~~~
-      | Material
-/home/yannoo/Dev/YGL/src/materials/material.cpp:45:6: error: no declaration matches ‘bool ygl::Material::HasAlbedoTexture() const’
-   45 | bool Material::HasAlbedoTexture() const { return has_albedo_texture; }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:45:6: note: no functions named ‘bool ygl::Material::HasAlbedoTexture() const’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:46:6: error: no declaration matches ‘bool ygl::Material::HasNormalTexture() const’
-   46 | bool Material::HasNormalTexture() const { return has_normal_texture; }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:46:6: note: no functions named ‘bool ygl::Material::HasNormalTexture() const’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:47:6: error: no declaration matches ‘bool ygl::Material::HasRoughnessTexture() const’
-   47 | bool Material::HasRoughnessTexture() const { return has_roughness_texture; }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:47:6: note: no functions named ‘bool ygl::Material::HasRoughnessTexture() const’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:48:6: error: no declaration matches ‘bool ygl::Material::HasMetallicTexture() const’
-   48 | bool Material::HasMetallicTexture() const { return has_metallic_texture; }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:48:6: note: no functions named ‘bool ygl::Material::HasMetallicTexture() const’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:49:6: error: no declaration matches ‘bool ygl::Material::HasEmissionTexture() const’
-   49 | bool Material::HasEmissionTexture() const { return has_emission_texture; }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:49:6: note: no functions named ‘bool ygl::Material::HasEmissionTexture() const’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:52:1: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
-   52 | vec3 Material::Sample(const vec3& wi, const vec3& wo, const vec3& normal, const vec2& texcoord, const vec3& position) const {
-      | ^~~~
-      | Vec3
-/home/yannoo/Dev/YGL/src/materials/material.cpp:56:27: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
-   56 | float Material::PDF(const vec3& wi, const vec3& wo, const vec3& normal) const {
-      |                           ^~~~
-      |                           Vec3
-/home/yannoo/Dev/YGL/src/materials/material.cpp:56:43: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
-   56 | float Material::PDF(const vec3& wi, const vec3& wo, const vec3& normal) const {
-      |                                           ^~~~
-      |                                           Vec3
-/home/yannoo/Dev/YGL/src/materials/material.cpp:56:59: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
-   56 | float Material::PDF(const vec3& wi, const vec3& wo, const vec3& normal) const {
-      |                                                           ^~~~
-      |                                                           Vec3
-/home/yannoo/Dev/YGL/src/materials/material.cpp:56:7: error: no declaration matches ‘float ygl::Material::PDF(const int&, const int&, const int&) const’
-   56 | float Material::PDF(const vec3& wi, const vec3& wo, const vec3& normal) const {
-      |       ^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:56:7: note: no functions named ‘float ygl::Material::PDF(const int&, const int&, const int&) const’
-/home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
-    8 | class Material {
-      |       ^~~~~~~~
+In file included from /home/yannoo/Dev/YGL/include/materials/material.hpp:2:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:20:5: note: candidate: ‘ygl::Vec3::Vec3(float, float, float)’
+   20 |     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
+      |     ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:20:5: note:   candidate expects 3 arguments, 1 provided
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:19:14: note: candidate: ‘ygl::Vec3::Vec3(float)’
+   19 |     explicit Vec3(float scalar) : x(scalar), y(scalar), z(scalar) {}
+      |              ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:19:25: note:   no known conversion for argument 1 from ‘const ygl::Vec4’ to ‘float’
+   19 |     explicit Vec3(float scalar) : x(scalar), y(scalar), z(scalar) {}
+      |                   ~~~~~~^~~~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:18:5: note: candidate: ‘ygl::Vec3::Vec3()’
+   18 |     Vec3() : x(0), y(0), z(0) {}
+      |     ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:18:5: note:   candidate expects 0 arguments, 1 provided
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:8:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(const ygl::Vec3&)’
+    8 | class Vec3 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:8:7: note:   no known conversion for argument 1 from ‘const ygl::Vec4’ to ‘const ygl::Vec3&’
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:8:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(ygl::Vec3&&)’
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:8:7: note:   no known conversion for argument 1 from ‘const ygl::Vec4’ to ‘ygl::Vec3&&’
+/home/yannoo/Dev/YGL/src/materials/material.cpp:44:35: warning: unused parameter ‘wi’ [-Wunused-parameter]
+   44 | Vec3 Material::Sample(const Vec3& wi, const Vec3& wo, const Vec3& normal, const Vec2& texcoord, const Vec3& position) const {
+      |                       ~~~~~~~~~~~~^~
+/home/yannoo/Dev/YGL/src/materials/material.cpp:44:51: warning: unused parameter ‘wo’ [-Wunused-parameter]
+   44 | Vec3 Material::Sample(const Vec3& wi, const Vec3& wo, const Vec3& normal, const Vec2& texcoord, const Vec3& position) const {
+      |                                       ~~~~~~~~~~~~^~
+/home/yannoo/Dev/YGL/src/materials/material.cpp:44:67: warning: unused parameter ‘normal’ [-Wunused-parameter]
+   44 | Vec3 Material::Sample(const Vec3& wi, const Vec3& wo, const Vec3& normal, const Vec2& texcoord, const Vec3& position) const {
+      |                                                       ~~~~~~~~~~~~^~~~~~
+/home/yannoo/Dev/YGL/src/materials/material.cpp:44:87: warning: unused parameter ‘texcoord’ [-Wunused-parameter]
+   44 | Vec3 Material::Sample(const Vec3& wi, const Vec3& wo, const Vec3& normal, const Vec2& texcoord, const Vec3& position) const {
+      |                                                                           ~~~~~~~~~~~~^~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/material.cpp:44:109: warning: unused parameter ‘position’ [-Wunused-parameter]
+   44 | Vec3 Material::Sample(const Vec3& wi, const Vec3& wo, const Vec3& normal, const Vec2& texcoord, const Vec3& position) const {
+      |                                                                                                 ~~~~~~~~~~~~^~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/material.cpp: In member function ‘float ygl::Material::PDF(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&) const’:
+/home/yannoo/Dev/YGL/src/materials/material.cpp:47:33: warning: unused parameter ‘wi’ [-Wunused-parameter]
+   47 | float Material::PDF(const Vec3& wi, const Vec3& wo, const Vec3& normal) const {
+      |                     ~~~~~~~~~~~~^~
+/home/yannoo/Dev/YGL/src/materials/material.cpp:47:49: warning: unused parameter ‘wo’ [-Wunused-parameter]
+   47 | float Material::PDF(const Vec3& wi, const Vec3& wo, const Vec3& normal) const {
+      |                                     ~~~~~~~~~~~~^~
+/home/yannoo/Dev/YGL/src/materials/material.cpp:47:65: warning: unused parameter ‘normal’ [-Wunused-parameter]
+   47 | float Material::PDF(const Vec3& wi, const Vec3& wo, const Vec3& normal) const {
+      |                                                     ~~~~~~~~~~~~^~~~~~
 gmake[2]: *** [CMakeFiles/ygl.dir/build.make:230 : CMakeFiles/ygl.dir/src/materials/material.cpp.o] Erreur 1
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp: In member function ‘bool ygl::OBJLoader::LoadOBJ(const std::string&, ygl::Mesh&)’:
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:15:17: error: ‘Vertex’ was not declared in this scope
-   15 |     std::vector<Vertex> vertices;
-      |                 ^~~~~~
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:15:23: error: template argument 1 is invalid
-   15 |     std::vector<Vertex> vertices;
-      |                       ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:15:23: error: template argument 2 is invalid
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:55:27: error: expected ‘;’ before ‘vertex’
-   55 |                     Vertex vertex;
-      |                           ^~~~~~~
-      |                           ;
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:56:21: error: ‘vertex’ was not declared in this scope; did you mean ‘vertices’?
-   56 |                     vertex.position = temp_positions[pos_idx];
-      |                     ^~~~~~
-      |                     vertices
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:60:81: error: request for member ‘size’ in ‘vertices’, which is of non-class type ‘int’
-   60 |                     vertex_map[vertex_key] = static_cast<unsigned int>(vertices.size());
-      |                                                                                 ^~~~
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:61:30: error: request for member ‘push_back’ in ‘vertices’, which is of non-class type ‘int’
-   61 |                     vertices.push_back(vertex);
-      |                              ^~~~~~~~~
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:71:31: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   71 |             Vec3 e1 = vertices[indices[i+1]].position - vertices[indices[i]].position;
-      |                               ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:71:65: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   71 |             Vec3 e1 = vertices[indices[i+1]].position - vertices[indices[i]].position;
-      |                                                                 ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:72:31: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   72 |             Vec3 e2 = vertices[indices[i+2]].position - vertices[indices[i]].position;
-      |                               ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:72:65: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   72 |             Vec3 e2 = vertices[indices[i+2]].position - vertices[indices[i]].position;
-      |                                                                 ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:74:21: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   74 |             vertices[indices[i]].normal += n;
-      |                     ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:75:21: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   75 |             vertices[indices[i+1]].normal += n;
-      |                     ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:76:21: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   76 |             vertices[indices[i+2]].normal += n;
-      |                     ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:78:24: error: ‘begin’ was not declared in this scope; did you mean ‘std::begin’?
-   78 |         for (auto& v : vertices) v.normal = normalize(v.normal);
-      |                        ^~~~~~~~
-      |                        std::begin
-In file included from /usr/include/c++/13/string:53,
-                 from /usr/include/c++/13/bits/locale_classes.h:40,
-                 from /usr/include/c++/13/bits/ios_base.h:41,
-                 from /usr/include/c++/13/ios:44,
-                 from /usr/include/c++/13/ostream:40,
-                 from /home/yannoo/Dev/YGL/include/math/vec3.hpp:5,
-                 from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/loaders/loader.hpp:2,
-                 from /home/yannoo/Dev/YGL/include/loaders/obj_loader.hpp:2,
-                 from /home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:1:
-/usr/include/c++/13/bits/range_access.h:114:37: note: ‘std::begin’ declared here
-  114 |   template<typename _Tp> const _Tp* begin(const valarray<_Tp>&) noexcept;
-      |                                     ^~~~~
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:78:24: error: ‘end’ was not declared in this scope; did you mean ‘std::end’?
-   78 |         for (auto& v : vertices) v.normal = normalize(v.normal);
-      |                        ^~~~~~~~
-      |                        std::end
-/usr/include/c++/13/bits/range_access.h:116:37: note: ‘std::end’ declared here
-  116 |   template<typename _Tp> const _Tp* end(const valarray<_Tp>&) noexcept;
-      |                                     ^~~
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:81:10: error: ‘class ygl::Mesh’ has no member named ‘SetVertices’
-   81 |     mesh.SetVertices(vertices);
-      |          ^~~~~~~~~~~
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:82:10: error: ‘class ygl::Mesh’ has no member named ‘SetIndices’; did you mean ‘setIndices’?
-   82 |     mesh.SetIndices(indices);
-      |          ^~~~~~~~~~
-      |          setIndices
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:83:10: error: ‘class ygl::Mesh’ has no member named ‘ComputeBoundingBox’; did you mean ‘updateBoundingBox’?
-   83 |     mesh.ComputeBoundingBox();
-      |          ^~~~~~~~~~~~~~~~~~
-      |          updateBoundingBox
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:216 : CMakeFiles/ygl.dir/src/loaders/obj_loader.cpp.o] Erreur 1
+gmake[2]: *** Attente des tâches non terminées....
 gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
 gmake: *** [Makefile:91 : all] Erreur 2
