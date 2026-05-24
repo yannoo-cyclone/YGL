@@ -43,96 +43,104 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   GLEW Include: /usr/include
 --   GLFW3 Include: 
 --   OpenGL Include: 
--- Configuring done (0.5s)
+-- Configuring done (0.8s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
 [  2%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
 [  5%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
 [  8%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
 [ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
-[ 13%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
-[ 16%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
-[ 19%] Building CXX object CMakeFiles/ygl.dir/src/loaders/loader.cpp.o
-[ 22%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md2_loader.cpp.o
-/home/yannoo/Dev/YGL/src/core/scene.cpp: In member function ‘void ygl::Scene::renderScene(const ygl::Camera&)’:
-/home/yannoo/Dev/YGL/src/core/scene.cpp:29:39: warning: unused parameter ‘camera’ [-Wunused-parameter]
-   29 | void Scene::renderScene(const Camera& camera) {
-      |                         ~~~~~~~~~~~~~~^~~~~~
-[ 25%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md3_loader.cpp.o
-[ 27%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md5_loader.cpp.o
-[ 30%] Building CXX object CMakeFiles/ygl.dir/src/loaders/obj_loader.cpp.o
-[ 33%] Building CXX object CMakeFiles/ygl.dir/src/materials/material.cpp.o
-/home/yannoo/Dev/YGL/src/materials/material.cpp: In constructor ‘ygl::Material::Material()’:
-/home/yannoo/Dev/YGL/src/materials/material.cpp:6:7: error: no matching function for call to ‘ygl::Vec4::Vec4(float)’
-    6 |     : albedo(1.0f), roughness(0.5f), metallic(0.0f), emission(0.0f), ior(1.5f),
-      |       ^~~~~~~~~~~~
-In file included from /home/yannoo/Dev/YGL/include/materials/material.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/materials/material.cpp:1:
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:18:5: note: candidate: ‘ygl::Vec4::Vec4(float, float, float, float)’
-   18 |     Vec4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:18:5: note:   candidate expects 4 arguments, 1 provided
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:17:5: note: candidate: ‘ygl::Vec4::Vec4()’
-   17 |     Vec4() : x(0), y(0), z(0), w(0) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:17:5: note:   candidate expects 0 arguments, 1 provided
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: candidate: ‘constexpr ygl::Vec4::Vec4(const ygl::Vec4&)’
-    7 | class Vec4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note:   no known conversion for argument 1 from ‘float’ to ‘const ygl::Vec4&’
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: candidate: ‘constexpr ygl::Vec4::Vec4(ygl::Vec4&&)’
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note:   no known conversion for argument 1 from ‘float’ to ‘ygl::Vec4&&’
-/home/yannoo/Dev/YGL/src/materials/material.cpp: In member function ‘ygl::Vec3 ygl::Material::Sample(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec2&, const ygl::Vec3&) const’:
-/home/yannoo/Dev/YGL/src/materials/material.cpp:45:23: error: no matching function for call to ‘ygl::Vec3::Vec3(const ygl::Vec4&)’
-   45 |     return Vec3(albedo) * (1.0f / M_PI);
-      |                       ^
-In file included from /home/yannoo/Dev/YGL/include/materials/material.hpp:2:
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:20:5: note: candidate: ‘ygl::Vec3::Vec3(float, float, float)’
-   20 |     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:20:5: note:   candidate expects 3 arguments, 1 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:19:14: note: candidate: ‘ygl::Vec3::Vec3(float)’
-   19 |     explicit Vec3(float scalar) : x(scalar), y(scalar), z(scalar) {}
-      |              ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:19:25: note:   no known conversion for argument 1 from ‘const ygl::Vec4’ to ‘float’
-   19 |     explicit Vec3(float scalar) : x(scalar), y(scalar), z(scalar) {}
-      |                   ~~~~~~^~~~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:18:5: note: candidate: ‘ygl::Vec3::Vec3()’
-   18 |     Vec3() : x(0), y(0), z(0) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:18:5: note:   candidate expects 0 arguments, 1 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:8:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(const ygl::Vec3&)’
-    8 | class Vec3 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:8:7: note:   no known conversion for argument 1 from ‘const ygl::Vec4’ to ‘const ygl::Vec3&’
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:8:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(ygl::Vec3&&)’
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:8:7: note:   no known conversion for argument 1 from ‘const ygl::Vec4’ to ‘ygl::Vec3&&’
-/home/yannoo/Dev/YGL/src/materials/material.cpp:44:35: warning: unused parameter ‘wi’ [-Wunused-parameter]
-   44 | Vec3 Material::Sample(const Vec3& wi, const Vec3& wo, const Vec3& normal, const Vec2& texcoord, const Vec3& position) const {
-      |                       ~~~~~~~~~~~~^~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:44:51: warning: unused parameter ‘wo’ [-Wunused-parameter]
-   44 | Vec3 Material::Sample(const Vec3& wi, const Vec3& wo, const Vec3& normal, const Vec2& texcoord, const Vec3& position) const {
-      |                                       ~~~~~~~~~~~~^~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:44:67: warning: unused parameter ‘normal’ [-Wunused-parameter]
-   44 | Vec3 Material::Sample(const Vec3& wi, const Vec3& wo, const Vec3& normal, const Vec2& texcoord, const Vec3& position) const {
-      |                                                       ~~~~~~~~~~~~^~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:44:87: warning: unused parameter ‘texcoord’ [-Wunused-parameter]
-   44 | Vec3 Material::Sample(const Vec3& wi, const Vec3& wo, const Vec3& normal, const Vec2& texcoord, const Vec3& position) const {
-      |                                                                           ~~~~~~~~~~~~^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:44:109: warning: unused parameter ‘position’ [-Wunused-parameter]
-   44 | Vec3 Material::Sample(const Vec3& wi, const Vec3& wo, const Vec3& normal, const Vec2& texcoord, const Vec3& position) const {
-      |                                                                                                 ~~~~~~~~~~~~^~~~~~~~
-/home/yannoo/Dev/YGL/src/materials/material.cpp: In member function ‘float ygl::Material::PDF(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&) const’:
-/home/yannoo/Dev/YGL/src/materials/material.cpp:47:33: warning: unused parameter ‘wi’ [-Wunused-parameter]
-   47 | float Material::PDF(const Vec3& wi, const Vec3& wo, const Vec3& normal) const {
-      |                     ~~~~~~~~~~~~^~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:47:49: warning: unused parameter ‘wo’ [-Wunused-parameter]
-   47 | float Material::PDF(const Vec3& wi, const Vec3& wo, const Vec3& normal) const {
-      |                                     ~~~~~~~~~~~~^~
-/home/yannoo/Dev/YGL/src/materials/material.cpp:47:65: warning: unused parameter ‘normal’ [-Wunused-parameter]
-   47 | float Material::PDF(const Vec3& wi, const Vec3& wo, const Vec3& normal) const {
-      |                                                     ~~~~~~~~~~~~^~~~~~
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:230 : CMakeFiles/ygl.dir/src/materials/material.cpp.o] Erreur 1
+In file included from /home/yannoo/Dev/YGL/include/core/bounding_box.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/bounding_box.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp: In constructor ‘ygl::Vec3::Vec3(const ygl::Vec4&)’:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:44: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                                            ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:31: note: forward declaration of ‘class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                               ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:52: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                                                    ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:31: note: forward declaration of ‘class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                               ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:60: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                                                            ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:31: note: forward declaration of ‘class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                               ^~~~
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
+                 from /home/yannoo/Dev/YGL/include/core/camera.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/camera.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp: In constructor ‘ygl::Vec3::Vec3(const ygl::Vec4&)’:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:44: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                                            ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:31: note: forward declaration of ‘class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                               ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:52: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                                                    ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:31: note: forward declaration of ‘class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                               ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:60: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                                                            ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:31: note: forward declaration of ‘class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                               ^~~~
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
+                 from /home/yannoo/Dev/YGL/include/core/light.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/light.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp: In constructor ‘ygl::Vec3::Vec3(const ygl::Vec4&)’:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:44: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                                            ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:31: note: forward declaration of ‘class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                               ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:52: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                                                    ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:31: note: forward declaration of ‘class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                               ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:60: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                                                            ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:31: note: forward declaration of ‘class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                               ^~~~
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
+                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/mesh.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp: In constructor ‘ygl::Vec3::Vec3(const ygl::Vec4&)’:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:44: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                                            ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:31: note: forward declaration of ‘class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                               ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:52: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                                                    ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:31: note: forward declaration of ‘class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                               ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:60: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                                                            ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:21:31: note: forward declaration of ‘class ygl::Vec4’
+   21 |     explicit Vec3(const class Vec4& v) : x(v.x), y(v.y), z(v.z) {}  // <-- AJOUTÉ
+      |                               ^~~~
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:76 : CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o] Erreur 1
 gmake[2]: *** Attente des tâches non terminées....
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:90 : CMakeFiles/ygl.dir/src/core/camera.cpp.o] Erreur 1
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:104 : CMakeFiles/ygl.dir/src/core/light.cpp.o] Erreur 1
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:118 : CMakeFiles/ygl.dir/src/core/mesh.cpp.o] Erreur 1
 gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
 gmake: *** [Makefile:91 : all] Erreur 2

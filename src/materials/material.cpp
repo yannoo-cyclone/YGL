@@ -3,7 +3,7 @@
 
 namespace ygl {
 Material::Material()
-    : albedo(1.0f), roughness(0.5f), metallic(0.0f), emission(0.0f), ior(1.5f),
+    : albedo(Vec4(1.0f)), roughness(0.5f), metallic(0.0f), emission(Vec3(0.0f)), ior(1.5f),
       emission_strength(1.0f), has_albedo_texture(false), has_normal_texture(false),
       has_roughness_texture(false), has_metallic_texture(false), has_emission_texture(false),
       albedo_texture_id(0), normal_texture_id(0), roughness_texture_id(0),
@@ -41,10 +41,10 @@ bool Material::HasRoughnessTexture() const { return has_roughness_texture; }
 bool Material::HasMetallicTexture() const { return has_metallic_texture; }
 bool Material::HasEmissionTexture() const { return has_emission_texture; }
 
-Vec3 Material::Sample(const Vec3& wi, const Vec3& wo, const Vec3& normal, const Vec2& texcoord, const Vec3& position) const {
+Vec3 Material::Sample(const Vec3& /*wi*/, const Vec3& /*wo*/, const Vec3& /*normal*/, const Vec2& /*texcoord*/, const Vec3& /*position*/) const {
     return Vec3(albedo) * (1.0f / M_PI);
 }
-float Material::PDF(const Vec3& wi, const Vec3& wo, const Vec3& normal) const {
+float Material::PDF(const Vec3& /*wi*/, const Vec3& /*wo*/, const Vec3& /*normal*/) const {
     return 1.0f / (2.0f * M_PI);
 }
 

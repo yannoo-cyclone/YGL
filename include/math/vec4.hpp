@@ -15,6 +15,7 @@ public:
     #pragma GCC diagnostic pop
 
     Vec4() : x(0), y(0), z(0), w(0) {}
+    explicit Vec4(float scalar) : x(scalar), y(scalar), z(scalar), w(scalar) {}
     Vec4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
     Vec4 operator+(const Vec4& other) const { return Vec4(x + other.x, y + other.y, z + other.z, w + other.w); }
     Vec4 operator-(const Vec4& other) const { return Vec4(x - other.x, y - other.y, z - other.z, w - other.w); }
