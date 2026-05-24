@@ -21,7 +21,7 @@ find_package(GLEW REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(OpenGL REQUIRED)
 
-# Affiche les infos de configuration (optionnel)
+# Affiche les infos de configuration
 message(STATUS "YGL Configuration:")
 message(STATUS "  C++ Standard: ${CMAKE_CXX_STANDARD}")
 message(STATUS "  OpenMP: ${OpenMP_CXX_FLAGS}")
@@ -48,6 +48,7 @@ include_directories(
 set(CORE_SOURCES
     src/core/bounding_box.cpp
     src/core/camera.cpp
+    src/core/light.cpp      # AJOUTÉ
     src/core/mesh.cpp
     src/core/object3d.cpp
     src/core/scene.cpp
@@ -57,7 +58,7 @@ set(CORE_SOURCES
 # Fichiers sources (Loaders)
 # ======================
 set(LOADERS_SOURCES
-    src/loaders/gltf_loader.cpp
+    # src/loaders/gltf_loader.cpp  # COMMENTÉ (désactivez si nlohmann/json manque)
     src/loaders/loader.cpp
     src/loaders/md2_loader.cpp
     src/loaders/md3_loader.cpp
@@ -102,8 +103,8 @@ set(RENDER_SOURCES
 # ======================
 set(SCENE_SOURCES
     src/scene/animation.cpp
-    src/scene/light.cpp
     src/scene/scene.cpp
+    # src/scene/light.cpp  # COMMENTÉ (déjà dans CORE_SOURCES)
 )
 
 # ======================
@@ -127,7 +128,7 @@ add_library(ygl
     ${UTILS_SOURCES}
 )
 
-# Lier les dépendances à la bibliothèque
+# Lier les dépendances
 target_link_libraries(ygl
     ${GLEW_LIBRARIES}
     ${glfw3_LIBRARIES}
@@ -138,14 +139,11 @@ target_link_libraries(ygl
 # ======================
 # Exécutables (Exemples)
 # ======================
-# Viewer
 add_executable(viewer examples/viewer/main.cpp)
 target_link_libraries(viewer ygl)
 
-# Batch Render
 add_executable(batch_render examples/batch_render/main.cpp)
 target_link_libraries(batch_render ygl)
 
-# Test Raytracing
 add_executable(test_raytracing examples/test_raytracing/main.cpp)
 target_link_libraries(test_raytracing ygl)
