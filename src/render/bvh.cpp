@@ -1,245 +1,199 @@
 #include "render/bvh.hpp"
+#include <chrono>
 #include <algorithm>
 #include <limits>
 
 namespace ygl {
 
-// Triangle implementation
-Triangle::Triangle(const Vec3& v0, const Vec3& v1, const Vec3& v2)
-    : v0(v0), v1(v1), v2(v2) {}
-
-Vec3 Triangle::getCentroid() const {
-    return (v0 + v1 + v2) / 3.0f;
-}
+// ============================================
+// Triangle Implementation
+// ============================================
 
 BoundingBox Triangle::getBoundingBox() const {
     BoundingBox box;
-    box.expand(v0); box.expand(v1); box.expand(v2);
+    box.Expand(v0);
+    box.Expand(v1);
+    box.Expand(v2);
     return box;
 }
 
-Vec3 Triangle::getNormal() const {
-    return normalize(cross(v1 - v0, v2 - v0));
+bool Triangle::intersect(const Ray& ray, float t_min, float t_max, HitInfo& hit) const {
+    // TODO: Implement triangle intersection
+    return false;
 }
 
-bool Triangle::intersect(const Ray& ray, float tmin, float tmax, float& t, Vec2& barycentric) const {
-    Vec3 edge1 = v1 - v0;
-    Vec3 edge2 = v2 - v0;
-    Vec3 h = cross(ray.direction, edge2);
-    float a = dot(edge1, h);
+// ============================================
+// BVHNode Implementation
+// ============================================
 
-    if (a > -0.0001f && a < 0.0001f) return false;
-    float f = 1.0f / a;
-    Vec3 s = ray.origin - v0;
-    float u = f * dot(s, h);
+BVHNode::BVHNode() : left(0), right(0), first_prim(0), prim_count(0) {}
 
-    if (u < 0.0f || u > 1.0f) return false;
-    Vec3 q = cross(s, edge1);
-    float v = f * dot(ray.direction, q);
+// ============================================
+// BVH Implementation
+// ============================================
 
-    if (v < 0.0f || u + v > 1.0f) return false;
-    float dist = f * dot(edge2, q);
+BVH::BVH() : m_rootNode(0) {}
 
-    if (dist < tmin || dist > tmax) return false;
-    t = dist;
-    barycentric = Vec2(u, v);
-    return true;
-}
-
-// BVH implementation
-BVH::BVH() {}
-BVH::~BVH() {}
-
-void BVH::clear() {
-    m_nodes.clear();
-    m_triangles.clear();
-}
-
-void BVH::build(const Mesh& mesh) {
-    std::vector<Triangle> triangles;
-    const auto& positions = mesh.getPositions();
-    const auto& indices = mesh.getIndices();
-
-    for (size_t i = 0; i < indices.size(); i += 3) {
-        if (i + 2 < indices.size()) {
-            triangles.emplace_back(
-                positions[indices[i]],
-                positions[indices[i+1]],
-                positions[indices[i+2]]
-            );
-        }
+BVH::~BVH() {
+    if (!m_nodes.empty()) {
+        delete[] m_nodes;
     }
-    build(triangles);
 }
 
 void BVH::build(const std::vector<Triangle>& triangles) {
+    if (triangles.empty()) return;
+
     auto startTime = std::chrono::high_resolution_clock::now();
+
     m_triangles = triangles;
-
-    if (m_triangles.empty()) {
-        m_buildTime = 0.0f;
-        return;
+    m_nodes.resize(triangles.size() * 2 - 1);
+    m_nodes[0].bounds = BoundingBox::FromPoints({});
+    for (const auto& tri : triangles) {
+        m_nodes[0].bounds.Expand(tri.getBoundingBox());
     }
 
-    // Build bottom-up BVH with SAH
-    std::vector<BoundingBox> bounds(m_triangles.size());
-    for (size_t i = 0; i < m_triangles.size(); ++i) {
-        bounds[i] = m_triangles[i].getBoundingBox();
+    std::vector<uint32_t> prim_indices(triangles.size());
+    for (uint32_t i = 0; i < prim_indices.size(); ++i) {
+        prim_indices[i] = i;
     }
 
-    std::vector<int> indices(m_triangles.size());
-    for (size_t i = 0; i < indices.size(); ++i) indices[i] = i;
+    m_nodes[0].first_prim = 0;
+    m_nodes[0].prim_count = prim_indices.size();
+    m_nodes[0].left = 1;
+    m_nodes[0].right = 2;
 
-    std::vector<BVHNode> nodes;
-    std::vector<int> nodeIndices;
+    uint32_t node_idx = 0;
+    std::vector<BVHNode> temp_nodes;
+    temp_nodes.push_back(m_nodes[0]);
 
-    // Build leaf nodes
-    for (size_t i = 0; i < m_triangles.size(); ++i) {
-        BVHNode node;
-        node.bounds = bounds[i];
-        node.first = static_cast<uint32_t>(i);
-        node.count = 1;
-        nodes.push_back(node);
-        nodeIndices.push_back(static_cast<int>(i));
-    }
-
-    // Build internal nodes
-    while (nodes.size() > 1) {
-        float minCost = std::numeric_limits<float>::max();
-        int minIndex1 = -1, minIndex2 = -1;
-
-        for (size_t i = 0; i < nodes.size(); ++i) {
-            for (size_t j = i + 1; j < nodes.size(); ++j) {
-                BoundingBox combined = nodes[i].bounds;
-                combined.expand(nodes[j].bounds);
-                float cost = calculateSAH(combined, nodes[i].count + nodes[j].count);
-                if (cost < minCost) {
-                    minCost = cost;
-                    minIndex1 = static_cast<int>(i);
-                    minIndex2 = static_cast<int>(j);
-                }
-            }
+    while (node_idx < temp_nodes.size()) {
+        BVHNode& node = temp_nodes[node_idx];
+        if (node.prim_count <= 2) {
+            node_idx++;
+            continue;
         }
 
-        if (minIndex1 == -1 || minIndex2 == -1) break;
+        BoundingBox centroid_bounds;
+        for (uint32_t i = node.first_prim; i < node.first_prim + node.prim_count; ++i) {
+            uint32_t prim_idx = prim_indices[i];
+            Vec3 centroid = (m_triangles[prim_idx].v0 + m_triangles[prim_idx].v1 + m_triangles[prim_idx].v2) / 3.0f;
+            centroid_bounds.Expand(centroid);
+        }
 
-        BVHNode parent;
-        parent.bounds = nodes[minIndex1].bounds;
-        parent.bounds.expand(nodes[minIndex2].bounds);
-        parent.left = static_cast<uint32_t>(nodes.size());
-        parent.right = static_cast<uint32_t>(nodes.size() + 1);
+        uint32_t split_axis = centroid_bounds.GetMaxDimension();
+        uint32_t mid = node.first_prim + node.prim_count / 2;
 
-        nodes.push_back(parent);
-
-        // Replace the two nodes with the parent
-        if (minIndex1 < minIndex2) {
-            nodes[minIndex1] = nodes.back();
-            nodes.pop_back();
-            nodes[minIndex2-1] = nodes.back();
-            nodes.pop_back();
+        if (centroid_bounds.GetMax().x == centroid_bounds.GetMin().x) {
+            std::nth_element(&prim_indices[node.first_prim], &prim_indices[mid],
+                &prim_indices[node.first_prim + node.prim_count],
+                [&](uint32_t a, uint32_t b) {
+                    return (m_triangles[a].v0.y + m_triangles[a].v1.y + m_triangles[a].v2.y) <
+                           (m_triangles[b].v0.y + m_triangles[b].v1.y + m_triangles[b].v2.y);
+                });
+        } else if (centroid_bounds.GetMax().y == centroid_bounds.GetMin().y) {
+            std::nth_element(&prim_indices[node.first_prim], &prim_indices[mid],
+                &prim_indices[node.first_prim + node.prim_count],
+                [&](uint32_t a, uint32_t b) {
+                    return (m_triangles[a].v0.z + m_triangles[a].v1.z + m_triangles[a].v2.z) <
+                           (m_triangles[b].v0.z + m_triangles[b].v1.z + m_triangles[b].v2.z);
+                });
         } else {
-            nodes[minIndex2] = nodes.back();
-            nodes.pop_back();
-            nodes[minIndex1-1] = nodes.back();
-            nodes.pop_back();
+            std::nth_element(&prim_indices[node.first_prim], &prim_indices[mid],
+                &prim_indices[node.first_prim + node.prim_count],
+                [&](uint32_t a, uint32_t b) {
+                    return (m_triangles[a].v0.x + m_triangles[a].v1.x + m_triangles[a].v2.x) <
+                           (m_triangles[b].v0.x + m_triangles[b].v1.x + m_triangles[b].v2.x);
+                });
         }
-        nodes.push_back(parent);
+
+        BoundingBox left_bounds, right_bounds;
+        for (uint32_t i = node.first_prim; i < mid; ++i) {
+            left_bounds.Expand(m_triangles[prim_indices[i]].getBoundingBox());
+        }
+        for (uint32_t i = mid; i < node.first_prim + node.prim_count; ++i) {
+            right_bounds.Expand(m_triangles[prim_indices[i]].getBoundingBox());
+        }
+
+        uint32_t left_child = temp_nodes.size();
+        temp_nodes.push_back(BVHNode());
+        temp_nodes[left_child].bounds = left_bounds;
+        temp_nodes[left_child].first_prim = node.first_prim;
+        temp_nodes[left_child].prim_count = mid - node.first_prim;
+        temp_nodes[left_child].left = 0;
+        temp_nodes[left_child].right = 0;
+
+        uint32_t right_child = temp_nodes.size();
+        temp_nodes.push_back(BVHNode());
+        temp_nodes[right_child].bounds = right_bounds;
+        temp_nodes[right_child].first_prim = mid;
+        temp_nodes[right_child].prim_count = node.first_prim + node.prim_count - mid;
+        temp_nodes[right_child].left = 0;
+        temp_nodes[right_child].right = 0;
+
+        node.left = left_child;
+        node.right = right_child;
+
+        node_idx++;
     }
 
-    if (!nodes.empty()) {
-        m_nodes = nodes;
-    }
+    m_nodes = temp_nodes;
+    m_rootNode = 0;
 
     auto endTime = std::chrono::high_resolution_clock::now();
     m_buildTime = std::chrono::duration<float>(endTime - startTime).count();
 }
 
-float BVH::calculateSAH(const BoundingBox& box, int triangleCount) const {
-    float surfaceArea = box.getSurfaceArea();
-    if (surfaceArea == 0.0f) return std::numeric_limits<float>::max();
-    return 2.0f * surfaceArea * static_cast<float>(triangleCount);
+float BVH::calculateSAH(const BoundingBox& box, int prim_count) const {
+    float surfaceArea = box.GetSurfaceArea();
+    return 2.0f * surfaceArea * prim_count;
 }
 
-bool BVH::intersect(const Ray& ray, float& t, uint32_t& triangleIndex) const {
+bool BVH::intersect(const Ray& ray, float& t, uint32_t& prim_id) const {
     float tmin, tmax;
-    return intersect(ray, 0.0f, std::numeric_limits<float>::max(), t, triangleIndex);
+    if (!m_nodes[m_rootNode].bounds.Intersect(ray, tmin, tmax)) {
+        return false;
+    }
+    return intersectNode(m_nodes[m_rootNode], ray, 0.0f, std::numeric_limits<float>::max(), t, prim_id);
 }
 
-bool BVH::intersect(const Ray& ray, float tmin, float tmax, float& t, uint32_t& triangleIndex) const {
-    if (m_nodes.empty()) return false;
-
-    float closestT = tmax;
-    uint32_t closestIndex = ~0u;
-
-    std::vector<const BVHNode*> stack;
-    stack.push_back(&m_nodes[0]);
-
-    while (!stack.empty()) {
-        const BVHNode* node = stack.back();
-        stack.pop_back();
-
-        if (!node->bounds.intersect(ray, tmin, tmax, tmin, tmax)) {
-            continue;
-        }
-
-        if (node->isLeaf()) {
-            for (uint32_t i = node->first; i < node->first + node->count; ++i) {
-                float currentT;
-                Vec2 barycentric;
-                if (m_triangles[i].intersect(ray, tmin, closestT, currentT, barycentric)) {
-                    if (currentT < closestT) {
-                        closestT = currentT;
-                        triangleIndex = i;
-                    }
-                }
-            }
-        } else {
-            stack.push_back(&m_nodes[node->left]);
-            stack.push_back(&m_nodes[node->right]);
-        }
+bool BVH::intersect(const Ray& ray, float t_min, float t_max, float& t, uint32_t& prim_id) const {
+    if (!m_nodes[m_rootNode].bounds.Intersect(ray, t_min, t_max, t_min, t_max)) {
+        return false;
     }
-
-    if (closestIndex != ~0u) {
-        t = closestT;
-        return true;
-    }
-    return false;
+    return intersectNode(m_nodes[m_rootNode], ray, t_min, t_max, t, prim_id);
 }
 
-bool BVH::intersectNode(const BVHNode& node, const Ray& ray, float tmin, float tmax, float& t, uint32_t& triangleIndex) const {
-    if (!node.isLeaf()) {
-        float leftTmin, leftTmax, rightTmin, rightTmax;
-        bool leftHit = m_nodes[node.left].bounds.intersect(ray, tmin, tmax, leftTmin, leftTmax);
-        bool rightHit = m_nodes[node.right].bounds.intersect(ray, tmin, tmax, rightTmin, rightTmax);
-
-        if (leftHit && rightHit) {
-            if (leftTmin < rightTmin) {
-                return intersectNode(m_nodes[node.left], ray, tmin, tmax, t, triangleIndex) &&
-                       intersectNode(m_nodes[node.right], ray, tmin, t, t, triangleIndex);
-            } else {
-                return intersectNode(m_nodes[node.right], ray, tmin, tmax, t, triangleIndex) &&
-                       intersectNode(m_nodes[node.left], ray, tmin, t, t, triangleIndex);
-            }
-        } else if (leftHit) {
-            return intersectNode(m_nodes[node.left], ray, tmin, tmax, t, triangleIndex);
-        } else if (rightHit) {
-            return intersectNode(m_nodes[node.right], ray, tmin, tmax, t, triangleIndex);
-        }
+bool BVH::intersectNode(const BVHNode& node, const Ray& ray, float t_min, float t_max, float& t, uint32_t& prim_id) const {
+    if (!node.bounds.Intersect(ray, t_min, t_max, t_min, t_max)) {
         return false;
     }
 
-    for (uint32_t i = node.first; i < node.first + node.count; ++i) {
-        float currentT;
-        Vec2 barycentric;
-        if (m_triangles[i].intersect(ray, tmin, tmax, currentT, barycentric)) {
-            if (currentT < t) {
-                t = currentT;
-                triangleIndex = i;
-                return true;
+    if (node.prim_count > 0) {
+        for (uint32_t i = node.first_prim; i < node.first_prim + node.prim_count; ++i) {
+            HitInfo hit;
+            if (m_triangles[i].intersect(ray, t_min, t_max, hit)) {
+                if (hit.t < t) {
+                    t = hit.t;
+                    prim_id = i;
+                }
             }
         }
+        return t < t_max;
     }
-    return false;
+
+    float leftTmin, leftTmax, rightTmin, rightTmax;
+    bool leftHit = m_nodes[node.left].bounds.Intersect(ray, t_min, t_max, leftTmin, leftTmax);
+    bool rightHit = m_nodes[node.right].bounds.Intersect(ray, t_min, t_max, rightTmin, rightTmax);
+
+    bool hit1 = false, hit2 = false;
+    if (leftHit) {
+        hit1 = intersectNode(m_nodes[node.left], ray, leftTmin, leftTmax, t, prim_id);
+    }
+    if (rightHit) {
+        hit2 = intersectNode(m_nodes[node.right], ray, rightTmin, rightTmax, t, prim_id);
+    }
+
+    return hit1 || hit2;
 }
 
 } // namespace ygl

@@ -40,250 +40,448 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 -- Configuring done (0.6s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
-[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
-[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
-[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
-[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
-[ 14%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
-[ 17%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
-[ 20%] Building CXX object CMakeFiles/ygl.dir/src/loaders/loader.cpp.o
-[ 22%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md2_loader.cpp.o
-[ 25%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md3_loader.cpp.o
-[ 28%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md5_loader.cpp.o
-[ 31%] Building CXX object CMakeFiles/ygl.dir/src/loaders/obj_loader.cpp.o
-[ 34%] Building CXX object CMakeFiles/ygl.dir/src/materials/material.cpp.o
-[ 37%] Building CXX object CMakeFiles/ygl.dir/src/materials/texture.cpp.o
-[ 40%] Building CXX object CMakeFiles/ygl.dir/src/math/quat.cpp.o
-[ 42%] Building CXX object CMakeFiles/ygl.dir/src/math/ray.cpp.o
-[ 45%] Building CXX object CMakeFiles/ygl.dir/src/math/vec2.cpp.o
-[ 48%] Building CXX object CMakeFiles/ygl.dir/src/math/vec3.cpp.o
-[ 51%] Building CXX object CMakeFiles/ygl.dir/src/math/vec4.cpp.o
-[ 54%] Building CXX object CMakeFiles/ygl.dir/src/render/bvh.cpp.o
-In file included from /home/yannoo/Dev/YGL/src/math/ray.cpp:2:
-/home/yannoo/Dev/YGL/include/math/math_utils.hpp: In function ‘float ygl::FastInvSqrt(float)’:
-/home/yannoo/Dev/YGL/include/math/math_utils.hpp:71:18: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
-   71 |     int32_t i = *reinterpret_cast<int32_t*>(&y);
-      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/yannoo/Dev/YGL/include/math/math_utils.hpp:73:10: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
-   73 |     y = *reinterpret_cast<float*>(&i);
-      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/yannoo/Dev/YGL/src/math/ray.cpp: In member function ‘ygl::Ray ygl::Ray::transform(const ygl::mat4&) const’:
-/home/yannoo/Dev/YGL/src/math/ray.cpp:60:31: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
-   60 |     Vec4 new_origin4 = matrix * origin4;
-      |                        ~~~~~~ ^ ~~~~~~~
-      |                        |        |
-      |                        |        ygl::Vec4
-      |                        const ygl::mat4
-In file included from /home/yannoo/Dev/YGL/src/math/ray.cpp:3:
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
-   25 |     mat4 operator*(const mat4& other) const {
-      |          ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
-   25 |     mat4 operator*(const mat4& other) const {
-      |                    ~~~~~~~~~~~~^~~~~
-In file included from /home/yannoo/Dev/YGL/include/math/mat4.hpp:3:
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |                ~~~~~~^~~~~~
-/home/yannoo/Dev/YGL/src/math/ray.cpp:61:28: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
-   61 |     Vec4 new_dir4 = matrix * dir4;
-      |                     ~~~~~~ ^ ~~~~
-      |                     |        |
-      |                     |        ygl::Vec4
-      |                     const ygl::mat4
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
-   25 |     mat4 operator*(const mat4& other) const {
-      |          ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
-   25 |     mat4 operator*(const mat4& other) const {
-      |                    ~~~~~~~~~~~~^~~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |                ~~~~~~^~~~~~
-/home/yannoo/Dev/YGL/src/math/ray.cpp: In member function ‘ygl::DifferentialRay ygl::DifferentialRay::transform(const ygl::mat4&) const’:
-/home/yannoo/Dev/YGL/src/math/ray.cpp:137:31: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
-  137 |     Vec4 new_origin4 = matrix * origin4;
-      |                        ~~~~~~ ^ ~~~~~~~
-      |                        |        |
-      |                        |        ygl::Vec4
-      |                        const ygl::mat4
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
-   25 |     mat4 operator*(const mat4& other) const {
-      |          ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
-   25 |     mat4 operator*(const mat4& other) const {
-      |                    ~~~~~~~~~~~~^~~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |                ~~~~~~^~~~~~
-/home/yannoo/Dev/YGL/src/math/ray.cpp:138:28: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
-  138 |     Vec4 new_dir4 = matrix * dir4;
-      |                     ~~~~~~ ^ ~~~~
-      |                     |        |
-      |                     |        ygl::Vec4
-      |                     const ygl::mat4
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
-   25 |     mat4 operator*(const mat4& other) const {
-      |          ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
-   25 |     mat4 operator*(const mat4& other) const {
-      |                    ~~~~~~~~~~~~^~~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |                ~~~~~~^~~~~~
-/home/yannoo/Dev/YGL/src/math/ray.cpp:152:38: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
-  152 |         Vec4 new_rx_origin4 = matrix * rx_origin4;
-      |                               ~~~~~~ ^ ~~~~~~~~~~
-      |                               |        |
-      |                               |        ygl::Vec4
-      |                               const ygl::mat4
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
-   25 |     mat4 operator*(const mat4& other) const {
-      |          ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
-   25 |     mat4 operator*(const mat4& other) const {
-      |                    ~~~~~~~~~~~~^~~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |                ~~~~~~^~~~~~
-/home/yannoo/Dev/YGL/src/math/ray.cpp:153:38: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
-  153 |         Vec4 new_ry_origin4 = matrix * ry_origin4;
-      |                               ~~~~~~ ^ ~~~~~~~~~~
-      |                               |        |
-      |                               |        ygl::Vec4
-      |                               const ygl::mat4
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
-   25 |     mat4 operator*(const mat4& other) const {
-      |          ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
-   25 |     mat4 operator*(const mat4& other) const {
-      |                    ~~~~~~~~~~~~^~~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |                ~~~~~~^~~~~~
-/home/yannoo/Dev/YGL/src/math/ray.cpp:154:35: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
-  154 |         Vec4 new_rx_dir4 = matrix * rx_dir4;
-      |                            ~~~~~~ ^ ~~~~~~~
-      |                            |        |
-      |                            |        ygl::Vec4
-      |                            const ygl::mat4
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
-   25 |     mat4 operator*(const mat4& other) const {
-      |          ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
-   25 |     mat4 operator*(const mat4& other) const {
-      |                    ~~~~~~~~~~~~^~~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |                ~~~~~~^~~~~~
-/home/yannoo/Dev/YGL/src/math/ray.cpp:155:35: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
-  155 |         Vec4 new_ry_dir4 = matrix * ry_dir4;
-      |                            ~~~~~~ ^ ~~~~~~~
-      |                            |        |
-      |                            |        ygl::Vec4
-      |                            const ygl::mat4
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
-   25 |     mat4 operator*(const mat4& other) const {
-      |          ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
-   25 |     mat4 operator*(const mat4& other) const {
-      |                    ~~~~~~~~~~~~^~~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
-   68 | Vec4 operator*(float scalar, const Vec4& v);
-      |                ~~~~~~^~~~~~
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:272 : CMakeFiles/ygl.dir/src/math/ray.cpp.o] Erreur 1
+[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
+[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
+[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
+[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:5,
+                 from /home/yannoo/Dev/YGL/include/core/light.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/light.cpp:1:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:62:41: error: return type ‘class ygl::Vec4’ is incomplete
+   62 |     Vec4 operator*(const Vec4& v) const {
+      |                                         ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp: In member function ‘void ygl::mat4::operator*(const ygl::Vec4&) const’:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:49: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:64: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                                                                ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:49: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:64: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                                                                ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:50: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                                                  ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:65: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:50: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                                                  ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:65: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:68:9: error: invalid use of incomplete type ‘class ygl::Vec4’
+   68 |         );
+      |         ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:5,
+                 from /home/yannoo/Dev/YGL/include/core/camera.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/camera.cpp:1:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:62:41: error: return type ‘class ygl::Vec4’ is incomplete
+   62 |     Vec4 operator*(const Vec4& v) const {
+      |                                         ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp: In member function ‘void ygl::mat4::operator*(const ygl::Vec4&) const’:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:49: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:64: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                                                                ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:49: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:64: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                                                                ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:50: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                                                  ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:65: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:50: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                                                  ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:65: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:68:9: error: invalid use of incomplete type ‘class ygl::Vec4’
+   68 |         );
+      |         ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+In file included from /home/yannoo/Dev/YGL/src/core/bounding_box.cpp:4:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:62:41: error: return type ‘class ygl::Vec4’ is incomplete
+   62 |     Vec4 operator*(const Vec4& v) const {
+      |                                         ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp: In member function ‘void ygl::mat4::operator*(const ygl::Vec4&) const’:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:49: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:64: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                                                                ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:49: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:64: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                                                                ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:50: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                                                  ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:65: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:50: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                                                  ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:65: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:68:9: error: invalid use of incomplete type ‘class ygl::Vec4’
+   68 |         );
+      |         ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:5,
+                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/mesh.cpp:1:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:62:41: error: return type ‘class ygl::Vec4’ is incomplete
+   62 |     Vec4 operator*(const Vec4& v) const {
+      |                                         ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp: In member function ‘void ygl::mat4::operator*(const ygl::Vec4&) const’:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:49: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:64: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   64 |             data[0]*v.x + data[4]*v.y + data[8]*v.z + data[12]*v.w,
+      |                                                                ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:49: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:64: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   65 |             data[1]*v.x + data[5]*v.y + data[9]*v.z + data[13]*v.w,
+      |                                                                ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:50: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                                                  ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:66:65: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   66 |             data[2]*v.x + data[6]*v.y + data[10]*v.z + data[14]*v.w,
+      |                                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:21: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:35: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                                   ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:50: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                                                  ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:67:65: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   67 |             data[3]*v.x + data[7]*v.y + data[11]*v.z + data[15]*v.w
+      |                                                                 ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:68:9: error: invalid use of incomplete type ‘class ygl::Vec4’
+   68 |         );
+      |         ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:76 : CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o] Erreur 1
 gmake[2]: *** Attente des tâches non terminées....
-In file included from /home/yannoo/Dev/YGL/src/render/bvh.cpp:1:
-/home/yannoo/Dev/YGL/include/render/bvh.hpp:16:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   16 |         struct { uint32_t left; uint32_t right; };
-      |                ^
-/home/yannoo/Dev/YGL/include/render/bvh.hpp:17:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   17 |         struct { uint32_t first; uint32_t count; };
-      |                ^
-/home/yannoo/Dev/YGL/src/render/bvh.cpp: In member function ‘ygl::BoundingBox ygl::Triangle::getBoundingBox() const’:
-/home/yannoo/Dev/YGL/src/render/bvh.cpp:17:9: error: ‘class ygl::BoundingBox’ has no member named ‘expand’; did you mean ‘Expand’?
-   17 |     box.expand(v0); box.expand(v1); box.expand(v2);
-      |         ^~~~~~
-      |         Expand
-/home/yannoo/Dev/YGL/src/render/bvh.cpp:17:25: error: ‘class ygl::BoundingBox’ has no member named ‘expand’; did you mean ‘Expand’?
-   17 |     box.expand(v0); box.expand(v1); box.expand(v2);
-      |                         ^~~~~~
-      |                         Expand
-/home/yannoo/Dev/YGL/src/render/bvh.cpp:17:41: error: ‘class ygl::BoundingBox’ has no member named ‘expand’; did you mean ‘Expand’?
-   17 |     box.expand(v0); box.expand(v1); box.expand(v2);
-      |                                         ^~~~~~
-      |                                         Expand
-/home/yannoo/Dev/YGL/src/render/bvh.cpp: In member function ‘void ygl::BVH::build(const std::vector<ygl::Triangle>&)’:
-/home/yannoo/Dev/YGL/src/render/bvh.cpp:76:27: error: ‘std::chrono’ has not been declared
-   76 |     auto startTime = std::chrono::high_resolution_clock::now();
-      |                           ^~~~~~
-/home/yannoo/Dev/YGL/src/render/bvh.cpp:114:26: error: ‘class ygl::BoundingBox’ has no member named ‘expand’; did you mean ‘Expand’?
-  114 |                 combined.expand(nodes[j].bounds);
-      |                          ^~~~~~
-      |                          Expand
-/home/yannoo/Dev/YGL/src/render/bvh.cpp:128:23: error: ‘class ygl::BoundingBox’ has no member named ‘expand’; did you mean ‘Expand’?
-  128 |         parent.bounds.expand(nodes[minIndex2].bounds);
-      |                       ^~~~~~
-      |                       Expand
-/home/yannoo/Dev/YGL/src/render/bvh.cpp:153:25: error: ‘std::chrono’ has not been declared
-  153 |     auto endTime = std::chrono::high_resolution_clock::now();
-      |                         ^~~~~~
-/home/yannoo/Dev/YGL/src/render/bvh.cpp:154:24: error: ‘std::chrono’ has not been declared
-  154 |     m_buildTime = std::chrono::duration<float>(endTime - startTime).count();
-      |                        ^~~~~~
-/home/yannoo/Dev/YGL/src/render/bvh.cpp:154:41: error: expected primary-expression before ‘float’
-  154 |     m_buildTime = std::chrono::duration<float>(endTime - startTime).count();
-      |                                         ^~~~~
-/home/yannoo/Dev/YGL/src/render/bvh.cpp: In member function ‘float ygl::BVH::calculateSAH(const ygl::BoundingBox&, int) const’:
-/home/yannoo/Dev/YGL/src/render/bvh.cpp:158:29: error: ‘const class ygl::BoundingBox’ has no member named ‘getSurfaceArea’; did you mean ‘GetSurfaceArea’?
-  158 |     float surfaceArea = box.getSurfaceArea();
-      |                             ^~~~~~~~~~~~~~
-      |                             GetSurfaceArea
-/home/yannoo/Dev/YGL/src/render/bvh.cpp: In member function ‘bool ygl::BVH::intersect(const ygl::Ray&, float&, uint32_t&) const’:
-/home/yannoo/Dev/YGL/src/render/bvh.cpp:164:11: warning: unused variable ‘tmin’ [-Wunused-variable]
-  164 |     float tmin, tmax;
-      |           ^~~~
-/home/yannoo/Dev/YGL/src/render/bvh.cpp:164:17: warning: unused variable ‘tmax’ [-Wunused-variable]
-  164 |     float tmin, tmax;
-      |                 ^~~~
-/home/yannoo/Dev/YGL/src/render/bvh.cpp: In member function ‘bool ygl::BVH::intersect(const ygl::Ray&, float, float, float&, uint32_t&) const’:
-/home/yannoo/Dev/YGL/src/render/bvh.cpp:181:27: error: ‘const class ygl::BoundingBox’ has no member named ‘intersect’; did you mean ‘Intersect’?
-  181 |         if (!node->bounds.intersect(ray, tmin, tmax, tmin, tmax)) {
-      |                           ^~~~~~~~~
-      |                           Intersect
-/home/yannoo/Dev/YGL/src/render/bvh.cpp: In member function ‘bool ygl::BVH::intersectNode(const ygl::BVHNode&, const ygl::Ray&, float, float, float&, uint32_t&) const’:
-/home/yannoo/Dev/YGL/src/render/bvh.cpp:212:50: error: ‘const class ygl::BoundingBox’ has no member named ‘intersect’; did you mean ‘Intersect’?
-  212 |         bool leftHit = m_nodes[node.left].bounds.intersect(ray, tmin, tmax, leftTmin, leftTmax);
-      |                                                  ^~~~~~~~~
-      |                                                  Intersect
-/home/yannoo/Dev/YGL/src/render/bvh.cpp:213:52: error: ‘const class ygl::BoundingBox’ has no member named ‘intersect’; did you mean ‘Intersect’?
-  213 |         bool rightHit = m_nodes[node.right].bounds.intersect(ray, tmin, tmax, rightTmin, rightTmax);
-      |                                                    ^~~~~~~~~
-      |                                                    Intersect
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:328 : CMakeFiles/ygl.dir/src/render/bvh.cpp.o] Erreur 1
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:104 : CMakeFiles/ygl.dir/src/core/light.cpp.o] Erreur 1
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:90 : CMakeFiles/ygl.dir/src/core/camera.cpp.o] Erreur 1
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:118 : CMakeFiles/ygl.dir/src/core/mesh.cpp.o] Erreur 1
 gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
 gmake: *** [Makefile:91 : all] Erreur 2
