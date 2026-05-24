@@ -37,13 +37,13 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   GLEW Include: /usr/include
 --   GLFW3 Include: 
 --   OpenGL Include: 
--- Configuring done (0.8s)
+-- Configuring done (0.6s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
-[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
 [  2%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
-[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
+[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
 [ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
+[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
 [ 14%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
 [ 17%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
 [ 20%] Building CXX object CMakeFiles/ygl.dir/src/loaders/loader.cpp.o
@@ -57,6 +57,8 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 [ 42%] Building CXX object CMakeFiles/ygl.dir/src/math/ray.cpp.o
 [ 45%] Building CXX object CMakeFiles/ygl.dir/src/math/vec2.cpp.o
 [ 48%] Building CXX object CMakeFiles/ygl.dir/src/math/vec3.cpp.o
+[ 51%] Building CXX object CMakeFiles/ygl.dir/src/math/vec4.cpp.o
+[ 54%] Building CXX object CMakeFiles/ygl.dir/src/render/bvh.cpp.o
 In file included from /home/yannoo/Dev/YGL/src/math/ray.cpp:2:
 /home/yannoo/Dev/YGL/include/math/math_utils.hpp: In function ‘float ygl::FastInvSqrt(float)’:
 /home/yannoo/Dev/YGL/include/math/math_utils.hpp:71:18: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
@@ -215,5 +217,73 @@ In file included from /home/yannoo/Dev/YGL/include/math/mat4.hpp:3:
       |                ~~~~~~^~~~~~
 gmake[2]: *** [CMakeFiles/ygl.dir/build.make:272 : CMakeFiles/ygl.dir/src/math/ray.cpp.o] Erreur 1
 gmake[2]: *** Attente des tâches non terminées....
+In file included from /home/yannoo/Dev/YGL/src/render/bvh.cpp:1:
+/home/yannoo/Dev/YGL/include/render/bvh.hpp:16:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   16 |         struct { uint32_t left; uint32_t right; };
+      |                ^
+/home/yannoo/Dev/YGL/include/render/bvh.hpp:17:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   17 |         struct { uint32_t first; uint32_t count; };
+      |                ^
+/home/yannoo/Dev/YGL/src/render/bvh.cpp: In member function ‘ygl::BoundingBox ygl::Triangle::getBoundingBox() const’:
+/home/yannoo/Dev/YGL/src/render/bvh.cpp:17:9: error: ‘class ygl::BoundingBox’ has no member named ‘expand’; did you mean ‘Expand’?
+   17 |     box.expand(v0); box.expand(v1); box.expand(v2);
+      |         ^~~~~~
+      |         Expand
+/home/yannoo/Dev/YGL/src/render/bvh.cpp:17:25: error: ‘class ygl::BoundingBox’ has no member named ‘expand’; did you mean ‘Expand’?
+   17 |     box.expand(v0); box.expand(v1); box.expand(v2);
+      |                         ^~~~~~
+      |                         Expand
+/home/yannoo/Dev/YGL/src/render/bvh.cpp:17:41: error: ‘class ygl::BoundingBox’ has no member named ‘expand’; did you mean ‘Expand’?
+   17 |     box.expand(v0); box.expand(v1); box.expand(v2);
+      |                                         ^~~~~~
+      |                                         Expand
+/home/yannoo/Dev/YGL/src/render/bvh.cpp: In member function ‘void ygl::BVH::build(const std::vector<ygl::Triangle>&)’:
+/home/yannoo/Dev/YGL/src/render/bvh.cpp:76:27: error: ‘std::chrono’ has not been declared
+   76 |     auto startTime = std::chrono::high_resolution_clock::now();
+      |                           ^~~~~~
+/home/yannoo/Dev/YGL/src/render/bvh.cpp:114:26: error: ‘class ygl::BoundingBox’ has no member named ‘expand’; did you mean ‘Expand’?
+  114 |                 combined.expand(nodes[j].bounds);
+      |                          ^~~~~~
+      |                          Expand
+/home/yannoo/Dev/YGL/src/render/bvh.cpp:128:23: error: ‘class ygl::BoundingBox’ has no member named ‘expand’; did you mean ‘Expand’?
+  128 |         parent.bounds.expand(nodes[minIndex2].bounds);
+      |                       ^~~~~~
+      |                       Expand
+/home/yannoo/Dev/YGL/src/render/bvh.cpp:153:25: error: ‘std::chrono’ has not been declared
+  153 |     auto endTime = std::chrono::high_resolution_clock::now();
+      |                         ^~~~~~
+/home/yannoo/Dev/YGL/src/render/bvh.cpp:154:24: error: ‘std::chrono’ has not been declared
+  154 |     m_buildTime = std::chrono::duration<float>(endTime - startTime).count();
+      |                        ^~~~~~
+/home/yannoo/Dev/YGL/src/render/bvh.cpp:154:41: error: expected primary-expression before ‘float’
+  154 |     m_buildTime = std::chrono::duration<float>(endTime - startTime).count();
+      |                                         ^~~~~
+/home/yannoo/Dev/YGL/src/render/bvh.cpp: In member function ‘float ygl::BVH::calculateSAH(const ygl::BoundingBox&, int) const’:
+/home/yannoo/Dev/YGL/src/render/bvh.cpp:158:29: error: ‘const class ygl::BoundingBox’ has no member named ‘getSurfaceArea’; did you mean ‘GetSurfaceArea’?
+  158 |     float surfaceArea = box.getSurfaceArea();
+      |                             ^~~~~~~~~~~~~~
+      |                             GetSurfaceArea
+/home/yannoo/Dev/YGL/src/render/bvh.cpp: In member function ‘bool ygl::BVH::intersect(const ygl::Ray&, float&, uint32_t&) const’:
+/home/yannoo/Dev/YGL/src/render/bvh.cpp:164:11: warning: unused variable ‘tmin’ [-Wunused-variable]
+  164 |     float tmin, tmax;
+      |           ^~~~
+/home/yannoo/Dev/YGL/src/render/bvh.cpp:164:17: warning: unused variable ‘tmax’ [-Wunused-variable]
+  164 |     float tmin, tmax;
+      |                 ^~~~
+/home/yannoo/Dev/YGL/src/render/bvh.cpp: In member function ‘bool ygl::BVH::intersect(const ygl::Ray&, float, float, float&, uint32_t&) const’:
+/home/yannoo/Dev/YGL/src/render/bvh.cpp:181:27: error: ‘const class ygl::BoundingBox’ has no member named ‘intersect’; did you mean ‘Intersect’?
+  181 |         if (!node->bounds.intersect(ray, tmin, tmax, tmin, tmax)) {
+      |                           ^~~~~~~~~
+      |                           Intersect
+/home/yannoo/Dev/YGL/src/render/bvh.cpp: In member function ‘bool ygl::BVH::intersectNode(const ygl::BVHNode&, const ygl::Ray&, float, float, float&, uint32_t&) const’:
+/home/yannoo/Dev/YGL/src/render/bvh.cpp:212:50: error: ‘const class ygl::BoundingBox’ has no member named ‘intersect’; did you mean ‘Intersect’?
+  212 |         bool leftHit = m_nodes[node.left].bounds.intersect(ray, tmin, tmax, leftTmin, leftTmax);
+      |                                                  ^~~~~~~~~
+      |                                                  Intersect
+/home/yannoo/Dev/YGL/src/render/bvh.cpp:213:52: error: ‘const class ygl::BoundingBox’ has no member named ‘intersect’; did you mean ‘Intersect’?
+  213 |         bool rightHit = m_nodes[node.right].bounds.intersect(ray, tmin, tmax, rightTmin, rightTmax);
+      |                                                    ^~~~~~~~~
+      |                                                    Intersect
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:328 : CMakeFiles/ygl.dir/src/render/bvh.cpp.o] Erreur 1
 gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
 gmake: *** [Makefile:91 : all] Erreur 2
