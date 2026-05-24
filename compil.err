@@ -40,13 +40,14 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 -- Configuring done (0.8s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
-[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
+[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
 [  5%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
-[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
+[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
 [ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
 [ 14%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
 [ 17%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
 [ 20%] Building CXX object CMakeFiles/ygl.dir/src/loaders/loader.cpp.o
+[ 22%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md2_loader.cpp.o
 /home/yannoo/Dev/YGL/src/core/object3d.cpp: In member function ‘void ygl::Object3D::updateWorldMatrix(bool) const’:
 /home/yannoo/Dev/YGL/src/core/object3d.cpp:60:74: error: ‘class ygl::Vec3’ has no member named ‘Length’; did you mean ‘length’?
    60 |         Vec3(m_worldMatrix(0,0), m_worldMatrix(1,0), m_worldMatrix(2,0)).Length(),
