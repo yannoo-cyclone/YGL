@@ -89,9 +89,9 @@ void Camera::updateViewProjectionMatrix() const {
 
 void Camera::updateVectors() {
     Vec3 pos = getWorldPosition();
-    m_forward = ::normalize(m_target - pos);
-    m_right = ::normalize(::cross(m_forward, m_up));
-    m_up = ::cross(m_right, m_forward);
+    m_forward = ygl::normalize(m_target - pos);
+    m_right = ygl::normalize(ygl::cross(m_forward, m_up));
+    m_up = ygl::cross(m_right, m_forward);
 }
 
 // Movement
@@ -170,9 +170,9 @@ void Camera::update(float deltaTime) {
     Vec3 pos = getWorldPosition();
     Vec3 dir = m_target - pos;
     if (dir.lengthSquared() > 0.0001f) {
-        m_forward = ::normalize(dir);
-        m_right = ::normalize(::cross(m_forward, m_up));
-        m_up = ::cross(m_right, m_forward);
+        m_forward = ygl::normalize(dir);
+        m_right = ygl::normalize(ygl::cross(m_forward, m_up));
+        m_up = ygl::cross(m_right, m_forward);
     }
     m_viewDirty = true;
 }

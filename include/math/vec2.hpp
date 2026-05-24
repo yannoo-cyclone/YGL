@@ -12,9 +12,8 @@ public:
     union {
         struct { float x, y; };
         struct { float u, v; };
-        // float data[2];
+        float data[2];  // AJOUTÉ pour operator[]
     };
-    
 
     // Constructeurs
     Vec2() : x(0.0f), y(0.0f) {}
@@ -68,4 +67,3 @@ float dot(const Vec2& a, const Vec2& b);
 Vec2 normalize(const Vec2& v);
 
 } // namespace ygl
-
