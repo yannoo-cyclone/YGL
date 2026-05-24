@@ -6,7 +6,7 @@ Light::Light(Type type)
     : m_type(type), m_color(1.0f, 1.0f, 1.0f), m_intensity(1.0f),
       m_direction(0.0f, -1.0f, 0.0f), m_position(0.0f, 0.0f, 0.0f), m_range(10.0f) {}
 
-Type Light::getType() const { return m_type; }
+Light::Type Light::getType() const { return m_type; }  // Corrigé : Light::Type
 void Light::setType(Type type) { m_type = type; }
 
 const Vec3& Light::getColor() const { return m_color; }

@@ -43,11 +43,11 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   GLEW Include: /usr/include
 --   GLFW3 Include: 
 --   OpenGL Include: 
--- Configuring done (0.8s)
+-- Configuring done (0.7s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
 [  5%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
-[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
+[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
 [  8%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
 [ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
 In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
@@ -63,14 +63,6 @@ In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
 /home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    14 |         struct { float x, y, z, w; };
       |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/light.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/core/light.cpp:1:
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   13 |         struct { float x, y, z; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   14 |         struct { float r, g, b; };
-      |                ^
 In file included from /home/yannoo/Dev/YGL/include/core/bounding_box.hpp:3,
                  from /home/yannoo/Dev/YGL/src/core/bounding_box.cpp:1:
 /home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
@@ -79,12 +71,17 @@ In file included from /home/yannoo/Dev/YGL/include/core/bounding_box.hpp:3,
 /home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    14 |         struct { float r, g, b; };
       |                ^
-/home/yannoo/Dev/YGL/src/core/light.cpp:9:1: error: ‘Type’ does not name a type
-    9 | Type Light::getType() const { return m_type; }
-      | ^~~~
 In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
                  from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
                  from /home/yannoo/Dev/YGL/src/core/mesh.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float r, g, b; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/light.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/light.cpp:1:
 /home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    13 |         struct { float x, y, z; };
       |                ^
@@ -95,8 +92,6 @@ In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
 /home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    14 |         struct { float x, y, z, w; };
       |                ^
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:104 : CMakeFiles/ygl.dir/src/core/light.cpp.o] Erreur 1
-gmake[2]: *** Attente des tâches non terminées....
 In file included from /home/yannoo/Dev/YGL/include/core/mesh.hpp:5:
 /home/yannoo/Dev/YGL/include/math/vec2.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    13 |         struct { float x, y; };
@@ -104,5 +99,198 @@ In file included from /home/yannoo/Dev/YGL/include/core/mesh.hpp:5:
 /home/yannoo/Dev/YGL/include/math/vec2.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    14 |         struct { float u, v; };
       |                ^
+[ 13%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
+[ 16%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
+[ 19%] Building CXX object CMakeFiles/ygl.dir/src/loaders/loader.cpp.o
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/object3d.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float r, g, b; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
+/home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float x, y, z, w; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
+                 from /home/yannoo/Dev/YGL/include/core/scene.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/scene.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float r, g, b; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
+/home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float x, y, z, w; };
+      |                ^
+[ 22%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md2_loader.cpp.o
+In file included from /home/yannoo/Dev/YGL/include/core/mesh.hpp:5,
+                 from /home/yannoo/Dev/YGL/src/core/scene.cpp:3:
+/home/yannoo/Dev/YGL/include/math/vec2.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec2.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float u, v; };
+      |                ^
+/home/yannoo/Dev/YGL/src/core/scene.cpp: In member function ‘void ygl::Scene::addLight(std::shared_ptr<ygl::Light>)’:
+/home/yannoo/Dev/YGL/src/core/scene.cpp:58:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   58 |     if (!light) return; addChild(light); m_lights.push_back(light);
+      |     ^~
+/home/yannoo/Dev/YGL/src/core/scene.cpp:58:25: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   58 |     if (!light) return; addChild(light); m_lights.push_back(light);
+      |                         ^~~~~~~~
+/home/yannoo/Dev/YGL/src/core/scene.cpp:58:34: error: cannot convert ‘shared_ptr<ygl::Light>’ to ‘shared_ptr<ygl::Object3D>’
+   58 |     if (!light) return; addChild(light); m_lights.push_back(light);
+      |                                  ^~~~~
+      |                                  |
+      |                                  shared_ptr<ygl::Light>
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:40:45: note:   initializing argument 1 of ‘void ygl::Object3D::addChild(std::shared_ptr<ygl::Object3D>)’
+   40 |     void addChild(std::shared_ptr<Object3D> child);
+      |                   ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+/home/yannoo/Dev/YGL/src/core/scene.cpp: In member function ‘void ygl::Scene::removeLight(std::shared_ptr<ygl::Light>)’:
+/home/yannoo/Dev/YGL/src/core/scene.cpp:62:40: error: no matching function for call to ‘ygl::Scene::removeChild(std::shared_ptr<ygl::Light>&)’
+   62 |         if (*it == light) { removeChild(light); m_lights.erase(it); return; }
+      |                             ~~~~~~~~~~~^~~~~~~
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:41:10: note: candidate: ‘void ygl::Object3D::removeChild(std::shared_ptr<ygl::Object3D>)’
+   41 |     void removeChild(std::shared_ptr<Object3D> child);
+      |          ^~~~~~~~~~~
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:41:48: note:   no known conversion for argument 1 from ‘shared_ptr<ygl::Light>’ to ‘shared_ptr<ygl::Object3D>’
+   41 |     void removeChild(std::shared_ptr<Object3D> child);
+      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:42:10: note: candidate: ‘void ygl::Object3D::removeChild(size_t)’
+   42 |     void removeChild(size_t index);
+      |          ^~~~~~~~~~~
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:42:29: note:   no known conversion for argument 1 from ‘std::shared_ptr<ygl::Light>’ to ‘size_t’ {aka ‘long unsigned int’}
+   42 |     void removeChild(size_t index);
+      |                      ~~~~~~~^~~~~
+/home/yannoo/Dev/YGL/src/core/scene.cpp: In member function ‘void ygl::Scene::removeLight(size_t)’:
+/home/yannoo/Dev/YGL/src/core/scene.cpp:66:47: error: no matching function for call to ‘ygl::Scene::removeChild(__gnu_cxx::__alloc_traits<std::allocator<std::shared_ptr<ygl::Light> >, std::shared_ptr<ygl::Light> >::value_type&)’
+   66 |     if (index < m_lights.size()) { removeChild(m_lights[index]); m_lights.erase(m_lights.begin() + index); }
+      |                                    ~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:41:10: note: candidate: ‘void ygl::Object3D::removeChild(std::shared_ptr<ygl::Object3D>)’
+   41 |     void removeChild(std::shared_ptr<Object3D> child);
+      |          ^~~~~~~~~~~
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:41:48: note:   no known conversion for argument 1 from ‘shared_ptr<ygl::Light>’ to ‘shared_ptr<ygl::Object3D>’
+   41 |     void removeChild(std::shared_ptr<Object3D> child);
+      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:42:10: note: candidate: ‘void ygl::Object3D::removeChild(size_t)’
+   42 |     void removeChild(size_t index);
+      |          ^~~~~~~~~~~
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:42:29: note:   no known conversion for argument 1 from ‘__gnu_cxx::__alloc_traits<std::allocator<std::shared_ptr<ygl::Light> >, std::shared_ptr<ygl::Light> >::value_type’ {aka ‘std::shared_ptr<ygl::Light>’} to ‘size_t’ {aka ‘long unsigned int’}
+   42 |     void removeChild(size_t index);
+      |                      ~~~~~~~^~~~~
+/home/yannoo/Dev/YGL/src/core/scene.cpp: In member function ‘void ygl::Scene::clearLights()’:
+/home/yannoo/Dev/YGL/src/core/scene.cpp:69:45: error: no matching function for call to ‘ygl::Scene::removeChild(std::shared_ptr<ygl::Light>&)’
+   69 |     for (auto& light : m_lights) removeChild(light);
+      |                                  ~~~~~~~~~~~^~~~~~~
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:41:10: note: candidate: ‘void ygl::Object3D::removeChild(std::shared_ptr<ygl::Object3D>)’
+   41 |     void removeChild(std::shared_ptr<Object3D> child);
+      |          ^~~~~~~~~~~
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:41:48: note:   no known conversion for argument 1 from ‘shared_ptr<ygl::Light>’ to ‘shared_ptr<ygl::Object3D>’
+   41 |     void removeChild(std::shared_ptr<Object3D> child);
+      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:42:10: note: candidate: ‘void ygl::Object3D::removeChild(size_t)’
+   42 |     void removeChild(size_t index);
+      |          ^~~~~~~~~~~
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:42:29: note:   no known conversion for argument 1 from ‘std::shared_ptr<ygl::Light>’ to ‘size_t’ {aka ‘long unsigned int’}
+   42 |     void removeChild(size_t index);
+      |                      ~~~~~~~^~~~~
+/home/yannoo/Dev/YGL/src/core/scene.cpp: In member function ‘void ygl::Scene::addMesh(std::shared_ptr<ygl::Mesh>)’:
+/home/yannoo/Dev/YGL/src/core/scene.cpp:78:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   78 |     if (!mesh) return; addChild(mesh); m_meshes.push_back(mesh);
+      |     ^~
+/home/yannoo/Dev/YGL/src/core/scene.cpp:78:24: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   78 |     if (!mesh) return; addChild(mesh); m_meshes.push_back(mesh);
+      |                        ^~~~~~~~
+/home/yannoo/Dev/YGL/src/core/scene.cpp: In member function ‘void ygl::Scene::render(const ygl::Camera&)’:
+/home/yannoo/Dev/YGL/src/core/scene.cpp:98:5: error: ‘glClearColor’ was not declared in this scope
+   98 |     glClearColor(m_backgroundColor.x, m_backgroundColor.y, m_backgroundColor.z, 1.0f);
+      |     ^~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/scene.cpp:99:13: error: ‘GL_COLOR_BUFFER_BIT’ was not declared in this scope
+   99 |     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+      |             ^~~~~~~~~~~~~~~~~~~
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
+                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/loaders/loader.cpp:2:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float r, g, b; };
+      |                ^
+/home/yannoo/Dev/YGL/src/core/scene.cpp:99:35: error: ‘GL_DEPTH_BUFFER_BIT’ was not declared in this scope
+   99 |     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+      |                                   ^~~~~~~~~~~~~~~~~~~
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
+/home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float x, y, z, w; };
+      |                ^
+/home/yannoo/Dev/YGL/src/core/scene.cpp:99:5: error: ‘glClear’ was not declared in this scope
+   99 |     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+      |     ^~~~~~~
+/home/yannoo/Dev/YGL/src/core/scene.cpp:97:34: warning: unused parameter ‘camera’ [-Wunused-parameter]
+   97 | void Scene::render(const Camera& camera) {
+      |                    ~~~~~~~~~~~~~~^~~~~~
+In file included from /home/yannoo/Dev/YGL/include/core/mesh.hpp:5:
+/home/yannoo/Dev/YGL/include/math/vec2.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec2.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float u, v; };
+      |                ^
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:146 : CMakeFiles/ygl.dir/src/core/scene.cpp.o] Erreur 1
+gmake[2]: *** Attente des tâches non terminées....
+/home/yannoo/Dev/YGL/src/loaders/loader.cpp:10:16: error: definition of implicitly-declared ‘constexpr ygl::Loader::Loader()’
+   10 | Loader::Loader() = default;
+      |                ^
+/home/yannoo/Dev/YGL/src/loaders/loader.cpp:13:6: error: no declaration matches ‘bool ygl::Loader::LoadMesh(const std::string&, ygl::Mesh&)’
+   13 | bool Loader::LoadMesh(const std::string& filepath, Mesh& mesh) {
+      |      ^~~~~~
+/home/yannoo/Dev/YGL/src/loaders/loader.cpp:13:6: note: no functions named ‘bool ygl::Loader::LoadMesh(const std::string&, ygl::Mesh&)’
+In file included from /home/yannoo/Dev/YGL/src/loaders/loader.cpp:1:
+/home/yannoo/Dev/YGL/include/loaders/loader.hpp:11:7: note: ‘class ygl::Loader’ defined here
+   11 | class Loader {
+      |       ^~~~~~
+/home/yannoo/Dev/YGL/src/loaders/loader.cpp:31:26: error: no declaration matches ‘std::vector<std::__cxx11::basic_string<char> > ygl::Loader::SplitLine(const std::string&)’
+   31 | std::vector<std::string> Loader::SplitLine(const std::string& line) {
+      |                          ^~~~~~
+/home/yannoo/Dev/YGL/src/loaders/loader.cpp:31:26: note: no functions named ‘std::vector<std::__cxx11::basic_string<char> > ygl::Loader::SplitLine(const std::string&)’
+/home/yannoo/Dev/YGL/include/loaders/loader.hpp:11:7: note: ‘class ygl::Loader’ defined here
+   11 | class Loader {
+      |       ^~~~~~
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:160 : CMakeFiles/ygl.dir/src/loaders/loader.cpp.o] Erreur 1
+In file included from /home/yannoo/Dev/YGL/include/loaders/md2_loader.hpp:4,
+                 from /home/yannoo/Dev/YGL/src/loaders/md2_loader.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float r, g, b; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/loaders/md2_loader.hpp:5:
+/home/yannoo/Dev/YGL/include/math/vec2.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec2.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float u, v; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4,
+                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/loaders/md2_loader.cpp:3:
+/home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float x, y, z, w; };
+      |                ^
+/home/yannoo/Dev/YGL/src/loaders/md2_loader.cpp:18:6: error: no declaration matches ‘bool ygl::MD2Loader::LoadMD2(const std::string&, ygl::Mesh&)’
+   18 | bool MD2Loader::LoadMD2(const std::string& filepath, Mesh& mesh) {
+      |      ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/loaders/md2_loader.cpp:18:6: note: no functions named ‘bool ygl::MD2Loader::LoadMD2(const std::string&, ygl::Mesh&)’
+/home/yannoo/Dev/YGL/include/loaders/md2_loader.hpp:11:7: note: ‘class ygl::MD2Loader’ defined here
+   11 | class MD2Loader : public Loader {
+      |       ^~~~~~~~~
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:174 : CMakeFiles/ygl.dir/src/loaders/md2_loader.cpp.o] Erreur 1
 gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
 gmake: *** [Makefile:91 : all] Erreur 2
