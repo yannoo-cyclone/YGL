@@ -1,99 +1,40 @@
-<<<<<<< HEAD
-# Build
+# ===== Build =====
 build/
-CMakeCache.txt
-CMakeFiles/
-Makefile
 *.o
 *.a
 *.so
 *.exe
+*.dll
+*.lib
+*.out
+CMakeCache.txt
+CMakeFiles/
 
-# IDE
+# ===== IDE/Editor =====
+.vscode/
 .idea/
-.vs/
 *.swp
 *.swo
+*~
+.project
+.settings/
 
-# Logs
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Logs/Temp =====
 *.log
 *.tmp
-
-# External (git submodules)
-extern/nlohmann/
-extern/stb_image.h
-
-# Assets cache
-assets/thumbnails/
-
-=======
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-*.so.*
-
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-# Build directories
-build/
-Build/
-build-*/
-
-# CMake generated files
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-install_manifest.txt
-compile_commands.json
-
-# Temporary files
-*.tmp
-*.log
 *.bak
-*.swp
+*.cache
 
-# vcpkg
-vcpkg_installed/
+# ===== Dependencies (local) =====
+/lib/
+/include/external/
+/third_party/
 
-# debug information files
-*.dwo
-
-# test output & cache
-Testing/
-.cache/
->>>>>>> 1cac2cd854ed843d0c20200911526cb605b6f9ed
+# ===== Environment =====
+.env
+.env.local
