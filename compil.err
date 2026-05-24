@@ -43,20 +43,25 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   GLEW Include: /usr/include
 --   GLFW3 Include: 
 --   OpenGL Include: 
--- Configuring done (0.6s)
+-- Configuring done (0.5s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
-[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
-[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
-[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
-[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
-In file included from /home/yannoo/Dev/YGL/include/core/bounding_box.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/core/bounding_box.cpp:1:
+[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
+[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
+[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
+[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
+                 from /home/yannoo/Dev/YGL/include/core/camera.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/camera.cpp:1:
 /home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    13 |         struct { float x, y, z; };
       |                ^
 /home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    14 |         struct { float r, g, b; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
+/home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float x, y, z, w; };
       |                ^
 In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
                  from /home/yannoo/Dev/YGL/include/core/light.hpp:3,
@@ -71,6 +76,14 @@ In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
 /home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    14 |         struct { float x, y, z, w; };
       |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/bounding_box.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/bounding_box.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float r, g, b; };
+      |                ^
 In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
                  from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
                  from /home/yannoo/Dev/YGL/src/core/mesh.cpp:1:
@@ -80,52 +93,42 @@ In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
 /home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    14 |         struct { float r, g, b; };
       |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
-/home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   14 |         struct { float x, y, z, w; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/core/camera.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/core/camera.cpp:1:
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   13 |         struct { float x, y, z; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   14 |         struct { float r, g, b; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
-/home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   14 |         struct { float x, y, z, w; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/mesh.hpp:5:
+In file included from /home/yannoo/Dev/YGL/include/core/light.hpp:5:
 /home/yannoo/Dev/YGL/include/math/vec2.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    13 |         struct { float x, y; };
       |                ^
 /home/yannoo/Dev/YGL/include/math/vec2.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    14 |         struct { float u, v; };
       |                ^
-/home/yannoo/Dev/YGL/include/core/light.hpp:12:5: error: ‘Vec2’ does not name a type; did you mean ‘Vec4’?
-   12 |     Vec2 texcoord;
-      |     ^~~~
-      |     Vec4
-/home/yannoo/Dev/YGL/src/core/light.cpp: In constructor ‘ygl::Light::Light(Type)’:
-/home/yannoo/Dev/YGL/src/core/light.cpp:7:39: error: class ‘ygl::Light’ does not have any field named ‘m_position’
-    7 |       m_direction(0.0f, -1.0f, 0.0f), m_position(0.0f, 0.0f, 0.0f), m_range(10.0f) {}
-      |                                       ^~~~~~~~~~
-[ 13%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:104 : CMakeFiles/ygl.dir/src/core/light.cpp.o] Erreur 1
-gmake[2]: *** Attente des tâches non terminées....
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/core/object3d.cpp:1:
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   13 |         struct { float x, y, z; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   14 |         struct { float r, g, b; };
-      |                ^
 In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
 /home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    14 |         struct { float x, y, z, w; };
+      |                ^
+/home/yannoo/Dev/YGL/src/core/light.cpp:10:1: error: ‘Type’ does not name a type
+   10 | Type Light::getType() const { return m_type; }
+      | ^~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:23:13: error: no declaration matches ‘const ygl::Vec3& ygl::Light::getPosition() const’
+   23 | const Vec3& Light::getPosition() const { return Object3D::getPosition(); }
+      |             ^~~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:23:13: note: no functions named ‘const ygl::Vec3& ygl::Light::getPosition() const’
+/home/yannoo/Dev/YGL/include/core/light.hpp:16:7: note: ‘class ygl::Light’ defined here
+   16 | class Light : public Object3D {
+      |       ^~~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:24:6: error: no declaration matches ‘void ygl::Light::setPosition(const ygl::Vec3&)’
+   24 | void Light::setPosition(const Vec3& position) { Object3D::setPosition(position); }
+      |      ^~~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:24:6: note: no functions named ‘void ygl::Light::setPosition(const ygl::Vec3&)’
+/home/yannoo/Dev/YGL/include/core/light.hpp:16:7: note: ‘class ygl::Light’ defined here
+   16 | class Light : public Object3D {
+      |       ^~~~~
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:104 : CMakeFiles/ygl.dir/src/core/light.cpp.o] Erreur 1
+gmake[2]: *** Attente des tâches non terminées....
+In file included from /home/yannoo/Dev/YGL/include/core/mesh.hpp:5:
+/home/yannoo/Dev/YGL/include/math/vec2.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec2.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float u, v; };
       |                ^
 gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
 gmake: *** [Makefile:91 : all] Erreur 2
