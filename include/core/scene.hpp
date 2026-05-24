@@ -1,8 +1,9 @@
 #pragma once
 
 #include "core/object3d.hpp"
-#include "core/mesh.hpp"  // Inclusion complète (pas de forward declaration)
-#include "core/light.hpp"  // Inclusion complète
+#include "core/mesh.hpp"
+#include "core/light.hpp"
+#include "core/camera.hpp"  // AJOUTÉ
 #include "math/vec3.hpp"
 #include <vector>
 #include <memory>
@@ -33,7 +34,7 @@ public:
     const Vec3& getBackgroundColor() const;
 
     // Render
-    void render(const Camera& camera);
+    void render(const Camera& camera);  // Camera est maintenant inclus
 
 private:
     std::vector<std::shared_ptr<Light>> m_lights;

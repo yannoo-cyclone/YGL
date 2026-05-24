@@ -1,10 +1,19 @@
 #pragma once
 
+#include "core/object3d.hpp"  // AJOUTÉ : Light hérite de Object3D
 #include "math/vec3.hpp"
+#include <string>
 
 namespace ygl {
 
-class Light {
+// Déclaration de la struct Vertex (si elle n'est pas définie ailleurs)
+struct Vertex {
+    Vec3 position;
+    Vec2 texcoord;
+    Vec3 normal;
+};
+
+class Light : public Object3D {  // CORRIGÉ : hérite de Object3D
 public:
     enum class Type { DIRECTIONAL, POINT, SPOT };
 
@@ -33,7 +42,6 @@ private:
     Vec3 m_color;
     float m_intensity;
     Vec3 m_direction;
-    Vec3 m_position;
     float m_range;
 };
 
