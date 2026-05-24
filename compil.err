@@ -37,7 +37,7 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   GLEW Include: /usr/include
 --   GLFW3 Include: 
 --   OpenGL Include: 
--- Configuring done (0.8s)
+-- Configuring done (0.6s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
 [  2%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
@@ -48,20 +48,715 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 [ 17%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
 [ 20%] Building CXX object CMakeFiles/ygl.dir/src/loaders/loader.cpp.o
 [ 22%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md2_loader.cpp.o
-/home/yannoo/Dev/YGL/src/core/object3d.cpp: In member function ‘void ygl::Object3D::updateWorldMatrix(bool) const’:
-/home/yannoo/Dev/YGL/src/core/object3d.cpp:60:74: error: ‘class ygl::Vec3’ has no member named ‘Length’; did you mean ‘length’?
-   60 |         Vec3(m_worldMatrix(0,0), m_worldMatrix(1,0), m_worldMatrix(2,0)).Length(),
-      |                                                                          ^~~~~~
-      |                                                                          length
-/home/yannoo/Dev/YGL/src/core/object3d.cpp:61:74: error: ‘class ygl::Vec3’ has no member named ‘Length’; did you mean ‘length’?
-   61 |         Vec3(m_worldMatrix(0,1), m_worldMatrix(1,1), m_worldMatrix(2,1)).Length(),
-      |                                                                          ^~~~~~
-      |                                                                          length
-/home/yannoo/Dev/YGL/src/core/object3d.cpp:62:74: error: ‘class ygl::Vec3’ has no member named ‘Length’; did you mean ‘length’?
-   62 |         Vec3(m_worldMatrix(0,2), m_worldMatrix(1,2), m_worldMatrix(2,2)).Length()
-      |                                                                          ^~~~~~
-      |                                                                          length
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:132 : CMakeFiles/ygl.dir/src/core/object3d.cpp.o] Erreur 1
+[ 25%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md3_loader.cpp.o
+[ 28%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md5_loader.cpp.o
+[ 31%] Building CXX object CMakeFiles/ygl.dir/src/loaders/obj_loader.cpp.o
+[ 34%] Building CXX object CMakeFiles/ygl.dir/src/materials/material.cpp.o
+[ 37%] Building CXX object CMakeFiles/ygl.dir/src/materials/texture.cpp.o
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In constructor ‘ygl::Texture::Texture(Type, const std::string&)’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:17:5: error: ‘glGenTextures’ was not declared in this scope
+   17 |     glGenTextures(1, &m_id);
+      |     ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In destructor ‘ygl::Texture::~Texture()’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:21:20: error: ‘glDeleteTextures’ was not declared in this scope
+   21 |     if (m_id != 0) glDeleteTextures(1, &m_id);
+      |                    ^~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘bool ygl::Texture::loadFromFile(const std::string&)’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:34:5: error: ‘GLenum’ was not declared in this scope; did you mean ‘enum’?
+   34 |     GLenum internal_format, format;
+      |     ^~~~~~
+      |     enum
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:35:19: error: ‘internal_format’ was not declared in this scope; did you mean ‘getGLInternalFormat’?
+   35 |     if (c == 1) { internal_format = GL_R8; format = GL_RED; }
+      |                   ^~~~~~~~~~~~~~~
+      |                   getGLInternalFormat
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:35:37: error: ‘GL_R8’ was not declared in this scope
+   35 |     if (c == 1) { internal_format = GL_R8; format = GL_RED; }
+      |                                     ^~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:35:44: error: ‘format’ was not declared in this scope; did you mean ‘Format’?
+   35 |     if (c == 1) { internal_format = GL_R8; format = GL_RED; }
+      |                                            ^~~~~~
+      |                                            Format
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:35:53: error: ‘GL_RED’ was not declared in this scope
+   35 |     if (c == 1) { internal_format = GL_R8; format = GL_RED; }
+      |                                                     ^~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:36:24: error: ‘internal_format’ was not declared in this scope; did you mean ‘getGLInternalFormat’?
+   36 |     else if (c == 2) { internal_format = GL_RG8; format = GL_RG; }
+      |                        ^~~~~~~~~~~~~~~
+      |                        getGLInternalFormat
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:36:42: error: ‘GL_RG8’ was not declared in this scope
+   36 |     else if (c == 2) { internal_format = GL_RG8; format = GL_RG; }
+      |                                          ^~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:36:50: error: ‘format’ was not declared in this scope; did you mean ‘Format’?
+   36 |     else if (c == 2) { internal_format = GL_RG8; format = GL_RG; }
+      |                                                  ^~~~~~
+      |                                                  Format
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:36:59: error: ‘GL_RG’ was not declared in this scope
+   36 |     else if (c == 2) { internal_format = GL_RG8; format = GL_RG; }
+      |                                                           ^~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:37:24: error: ‘internal_format’ was not declared in this scope; did you mean ‘getGLInternalFormat’?
+   37 |     else if (c == 3) { internal_format = GL_RGB8; format = GL_RGB; }
+      |                        ^~~~~~~~~~~~~~~
+      |                        getGLInternalFormat
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:37:42: error: ‘GL_RGB8’ was not declared in this scope
+   37 |     else if (c == 3) { internal_format = GL_RGB8; format = GL_RGB; }
+      |                                          ^~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:37:51: error: ‘format’ was not declared in this scope; did you mean ‘Format’?
+   37 |     else if (c == 3) { internal_format = GL_RGB8; format = GL_RGB; }
+      |                                                   ^~~~~~
+      |                                                   Format
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:37:60: error: ‘GL_RGB’ was not declared in this scope
+   37 |     else if (c == 3) { internal_format = GL_RGB8; format = GL_RGB; }
+      |                                                            ^~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:38:24: error: ‘internal_format’ was not declared in this scope; did you mean ‘getGLInternalFormat’?
+   38 |     else if (c == 4) { internal_format = GL_RGBA8; format = GL_RGBA; }
+      |                        ^~~~~~~~~~~~~~~
+      |                        getGLInternalFormat
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:38:42: error: ‘GL_RGBA8’ was not declared in this scope
+   38 |     else if (c == 4) { internal_format = GL_RGBA8; format = GL_RGBA; }
+      |                                          ^~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:38:52: error: ‘format’ was not declared in this scope; did you mean ‘Format’?
+   38 |     else if (c == 4) { internal_format = GL_RGBA8; format = GL_RGBA; }
+      |                                                    ^~~~~~
+      |                                                    Format
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:38:61: error: ‘GL_RGBA’ was not declared in this scope
+   38 |     else if (c == 4) { internal_format = GL_RGBA8; format = GL_RGBA; }
+      |                                                             ^~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:41:19: error: ‘GL_TEXTURE_2D’ was not declared in this scope
+   41 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |                   ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:41:5: error: ‘glBindTexture’ was not declared in this scope
+   41 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |     ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:42:36: error: ‘internal_format’ was not declared in this scope; did you mean ‘getGLInternalFormat’?
+   42 |     glTexImage2D(GL_TEXTURE_2D, 0, internal_format, m_width, m_height, 0, format, GL_UNSIGNED_BYTE, data);
+      |                                    ^~~~~~~~~~~~~~~
+      |                                    getGLInternalFormat
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:42:75: error: ‘format’ was not declared in this scope; did you mean ‘Format’?
+   42 |     glTexImage2D(GL_TEXTURE_2D, 0, internal_format, m_width, m_height, 0, format, GL_UNSIGNED_BYTE, data);
+      |                                                                           ^~~~~~
+      |                                                                           Format
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:42:83: error: ‘GL_UNSIGNED_BYTE’ was not declared in this scope
+   42 |     glTexImage2D(GL_TEXTURE_2D, 0, internal_format, m_width, m_height, 0, format, GL_UNSIGNED_BYTE, data);
+      |                                                                                   ^~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:42:5: error: ‘glTexImage2D’ was not declared in this scope
+   42 |     glTexImage2D(GL_TEXTURE_2D, 0, internal_format, m_width, m_height, 0, format, GL_UNSIGNED_BYTE, data);
+      |     ^~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:43:36: error: ‘GL_TEXTURE_WRAP_S’ was not declared in this scope
+   43 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+      |                                    ^~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:43:55: error: ‘GL_REPEAT’ was not declared in this scope
+   43 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+      |                                                       ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:43:5: error: ‘glTexParameteri’ was not declared in this scope
+   43 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+      |     ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:44:36: error: ‘GL_TEXTURE_WRAP_T’ was not declared in this scope
+   44 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+      |                                    ^~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:45:36: error: ‘GL_TEXTURE_MIN_FILTER’ was not declared in this scope
+   45 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:45:59: error: ‘GL_LINEAR_MIPMAP_LINEAR’ was not declared in this scope
+   45 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+      |                                                           ^~~~~~~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:46:36: error: ‘GL_TEXTURE_MAG_FILTER’ was not declared in this scope
+   46 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:46:59: error: ‘GL_LINEAR’ was not declared in this scope
+   46 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+      |                                                           ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:47:5: error: ‘glGenerateMipmap’ was not declared in this scope; did you mean ‘generateMipmaps’?
+   47 |     glGenerateMipmap(GL_TEXTURE_2D);
+      |     ^~~~~~~~~~~~~~~~
+      |     generateMipmaps
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘bool ygl::Texture::create(int, int, Format)’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:57:5: error: ‘GLenum’ was not declared in this scope; did you mean ‘enum’?
+   57 |     GLenum gl_format, gl_internal_format;
+      |     ^~~~~~
+      |     enum
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:59:28: error: ‘gl_internal_format’ was not declared in this scope; did you mean ‘getGLInternalFormat’?
+   59 |         case Format::RGB8: gl_internal_format = GL_RGB8; gl_format = GL_RGB; break;
+      |                            ^~~~~~~~~~~~~~~~~~
+      |                            getGLInternalFormat
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:59:49: error: ‘GL_RGB8’ was not declared in this scope
+   59 |         case Format::RGB8: gl_internal_format = GL_RGB8; gl_format = GL_RGB; break;
+      |                                                 ^~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:59:58: error: ‘gl_format’ was not declared in this scope; did you mean ‘m_format’?
+   59 |         case Format::RGB8: gl_internal_format = GL_RGB8; gl_format = GL_RGB; break;
+      |                                                          ^~~~~~~~~
+      |                                                          m_format
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:59:70: error: ‘GL_RGB’ was not declared in this scope
+   59 |         case Format::RGB8: gl_internal_format = GL_RGB8; gl_format = GL_RGB; break;
+      |                                                                      ^~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:60:50: error: ‘GL_RGBA8’ was not declared in this scope
+   60 |         case Format::RGBA8: gl_internal_format = GL_RGBA8; gl_format = GL_RGBA; break;
+      |                                                  ^~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:60:72: error: ‘GL_RGBA’ was not declared in this scope
+   60 |         case Format::RGBA8: gl_internal_format = GL_RGBA8; gl_format = GL_RGBA; break;
+      |                                                                        ^~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:61:51: error: ‘GL_RGB16F’ was not declared in this scope
+   61 |         case Format::RGB16F: gl_internal_format = GL_RGB16F; gl_format = GL_RGB; break;
+      |                                                   ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:62:52: error: ‘GL_RGBA16F’ was not declared in this scope
+   62 |         case Format::RGBA16F: gl_internal_format = GL_RGBA16F; gl_format = GL_RGBA; break;
+      |                                                    ^~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:63:51: error: ‘GL_RGB32F’ was not declared in this scope
+   63 |         case Format::RGB32F: gl_internal_format = GL_RGB32F; gl_format = GL_RGB; break;
+      |                                                   ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:64:52: error: ‘GL_RGBA32F’ was not declared in this scope
+   64 |         case Format::RGBA32F: gl_internal_format = GL_RGBA32F; gl_format = GL_RGBA; break;
+      |                                                    ^~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:65:47: error: ‘GL_R8’ was not declared in this scope
+   65 |         case Format::R8: gl_internal_format = GL_R8; gl_format = GL_RED; break;
+      |                                               ^~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:65:66: error: ‘GL_RED’ was not declared in this scope
+   65 |         case Format::R8: gl_internal_format = GL_R8; gl_format = GL_RED; break;
+      |                                                                  ^~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:66:49: error: ‘GL_R16F’ was not declared in this scope
+   66 |         case Format::R16F: gl_internal_format = GL_R16F; gl_format = GL_RED; break;
+      |                                                 ^~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:67:49: error: ‘GL_R32F’ was not declared in this scope
+   67 |         case Format::R32F: gl_internal_format = GL_R32F; gl_format = GL_RED; break;
+      |                                                 ^~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:68:50: error: ‘GL_DEPTH_COMPONENT’ was not declared in this scope
+   68 |         case Format::DEPTH: gl_internal_format = GL_DEPTH_COMPONENT; gl_format = GL_DEPTH_COMPONENT; break;
+      |                                                  ^~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:69:58: error: ‘GL_DEPTH_STENCIL’ was not declared in this scope
+   69 |         case Format::DEPTH_STENCIL: gl_internal_format = GL_DEPTH_STENCIL; gl_format = GL_DEPTH_STENCIL; break;
+      |                                                          ^~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:73:19: error: ‘GL_TEXTURE_2D’ was not declared in this scope
+   73 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |                   ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:73:5: error: ‘glBindTexture’ was not declared in this scope
+   73 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |     ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:74:36: error: ‘gl_internal_format’ was not declared in this scope; did you mean ‘getGLInternalFormat’?
+   74 |     glTexImage2D(GL_TEXTURE_2D, 0, gl_internal_format, m_width, m_height, 0, gl_format, GL_UNSIGNED_BYTE, nullptr);
+      |                                    ^~~~~~~~~~~~~~~~~~
+      |                                    getGLInternalFormat
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:74:78: error: ‘gl_format’ was not declared in this scope; did you mean ‘m_format’?
+   74 |     glTexImage2D(GL_TEXTURE_2D, 0, gl_internal_format, m_width, m_height, 0, gl_format, GL_UNSIGNED_BYTE, nullptr);
+      |                                                                              ^~~~~~~~~
+      |                                                                              m_format
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:74:89: error: ‘GL_UNSIGNED_BYTE’ was not declared in this scope
+   74 |     glTexImage2D(GL_TEXTURE_2D, 0, gl_internal_format, m_width, m_height, 0, gl_format, GL_UNSIGNED_BYTE, nullptr);
+      |                                                                                         ^~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:74:5: error: ‘glTexImage2D’ was not declared in this scope
+   74 |     glTexImage2D(GL_TEXTURE_2D, 0, gl_internal_format, m_width, m_height, 0, gl_format, GL_UNSIGNED_BYTE, nullptr);
+      |     ^~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:75:36: error: ‘GL_TEXTURE_WRAP_S’ was not declared in this scope
+   75 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+      |                                    ^~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:75:55: error: ‘GL_REPEAT’ was not declared in this scope
+   75 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+      |                                                       ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:75:5: error: ‘glTexParameteri’ was not declared in this scope
+   75 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+      |     ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:76:36: error: ‘GL_TEXTURE_WRAP_T’ was not declared in this scope
+   76 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+      |                                    ^~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:77:36: error: ‘GL_TEXTURE_MIN_FILTER’ was not declared in this scope
+   77 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:77:59: error: ‘GL_LINEAR’ was not declared in this scope
+   77 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+      |                                                           ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:78:36: error: ‘GL_TEXTURE_MAG_FILTER’ was not declared in this scope
+   78 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘bool ygl::Texture::create(int, int, Format, const void*)’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:84:19: error: ‘GL_TEXTURE_2D’ was not declared in this scope
+   84 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |                   ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:84:5: error: ‘glBindTexture’ was not declared in this scope
+   84 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |     ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:85:5: error: ‘GLenum’ was not declared in this scope; did you mean ‘enum’?
+   85 |     GLenum gl_format = getGLFormat(format);
+      |     ^~~~~~
+      |     enum
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:86:11: error: expected ‘;’ before ‘gl_type’
+   86 |     GLenum gl_type = getGLType(format);
+      |           ^~~~~~~~
+      |           ;
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:87:87: error: ‘gl_format’ was not declared in this scope; did you mean ‘m_format’?
+   87 |     glTexImage2D(GL_TEXTURE_2D, 0, getGLInternalFormat(format), m_width, m_height, 0, gl_format, gl_type, data);
+      |                                                                                       ^~~~~~~~~
+      |                                                                                       m_format
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:87:98: error: ‘gl_type’ was not declared in this scope; did you mean ‘m_type’?
+   87 |     glTexImage2D(GL_TEXTURE_2D, 0, getGLInternalFormat(format), m_width, m_height, 0, gl_format, gl_type, data);
+      |                                                                                                  ^~~~~~~
+      |                                                                                                  m_type
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:87:5: error: ‘glTexImage2D’ was not declared in this scope
+   87 |     glTexImage2D(GL_TEXTURE_2D, 0, getGLInternalFormat(format), m_width, m_height, 0, gl_format, gl_type, data);
+      |     ^~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘void ygl::Texture::bind(int) const’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:92:21: error: ‘GL_TEXTURE0’ was not declared in this scope
+   92 |     glActiveTexture(GL_TEXTURE0 + textureUnit);
+      |                     ^~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:92:5: error: ‘glActiveTexture’ was not declared in this scope
+   92 |     glActiveTexture(GL_TEXTURE0 + textureUnit);
+      |     ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:93:19: error: ‘GL_TEXTURE_2D’ was not declared in this scope
+   93 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |                   ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:93:5: error: ‘glBindTexture’ was not declared in this scope
+   93 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |     ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In static member function ‘static void ygl::Texture::unbind(int)’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:97:21: error: ‘GL_TEXTURE0’ was not declared in this scope
+   97 |     glActiveTexture(GL_TEXTURE0 + textureUnit);
+      |                     ^~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:97:5: error: ‘glActiveTexture’ was not declared in this scope
+   97 |     glActiveTexture(GL_TEXTURE0 + textureUnit);
+      |     ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:98:19: error: ‘GL_TEXTURE_2D’ was not declared in this scope
+   98 |     glBindTexture(GL_TEXTURE_2D, 0);
+      |                   ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:98:5: error: ‘glBindTexture’ was not declared in this scope
+   98 |     glBindTexture(GL_TEXTURE_2D, 0);
+      |     ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘void ygl::Texture::setWrapMode(WrapMode, WrapMode)’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:108:19: error: ‘GL_TEXTURE_2D’ was not declared in this scope
+  108 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |                   ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:108:5: error: ‘glBindTexture’ was not declared in this scope
+  108 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |     ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:109:36: error: ‘GL_TEXTURE_WRAP_S’ was not declared in this scope
+  109 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, static_cast<GLint>(s));
+      |                                    ^~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:109:67: error: ‘GLint’ does not name a type
+  109 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, static_cast<GLint>(s));
+      |                                                                   ^~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:109:5: error: ‘glTexParameteri’ was not declared in this scope
+  109 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, static_cast<GLint>(s));
+      |     ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:110:36: error: ‘GL_TEXTURE_WRAP_T’ was not declared in this scope
+  110 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, static_cast<GLint>(t));
+      |                                    ^~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:110:67: error: ‘GLint’ does not name a type
+  110 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, static_cast<GLint>(t));
+      |                                                                   ^~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘void ygl::Texture::setFilterMode(FilterMode, FilterMode)’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:116:19: error: ‘GL_TEXTURE_2D’ was not declared in this scope
+  116 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |                   ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:116:5: error: ‘glBindTexture’ was not declared in this scope
+  116 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |     ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:117:36: error: ‘GL_TEXTURE_MIN_FILTER’ was not declared in this scope
+  117 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, static_cast<GLint>(minFilter));
+      |                                    ^~~~~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:117:71: error: ‘GLint’ does not name a type
+  117 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, static_cast<GLint>(minFilter));
+      |                                                                       ^~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:117:5: error: ‘glTexParameteri’ was not declared in this scope
+  117 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, static_cast<GLint>(minFilter));
+      |     ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:118:36: error: ‘GL_TEXTURE_MAG_FILTER’ was not declared in this scope
+  118 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, static_cast<GLint>(magFilter));
+      |                                    ^~~~~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:118:71: error: ‘GLint’ does not name a type
+  118 |     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, static_cast<GLint>(magFilter));
+      |                                                                       ^~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘void ygl::Texture::setAnisotropicFiltering(float)’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:123:19: error: ‘GL_TEXTURE_2D’ was not declared in this scope
+  123 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |                   ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:123:5: error: ‘glBindTexture’ was not declared in this scope
+  123 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |     ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:124:36: error: ‘GL_TEXTURE_MAX_ANISOTROPY_EXT’ was not declared in this scope
+  124 |     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, level);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:124:5: error: ‘glTexParameterf’ was not declared in this scope
+  124 |     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, level);
+      |     ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘void ygl::Texture::generateMipmaps()’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:128:19: error: ‘GL_TEXTURE_2D’ was not declared in this scope
+  128 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |                   ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:128:5: error: ‘glBindTexture’ was not declared in this scope
+  128 |     glBindTexture(GL_TEXTURE_2D, m_id);
+      |     ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:129:5: error: ‘glGenerateMipmap’ was not declared in this scope; did you mean ‘generateMipmaps’?
+  129 |     glGenerateMipmap(GL_TEXTURE_2D);
+      |     ^~~~~~~~~~~~~~~~
+      |     generateMipmaps
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘int ygl::Texture::getGLInternalFormat(Format) const’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:134:35: error: ‘GL_RGB8’ was not declared in this scope
+  134 |         case Format::RGB8: return GL_RGB8;
+      |                                   ^~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:135:36: error: ‘GL_RGBA8’ was not declared in this scope
+  135 |         case Format::RGBA8: return GL_RGBA8;
+      |                                    ^~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:136:37: error: ‘GL_RGB16F’ was not declared in this scope
+  136 |         case Format::RGB16F: return GL_RGB16F;
+      |                                     ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:137:38: error: ‘GL_RGBA16F’ was not declared in this scope
+  137 |         case Format::RGBA16F: return GL_RGBA16F;
+      |                                      ^~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:138:37: error: ‘GL_RGB32F’ was not declared in this scope
+  138 |         case Format::RGB32F: return GL_RGB32F;
+      |                                     ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:139:38: error: ‘GL_RGBA32F’ was not declared in this scope
+  139 |         case Format::RGBA32F: return GL_RGBA32F;
+      |                                      ^~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:140:33: error: ‘GL_R8’ was not declared in this scope
+  140 |         case Format::R8: return GL_R8;
+      |                                 ^~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:141:35: error: ‘GL_R16F’ was not declared in this scope
+  141 |         case Format::R16F: return GL_R16F;
+      |                                   ^~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:142:35: error: ‘GL_R32F’ was not declared in this scope
+  142 |         case Format::R32F: return GL_R32F;
+      |                                   ^~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:143:36: error: ‘GL_DEPTH_COMPONENT’ was not declared in this scope
+  143 |         case Format::DEPTH: return GL_DEPTH_COMPONENT;
+      |                                    ^~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:144:44: error: ‘GL_DEPTH_STENCIL’ was not declared in this scope
+  144 |         case Format::DEPTH_STENCIL: return GL_DEPTH_STENCIL;
+      |                                            ^~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘int ygl::Texture::getGLFormat(Format) const’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:151:35: error: ‘GL_RGB’ was not declared in this scope
+  151 |         case Format::RGB8: return GL_RGB;
+      |                                   ^~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:152:36: error: ‘GL_RGBA’ was not declared in this scope
+  152 |         case Format::RGBA8: return GL_RGBA;
+      |                                    ^~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:157:33: error: ‘GL_RED’ was not declared in this scope
+  157 |         case Format::R8: return GL_RED;
+      |                                 ^~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:160:36: error: ‘GL_DEPTH_COMPONENT’ was not declared in this scope
+  160 |         case Format::DEPTH: return GL_DEPTH_COMPONENT;
+      |                                    ^~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:161:44: error: ‘GL_DEPTH_STENCIL’ was not declared in this scope
+  161 |         case Format::DEPTH_STENCIL: return GL_DEPTH_STENCIL;
+      |                                            ^~~~~~~~~~~~~~~~
+[ 40%] Building CXX object CMakeFiles/ygl.dir/src/math/quat.cpp.o
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘int ygl::Texture::getGLType(Format) const’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:168:35: error: ‘GL_UNSIGNED_BYTE’ was not declared in this scope
+  168 |         case Format::RGB8: return GL_UNSIGNED_BYTE;
+      |                                   ^~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:170:37: error: ‘GL_FLOAT’ was not declared in this scope
+  170 |         case Format::RGB16F: return GL_FLOAT;
+      |                                     ^~~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:178:44: error: ‘GL_UNSIGNED_INT_24_8’ was not declared in this scope
+  178 |         case Format::DEPTH_STENCIL: return GL_UNSIGNED_INT_24_8;
+      |                                            ^~~~~~~~~~~~~~~~~~~~
+[ 42%] Building CXX object CMakeFiles/ygl.dir/src/math/ray.cpp.o
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:244 : CMakeFiles/ygl.dir/src/materials/texture.cpp.o] Erreur 1
 gmake[2]: *** Attente des tâches non terminées....
+In file included from /home/yannoo/Dev/YGL/src/math/ray.cpp:2:
+/home/yannoo/Dev/YGL/include/math/math_utils.hpp: In function ‘float ygl::FastInvSqrt(float)’:
+/home/yannoo/Dev/YGL/include/math/math_utils.hpp:71:18: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+   71 |     int32_t i = *reinterpret_cast<int32_t*>(&y);
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/include/math/math_utils.hpp:73:10: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+   73 |     y = *reinterpret_cast<float*>(&i);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In constructor ‘ygl::Ray::Ray()’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:11:7: error: class ‘ygl::Ray’ does not have any field named ‘t_min’
+   11 |       t_min(0.0f),
+      |       ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:12:7: error: class ‘ygl::Ray’ does not have any field named ‘t_max’
+   12 |       t_max(std::numeric_limits<float>::max()) {
+      |       ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In constructor ‘ygl::Ray::Ray(const ygl::Vec3&, const ygl::Vec3&)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:18:7: error: class ‘ygl::Ray’ does not have any field named ‘t_min’
+   18 |       t_min(0.0f),
+      |       ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:19:7: error: class ‘ygl::Ray’ does not have any field named ‘t_max’
+   19 |       t_max(std::numeric_limits<float>::max()) {
+      |       ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:23:6: error: no declaration matches ‘ygl::Vec3 ygl::Ray::operator()(float) const’
+   23 | Vec3 Ray::operator()(float t) const {
+      |      ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:23:6: note: no functions named ‘ygl::Vec3 ygl::Ray::operator()(float) const’
+In file included from /home/yannoo/Dev/YGL/src/math/ray.cpp:1:
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In member function ‘ygl::Vec3 ygl::Ray::at(float) const’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:28:19: error: no match for call to ‘(const ygl::Ray) (float&)’
+   28 |     return (*this)(t);
+      |            ~~~~~~~^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:32:13: error: no declaration matches ‘const ygl::Vec3& ygl::Ray::GetOrigin() const’
+   32 | const Vec3& Ray::GetOrigin() const {
+      |             ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:32:13: note: no functions named ‘const ygl::Vec3& ygl::Ray::GetOrigin() const’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:36:13: error: no declaration matches ‘const ygl::Vec3& ygl::Ray::GetDirection() const’
+   36 | const Vec3& Ray::GetDirection() const {
+      |             ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:36:13: note: no functions named ‘const ygl::Vec3& ygl::Ray::GetDirection() const’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:40:7: error: no declaration matches ‘float ygl::Ray::GetTMin() const’
+   40 | float Ray::GetTMin() const {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:40:7: note: no functions named ‘float ygl::Ray::GetTMin() const’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:44:7: error: no declaration matches ‘float ygl::Ray::GetTMax() const’
+   44 | float Ray::GetTMax() const {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:44:7: note: no functions named ‘float ygl::Ray::GetTMax() const’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:48:6: error: no declaration matches ‘void ygl::Ray::SetOrigin(const ygl::Vec3&)’
+   48 | void Ray::SetOrigin(const Vec3& o) {
+      |      ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:48:6: note: no functions named ‘void ygl::Ray::SetOrigin(const ygl::Vec3&)’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:52:6: error: no declaration matches ‘void ygl::Ray::SetDirection(const ygl::Vec3&)’
+   52 | void Ray::SetDirection(const Vec3& d) {
+      |      ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:52:6: note: no functions named ‘void ygl::Ray::SetDirection(const ygl::Vec3&)’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:56:6: error: no declaration matches ‘void ygl::Ray::SetTMin(float)’
+   56 | void Ray::SetTMin(float t) {
+      |      ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:56:6: note: no functions named ‘void ygl::Ray::SetTMin(float)’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:60:6: error: no declaration matches ‘void ygl::Ray::SetTMax(float)’
+   60 | void Ray::SetTMax(float t) {
+      |      ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:60:6: note: no functions named ‘void ygl::Ray::SetTMax(float)’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:64:6: error: no declaration matches ‘void ygl::Ray::SetBounds(float, float)’
+   64 | void Ray::SetBounds(float min, float max) {
+      |      ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:64:6: note: no functions named ‘void ygl::Ray::SetBounds(float, float)’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:70:6: error: no declaration matches ‘bool ygl::Ray::is_valid() const’
+   70 | bool Ray::is_valid() const {
+      |      ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:70:6: note: no functions named ‘bool ygl::Ray::is_valid() const’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:78:5: error: no declaration matches ‘ygl::Ray ygl::Ray::transform(const ygl::mat4&) const’
+   78 | Ray Ray::transform(const mat4& matrix) const {
+      |     ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:78:5: note: no functions named ‘ygl::Ray ygl::Ray::transform(const ygl::mat4&) const’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:96:1: error: ‘DifferentialRay’ does not name a type
+   96 | DifferentialRay::DifferentialRay()
+      | ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:101:1: error: ‘DifferentialRay’ does not name a type
+  101 | DifferentialRay::DifferentialRay(const Vec3& origin, const Vec3& direction, float t_min, float t_max)
+      | ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:108:1: error: ‘DifferentialRay’ does not name a type
+  108 | DifferentialRay::DifferentialRay(
+      | ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:124:6: error: ‘DifferentialRay’ has not been declared
+  124 | Vec3 DifferentialRay::get_rx_origin() const {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:124:39: error: non-member function ‘ygl::Vec3 ygl::get_rx_origin()’ cannot have cv-qualifier
+  124 | Vec3 DifferentialRay::get_rx_origin() const {
+      |                                       ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘ygl::Vec3 ygl::get_rx_origin()’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:125:12: error: ‘rx_origin’ was not declared in this scope; did you mean ‘get_rx_origin’?
+  125 |     return rx_origin;
+      |            ^~~~~~~~~
+      |            get_rx_origin
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:128:6: error: ‘DifferentialRay’ has not been declared
+  128 | Vec3 DifferentialRay::get_ry_origin() const {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:128:39: error: non-member function ‘ygl::Vec3 ygl::get_ry_origin()’ cannot have cv-qualifier
+  128 | Vec3 DifferentialRay::get_ry_origin() const {
+      |                                       ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘ygl::Vec3 ygl::get_ry_origin()’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:129:12: error: ‘ry_origin’ was not declared in this scope; did you mean ‘get_ry_origin’?
+  129 |     return ry_origin;
+      |            ^~~~~~~~~
+      |            get_ry_origin
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:132:6: error: ‘DifferentialRay’ has not been declared
+  132 | Vec3 DifferentialRay::get_rx_direction() const {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:132:42: error: non-member function ‘ygl::Vec3 ygl::get_rx_direction()’ cannot have cv-qualifier
+  132 | Vec3 DifferentialRay::get_rx_direction() const {
+      |                                          ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘ygl::Vec3 ygl::get_rx_direction()’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:133:12: error: ‘rx_direction’ was not declared in this scope; did you mean ‘get_rx_direction’?
+  133 |     return rx_direction;
+      |            ^~~~~~~~~~~~
+      |            get_rx_direction
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:136:6: error: ‘DifferentialRay’ has not been declared
+  136 | Vec3 DifferentialRay::get_ry_direction() const {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:136:42: error: non-member function ‘ygl::Vec3 ygl::get_ry_direction()’ cannot have cv-qualifier
+  136 | Vec3 DifferentialRay::get_ry_direction() const {
+      |                                          ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘ygl::Vec3 ygl::get_ry_direction()’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:137:12: error: ‘ry_direction’ was not declared in this scope; did you mean ‘get_ry_direction’?
+  137 |     return ry_direction;
+      |            ^~~~~~~~~~~~
+      |            get_ry_direction
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:140:6: error: ‘DifferentialRay’ has not been declared
+  140 | bool DifferentialRay::get_has_differentials() const {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:140:47: error: non-member function ‘bool ygl::get_has_differentials()’ cannot have cv-qualifier
+  140 | bool DifferentialRay::get_has_differentials() const {
+      |                                               ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘bool ygl::get_has_differentials()’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:141:12: error: ‘has_differentials’ was not declared in this scope; did you mean ‘get_has_differentials’?
+  141 |     return has_differentials;
+      |            ^~~~~~~~~~~~~~~~~
+      |            get_has_differentials
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:144:6: error: ‘DifferentialRay’ has not been declared
+  144 | void DifferentialRay::set_has_differentials(bool has) {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘void ygl::set_has_differentials(bool)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:145:5: error: ‘has_differentials’ was not declared in this scope; did you mean ‘set_has_differentials’?
+  145 |     has_differentials = has;
+      |     ^~~~~~~~~~~~~~~~~
+      |     set_has_differentials
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:148:6: error: ‘DifferentialRay’ has not been declared
+  148 | void DifferentialRay::set_rx_origin(const Vec3& o) {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘void ygl::set_rx_origin(const Vec3&)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:149:5: error: ‘rx_origin’ was not declared in this scope; did you mean ‘set_rx_origin’?
+  149 |     rx_origin = o;
+      |     ^~~~~~~~~
+      |     set_rx_origin
+/home/yannoo/Dev/YGL/src/math/ray.cpp:150:5: error: ‘has_differentials’ was not declared in this scope; did you mean ‘set_has_differentials’?
+  150 |     has_differentials = true;
+      |     ^~~~~~~~~~~~~~~~~
+      |     set_has_differentials
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:153:6: error: ‘DifferentialRay’ has not been declared
+  153 | void DifferentialRay::set_ry_origin(const Vec3& o) {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘void ygl::set_ry_origin(const Vec3&)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:154:5: error: ‘ry_origin’ was not declared in this scope; did you mean ‘set_ry_origin’?
+  154 |     ry_origin = o;
+      |     ^~~~~~~~~
+      |     set_ry_origin
+/home/yannoo/Dev/YGL/src/math/ray.cpp:155:5: error: ‘has_differentials’ was not declared in this scope; did you mean ‘set_has_differentials’?
+  155 |     has_differentials = true;
+      |     ^~~~~~~~~~~~~~~~~
+      |     set_has_differentials
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:158:6: error: ‘DifferentialRay’ has not been declared
+  158 | void DifferentialRay::set_rx_direction(const Vec3& d) {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘void ygl::set_rx_direction(const Vec3&)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:159:5: error: ‘rx_direction’ was not declared in this scope; did you mean ‘set_rx_direction’?
+  159 |     rx_direction = d;
+      |     ^~~~~~~~~~~~
+      |     set_rx_direction
+/home/yannoo/Dev/YGL/src/math/ray.cpp:160:5: error: ‘has_differentials’ was not declared in this scope; did you mean ‘set_has_differentials’?
+  160 |     has_differentials = true;
+      |     ^~~~~~~~~~~~~~~~~
+      |     set_has_differentials
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:163:6: error: ‘DifferentialRay’ has not been declared
+  163 | void DifferentialRay::set_ry_direction(const Vec3& d) {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘void ygl::set_ry_direction(const Vec3&)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:164:5: error: ‘ry_direction’ was not declared in this scope; did you mean ‘set_ry_direction’?
+  164 |     ry_direction = d;
+      |     ^~~~~~~~~~~~
+      |     set_ry_direction
+/home/yannoo/Dev/YGL/src/math/ray.cpp:165:5: error: ‘has_differentials’ was not declared in this scope; did you mean ‘set_has_differentials’?
+  165 |     has_differentials = true;
+      |     ^~~~~~~~~~~~~~~~~
+      |     set_has_differentials
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:169:6: error: ‘DifferentialRay’ has not been declared
+  169 | void DifferentialRay::scale_differentials(float s) {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘void ygl::scale_differentials(float)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:170:9: error: ‘has_differentials’ was not declared in this scope; did you mean ‘set_has_differentials’?
+  170 |     if (has_differentials) {
+      |         ^~~~~~~~~~~~~~~~~
+      |         set_has_differentials
+/home/yannoo/Dev/YGL/src/math/ray.cpp:171:9: error: ‘rx_origin’ was not declared in this scope; did you mean ‘set_rx_origin’?
+  171 |         rx_origin = origin + (rx_origin - origin) * s;
+      |         ^~~~~~~~~
+      |         set_rx_origin
+/home/yannoo/Dev/YGL/src/math/ray.cpp:171:21: error: ‘origin’ was not declared in this scope
+  171 |         rx_origin = origin + (rx_origin - origin) * s;
+      |                     ^~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:172:9: error: ‘ry_origin’ was not declared in this scope; did you mean ‘set_ry_origin’?
+  172 |         ry_origin = origin + (ry_origin - origin) * s;
+      |         ^~~~~~~~~
+      |         set_ry_origin
+/home/yannoo/Dev/YGL/src/math/ray.cpp:173:9: error: ‘rx_direction’ was not declared in this scope; did you mean ‘set_rx_direction’?
+  173 |         rx_direction = direction + (rx_direction - direction) * s;
+      |         ^~~~~~~~~~~~
+      |         set_rx_direction
+/home/yannoo/Dev/YGL/src/math/ray.cpp:173:24: error: ‘direction’ was not declared in this scope
+  173 |         rx_direction = direction + (rx_direction - direction) * s;
+      |                        ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:174:9: error: ‘ry_direction’ was not declared in this scope; did you mean ‘set_ry_direction’?
+  174 |         ry_direction = direction + (ry_direction - direction) * s;
+      |         ^~~~~~~~~~~~
+      |         set_ry_direction
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:179:1: error: ‘DifferentialRay’ does not name a type
+  179 | DifferentialRay DifferentialRay::transform(const mat4& matrix) const {
+      | ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘std::ostream& ygl::operator<<(std::ostream&, const Ray&)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:212:29: error: ‘const class ygl::Ray’ has no member named ‘t_min’
+  212 |        << ", t_min=" << ray.t_min
+      |                             ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:213:29: error: ‘const class ygl::Ray’ has no member named ‘t_max’
+  213 |        << ", t_max=" << ray.t_max << ")";
+      |                             ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:217:50: error: ‘DifferentialRay’ does not name a type
+  217 | std::ostream& operator<<(std::ostream& os, const DifferentialRay& ray) {
+      |                                                  ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘std::ostream& ygl::operator<<(std::ostream&, const int&)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:218:33: error: invalid ‘static_cast’ from type ‘const int’ to type ‘const ygl::Ray&’
+  218 |     os << "DifferentialRay(" << static_cast<const Ray&>(ray);
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:219:13: error: request for member ‘has_differentials’ in ‘ray’, which is of non-class type ‘const int’
+  219 |     if (ray.has_differentials) {
+      |             ^~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:220:37: error: request for member ‘rx_origin’ in ‘ray’, which is of non-class type ‘const int’
+  220 |         os << ", rx_origin=" << ray.rx_origin
+      |                                     ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:221:37: error: request for member ‘ry_origin’ in ‘ray’, which is of non-class type ‘const int’
+  221 |            << ", ry_origin=" << ray.ry_origin
+      |                                     ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:222:40: error: request for member ‘rx_direction’ in ‘ray’, which is of non-class type ‘const int’
+  222 |            << ", rx_direction=" << ray.rx_direction
+      |                                        ^~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:223:40: error: request for member ‘ry_direction’ in ‘ray’, which is of non-class type ‘const int’
+  223 |            << ", ry_direction=" << ray.ry_direction;
+      |                                        ^~~~~~~~~~~~
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:272 : CMakeFiles/ygl.dir/src/math/ray.cpp.o] Erreur 1
 gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
 gmake: *** [Makefile:91 : all] Erreur 2

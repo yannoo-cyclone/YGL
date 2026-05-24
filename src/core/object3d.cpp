@@ -57,10 +57,13 @@ void Object3D::updateWorldMatrix(bool force) const {
     // Utilisation de const_cast pour modifier les membres mutable
     const_cast<Vec3&>(m_worldPosition) = Vec3(m_worldMatrix(0,3), m_worldMatrix(1,3), m_worldMatrix(2,3));
     const_cast<Vec3&>(m_worldScale) = Vec3(
-        Vec3(m_worldMatrix(0,0), m_worldMatrix(1,0), m_worldMatrix(2,0)).Length(),
-        Vec3(m_worldMatrix(0,1), m_worldMatrix(1,1), m_worldMatrix(2,1)).Length(),
-        Vec3(m_worldMatrix(0,2), m_worldMatrix(1,2), m_worldMatrix(2,2)).Length()
+        Vec3(m_worldMatrix(0,0), m_worldMatrix(1,0), m_worldMatrix(2,0)).length(),
+        Vec3(m_worldMatrix(0,1), m_worldMatrix(1,1), m_worldMatrix(2,1)).length(),
+        Vec3(m_worldMatrix(0,2), m_worldMatrix(1,2), m_worldMatrix(2,2)).length()
     );
+    
+    
+    
     const_cast<Quat&>(m_worldRotation) = Quat(m_worldMatrix);
     m_worldMatrixDirty = false;
     m_normalMatrixDirty = true;
