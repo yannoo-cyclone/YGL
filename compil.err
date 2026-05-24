@@ -43,25 +43,24 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   GLEW Include: /usr/include
 --   GLFW3 Include: 
 --   OpenGL Include: 
--- Configuring done (0.8s)
+-- Configuring done (0.7s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
-[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
-[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
-[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
-[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
+[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
+[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
+[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
+[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
 [ 13%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
-[ 16%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
-[ 19%] Building CXX object CMakeFiles/ygl.dir/src/loaders/loader.cpp.o
+[ 16%] Building CXX object CMakeFiles/ygl.dir/src/loaders/loader.cpp.o
+[ 19%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
 [ 22%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md2_loader.cpp.o
+[ 25%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md3_loader.cpp.o
 /home/yannoo/Dev/YGL/src/core/scene.cpp: In member function ‘void ygl::Scene::renderScene(const ygl::Camera&)’:
 /home/yannoo/Dev/YGL/src/core/scene.cpp:29:39: warning: unused parameter ‘camera’ [-Wunused-parameter]
    29 | void Scene::renderScene(const Camera& camera) {
       |                         ~~~~~~~~~~~~~~^~~~~~
-[ 25%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md3_loader.cpp.o
 [ 27%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md5_loader.cpp.o
 [ 30%] Building CXX object CMakeFiles/ygl.dir/src/loaders/obj_loader.cpp.o
-[ 33%] Building CXX object CMakeFiles/ygl.dir/src/materials/material.cpp.o
 /home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp: In member function ‘bool ygl::MD3Loader::LoadMD3(const std::string&, ygl::Mesh&)’:
 /home/yannoo/Dev/YGL/src/loaders/md3_loader.cpp:19:17: error: ‘Vertex’ was not declared in this scope; did you mean ‘MD3Vertex’?
    19 |     std::vector<Vertex> vertices;
@@ -141,8 +140,7 @@ In file included from /usr/include/c++/13/string:53,
    66 |     mesh.ComputeBoundingBox();
       |          ^~~~~~~~~~~~~~~~~~
       |          updateBoundingBox
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:188 : CMakeFiles/ygl.dir/src/loaders/md3_loader.cpp.o] Erreur 1
-gmake[2]: *** Attente des tâches non terminées....
+[ 33%] Building CXX object CMakeFiles/ygl.dir/src/materials/material.cpp.o
 /home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp: In member function ‘bool ygl::MD5Loader::LoadMD5(const std::string&, ygl::Mesh&)’:
 /home/yannoo/Dev/YGL/src/loaders/md5_loader.cpp:86:17: error: ‘Vertex’ was not declared in this scope; did you mean ‘MD5Vertex’?
    86 |     std::vector<Vertex> vertices;
@@ -212,86 +210,9 @@ In file included from /usr/include/c++/13/string:53,
   118 |     mesh.ComputeBoundingBox();
       |          ^~~~~~~~~~~~~~~~~~
       |          updateBoundingBox
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp: In member function ‘bool ygl::OBJLoader::LoadOBJ(const std::string&, ygl::Mesh&)’:
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:15:17: error: ‘Vertex’ was not declared in this scope
-   15 |     std::vector<Vertex> vertices;
-      |                 ^~~~~~
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:15:23: error: template argument 1 is invalid
-   15 |     std::vector<Vertex> vertices;
-      |                       ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:15:23: error: template argument 2 is invalid
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:55:27: error: expected ‘;’ before ‘vertex’
-   55 |                     Vertex vertex;
-      |                           ^~~~~~~
-      |                           ;
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:56:21: error: ‘vertex’ was not declared in this scope; did you mean ‘vertices’?
-   56 |                     vertex.position = temp_positions[pos_idx];
-      |                     ^~~~~~
-      |                     vertices
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:60:81: error: request for member ‘size’ in ‘vertices’, which is of non-class type ‘int’
-   60 |                     vertex_map[vertex_key] = static_cast<unsigned int>(vertices.size());
-      |                                                                                 ^~~~
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:61:30: error: request for member ‘push_back’ in ‘vertices’, which is of non-class type ‘int’
-   61 |                     vertices.push_back(vertex);
-      |                              ^~~~~~~~~
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:71:31: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   71 |             Vec3 e1 = vertices[indices[i+1]].position - vertices[indices[i]].position;
-      |                               ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:71:65: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   71 |             Vec3 e1 = vertices[indices[i+1]].position - vertices[indices[i]].position;
-      |                                                                 ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:72:31: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   72 |             Vec3 e2 = vertices[indices[i+2]].position - vertices[indices[i]].position;
-      |                               ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:72:65: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   72 |             Vec3 e2 = vertices[indices[i+2]].position - vertices[indices[i]].position;
-      |                                                                 ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:74:21: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   74 |             vertices[indices[i]].normal += n;
-      |                     ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:75:21: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   75 |             vertices[indices[i+1]].normal += n;
-      |                     ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:76:21: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
-   76 |             vertices[indices[i+2]].normal += n;
-      |                     ^
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:78:24: error: ‘begin’ was not declared in this scope; did you mean ‘std::begin’?
-   78 |         for (auto& v : vertices) v.normal = normalize(v.normal);
-      |                        ^~~~~~~~
-      |                        std::begin
-In file included from /usr/include/c++/13/string:53,
-                 from /usr/include/c++/13/bits/locale_classes.h:40,
-                 from /usr/include/c++/13/bits/ios_base.h:41,
-                 from /usr/include/c++/13/ios:44,
-                 from /usr/include/c++/13/ostream:40,
-                 from /home/yannoo/Dev/YGL/include/math/vec3.hpp:5,
-                 from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/loaders/loader.hpp:2,
-                 from /home/yannoo/Dev/YGL/include/loaders/obj_loader.hpp:2,
-                 from /home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:1:
-/usr/include/c++/13/bits/range_access.h:114:37: note: ‘std::begin’ declared here
-  114 |   template<typename _Tp> const _Tp* begin(const valarray<_Tp>&) noexcept;
-      |                                     ^~~~~
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:78:24: error: ‘end’ was not declared in this scope; did you mean ‘std::end’?
-   78 |         for (auto& v : vertices) v.normal = normalize(v.normal);
-      |                        ^~~~~~~~
-      |                        std::end
-/usr/include/c++/13/bits/range_access.h:116:37: note: ‘std::end’ declared here
-  116 |   template<typename _Tp> const _Tp* end(const valarray<_Tp>&) noexcept;
-      |                                     ^~~
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:81:10: error: ‘class ygl::Mesh’ has no member named ‘SetVertices’
-   81 |     mesh.SetVertices(vertices);
-      |          ^~~~~~~~~~~
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:82:10: error: ‘class ygl::Mesh’ has no member named ‘SetIndices’; did you mean ‘setIndices’?
-   82 |     mesh.SetIndices(indices);
-      |          ^~~~~~~~~~
-      |          setIndices
-/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:83:10: error: ‘class ygl::Mesh’ has no member named ‘ComputeBoundingBox’; did you mean ‘updateBoundingBox’?
-   83 |     mesh.ComputeBoundingBox();
-      |          ^~~~~~~~~~~~~~~~~~
-      |          updateBoundingBox
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:216 : CMakeFiles/ygl.dir/src/loaders/obj_loader.cpp.o] Erreur 1
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:188 : CMakeFiles/ygl.dir/src/loaders/md3_loader.cpp.o] Erreur 1
+gmake[2]: *** Attente des tâches non terminées....
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:202 : CMakeFiles/ygl.dir/src/loaders/md5_loader.cpp.o] Erreur 1
 In file included from /home/yannoo/Dev/YGL/src/materials/material.cpp:3:
 /home/yannoo/Dev/YGL/include/math/vec4.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    12 |         struct { float x, y, z, w; };
@@ -537,7 +458,86 @@ In file included from /home/yannoo/Dev/YGL/src/materials/material.cpp:1:
 /home/yannoo/Dev/YGL/include/materials/material.hpp:8:7: note: ‘class ygl::Material’ defined here
     8 | class Material {
       |       ^~~~~~~~
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:202 : CMakeFiles/ygl.dir/src/loaders/md5_loader.cpp.o] Erreur 1
 gmake[2]: *** [CMakeFiles/ygl.dir/build.make:230 : CMakeFiles/ygl.dir/src/materials/material.cpp.o] Erreur 1
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp: In member function ‘bool ygl::OBJLoader::LoadOBJ(const std::string&, ygl::Mesh&)’:
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:15:17: error: ‘Vertex’ was not declared in this scope
+   15 |     std::vector<Vertex> vertices;
+      |                 ^~~~~~
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:15:23: error: template argument 1 is invalid
+   15 |     std::vector<Vertex> vertices;
+      |                       ^
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:15:23: error: template argument 2 is invalid
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:55:27: error: expected ‘;’ before ‘vertex’
+   55 |                     Vertex vertex;
+      |                           ^~~~~~~
+      |                           ;
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:56:21: error: ‘vertex’ was not declared in this scope; did you mean ‘vertices’?
+   56 |                     vertex.position = temp_positions[pos_idx];
+      |                     ^~~~~~
+      |                     vertices
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:60:81: error: request for member ‘size’ in ‘vertices’, which is of non-class type ‘int’
+   60 |                     vertex_map[vertex_key] = static_cast<unsigned int>(vertices.size());
+      |                                                                                 ^~~~
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:61:30: error: request for member ‘push_back’ in ‘vertices’, which is of non-class type ‘int’
+   61 |                     vertices.push_back(vertex);
+      |                              ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:71:31: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
+   71 |             Vec3 e1 = vertices[indices[i+1]].position - vertices[indices[i]].position;
+      |                               ^
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:71:65: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
+   71 |             Vec3 e1 = vertices[indices[i+1]].position - vertices[indices[i]].position;
+      |                                                                 ^
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:72:31: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
+   72 |             Vec3 e2 = vertices[indices[i+2]].position - vertices[indices[i]].position;
+      |                               ^
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:72:65: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
+   72 |             Vec3 e2 = vertices[indices[i+2]].position - vertices[indices[i]].position;
+      |                                                                 ^
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:74:21: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
+   74 |             vertices[indices[i]].normal += n;
+      |                     ^
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:75:21: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
+   75 |             vertices[indices[i+1]].normal += n;
+      |                     ^
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:76:21: error: invalid types ‘int[__gnu_cxx::__alloc_traits<std::allocator<unsigned int>, unsigned int>::value_type {aka unsigned int}]’ for array subscript
+   76 |             vertices[indices[i+2]].normal += n;
+      |                     ^
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:78:24: error: ‘begin’ was not declared in this scope; did you mean ‘std::begin’?
+   78 |         for (auto& v : vertices) v.normal = normalize(v.normal);
+      |                        ^~~~~~~~
+      |                        std::begin
+In file included from /usr/include/c++/13/string:53,
+                 from /usr/include/c++/13/bits/locale_classes.h:40,
+                 from /usr/include/c++/13/bits/ios_base.h:41,
+                 from /usr/include/c++/13/ios:44,
+                 from /usr/include/c++/13/ostream:40,
+                 from /home/yannoo/Dev/YGL/include/math/vec3.hpp:5,
+                 from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
+                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
+                 from /home/yannoo/Dev/YGL/include/loaders/loader.hpp:2,
+                 from /home/yannoo/Dev/YGL/include/loaders/obj_loader.hpp:2,
+                 from /home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:1:
+/usr/include/c++/13/bits/range_access.h:114:37: note: ‘std::begin’ declared here
+  114 |   template<typename _Tp> const _Tp* begin(const valarray<_Tp>&) noexcept;
+      |                                     ^~~~~
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:78:24: error: ‘end’ was not declared in this scope; did you mean ‘std::end’?
+   78 |         for (auto& v : vertices) v.normal = normalize(v.normal);
+      |                        ^~~~~~~~
+      |                        std::end
+/usr/include/c++/13/bits/range_access.h:116:37: note: ‘std::end’ declared here
+  116 |   template<typename _Tp> const _Tp* end(const valarray<_Tp>&) noexcept;
+      |                                     ^~~
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:81:10: error: ‘class ygl::Mesh’ has no member named ‘SetVertices’
+   81 |     mesh.SetVertices(vertices);
+      |          ^~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:82:10: error: ‘class ygl::Mesh’ has no member named ‘SetIndices’; did you mean ‘setIndices’?
+   82 |     mesh.SetIndices(indices);
+      |          ^~~~~~~~~~
+      |          setIndices
+/home/yannoo/Dev/YGL/src/loaders/obj_loader.cpp:83:10: error: ‘class ygl::Mesh’ has no member named ‘ComputeBoundingBox’; did you mean ‘updateBoundingBox’?
+   83 |     mesh.ComputeBoundingBox();
+      |          ^~~~~~~~~~~~~~~~~~
+      |          updateBoundingBox
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:216 : CMakeFiles/ygl.dir/src/loaders/obj_loader.cpp.o] Erreur 1
 gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
 gmake: *** [Makefile:91 : all] Erreur 2
