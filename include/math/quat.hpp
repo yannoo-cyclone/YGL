@@ -1,20 +1,16 @@
 #pragma once
-
 #include <cmath>
 #include <algorithm>
-#include "math/vec3.hpp"  // AJOUTÉ pour accéder à Vec3::x/y/z
+#include "math/vec3.hpp"
 
 namespace ygl {
-
 class Vec3;
 class mat4;
-
 class Quat {
 public:
     union {
         struct { float x, y, z, w; };
     };
-
     Quat() : x(0), y(0), z(0), w(1) {}
     Quat(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
     Quat(const Vec3& axis, float angle) {
@@ -25,12 +21,10 @@ public:
         z = axis.z * sinHalf;
         w = std::cos(halfAngle);
     }
-
     Quat Normalize() const {
         float len = std::sqrt(x * x + y * y + z * z + w * w);
         return len > 0 ? Quat(x / len, y / len, z / len, w / len) : Quat();
     }
-
     explicit Quat(const mat4& matrix);
     Quat operator+(const Quat& other) const { return Quat(x + other.x, y + other.y, z + other.z, w + other.w); }
     Quat operator-(const Quat& other) const { return Quat(x - other.x, y - other.y, z - other.z, w - other.w); }
@@ -45,9 +39,7 @@ public:
     }
     Vec3 operator*(const Vec3& vec) const;
     Quat operator-() const { return Quat(-x, -y, -z, -w); }
-
     static Quat identity() { return Quat(0.0f, 0.0f, 0.0f, 1.0f); }
     mat4 toMatrix() const;
 };
-
 } // namespace ygl

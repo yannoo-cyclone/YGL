@@ -2,13 +2,14 @@
 
 namespace ygl {
 
-Light::Light(Type type)
+// Constructeur avec Light::Type (qualifié)
+Light::Light(Light::Type type)
     : Object3D("Light"),
-      m_type(type), m_color(1.0f, 1.0f, 1.0f), m_intensity(1.0f),
-      m_direction(0.0f, -1.0f, 0.0f), m_range(10.0f) {}
+      m_type(type), m_color(1.0f, 1.0f, 1.0f),
+      m_intensity(1.0f), m_direction(0.0f, -1.0f, 0.0f), m_range(10.0f) {}
 
-Type Light::getType() const { return m_type; }
-void Light::setType(Type type) { m_type = type; }
+Light::Type Light::getType() const { return m_type; }
+void Light::setType(Light::Type type) { m_type = type; }
 
 const Vec3& Light::getColor() const { return m_color; }
 void Light::setColor(const Vec3& color) { m_color = color; }
