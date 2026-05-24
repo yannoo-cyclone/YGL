@@ -12,8 +12,9 @@ public:
     union {
         struct { float x, y; };
         struct { float u, v; };
-        float data[2];
+        // float data[2];
     };
+    
 
     // Constructeurs
     Vec2() : x(0.0f), y(0.0f) {}
