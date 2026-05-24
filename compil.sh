@@ -1,10 +1,12 @@
 #!/bin/sh
 
-sudo apt-get install -y libglfw3-dev  # Installe GLFW si manquant
+# Installation des dépendances (si manquantes)
+sudo apt-get install -y libglfw3-dev libglew-dev
 
+# Nettoyage et compilation
 cd build
 rm -rf *
 cmake ..
-cmake --build .
+cmake --build . -j$(nproc)  # Utilise tous les cœurs disponibles
 cd ..
 

@@ -30,7 +30,7 @@
 #include "render/gbuffer.hpp"
 #include "render/deferred_renderer.hpp"
 #include "render/bvh.hpp"
-#include "render/spherical_gbuffer.hpp"
+#include "render/spherical_renderer.hpp"
 #include "render/path_tracing_renderer.hpp"
 #include "render/hybrid_renderer.hpp"
 

@@ -1,81 +1,57 @@
 #pragma once
 
 #include <cmath>
-#include <iostream>
-#include <array>
+#include <algorithm>  // Pour std::min/max
+#include <limits>
 
 namespace ygl {
-
-class Vec2;
-class Vec4;
 
 class Vec3 {
 public:
     union {
         struct { float x, y, z; };
         struct { float r, g, b; };
-        float data[3];
     };
 
-    Vec3() : x(0.0f), y(0.0f), z(0.0f) {}
-    Vec3(float scalar) : x(scalar), y(scalar), z(scalar) {}
+    // Constructeurs
+    Vec3() : x(0), y(0), z(0) {}
     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
-    Vec3(const float* array) : x(array[0]), y(array[1]), z(array[2]) {}
-    explicit Vec3(const Vec2& v, float z = 0.0f);
-    explicit Vec3(const Vec4& v);
 
-    float& operator[](int index) { return data[index]; }
-    const float& operator[](int index) const { return data[index]; }
+    // Opérateurs
+    Vec3 operator+(const Vec3& other) const { return Vec3(x + other.x, y + other.y, z + other.z); }
+    Vec3 operator-(const Vec3& other) const { return Vec3(x - other.x, y - other.y, z - other.z); }
+    Vec3 operator*(float scalar) const { return Vec3(x * scalar, y * scalar, z * scalar); }
+    Vec3 operator-() const { return Vec3(-x, -y, -z); }
 
-    Vec3& operator+=(const Vec3& other);
-    Vec3& operator-=(const Vec3& other);
-    Vec3& operator*=(float scalar);
-    Vec3& operator/=(float scalar);
+    // Produit scalaire
+    float Dot(const Vec3& other) const { return x * other.x + y * other.y + z * other.z; }
 
-    Vec3 operator+(const Vec3& other) const;
-    Vec3 operator-(const Vec3& other) const;
-    Vec3 operator-() const;
-    Vec3 operator*(float scalar) const;
-    Vec3 operator/(float scalar) const;
+    // Norme
+    float Length() const { return std::sqrt(x * x + y * y + z * z); }
 
-    bool operator==(const Vec3& other) const;
-    bool operator!=(const Vec3& other) const;
+    // Normalisation
+    Vec3 Normalize() const { float len = Length(); return len > 0 ? *this / len : Vec3(); }
 
-    float length() const;
-    float lengthSquared() const;
-    Vec3 normalized() const;
-    void normalize();
-    float dot(const Vec3& other) const;
-    Vec3 cross(const Vec3& other) const;
-    float distanceTo(const Vec3& other) const;
-    Vec3 lerp(const Vec3& other, float t) const;
-    Vec3 reflect(const Vec3& normal) const;
-    Vec3 refract(const Vec3& normal, float ior) const;
+    // Opérateur de division
+    Vec3 operator/(float scalar) const { return Vec3(x / scalar, y / scalar, z / scalar); }
 
-    bool isZero() const;
-    bool isNormalized() const;
-    Vec3 abs() const;
-    Vec3 clamp(float min, float max) const;
-    Vec3 clamp(const Vec3& min, const Vec3& max) const;
+    // Méthodes statiques pour Min/Max/Clamp
+    static Vec3 Min(const Vec3& a, const Vec3& b) {
+        return Vec3(std::min(a.x, b.x), std::min(a.y, b.y), std::min(a.z, b.z));
+    }
+    static Vec3 Max(const Vec3& a, const Vec3& b) {
+        return Vec3(std::max(a.x, b.x), std::max(a.y, b.y), std::max(a.z, b.z));
+    }
+    static Vec3 Clamp(const Vec3& v, const Vec3& min, const Vec3& max) {
+        return Vec3(
+            std::clamp(v.x, min.x, max.x),
+            std::clamp(v.y, min.y, max.y),
+            std::clamp(v.z, min.z, max.z)
+        );
+    }
 
-    static Vec3 zero() { return Vec3(0.0f); }
-    static Vec3 one() { return Vec3(1.0f); }
-    static Vec3 unitX() { return Vec3(1.0f, 0.0f, 0.0f); }
-    static Vec3 unitY() { return Vec3(0.0f, 1.0f, 0.0f); }
-    static Vec3 unitZ() { return Vec3(0.0f, 0.0f, 1.0f); }
-
-    friend std::ostream& operator<<(std::ostream& os, const Vec3& v);
+    // Transformation par une matrice (à ajouter si mat4.hpp est inclus)
+    Vec3 Transform(const class mat4& matrix) const;
 };
 
-Vec3 operator*(float scalar, const Vec3& v);
-float dot(const Vec3& a, const Vec3& b);
-Vec3 cross(const Vec3& a, const Vec3& b);
-Vec3 normalize(const Vec3& v);
-float length(const Vec3& v);
-float lengthSquared(const Vec3& v);
-Vec3 lerp(const Vec3& a, const Vec3& b, float t);
-Vec3 reflect(const Vec3& v, const Vec3& normal);
-Vec3 refract(const Vec3& v, const Vec3& normal, float ior);
-
 } // namespace ygl
-

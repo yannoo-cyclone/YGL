@@ -1,0 +1,766 @@
+Lecture des listes de paquets…
+Construction de l'arbre des dépendances…
+Lecture des informations d'état…
+libglfw3-dev est déjà la version la plus récente (3.3.10-1build1).
+libglew-dev est déjà la version la plus récente (2.2.0-4build1).
+0 mis à jour, 0 nouvellement installés, 0 à enlever et 1 non mis à jour.
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+-- Found OpenMP: TRUE (found version "4.5")  
+-- Found GLEW: /usr/include (found version "2.2.0") 
+CMake Warning (dev) at /usr/share/cmake-3.28/Modules/FindOpenGL.cmake:381 (message):
+  Policy CMP0072 is not set: FindOpenGL prefers GLVND by default when
+  available.  Run "cmake --help-policy CMP0072" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  FindOpenGL found both a legacy GL library:
+
+    OPENGL_gl_LIBRARY: /usr/lib/x86_64-linux-gnu/libGL.so
+
+  and GLVND libraries for OpenGL and GLX:
+
+    OPENGL_opengl_LIBRARY: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+    OPENGL_glx_LIBRARY: /usr/lib/x86_64-linux-gnu/libGLX.so
+
+  OpenGL_GL_PREFERENCE has not been set to "GLVND" or "LEGACY", so for
+  compatibility with CMake 3.10 and below the legacy GL library will be used.
+Call Stack (most recent call first):
+  CMakeLists.txt:22 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so   
+-- YGL Configuration:
+--   C++ Standard: 17
+--   OpenMP: -fopenmp
+--   GLEW Found: TRUE
+--   GLFW3 Found: 1
+--   OpenGL Found: TRUE
+--   GLEW Include: /usr/include
+--   GLFW3 Include: 
+--   OpenGL Include: 
+-- Configuring done (0.9s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/yannoo/Dev/YGL/build
+[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
+[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
+[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
+[ 10%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/object3d.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   12 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float r, g, b; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
+/home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float x, y, z, w; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/bounding_box.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/bounding_box.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   12 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float r, g, b; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
+                 from /home/yannoo/Dev/YGL/include/core/camera.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/camera.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   12 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float r, g, b; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
+/home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float x, y, z, w; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
+                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/mesh.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   12 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float r, g, b; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
+/home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float x, y, z, w; };
+      |                ^
+/home/yannoo/Dev/YGL/include/core/bounding_box.hpp:68:6: error: ‘ostream’ in namespace ‘std’ does not name a type
+   68 | std::ostream& operator<<(std::ostream& os, const BoundingBox& box);
+      |      ^~~~~~~
+/home/yannoo/Dev/YGL/include/core/bounding_box.hpp:6:1: note: ‘std::ostream’ is defined in header ‘<ostream>’; did you forget to ‘#include <ostream>’?
+    5 | #include <vector>
+  +++ |+#include <ostream>
+    6 | 
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp: In member function ‘void ygl::BoundingBox::Reset()’:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:36:49: error: no matching function for call to ‘ygl::Vec3::Vec3(float)’
+   36 |     min = Vec3(std::numeric_limits<float>::max());
+      |                                                 ^
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:33:11: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   33 |     const Mat4& getLocalMatrix() const;
+      |           ^~~~
+      |           mat4
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:18:5: note: candidate: ‘ygl::Vec3::Vec3(float, float, float)’
+   18 |     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
+      |     ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:18:5: note:   candidate expects 3 arguments, 1 provided
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:17:5: note: candidate: ‘ygl::Vec3::Vec3()’
+   17 |     Vec3() : x(0), y(0), z(0) {}
+      |     ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:17:5: note:   candidate expects 0 arguments, 1 provided
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:9:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(const ygl::Vec3&)’
+    9 | class Vec3 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:9:7: note:   no known conversion for argument 1 from ‘float’ to ‘const ygl::Vec3&’
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:9:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(ygl::Vec3&&)’
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:9:7: note:   no known conversion for argument 1 from ‘float’ to ‘ygl::Vec3&&’
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:37:52: error: no matching function for call to ‘ygl::Vec3::Vec3(float)’
+   37 |     max = Vec3(std::numeric_limits<float>::lowest());
+      |                                                    ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:18:5: note: candidate: ‘ygl::Vec3::Vec3(float, float, float)’
+   18 |     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
+      |     ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:18:5: note:   candidate expects 3 arguments, 1 provided
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:17:5: note: candidate: ‘ygl::Vec3::Vec3()’
+   17 |     Vec3() : x(0), y(0), z(0) {}
+      |     ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:17:5: note:   candidate expects 0 arguments, 1 provided
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:9:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(const ygl::Vec3&)’
+    9 | class Vec3 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:9:7: note:   no known conversion for argument 1 from ‘float’ to ‘const ygl::Vec3&’
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:9:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(ygl::Vec3&&)’
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:9:7: note:   no known conversion for argument 1 from ‘float’ to ‘ygl::Vec3&&’
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:34:11: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   34 |     const Mat4& getWorldMatrix() const;
+      |           ^~~~
+      |           mat4
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:35:11: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   35 |     const Mat4& getNormalMatrix() const;
+      |           ^~~~
+      |           mat4
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:70:13: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   70 |     mutable Mat4 m_localMatrix;
+      |             ^~~~
+      |             mat4
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:71:13: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   71 |     mutable Mat4 m_worldMatrix;
+      |             ^~~~
+      |             mat4
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:72:13: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   72 |     mutable Mat4 m_normalMatrix;
+      |             ^~~~
+      |             mat4
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp: In member function ‘bool ygl::BoundingBox::operator==(const ygl::BoundingBox&) const’:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:244:16: error: no match for ‘operator==’ (operand types are ‘const ygl::Vec3’ and ‘const ygl::Vec3’)
+  244 |     return min == other.min && max == other.max;
+      |            ~~~ ^~ ~~~~~~~~~
+      |            |            |
+      |            |            const ygl::Vec3
+      |            const ygl::Vec3
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:244:36: error: no match for ‘operator==’ (operand types are ‘const ygl::Vec3’ and ‘const ygl::Vec3’)
+  244 |     return min == other.min && max == other.max;
+      |                                ~~~ ^~ ~~~~~~~~~
+      |                                |            |
+      |                                |            const ygl::Vec3
+      |                                const ygl::Vec3
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp: In function ‘std::ostream& ygl::operator<<(std::ostream&, const BoundingBox&)’:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:30: error: no match for ‘operator<<’ (operand types are ‘std::basic_ostream<char>’ and ‘const ygl::Vec3’)
+  255 |     os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~ ^~ ~~~~~~~
+      |        |                            |
+      |        std::basic_ostream<char>     const ygl::Vec3
+In file included from /home/yannoo/Dev/YGL/src/core/bounding_box.cpp:7:
+/usr/include/c++/13/ostream:110:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(__ostream_type& (*)(__ostream_type&)) [with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>]’
+  110 |       operator<<(__ostream_type& (*__pf)(__ostream_type&))
+      |       ^~~~~~~~
+/usr/include/c++/13/ostream:110:36: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘std::basic_ostream<char>::__ostream_type& (*)(std::basic_ostream<char>::__ostream_type&)’ {aka ‘std::basic_ostream<char>& (*)(std::basic_ostream<char>&)’}
+  110 |       operator<<(__ostream_type& (*__pf)(__ostream_type&))
+      |                  ~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/ostream:119:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(__ios_type& (*)(__ios_type&)) [with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>; __ios_type = std::basic_ios<char>]’
+  119 |       operator<<(__ios_type& (*__pf)(__ios_type&))
+      |       ^~~~~~~~
+/usr/include/c++/13/ostream:119:32: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘std::basic_ostream<char>::__ios_type& (*)(std::basic_ostream<char>::__ios_type&)’ {aka ‘std::basic_ios<char>& (*)(std::basic_ios<char>&)’}
+  119 |       operator<<(__ios_type& (*__pf)(__ios_type&))
+      |                  ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/ostream:129:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::ios_base& (*)(std::ios_base&)) [with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>]’
+  129 |       operator<<(ios_base& (*__pf) (ios_base&))
+      |       ^~~~~~~~
+/usr/include/c++/13/ostream:129:30: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘std::ios_base& (*)(std::ios_base&)’
+  129 |       operator<<(ios_base& (*__pf) (ios_base&))
+      |                  ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+/usr/include/c++/13/ostream:168:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long int) [with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>]’
+  168 |       operator<<(long __n)
+      |       ^~~~~~~~
+/usr/include/c++/13/ostream:168:23: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘long int’
+  168 |       operator<<(long __n)
+      |                  ~~~~~^~~
+/usr/include/c++/13/ostream:172:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>]’
+  172 |       operator<<(unsigned long __n)
+      |       ^~~~~~~~
+/usr/include/c++/13/ostream:172:32: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘long unsigned int’
+  172 |       operator<<(unsigned long __n)
+      |                  ~~~~~~~~~~~~~~^~~
+/usr/include/c++/13/ostream:176:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(bool) [with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>]’
+  176 |       operator<<(bool __n)
+      |       ^~~~~~~~
+/usr/include/c++/13/ostream:176:23: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘bool’
+  176 |       operator<<(bool __n)
+      |                  ~~~~~^~~
+In file included from /usr/include/c++/13/ostream:880:
+/usr/include/c++/13/bits/ostream.tcc:96:5: note: candidate: ‘std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(short int) [with _CharT = char; _Traits = std::char_traits<char>]’
+   96 |     basic_ostream<_CharT, _Traits>::
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/bits/ostream.tcc:97:22: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘short int’
+   97 |     operator<<(short __n)
+      |                ~~~~~~^~~
+/usr/include/c++/13/ostream:183:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(short unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>]’
+  183 |       operator<<(unsigned short __n)
+      |       ^~~~~~~~
+/usr/include/c++/13/ostream:183:33: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘short unsigned int’
+  183 |       operator<<(unsigned short __n)
+      |                  ~~~~~~~~~~~~~~~^~~
+/usr/include/c++/13/bits/ostream.tcc:110:5: note: candidate: ‘std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(int) [with _CharT = char; _Traits = std::char_traits<char>]’
+  110 |     basic_ostream<_CharT, _Traits>::
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/bits/ostream.tcc:111:20: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘int’
+  111 |     operator<<(int __n)
+      |                ~~~~^~~
+/usr/include/c++/13/ostream:194:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>]’
+  194 |       operator<<(unsigned int __n)
+      |       ^~~~~~~~
+/usr/include/c++/13/ostream:194:31: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘unsigned int’
+  194 |       operator<<(unsigned int __n)
+      |                  ~~~~~~~~~~~~~^~~
+/usr/include/c++/13/ostream:203:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long int) [with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>]’
+  203 |       operator<<(long long __n)
+      |       ^~~~~~~~
+/usr/include/c++/13/ostream:203:28: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘long long int’
+  203 |       operator<<(long long __n)
+      |                  ~~~~~~~~~~^~~
+/usr/include/c++/13/ostream:207:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long long unsigned int) [with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>]’
+  207 |       operator<<(unsigned long long __n)
+      |       ^~~~~~~~
+/usr/include/c++/13/ostream:207:37: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘long long unsigned int’
+  207 |       operator<<(unsigned long long __n)
+      |                  ~~~~~~~~~~~~~~~~~~~^~~
+/usr/include/c++/13/ostream:222:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(double) [with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>]’
+  222 |       operator<<(double __f)
+      |       ^~~~~~~~
+/usr/include/c++/13/ostream:222:25: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘double’
+  222 |       operator<<(double __f)
+      |                  ~~~~~~~^~~
+/usr/include/c++/13/ostream:226:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(float) [with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>]’
+  226 |       operator<<(float __f)
+      |       ^~~~~~~~
+/usr/include/c++/13/ostream:226:24: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘float’
+  226 |       operator<<(float __f)
+      |                  ~~~~~~^~~
+/usr/include/c++/13/ostream:234:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(long double) [with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>]’
+  234 |       operator<<(long double __f)
+      |       ^~~~~~~~
+/usr/include/c++/13/ostream:234:30: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘long double’
+  234 |       operator<<(long double __f)
+      |                  ~~~~~~~~~~~~^~~
+/usr/include/c++/13/ostream:292:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(const void*) [with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>]’
+  292 |       operator<<(const void* __p)
+      |       ^~~~~~~~
+/usr/include/c++/13/ostream:292:30: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘const void*’
+  292 |       operator<<(const void* __p)
+      |                  ~~~~~~~~~~~~^~~
+/usr/include/c++/13/ostream:297:7: note: candidate: ‘std::basic_ostream<_CharT, _Traits>::__ostream_type& std::basic_ostream<_CharT, _Traits>::operator<<(std::nullptr_t) [with _CharT = char; _Traits = std::char_traits<char>; __ostream_type = std::basic_ostream<char>; std::nullptr_t = std::nullptr_t]’
+  297 |       operator<<(nullptr_t)
+      |       ^~~~~~~~
+/usr/include/c++/13/ostream:297:18: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘std::nullptr_t’
+  297 |       operator<<(nullptr_t)
+      |                  ^~~~~~~~~
+/usr/include/c++/13/bits/ostream.tcc:124:5: note: candidate: ‘std::basic_ostream<_CharT, _Traits>& std::basic_ostream<_CharT, _Traits>::operator<<(__streambuf_type*) [with _CharT = char; _Traits = std::char_traits<char>; __streambuf_type = std::basic_streambuf<char>]’
+  124 |     basic_ostream<_CharT, _Traits>::
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/bits/ostream.tcc:125:34: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘std::basic_ostream<char>::__streambuf_type*’ {aka ‘std::basic_streambuf<char>*’}
+  125 |     operator<<(__streambuf_type* __sbin)
+      |                ~~~~~~~~~~~~~~~~~~^~~~~~
+In file included from /usr/include/c++/13/bits/memory_resource.h:38,
+                 from /usr/include/c++/13/vector:80,
+                 from /home/yannoo/Dev/YGL/include/core/bounding_box.hpp:5:
+/usr/include/c++/13/cstddef:124:5: note: candidate: ‘template<class _IntegerType> constexpr std::__byte_op_t<_IntegerType> std::operator<<(byte, _IntegerType)’
+  124 |     operator<<(byte __b, _IntegerType __shift) noexcept
+      |     ^~~~~~~~
+/usr/include/c++/13/cstddef:124:5: note:   template argument deduction/substitution failed:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:8: note:   cannot convert ‘std::operator<< <char_traits<char> >((* & os), ((const char*)"BoundingBox(min="))’ (type ‘std::basic_ostream<char>’) to type ‘std::byte’
+  255 |     os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
+      |     ~~~^~~~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/c++/13/bits/basic_string.h:47,
+                 from /usr/include/c++/13/string:54,
+                 from /usr/include/c++/13/bits/locale_classes.h:40,
+                 from /usr/include/c++/13/bits/ios_base.h:41,
+                 from /usr/include/c++/13/ios:44,
+                 from /usr/include/c++/13/ostream:40:
+/usr/include/c++/13/string_view:761:5: note: candidate: ‘template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(basic_ostream<_CharT, _Traits>&, basic_string_view<_CharT, _Traits>)’
+  761 |     operator<<(basic_ostream<_CharT, _Traits>& __os,
+      |     ^~~~~~~~
+/usr/include/c++/13/string_view:761:5: note:   template argument deduction/substitution failed:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:37: note:   ‘ygl::Vec3’ is not derived from ‘std::basic_string_view<_CharT, _Traits>’
+  255 |     os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
+      |                                     ^~~
+/usr/include/c++/13/bits/basic_string.h:4032:5: note: candidate: ‘template<class _CharT, class _Traits, class _Alloc> std::basic_ostream<_CharT, _Traits>& std::operator<<(basic_ostream<_CharT, _Traits>&, const __cxx11::basic_string<_CharT, _Traits, _Allocator>&)’
+ 4032 |     operator<<(basic_ostream<_CharT, _Traits>& __os,
+      |     ^~~~~~~~
+/usr/include/c++/13/bits/basic_string.h:4032:5: note:   template argument deduction/substitution failed:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:37: note:   ‘const ygl::Vec3’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Allocator>’
+  255 |     os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
+      |                                     ^~~
+In file included from /usr/include/c++/13/bits/ios_base.h:46:
+/usr/include/c++/13/system_error:339:5: note: candidate: ‘template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(basic_ostream<_CharT, _Traits>&, const error_code&)’
+  339 |     operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __e)
+      |     ^~~~~~~~
+/usr/include/c++/13/system_error:339:5: note:   template argument deduction/substitution failed:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:37: note:   cannot convert ‘box.ygl::BoundingBox::min’ (type ‘const ygl::Vec3’) to type ‘const std::error_code&’
+  255 |     os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
+      |                                 ~~~~^~~
+/usr/include/c++/13/ostream:554:5: note: candidate: ‘template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(basic_ostream<_CharT, _Traits>&, _CharT)’
+  554 |     operator<<(basic_ostream<_CharT, _Traits>& __out, _CharT __c)
+      |     ^~~~~~~~
+/usr/include/c++/13/ostream:554:5: note:   template argument deduction/substitution failed:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:37: note:   deduced conflicting types for parameter ‘_CharT’ (‘char’ and ‘ygl::Vec3’)
+  255 |     os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
+      |                                     ^~~
+/usr/include/c++/13/ostream:564:5: note: candidate: ‘template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(basic_ostream<_CharT, _Traits>&, char)’
+  564 |     operator<<(basic_ostream<_CharT, _Traits>& __out, char __c)
+      |     ^~~~~~~~
+/usr/include/c++/13/ostream:564:5: note:   template argument deduction/substitution failed:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:37: note:   cannot convert ‘box.ygl::BoundingBox::min’ (type ‘const ygl::Vec3’) to type ‘char’
+  255 |     os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
+      |                                 ~~~~^~~
+/usr/include/c++/13/ostream:570:5: note: candidate: ‘template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(basic_ostream<char, _Traits>&, char)’
+  570 |     operator<<(basic_ostream<char, _Traits>& __out, char __c)
+      |     ^~~~~~~~
+/usr/include/c++/13/ostream:570:5: note:   template argument deduction/substitution failed:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:37: note:   cannot convert ‘box.ygl::BoundingBox::min’ (type ‘const ygl::Vec3’) to type ‘char’
+  255 |     os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
+      |                                 ~~~~^~~
+/usr/include/c++/13/ostream:581:5: note: candidate: ‘template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(basic_ostream<char, _Traits>&, signed char)’
+  581 |     operator<<(basic_ostream<char, _Traits>& __out, signed char __c)
+      |     ^~~~~~~~
+/usr/include/c++/13/ostream:581:5: note:   template argument deduction/substitution failed:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:37: note:   cannot convert ‘box.ygl::BoundingBox::min’ (type ‘const ygl::Vec3’) to type ‘signed char’
+  255 |     os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
+      |                                 ~~~~^~~
+/usr/include/c++/13/ostream:586:5: note: candidate: ‘template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(basic_ostream<char, _Traits>&, unsigned char)’
+  586 |     operator<<(basic_ostream<char, _Traits>& __out, unsigned char __c)
+      |     ^~~~~~~~
+/usr/include/c++/13/ostream:586:5: note:   template argument deduction/substitution failed:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:37: note:   cannot convert ‘box.ygl::BoundingBox::min’ (type ‘const ygl::Vec3’) to type ‘unsigned char’
+  255 |     os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
+      |                                 ~~~~^~~
+/usr/include/c++/13/ostream:645:5: note: candidate: ‘template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(basic_ostream<_CharT, _Traits>&, const _CharT*)’
+  645 |     operator<<(basic_ostream<_CharT, _Traits>& __out, const _CharT* __s)
+      |     ^~~~~~~~
+/usr/include/c++/13/ostream:645:5: note:   template argument deduction/substitution failed:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:37: note:   mismatched types ‘const _CharT*’ and ‘ygl::Vec3’
+  255 |     os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
+      |                                     ^~~
+/usr/include/c++/13/bits/ostream.tcc:307:5: note: candidate: ‘template<class _CharT, class _Traits> std::basic_ostream<_CharT, _Traits>& std::operator<<(basic_ostream<_CharT, _Traits>&, const char*)’
+  307 |     operator<<(basic_ostream<_CharT, _Traits>& __out, const char* __s)
+      |     ^~~~~~~~
+/usr/include/c++/13/bits/ostream.tcc:307:5: note:   template argument deduction/substitution failed:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:37: note:   cannot convert ‘box.ygl::BoundingBox::min’ (type ‘const ygl::Vec3’) to type ‘const char*’
+  255 |     os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
+      |                                 ~~~~^~~
+/usr/include/c++/13/ostream:662:5: note: candidate: ‘template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(basic_ostream<char, _Traits>&, const char*)’
+  662 |     operator<<(basic_ostream<char, _Traits>& __out, const char* __s)
+      |     ^~~~~~~~
+/usr/include/c++/13/ostream:662:5: note:   template argument deduction/substitution failed:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:37: note:   cannot convert ‘box.ygl::BoundingBox::min’ (type ‘const ygl::Vec3’) to type ‘const char*’
+  255 |     os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
+      |                                 ~~~~^~~
+/usr/include/c++/13/ostream:675:5: note: candidate: ‘template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(basic_ostream<char, _Traits>&, const signed char*)’
+  675 |     operator<<(basic_ostream<char, _Traits>& __out, const signed char* __s)
+      |     ^~~~~~~~
+/usr/include/c++/13/ostream:675:5: note:   template argument deduction/substitution failed:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:37: note:   cannot convert ‘box.ygl::BoundingBox::min’ (type ‘const ygl::Vec3’) to type ‘const signed char*’
+  255 |     os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
+      |                                 ~~~~^~~
+/usr/include/c++/13/ostream:680:5: note: candidate: ‘template<class _Traits> std::basic_ostream<char, _Traits>& std::operator<<(basic_ostream<char, _Traits>&, const unsigned char*)’
+  680 |     operator<<(basic_ostream<char, _Traits>& __out, const unsigned char* __s)
+      |     ^~~~~~~~
+/usr/include/c++/13/ostream:680:5: note:   template argument deduction/substitution failed:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:37: note:   cannot convert ‘box.ygl::BoundingBox::min’ (type ‘const ygl::Vec3’) to type ‘const unsigned char*’
+  255 |     os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
+      |                                 ~~~~^~~
+/usr/include/c++/13/ostream:801:5: note: candidate: ‘template<class _Ostream, class _Tp> _Ostream&& std::operator<<(_Ostream&&, const _Tp&)’
+  801 |     operator<<(_Ostream&& __os, const _Tp& __x)
+      |     ^~~~~~~~
+/usr/include/c++/13/ostream:801:5: note:   template argument deduction/substitution failed:
+/usr/include/c++/13/ostream: In substitution of ‘template<class _Ostream, class _Tp> _Ostream&& std::operator<<(_Ostream&&, const _Tp&) [with _Ostream = std::basic_ostream<char>&; _Tp = ygl::Vec3]’:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:255:37:   required from here
+/usr/include/c++/13/ostream:801:5: error: no type named ‘type’ in ‘struct std::enable_if<false, void>’
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:254:15: note: candidate: ‘std::ostream& ygl::operator<<(std::ostream&, const BoundingBox&)’
+  254 | std::ostream& operator<<(std::ostream& os, const BoundingBox& box) {
+      |               ^~~~~~~~
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:254:63: note:   no known conversion for argument 2 from ‘const ygl::Vec3’ to ‘const ygl::BoundingBox&’
+  254 | std::ostream& operator<<(std::ostream& os, const BoundingBox& box) {
+      |                                            ~~~~~~~~~~~~~~~~~~~^~~
+/home/yannoo/Dev/YGL/include/core/camera.hpp:45:11: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   45 |     const Mat4& getViewMatrix();
+      |           ^~~~
+      |           mat4
+/home/yannoo/Dev/YGL/include/core/camera.hpp:46:11: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   46 |     const Mat4& getProjectionMatrix();
+      |           ^~~~
+      |           mat4
+/home/yannoo/Dev/YGL/include/core/camera.hpp:47:11: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   47 |     const Mat4& getViewProjectionMatrix();
+      |           ^~~~
+      |           mat4
+/home/yannoo/Dev/YGL/include/core/camera.hpp:84:13: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   84 |     mutable Mat4 m_viewMatrix;
+      |             ^~~~
+      |             mat4
+/home/yannoo/Dev/YGL/include/core/camera.hpp:85:13: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   85 |     mutable Mat4 m_projectionMatrix;
+      |             ^~~~
+      |             mat4
+/home/yannoo/Dev/YGL/include/core/camera.hpp:86:13: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   86 |     mutable Mat4 m_viewProjectionMatrix;
+      |             ^~~~
+      |             mat4
+/home/yannoo/Dev/YGL/include/core/camera.hpp:14:39: error: ‘zero’ is not a member of ‘ygl::Vec3’
+   14 |            const Vec3& target = Vec3::zero(),
+      |                                       ^~~~
+/home/yannoo/Dev/YGL/include/core/camera.hpp:15:35: error: ‘unitY’ is not a member of ‘ygl::Vec3’
+   15 |            const Vec3& up = Vec3::unitY());
+      |                                   ^~~~~
+/home/yannoo/Dev/YGL/src/core/camera.cpp:48:7: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   48 | const Mat4& Camera::getViewMatrix() {
+      |       ^~~~
+      |       mat4
+/home/yannoo/Dev/YGL/src/core/camera.cpp:53:7: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   53 | const Mat4& Camera::getProjectionMatrix() {
+      |       ^~~~
+      |       mat4
+/home/yannoo/Dev/YGL/src/core/camera.cpp:58:7: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   58 | const Mat4& Camera::getViewProjectionMatrix() {
+      |       ^~~~
+      |       mat4
+/home/yannoo/Dev/YGL/src/core/camera.cpp: In member function ‘void ygl::Camera::updateViewMatrix() const’:
+/home/yannoo/Dev/YGL/src/core/camera.cpp:65:5: error: ‘m_viewMatrix’ was not declared in this scope
+   65 |     m_viewMatrix = Mat4::lookAt(pos, m_target, m_up);
+      |     ^~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/camera.cpp:65:20: error: ‘Mat4’ has not been declared
+   65 |     m_viewMatrix = Mat4::lookAt(pos, m_target, m_up);
+      |                    ^~~~
+/home/yannoo/Dev/YGL/src/core/camera.cpp: In member function ‘void ygl::Camera::updateProjectionMatrix() const’:
+/home/yannoo/Dev/YGL/src/core/camera.cpp:72:9: error: ‘m_projectionMatrix’ was not declared in this scope; did you mean ‘m_projectionDirty’?
+   72 |         m_projectionMatrix = Mat4::perspective(
+      |         ^~~~~~~~~~~~~~~~~~
+      |         m_projectionDirty
+/home/yannoo/Dev/YGL/src/core/camera.cpp:72:30: error: ‘Mat4’ has not been declared
+   72 |         m_projectionMatrix = Mat4::perspective(
+      |                              ^~~~
+/home/yannoo/Dev/YGL/src/core/camera.cpp:76:9: error: ‘m_projectionMatrix’ was not declared in this scope; did you mean ‘m_projectionDirty’?
+   76 |         m_projectionMatrix = Mat4::orthographic(
+      |         ^~~~~~~~~~~~~~~~~~
+      |         m_projectionDirty
+/home/yannoo/Dev/YGL/src/core/camera.cpp:76:30: error: ‘Mat4’ has not been declared
+   76 |         m_projectionMatrix = Mat4::orthographic(
+      |                              ^~~~
+/home/yannoo/Dev/YGL/src/core/camera.cpp: In member function ‘void ygl::Camera::updateViewProjectionMatrix() const’:
+/home/yannoo/Dev/YGL/src/core/camera.cpp:86:5: error: ‘m_viewProjectionMatrix’ was not declared in this scope; did you mean ‘m_viewProjectionDirty’?
+   86 |     m_viewProjectionMatrix = m_projectionMatrix * m_viewMatrix;
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+      |     m_viewProjectionDirty
+/home/yannoo/Dev/YGL/src/core/camera.cpp:86:30: error: ‘m_projectionMatrix’ was not declared in this scope; did you mean ‘m_projectionDirty’?
+   86 |     m_viewProjectionMatrix = m_projectionMatrix * m_viewMatrix;
+      |                              ^~~~~~~~~~~~~~~~~~
+      |                              m_projectionDirty
+/home/yannoo/Dev/YGL/src/core/camera.cpp:86:51: error: ‘m_viewMatrix’ was not declared in this scope
+   86 |     m_viewProjectionMatrix = m_projectionMatrix * m_viewMatrix;
+      |                                                   ^~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/camera.cpp: In member function ‘void ygl::Camera::updateVectors()’:
+/home/yannoo/Dev/YGL/src/core/camera.cpp:92:17: error: ‘normalize’ was not declared in this scope
+   92 |     m_forward = normalize(m_target - pos);
+      |                 ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/camera.cpp:93:25: error: ‘cross’ was not declared in this scope
+   93 |     m_right = normalize(cross(m_forward, m_up));
+      |                         ^~~~~
+/home/yannoo/Dev/YGL/src/core/camera.cpp: In member function ‘void ygl::Camera::rotateRoll(float)’:
+/home/yannoo/Dev/YGL/src/core/camera.cpp:146:34: error: no matching function for call to ‘ygl::Quat::Quat(ygl::Vec3&, float&)’
+  146 |     Quat rollRot(m_forward, angle);
+      |                                  ^
+/home/yannoo/Dev/YGL/include/math/quat.hpp:28:14: note: candidate: ‘ygl::Quat::Quat(const ygl::mat4&)’
+   28 |     explicit Quat(const mat4& matrix);
+      |              ^~~~
+/home/yannoo/Dev/YGL/include/math/quat.hpp:28:14: note:   candidate expects 1 argument, 2 provided
+/home/yannoo/Dev/YGL/include/math/quat.hpp:19:5: note: candidate: ‘ygl::Quat::Quat(float, float, float, float)’
+   19 |     Quat(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
+      |     ^~~~
+/home/yannoo/Dev/YGL/include/math/quat.hpp:19:5: note:   candidate expects 4 arguments, 2 provided
+/home/yannoo/Dev/YGL/include/math/quat.hpp:18:5: note: candidate: ‘ygl::Quat::Quat()’
+   18 |     Quat() : x(0), y(0), z(0), w(1) {}
+      |     ^~~~
+/home/yannoo/Dev/YGL/include/math/quat.hpp:18:5: note:   candidate expects 0 arguments, 2 provided
+/home/yannoo/Dev/YGL/include/math/quat.hpp:11:7: note: candidate: ‘constexpr ygl::Quat::Quat(const ygl::Quat&)’
+   11 | class Quat {
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/quat.hpp:11:7: note:   candidate expects 1 argument, 2 provided
+/home/yannoo/Dev/YGL/include/math/quat.hpp:11:7: note: candidate: ‘constexpr ygl::Quat::Quat(ygl::Quat&&)’
+/home/yannoo/Dev/YGL/include/math/quat.hpp:11:7: note:   candidate expects 1 argument, 2 provided
+/home/yannoo/Dev/YGL/src/core/camera.cpp:147:20: error: no match for ‘operator*’ (operand types are ‘ygl::Quat’ and ‘ygl::Vec3’)
+  147 |     m_up = rollRot * m_up;
+      |            ~~~~~~~ ^ ~~~~
+      |            |         |
+      |            ygl::Quat ygl::Vec3
+/home/yannoo/Dev/YGL/include/math/quat.hpp:33:10: note: candidate: ‘ygl::Quat ygl::Quat::operator*(float) const’
+   33 |     Quat operator*(float scalar) const { return Quat(x * scalar, y * scalar, z * scalar, w * scalar); }
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/quat.hpp:33:26: note:   no known conversion for argument 1 from ‘ygl::Vec3’ to ‘float’
+   33 |     Quat operator*(float scalar) const { return Quat(x * scalar, y * scalar, z * scalar, w * scalar); }
+      |                    ~~~~~~^~~~~~
+/home/yannoo/Dev/YGL/src/core/camera.cpp:148:23: error: no match for ‘operator*’ (operand types are ‘ygl::Quat’ and ‘ygl::Vec3’)
+  148 |     m_right = rollRot * m_right;
+      |               ~~~~~~~ ^ ~~~~~~~
+      |               |         |
+      |               ygl::Quat ygl::Vec3
+/home/yannoo/Dev/YGL/include/math/quat.hpp:33:10: note: candidate: ‘ygl::Quat ygl::Quat::operator*(float) const’
+   33 |     Quat operator*(float scalar) const { return Quat(x * scalar, y * scalar, z * scalar, w * scalar); }
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/quat.hpp:33:26: note:   no known conversion for argument 1 from ‘ygl::Vec3’ to ‘float’
+   33 |     Quat operator*(float scalar) const { return Quat(x * scalar, y * scalar, z * scalar, w * scalar); }
+      |                    ~~~~~~^~~~~~
+/home/yannoo/Dev/YGL/src/core/camera.cpp: In member function ‘virtual void ygl::Camera::update(float)’:
+/home/yannoo/Dev/YGL/src/core/camera.cpp:172:13: error: ‘class ygl::Vec3’ has no member named ‘lengthSquared’
+  172 |     if (dir.lengthSquared() > 0.0001f) {
+      |             ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/camera.cpp:173:21: error: ‘normalize’ was not declared in this scope
+  173 |         m_forward = normalize(dir);
+      |                     ^~~~~~~~~
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:76 : CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o] Erreur 1
+gmake[2]: *** Attente des tâches non terminées....
+/home/yannoo/Dev/YGL/src/core/camera.cpp:174:29: error: ‘cross’ was not declared in this scope
+  174 |         m_right = normalize(cross(m_forward, m_up));
+      |                             ^~~~~
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:33:11: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   33 |     const Mat4& getLocalMatrix() const;
+      |           ^~~~
+      |           mat4
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:34:11: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   34 |     const Mat4& getWorldMatrix() const;
+      |           ^~~~
+      |           mat4
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:35:11: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   35 |     const Mat4& getNormalMatrix() const;
+      |           ^~~~
+      |           mat4
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:70:13: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   70 |     mutable Mat4 m_localMatrix;
+      |             ^~~~
+      |             mat4
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:71:13: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   71 |     mutable Mat4 m_worldMatrix;
+      |             ^~~~
+      |             mat4
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:72:13: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   72 |     mutable Mat4 m_normalMatrix;
+      |             ^~~~
+      |             mat4
+/home/yannoo/Dev/YGL/src/core/object3d.cpp: In constructor ‘ygl::Object3D::Object3D(const std::string&)’:
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:7:38: error: ‘zero’ is not a member of ‘ygl::Vec3’
+    7 |     : m_name(name), m_position(Vec3::zero()),
+      |                                      ^~~~
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:8:24: error: ‘identity’ is not a member of ‘ygl::Quat’
+    8 |       m_rotation(Quat::identity()), m_scale(Vec3::one()),
+      |                        ^~~~~~~~
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:8:51: error: ‘one’ is not a member of ‘ygl::Vec3’
+    8 |       m_rotation(Quat::identity()), m_scale(Vec3::one()),
+      |                                                   ^~~
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:9:29: error: ‘zero’ is not a member of ‘ygl::Vec3’
+    9 |       m_worldPosition(Vec3::zero()), m_worldRotation(Quat::identity()),
+      |                             ^~~~
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:9:60: error: ‘identity’ is not a member of ‘ygl::Quat’
+    9 |       m_worldPosition(Vec3::zero()), m_worldRotation(Quat::identity()),
+      |                                                            ^~~~~~~~
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:10:26: error: ‘one’ is not a member of ‘ygl::Vec3’
+   10 |       m_worldScale(Vec3::one()) {}
+      |                          ^~~
+/home/yannoo/Dev/YGL/src/core/object3d.cpp: In member function ‘void ygl::Object3D::translate(const ygl::Vec3&)’:
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:28:16: error: no match for ‘operator+=’ (operand types are ‘ygl::Vec3’ and ‘const ygl::Vec3’)
+   28 |     m_position += translation; m_localMatrixDirty = true; m_worldMatrixDirty = true;
+      |     ~~~~~~~~~~~^~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/object3d.cpp: In member function ‘void ygl::Object3D::rotate(const ygl::Quat&)’:
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:31:27: error: no match for ‘operator*’ (operand types are ‘const ygl::Quat’ and ‘ygl::Quat’)
+   31 |     m_rotation = rotation * m_rotation; m_localMatrixDirty = true; m_worldMatrixDirty = true;
+      |                  ~~~~~~~~ ^ ~~~~~~~~~~
+      |                  |          |
+      |                  |          ygl::Quat
+      |                  const ygl::Quat
+/home/yannoo/Dev/YGL/include/math/quat.hpp:33:10: note: candidate: ‘ygl::Quat ygl::Quat::operator*(float) const’
+   33 |     Quat operator*(float scalar) const { return Quat(x * scalar, y * scalar, z * scalar, w * scalar); }
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/quat.hpp:33:26: note:   no known conversion for argument 1 from ‘ygl::Quat’ to ‘float’
+   33 |     Quat operator*(float scalar) const { return Quat(x * scalar, y * scalar, z * scalar, w * scalar); }
+      |                    ~~~~~~^~~~~~
+/home/yannoo/Dev/YGL/src/core/object3d.cpp: In member function ‘void ygl::Object3D::scale(const ygl::Vec3&)’:
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:34:23: error: no match for ‘operator*’ (operand types are ‘ygl::Vec3’ and ‘const ygl::Vec3’)
+   34 |     m_scale = m_scale * scale; m_localMatrixDirty = true; m_worldMatrixDirty = true;
+      |               ~~~~~~~ ^ ~~~~~
+      |               |         |
+      |               ygl::Vec3 const ygl::Vec3
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:10: note: candidate: ‘ygl::Vec3 ygl::Vec3::operator*(float) const’
+   23 |     Vec3 operator*(float scalar) const { return Vec3(x * scalar, y * scalar, z * scalar); }
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:26: note:   no known conversion for argument 1 from ‘const ygl::Vec3’ to ‘float’
+   23 |     Vec3 operator*(float scalar) const { return Vec3(x * scalar, y * scalar, z * scalar); }
+      |                    ~~~~~~^~~~~~
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:33:11: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   33 |     const Mat4& getLocalMatrix() const;
+      |           ^~~~
+      |           mat4
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:34:11: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   34 |     const Mat4& getWorldMatrix() const;
+      |           ^~~~
+      |           mat4
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:35:11: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   35 |     const Mat4& getNormalMatrix() const;
+      |           ^~~~
+      |           mat4
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:70:13: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   70 |     mutable Mat4 m_localMatrix;
+      |             ^~~~
+      |             mat4
+/home/yannoo/Dev/YGL/src/core/object3d.cpp: In member function ‘void ygl::Object3D::updateMatrix(bool) const’:
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:40:5: error: ‘Mat4’ was not declared in this scope; did you mean ‘mat4’?
+   40 |     Mat4 translation = Mat4::translation(m_position);
+      |     ^~~~
+      |     mat4
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:41:9: error: expected ‘;’ before ‘rotation’
+   41 |     Mat4 rotation = m_rotation.toMatrix();
+      |         ^~~~~~~~~
+      |         ;
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:42:9: error: expected ‘;’ before ‘scale’
+   42 |     Mat4 scale = Mat4::scale(m_scale);
+      |         ^~~~~~
+      |         ;
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:71:13: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   71 |     mutable Mat4 m_worldMatrix;
+      |             ^~~~
+      |             mat4
+/home/yannoo/Dev/YGL/include/core/object3d.hpp:72:13: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   72 |     mutable Mat4 m_normalMatrix;
+      |             ^~~~
+      |             mat4
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:43:5: error: ‘m_localMatrix’ was not declared in this scope; did you mean ‘m_localMatrixDirty’?
+   43 |     m_localMatrix = translation * rotation * scale;
+      |     ^~~~~~~~~~~~~
+      |     m_localMatrixDirty
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:43:21: error: ‘translation’ was not declared in this scope; did you mean ‘translate’?
+   43 |     m_localMatrix = translation * rotation * scale;
+      |                     ^~~~~~~~~~~
+      |                     translate
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:43:35: error: ‘rotation’ was not declared in this scope; did you mean ‘m_rotation’?
+   43 |     m_localMatrix = translation * rotation * scale;
+      |                                   ^~~~~~~~
+      |                                   m_rotation
+/home/yannoo/Dev/YGL/src/core/object3d.cpp: In member function ‘void ygl::Object3D::updateWorldMatrix(bool) const’:
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:53:9: error: ‘m_worldMatrix’ was not declared in this scope; did you mean ‘m_worldMatrixDirty’?
+   53 |         m_worldMatrix = parent->getWorldMatrix() * m_localMatrix;
+      |         ^~~~~~~~~~~~~
+      |         m_worldMatrixDirty
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:53:33: error: ‘using std::__shared_ptr_access<ygl::Object3D, __gnu_cxx::_S_atomic, false, false>::element_type = class ygl::Object3D’ {aka ‘class ygl::Object3D’} has no member named ‘getWorldMatrix’; did you mean ‘updateWorldMatrix’?
+   53 |         m_worldMatrix = parent->getWorldMatrix() * m_localMatrix;
+      |                                 ^~~~~~~~~~~~~~
+      |                                 updateWorldMatrix
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:53:52: error: ‘m_localMatrix’ was not declared in this scope; did you mean ‘m_localMatrixDirty’?
+   53 |         m_worldMatrix = parent->getWorldMatrix() * m_localMatrix;
+      |                                                    ^~~~~~~~~~~~~
+      |                                                    m_localMatrixDirty
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:55:9: error: ‘m_worldMatrix’ was not declared in this scope; did you mean ‘m_worldMatrixDirty’?
+   55 |         m_worldMatrix = m_localMatrix;
+      |         ^~~~~~~~~~~~~
+      |         m_worldMatrixDirty
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:55:25: error: ‘m_localMatrix’ was not declared in this scope; did you mean ‘m_localMatrixDirty’?
+   55 |         m_worldMatrix = m_localMatrix;
+      |                         ^~~~~~~~~~~~~
+      |                         m_localMatrixDirty
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:90 : CMakeFiles/ygl.dir/src/core/camera.cpp.o] Erreur 1
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:57:28: error: ‘m_worldMatrix’ was not declared in this scope; did you mean ‘m_worldMatrixDirty’?
+   57 |     m_worldPosition = Vec3(m_worldMatrix(0,3), m_worldMatrix(1,3), m_worldMatrix(2,3));
+      |                            ^~~~~~~~~~~~~
+      |                            m_worldMatrixDirty
+/home/yannoo/Dev/YGL/src/core/object3d.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:68:7: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   68 | const Mat4& Object3D::getLocalMatrix() const { updateMatrix(); return m_localMatrix; }
+      |       ^~~~
+      |       mat4
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:69:7: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   69 | const Mat4& Object3D::getWorldMatrix() const { updateWorldMatrix(); return m_worldMatrix; }
+      |       ^~~~
+      |       mat4
+/home/yannoo/Dev/YGL/src/core/object3d.cpp:71:7: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   71 | const Mat4& Object3D::getNormalMatrix() const {
+      |       ^~~~
+      |       mat4
+In file included from /home/yannoo/Dev/YGL/include/core/mesh.hpp:5:
+/home/yannoo/Dev/YGL/include/math/vec2.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec2.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float u, v; };
+      |                ^
+/home/yannoo/Dev/YGL/include/core/mesh.hpp:77:25: error: field ‘m_boundingBox’ has incomplete type ‘ygl::BoundingBox’
+   77 |     mutable BoundingBox m_boundingBox;
+      |                         ^~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/include/core/mesh.hpp:12:7: note: forward declaration of ‘class ygl::BoundingBox’
+   12 | class BoundingBox;
+      |       ^~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/mesh.cpp:55:27: error: redefinition of ‘std::shared_ptr<ygl::Material> ygl::Mesh::getMaterial() const’
+   55 | std::shared_ptr<Material> Mesh::getMaterial() const { return m_material; }
+      |                           ^~~~
+/home/yannoo/Dev/YGL/include/core/mesh.hpp:53:31: note: ‘std::shared_ptr<ygl::Material> ygl::Mesh::getMaterial() const’ previously defined here
+   53 |     std::shared_ptr<Material> getMaterial() const { return m_material; }
+      |                               ^~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/mesh.cpp:58:21: error: redefinition of ‘ygl::Mesh::PrimitiveType ygl::Mesh::getPrimitiveType() const’
+   58 | Mesh::PrimitiveType Mesh::getPrimitiveType() const { return m_primitiveType; }
+      |                     ^~~~
+/home/yannoo/Dev/YGL/include/core/mesh.hpp:56:19: note: ‘ygl::Mesh::PrimitiveType ygl::Mesh::getPrimitiveType() const’ previously defined here
+   56 |     PrimitiveType getPrimitiveType() const { return m_primitiveType; }
+      |                   ^~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/mesh.cpp: In member function ‘const ygl::BoundingBox& ygl::Mesh::getBoundingBox() const’:
+/home/yannoo/Dev/YGL/src/core/mesh.cpp:62:46: error: passing ‘const ygl::Mesh’ as ‘this’ argument discards qualifiers [-fpermissive]
+   62 |     if (m_boundingBoxDirty) updateBoundingBox();
+      |                             ~~~~~~~~~~~~~~~~~^~
+/home/yannoo/Dev/YGL/include/core/mesh.hpp:59:10: note:   in call to ‘void ygl::Mesh::updateBoundingBox()’
+   59 |     void updateBoundingBox();
+      |          ^~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/mesh.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/core/mesh.cpp:66:6: error: no declaration matches ‘void ygl::Mesh::updateBoundingBox() const’
+   66 | void Mesh::updateBoundingBox() const {
+      |      ^~~~
+/home/yannoo/Dev/YGL/include/core/mesh.hpp:59:10: note: candidate is: ‘void ygl::Mesh::updateBoundingBox()’
+   59 |     void updateBoundingBox();
+      |          ^~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/include/core/mesh.hpp:14:7: note: ‘class ygl::Mesh’ defined here
+   14 | class Mesh : public Object3D {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/core/mesh.cpp: In member function ‘virtual void ygl::Mesh::render()’:
+/home/yannoo/Dev/YGL/src/core/mesh.cpp:163:33: error: ‘using std::__shared_ptr_access<ygl::Material, __gnu_cxx::_S_atomic, false, false>::element_type = class ygl::Material’ {aka ‘class ygl::Material’} has no member named ‘bind’
+  163 |     if (m_material) m_material->bind();
+      |                                 ^~~~
+/home/yannoo/Dev/YGL/src/core/mesh.cpp:180:33: error: ‘using std::__shared_ptr_access<ygl::Material, __gnu_cxx::_S_atomic, false, false>::element_type = class ygl::Material’ {aka ‘class ygl::Material’} has no member named ‘unbind’
+  180 |     if (m_material) m_material->unbind();
+      |                                 ^~~~~~
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:118 : CMakeFiles/ygl.dir/src/core/object3d.cpp.o] Erreur 1
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:104 : CMakeFiles/ygl.dir/src/core/mesh.cpp.o] Erreur 1
+gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
+gmake: *** [Makefile:91 : all] Erreur 2

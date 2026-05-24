@@ -1,71 +1,37 @@
 #pragma once
 
-#include "vec3.hpp"
-#include "mat4.hpp"
-#include <iostream>
+#include <cmath>
+#include <algorithm>
 
 namespace ygl {
+
+class Vec3;
+class mat4;
 
 class Quat {
 public:
     union {
         struct { float x, y, z, w; };
-        float data[4];
     };
 
-    Quat();
-    Quat(float x, float y, float z, float w);
-    Quat(const Vec3& axis, float angle);
-    explicit Quat(const Vec4& v);
-    explicit Quat(const Mat4& m);
+    // Constructeurs
+    Quat() : x(0), y(0), z(0), w(1) {}
+    Quat(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
 
-    float& operator[](int index) { return data[index]; }
-    const float& operator[](int index) const { return data[index]; }
+    // Normalisation
+    Quat Normalize() const {
+        float len = std::sqrt(x * x + y * y + z * z + w * w);
+        return len > 0 ? Quat(x / len, y / len, z / len, w / len) : Quat();
+    }
 
-    Quat& operator+=(const Quat& other);
-    Quat& operator-=(const Quat& other);
-    Quat& operator*=(const Quat& other);
-    Quat& operator*=(float scalar);
-    Quat& operator/=(float scalar);
+    // Constructeur depuis une matrice 4x4
+    explicit Quat(const mat4& matrix);
 
-    Quat operator+(const Quat& other) const;
-    Quat operator-(const Quat& other) const;
-    Quat operator-() const;
-    Quat operator*(const Quat& other) const;
-    Quat operator*(float scalar) const;
-    Quat operator/(float scalar) const;
-
-    Vec3 operator*(const Vec3& v) const;
-
-    bool operator==(const Quat& other) const;
-    bool operator!=(const Quat& other) const;
-
-    Quat normalized() const;
-    void normalize();
-    Quat conjugate() const;
-    Quat inverse() const;
-    float length() const;
-    float lengthSquared() const;
-    float dot(const Quat& other) const;
-    Vec3 eulerAngles() const;
-    Mat4 toMatrix() const;
-
-    static Quat identity();
-    static Quat fromEulerAngles(const Vec3& euler);
-    static Quat lookAt(const Vec3& direction, const Vec3& up);
-    static Quat slerp(const Quat& a, const Quat& b, float t);
-    static Quat lerp(const Quat& a, const Quat& b, float t);
-
-    friend std::ostream& operator<<(std::ostream& os, const Quat& q);
+    // Opérateurs
+    Quat operator+(const Quat& other) const { return Quat(x + other.x, y + other.y, z + other.z, w + other.w); }
+    Quat operator-(const Quat& other) const { return Quat(x - other.x, y - other.y, z - other.z, w - other.w); }
+    Quat operator*(float scalar) const { return Quat(x * scalar, y * scalar, z * scalar, w * scalar); }
+    Quat operator-() const { return Quat(-x, -y, -z, -w); }
 };
 
-Quat operator*(float scalar, const Quat& q);
-float dot(const Quat& a, const Quat& b);
-Quat normalize(const Quat& q);
-Quat conjugate(const Quat& q);
-Quat inverse(const Quat& q);
-Quat slerp(const Quat& a, const Quat& b, float t);
-Quat lerp(const Quat& a, const Quat& b, float t);
-
 } // namespace ygl
-

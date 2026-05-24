@@ -1,330 +1,258 @@
 #include "core/bounding_box.hpp"
 #include "math/vec3.hpp"
 #include "math/ray.hpp"
-#include "math/math_utils.hpp"
+#include "math/mat4.hpp"
+#include <vector>
 #include <algorithm>
-#include <limits>
+#include <ostream>
 
 namespace ygl {
 
-// --- Constructors ---
+// ============================================
+// Constructeurs / Destructeur
+// ============================================
 BoundingBox::BoundingBox() {
     Reset();
 }
 
-BoundingBox::BoundingBox(const vec3& min, const vec3& max)
-    : min_bound(min), max_bound(max) {
-}
+BoundingBox::BoundingBox(const Vec3& min, const Vec3& max)
+    : min(min), max(max) {}
 
 BoundingBox::BoundingBox(const BoundingBox& other)
-    : min_bound(other.min_bound), max_bound(other.max_bound) {
-}
+    : min(other.min), max(other.max) {}
 
-// --- Assignment ---
 BoundingBox& BoundingBox::operator=(const BoundingBox& other) {
-    min_bound = other.min_bound;
-    max_bound = other.max_bound;
+    if (this != &other) {
+        min = other.min;
+        max = other.max;
+    }
     return *this;
 }
 
-// --- Reset ---
+// ============================================
+// Méthodes de base
+// ============================================
 void BoundingBox::Reset() {
-    min_bound = vec3(std::numeric_limits<float>::max());
-    max_bound = vec3(std::numeric_limits<float>::lowest());
+    min = Vec3(std::numeric_limits<float>::max());
+    max = Vec3(std::numeric_limits<float>::lowest());
 }
 
-// --- Accessors ---
-const vec3& BoundingBox::GetMin() const {
-    return min_bound;
+const Vec3& BoundingBox::GetMin() const {
+    return min;
 }
 
-const vec3& BoundingBox::GetMax() const {
-    return max_bound;
+const Vec3& BoundingBox::GetMax() const {
+    return max;
 }
 
-vec3 BoundingBox::GetCenter() const {
-    return (min_bound + max_bound) * 0.5f;
+Vec3 BoundingBox::GetCenter() const {
+    return (min + max) * 0.5f;
 }
 
-vec3 BoundingBox::GetSize() const {
-    return max_bound - min_bound;
+Vec3 BoundingBox::GetSize() const {
+    return max - min;
 }
 
-vec3 BoundingBox::GetHalfSize() const {
+Vec3 BoundingBox::GetHalfSize() const {
     return GetSize() * 0.5f;
 }
 
 float BoundingBox::GetWidth() const {
-    return max_bound.x - min_bound.x;
+    return max.x - min.x;
 }
 
 float BoundingBox::GetHeight() const {
-    return max_bound.y - min_bound.y;
+    return max.y - min.y;
 }
 
 float BoundingBox::GetDepth() const {
-    return max_bound.z - min_bound.z;
+    return max.z - min.z;
 }
 
 float BoundingBox::GetVolume() const {
-    vec3 size = GetSize();
+    Vec3 size = GetSize();
     return size.x * size.y * size.z;
 }
 
 float BoundingBox::GetSurfaceArea() const {
-    vec3 size = GetSize();
+    Vec3 size = GetSize();
     return 2.0f * (size.x * size.y + size.x * size.z + size.y * size.z);
 }
 
-// --- Setters ---
-void BoundingBox::SetMin(const vec3& min_val) {
-    min_bound = min_val;
+// ============================================
+// Setters
+// ============================================
+void BoundingBox::SetMin(const Vec3& min_val) {
+    min = min_val;
 }
 
-void BoundingBox::SetMax(const vec3& max_val) {
-    max_bound = max_val;
+void BoundingBox::SetMax(const Vec3& max_val) {
+    max = max_val;
 }
 
-void BoundingBox::Set(const vec3& min_val, const vec3& max_val) {
-    min_bound = min_val;
-    max_bound = max_val;
+void BoundingBox::Set(const Vec3& min_val, const Vec3& max_val) {
+    min = min_val;
+    max = max_val;
 }
 
-void BoundingBox::SetCenter(const vec3& center) {
-    vec3 size = GetSize();
-    min_bound = center - size * 0.5f;
-    max_bound = center + size * 0.5f;
+void BoundingBox::SetCenter(const Vec3& center) {
+    Vec3 size = GetSize();
+    min = center - size * 0.5f;
+    max = center + size * 0.5f;
 }
 
-void BoundingBox::SetSize(const vec3& size) {
-    vec3 center = GetCenter();
-    min_bound = center - size * 0.5f;
-    max_bound = center + size * 0.5f;
+void BoundingBox::SetSize(const Vec3& size) {
+    Vec3 center = GetCenter();
+    min = center - size * 0.5f;
+    max = center + size * 0.5f;
 }
 
-// --- Expand ---
-void BoundingBox::Expand(const vec3& point) {
-    min_bound = vec3(
-        std::min(min_bound.x, point.x),
-        std::min(min_bound.y, point.y),
-        std::min(min_bound.z, point.z)
-    );
-    max_bound = vec3(
-        std::max(max_bound.x, point.x),
-        std::max(max_bound.y, point.y),
-        std::max(max_bound.z, point.z)
-    );
+// ============================================
+// Expansion
+// ============================================
+void BoundingBox::Expand(const Vec3& point) {
+    min = Vec3::Min(min, point);
+    max = Vec3::Max(max, point);
 }
 
 void BoundingBox::Expand(const BoundingBox& other) {
-    min_bound = vec3(
-        std::min(min_bound.x, other.min_bound.x),
-        std::min(min_bound.y, other.min_bound.y),
-        std::min(min_bound.z, other.min_bound.z)
-    );
-    max_bound = vec3(
-        std::max(max_bound.x, other.max_bound.x),
-        std::max(max_bound.y, other.max_bound.y),
-        std::max(max_bound.z, other.max_bound.z)
-    );
+    Expand(other.min);
+    Expand(other.max);
 }
 
-// --- Contains ---
-bool BoundingBox::Contains(const vec3& point) const {
-    return point.x >= min_bound.x && point.x <= max_bound.x &&
-           point.y >= min_bound.y && point.y <= max_bound.y &&
-           point.z >= min_bound.z && point.z <= max_bound.z;
+// ============================================
+// Tests de collision/distance
+// ============================================
+bool BoundingBox::Contains(const Vec3& point) const {
+    return point.x >= min.x && point.x <= max.x &&
+           point.y >= min.y && point.y <= max.y &&
+           point.z >= min.z && point.z <= max.z;
 }
 
 bool BoundingBox::Contains(const BoundingBox& other) const {
-    return min_bound.x <= other.min_bound.x && max_bound.x >= other.max_bound.x &&
-           min_bound.y <= other.min_bound.y && max_bound.y >= other.max_bound.y &&
-           min_bound.z <= other.min_bound.z && max_bound.z >= other.max_bound.z;
+    return Contains(other.min) && Contains(other.max);
 }
 
-// --- Intersects ---
 bool BoundingBox::Intersects(const BoundingBox& other) const {
-    return !(max_bound.x < other.min_bound.x || min_bound.x > other.max_bound.x ||
-             max_bound.y < other.min_bound.y || min_bound.y > other.max_bound.y ||
-             max_bound.z < other.min_bound.z || min_bound.z > other.max_bound.z);
+    return !(other.max.x < min.x || other.min.x > max.x ||
+             other.max.y < min.y || other.min.y > max.y ||
+             other.max.z < min.z || other.min.z > max.z);
 }
 
-// --- Ray Intersection (Slab Method) ---
 bool BoundingBox::Intersect(const Ray& ray, float t_min, float t_max) const {
-    float t_enter = t_min;
-    float t_exit = t_max;
+    // Implémentation simplifiée (à adapter selon votre classe Ray)
+    float t1 = (min.x - ray.origin.x) / ray.direction.x;
+    float t2 = (max.x - ray.origin.x) / ray.direction.x;
+    float t3 = (min.y - ray.origin.y) / ray.direction.y;
+    float t4 = (max.y - ray.origin.y) / ray.direction.y;
+    float t5 = (min.z - ray.origin.z) / ray.direction.z;
+    float t6 = (max.z - ray.origin.z) / ray.direction.z;
 
-    vec3 inv_dir = vec3(
-        (ray.direction.x != 0.0f) ? 1.0f / ray.direction.x : std::numeric_limits<float>::infinity(),
-        (ray.direction.y != 0.0f) ? 1.0f / ray.direction.y : std::numeric_limits<float>::infinity(),
-        (ray.direction.z != 0.0f) ? 1.0f / ray.direction.z : std::numeric_limits<float>::infinity()
-    );
+    float tmin = std::max(std::max(std::min(t1, t2), std::min(t3, t4)), std::min(t5, t6));
+    float tmax = std::min(std::min(std::max(t1, t2), std::max(t3, t4)), std::max(t5, t6));
 
-    vec3 t_min_vec = (min_bound - ray.origin) * inv_dir;
-    vec3 t_max_vec = (max_bound - ray.origin) * inv_dir;
-
-    vec3 t_min_sorted = vec3(
-        std::min(t_min_vec.x, t_max_vec.x),
-        std::min(t_min_vec.y, t_max_vec.y),
-        std::min(t_min_vec.z, t_max_vec.z)
-    );
-
-    vec3 t_max_sorted = vec3(
-        std::max(t_min_vec.x, t_max_vec.x),
-        std::max(t_min_vec.y, t_max_vec.y),
-        std::max(t_min_vec.z, t_max_vec.z)
-    );
-
-    t_enter = std::max(t_min_sorted.x, std::max(t_min_sorted.y, t_min_sorted.z));
-    t_exit = std::min(t_max_sorted.x, std::min(t_max_sorted.y, t_max_sorted.z));
-
-    return t_enter <= t_exit && t_exit >= t_min;
+    return tmax >= std::max(tmin, t_min) && tmin <= std::min(tmax, t_max);
 }
 
+// Si HitInfo est défini, décommentez et implémentez :
+/*
 bool BoundingBox::Intersect(const Ray& ray, HitInfo& hit_info, float t_min, float t_max) const {
-    if (!Intersect(ray, t_min, t_max)) {
-        return false;
+    if (Intersect(ray, t_min, t_max)) {
+        // Remplir hit_info ici
+        return true;
     }
-
-    float t_enter = t_min;
-    float t_exit = t_max;
-
-    vec3 inv_dir = vec3(
-        (ray.direction.x != 0.0f) ? 1.0f / ray.direction.x : std::numeric_limits<float>::infinity(),
-        (ray.direction.y != 0.0f) ? 1.0f / ray.direction.y : std::numeric_limits<float>::infinity(),
-        (ray.direction.z != 0.0f) ? 1.0f / ray.direction.z : std::numeric_limits<float>::infinity()
-    );
-
-    vec3 t_min_vec = (min_bound - ray.origin) * inv_dir;
-    vec3 t_max_vec = (max_bound - ray.origin) * inv_dir;
-
-    t_enter = std::max(
-        std::max(std::min(t_min_vec.x, t_max_vec.x), std::min(t_min_vec.y, t_max_vec.y)),
-        std::min(t_min_vec.z, t_max_vec.z)
-    );
-
-    t_exit = std::min(
-        std::min(std::max(t_min_vec.x, t_max_vec.x), std::max(t_min_vec.y, t_max_vec.y)),
-        std::max(t_min_vec.z, t_max_vec.z)
-    );
-
-    if (t_enter > t_exit) {
-        std::swap(t_enter, t_exit);
-    }
-
-    if (t_enter < t_min) {
-        t_enter = t_min;
-    }
-
-    if (t_exit > t_max) {
-        t_exit = t_max;
-    }
-
-    if (t_enter >= t_exit) {
-        return false;
-    }
-
-    hit_info.t = t_enter;
-    hit_info.position = ray(t_enter);
-    hit_info.normal = vec3(0.0f, 0.0f, 0.0f);
-    hit_info.object = nullptr;
-    hit_info.material = nullptr;
-
-    vec3 hit_point = ray(t_enter);
-    vec3 rel_point = hit_point - min_bound;
-
-    if (AlmostEqual(rel_point.x, 0.0f, EPSILON)) hit_info.normal = vec3(-1.0f, 0.0f, 0.0f);
-    else if (AlmostEqual(rel_point.x, GetWidth(), EPSILON)) hit_info.normal = vec3(1.0f, 0.0f, 0.0f);
-    else if (AlmostEqual(rel_point.y, 0.0f, EPSILON)) hit_info.normal = vec3(0.0f, -1.0f, 0.0f);
-    else if (AlmostEqual(rel_point.y, GetHeight(), EPSILON)) hit_info.normal = vec3(0.0f, 1.0f, 0.0f);
-    else if (AlmostEqual(rel_point.z, 0.0f, EPSILON)) hit_info.normal = vec3(0.0f, 0.0f, -1.0f);
-    else if (AlmostEqual(rel_point.z, GetDepth(), EPSILON)) hit_info.normal = vec3(0.0f, 0.0f, 1.0f);
-
-    return true;
+    return false;
 }
+*/
 
-// --- Distance ---
-float BoundingBox::DistanceTo(const vec3& point) const {
-    float dx = std::max(std::max(min_bound.x - point.x, 0.0f), point.x - max_bound.x);
-    float dy = std::max(std::max(min_bound.y - point.y, 0.0f), point.y - max_bound.y);
-    float dz = std::max(std::max(min_bound.z - point.z, 0.0f), point.z - max_bound.z);
-    return std::sqrt(dx * dx + dy * dy + dz * dz);
+float BoundingBox::DistanceTo(const Vec3& point) const {
+    Vec3 closest = Vec3::Clamp(point, min, max);
+    return (point - closest).Length();
 }
 
 float BoundingBox::DistanceTo(const BoundingBox& other) const {
-    float dx = std::max(std::max(min_bound.x - other.max_bound.x, 0.0f), other.min_bound.x - max_bound.x);
-    float dy = std::max(std::max(min_bound.y - other.max_bound.y, 0.0f), other.min_bound.y - max_bound.y);
-    float dz = std::max(std::max(min_bound.z - other.max_bound.z, 0.0f), other.min_bound.z - max_bound.z);
-    return std::sqrt(dx * dx + dy * dy + dz * dz);
+    if (Intersects(other)) return 0.0f;
+    return std::min(DistanceTo(other.min), DistanceTo(other.max));
 }
 
-// --- Corner Points ---
-void BoundingBox::GetCorners(vec3 corners[8]) const {
-    corners[0] = vec3(min_bound.x, min_bound.y, min_bound.z);
-    corners[1] = vec3(max_bound.x, min_bound.y, min_bound.z);
-    corners[2] = vec3(min_bound.x, max_bound.y, min_bound.z);
-    corners[3] = vec3(max_bound.x, max_bound.y, min_bound.z);
-    corners[4] = vec3(min_bound.x, min_bound.y, max_bound.z);
-    corners[5] = vec3(max_bound.x, min_bound.y, max_bound.z);
-    corners[6] = vec3(min_bound.x, max_bound.y, max_bound.z);
-    corners[7] = vec3(max_bound.x, max_bound.y, max_bound.z);
+// ============================================
+// Corners
+// ============================================
+void BoundingBox::GetCorners(Vec3 corners[8]) const {
+    corners[0] = Vec3(min.x, min.y, min.z);
+    corners[1] = Vec3(max.x, min.y, min.z);
+    corners[2] = Vec3(max.x, max.y, min.z);
+    corners[3] = Vec3(min.x, max.y, min.z);
+    corners[4] = Vec3(min.x, min.y, max.z);
+    corners[5] = Vec3(max.x, min.y, max.z);
+    corners[6] = Vec3(max.x, max.y, max.z);
+    corners[7] = Vec3(min.x, max.y, max.z);
 }
 
-std::vector<vec3> BoundingBox::GetCorners() const {
-    std::vector<vec3> corners(8);
-    GetCorners(corners.data());
-    return corners;
+std::vector<Vec3> BoundingBox::GetCorners() const {
+    Vec3 temp_corners[8];
+    GetCorners(temp_corners);
+    return std::vector<Vec3>(temp_corners, temp_corners + 8);
 }
 
-// --- Transformation ---
+// ============================================
+// Transformations
+// ============================================
 BoundingBox BoundingBox::Transform(const mat4& matrix) const {
-    vec3 corners[8];
+    Vec3 corners[8];
     GetCorners(corners);
-
-    BoundingBox result;
-    for (int i = 0; i < 8; ++i) {
-        vec4 transformed = matrix * vec4(corners[i], 1.0f);
-        result.Expand(vec3(transformed));
+    Vec3 new_min = corners[0].Transform(matrix);
+    Vec3 new_max = new_min;
+    for (int i = 1; i < 8; ++i) {
+        Vec3 corner = corners[i].Transform(matrix);
+        new_min = Vec3::Min(new_min, corner);
+        new_max = Vec3::Max(new_max, corner);
     }
-    return result;
+    return BoundingBox(new_min, new_max);
 }
 
-// --- Comparison ---
+// ============================================
+// Méthodes statiques
+// ============================================
+BoundingBox BoundingBox::FromPoints(const std::vector<Vec3>& points) {
+    BoundingBox box;
+    for (const Vec3& point : points) {
+        box.Expand(point);
+    }
+    return box;
+}
+
+BoundingBox BoundingBox::FromCenterAndSize(const Vec3& center, const Vec3& size) {
+    return BoundingBox(center - size * 0.5f, center + size * 0.5f);
+}
+
+BoundingBox BoundingBox::FromCenterAndHalfSize(const Vec3& center, const Vec3& half_size) {
+    return BoundingBox(center - half_size, center + half_size);
+}
+
+BoundingBox BoundingBox::Merge(const BoundingBox& a, const BoundingBox& b) {
+    return BoundingBox(
+        Vec3::Min(a.min, b.min),
+        Vec3::Max(a.max, b.max)
+    );
+}
+
+// ============================================
+// Opérateurs
+// ============================================
 bool BoundingBox::operator==(const BoundingBox& other) const {
-    return min_bound == other.min_bound && max_bound == other.max_bound;
+    return min == other.min && max == other.max;
 }
 
 bool BoundingBox::operator!=(const BoundingBox& other) const {
     return !(*this == other);
 }
 
-// --- Static Methods ---
-BoundingBox BoundingBox::FromPoints(const std::vector<vec3>& points) {
-    BoundingBox box;
-    for (const vec3& point : points) {
-        box.Expand(point);
-    }
-    return box;
-}
-
-BoundingBox BoundingBox::FromCenterAndSize(const vec3& center, const vec3& size) {
-    return BoundingBox(center - size * 0.5f, center + size * 0.5f);
-}
-
-BoundingBox BoundingBox::FromCenterAndHalfSize(const vec3& center, const vec3& half_size) {
-    return BoundingBox(center - half_size, center + half_size);
-}
-
-BoundingBox BoundingBox::Merge(const BoundingBox& a, const BoundingBox& b) {
-    BoundingBox result;
-    result.Expand(a);
-    result.Expand(b);
-    return result;
-}
-
-// --- Output ---
+// ============================================
+// Affichage
+// ============================================
 std::ostream& operator<<(std::ostream& os, const BoundingBox& box) {
-    os << "BoundingBox(min=" << box.min_bound << ", max=" << box.max_bound << ")";
+    os << "BoundingBox(min=" << box.min << ", max=" << box.max << ")";
     return os;
 }
 

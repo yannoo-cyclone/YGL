@@ -1,4 +1,4 @@
-#include "render/spherical_gbuffer.hpp"
+#include "render/spherical_renderer.hpp"
 #include "core/camera.hpp"
 #include <GL/glew.h>
 #include <iostream>

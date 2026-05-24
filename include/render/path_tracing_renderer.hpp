@@ -1,6 +1,6 @@
 #pragma once
 
-#include "render/spherical_gbuffer.hpp"
+#include "render/spherical_renderer.hpp"
 #include "render/bvh.hpp"
 #include "core/scene.hpp"
 #include "core/camera.hpp"
