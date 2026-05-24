@@ -6,7 +6,7 @@
 namespace ygl {
 
 Texture::Texture(Type type, const std::string& name)
-    : m_type(type), m_name(name), m_id(0), m_width(0), m_height(0), m_format(Format::RGBA8) {
+    : m_id(0), m_width(0), m_height(0), m_format(Format::RGBA8), m_type(type), m_name(name) {
     glGenTextures(1, &m_id);
 }
 
@@ -26,7 +26,7 @@ bool Texture::loadFromFile(const std::string& filename) {
 
     GLenum gl_format;
     if (c == 1) { m_format = Format::R8; gl_format = GL_RED; }
-    else if (c == 2) { m_format = Format::RG8; gl_format = GL_RG; }
+    else if (c == 2) { m_format = Format::RGBA8; gl_format = GL_RG; } // RG8 n'existe pas, on utilise RGBA8
     else if (c == 3) { m_format = Format::RGB8; gl_format = GL_RGB; }
     else { m_format = Format::RGBA8; gl_format = GL_RGBA; }
 

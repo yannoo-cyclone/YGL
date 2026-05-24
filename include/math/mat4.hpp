@@ -1,37 +1,27 @@
 #pragma once
-
+#include "math/vec3.hpp"
+#include "math/vec4.hpp"
+#include <cmath>
 #include <cstring>
 #include <algorithm>
 
 namespace ygl {
 
-class Vec3;
-class Vec4;
-class Quat;
-
 class mat4 {
 private:
-    float data[16]; // Stockage en colonne-major (standard OpenGL)
+    float data[16];
 
 public:
-    // Constructeurs
     mat4() {
-        // Matrice identité
         for (int i = 0; i < 16; ++i) data[i] = (i % 5 == 0) ? 1.0f : 0.0f;
     }
     explicit mat4(const float* values) {
         std::memcpy(data, values, 16 * sizeof(float));
     }
 
-    // Accès aux éléments (colonne-major)
-    float operator()(int row, int col) const {
-        return data[col * 4 + row];
-    }
-    float& operator()(int row, int col) {
-        return data[col * 4 + row];
-    }
+    float operator()(int row, int col) const { return data[col * 4 + row]; }
+    float& operator()(int row, int col) { return data[col * 4 + row]; }
 
-    // Opérateurs
     mat4 operator*(const mat4& other) const {
         mat4 result;
         for (int i = 0; i < 4; ++i) {
@@ -45,10 +35,7 @@ public:
         return result;
     }
 
-    // Méthodes utilitaires
-    static mat4 Identity() {
-        return mat4();
-    }
+    static mat4 Identity() { return mat4(); }
 
     static mat4 Translation(const Vec3& vec) {
         mat4 m;
@@ -103,9 +90,8 @@ public:
     }
 
     mat4 inverted() const {
-        // Implémentation simplifiée (à optimiser si nécessaire)
         float det = determinant();
-        if (det == 0.0f) return mat4(); // Matrice singulière
+        if (det == 0.0f) return mat4();
         mat4 inv;
         inv.data[0] =  data[5]*data[10]*data[15] - data[5]*data[11]*data[14] - data[9]*data[6]*data[15] + data[9]*data[7]*data[14] + data[13]*data[6]*data[11] - data[13]*data[7]*data[10];
         inv.data[1] = -data[1]*data[10]*data[15] + data[1]*data[11]*data[14] + data[9]*data[2]*data[15] - data[9]*data[3]*data[14] - data[13]*data[2]*data[11] + data[13]*data[3]*data[10];
