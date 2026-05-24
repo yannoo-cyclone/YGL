@@ -43,21 +43,135 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   GLEW Include: /usr/include
 --   GLFW3 Include: 
 --   OpenGL Include: 
--- Configuring done (1.2s)
-CMake Error at CMakeLists.txt:121 (add_library):
-  Cannot find source file:
-
-    src/core/light.cpp
-
-  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm
-  .ccm .cxxm .c++m .h .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90
-  .f95 .f03 .hip .ispc
-
-
-CMake Error at CMakeLists.txt:121 (add_library):
-  No SOURCES given to target: ygl
-
-
-CMake Generate step failed.  Build files cannot be regenerated correctly.
-gmake: Makefile : Aucun fichier ou dossier de ce nom
-gmake: *** Aucune règle pour fabriquer la cible « Makefile ». Arrêt.
+-- Configuring done (0.6s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/yannoo/Dev/YGL/build
+[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
+[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
+[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
+[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
+In file included from /home/yannoo/Dev/YGL/include/core/bounding_box.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/bounding_box.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float r, g, b; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/light.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/light.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float r, g, b; };
+      |                ^
+/home/yannoo/Dev/YGL/src/core/light.cpp:5:13: error: redefinition of ‘ygl::Light::Type ygl::Light::getType() const’
+    5 | Light::Type Light::getType() const { return m_type; }
+      |             ^~~~~
+/home/yannoo/Dev/YGL/include/core/light.hpp:14:10: note: ‘ygl::Light::Type ygl::Light::getType() const’ previously defined here
+   14 |     Type getType() const { return m_type; }
+      |          ^~~~~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:6:6: error: redefinition of ‘void ygl::Light::setType(Type)’
+    6 | void Light::setType(Type type) { m_type = type; }
+      |      ^~~~~
+/home/yannoo/Dev/YGL/include/core/light.hpp:15:10: note: ‘void ygl::Light::setType(Type)’ previously defined here
+   15 |     void setType(Type type) { m_type = type; }
+      |          ^~~~~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:8:13: error: redefinition of ‘const ygl::Vec3& ygl::Light::getColor() const’
+    8 | const Vec3& Light::getColor() const { return m_color; }
+      |             ^~~~~
+/home/yannoo/Dev/YGL/include/core/light.hpp:17:17: note: ‘const ygl::Vec3& ygl::Light::getColor() const’ previously defined here
+   17 |     const Vec3& getColor() const { return m_color; }
+      |                 ^~~~~~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:9:6: error: redefinition of ‘void ygl::Light::setColor(const ygl::Vec3&)’
+    9 | void Light::setColor(const Vec3& color) { m_color = color; }
+      |      ^~~~~
+/home/yannoo/Dev/YGL/include/core/light.hpp:18:10: note: ‘void ygl::Light::setColor(const ygl::Vec3&)’ previously defined here
+   18 |     void setColor(const Vec3& color) { m_color = color; }
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:11:7: error: redefinition of ‘float ygl::Light::getIntensity() const’
+   11 | float Light::getIntensity() const { return m_intensity; }
+      |       ^~~~~
+/home/yannoo/Dev/YGL/include/core/light.hpp:20:11: note: ‘float ygl::Light::getIntensity() const’ previously defined here
+   20 |     float getIntensity() const { return m_intensity; }
+      |           ^~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:12:6: error: redefinition of ‘void ygl::Light::setIntensity(float)’
+   12 | void Light::setIntensity(float intensity) { m_intensity = intensity; }
+      |      ^~~~~
+/home/yannoo/Dev/YGL/include/core/light.hpp:21:10: note: ‘void ygl::Light::setIntensity(float)’ previously defined here
+   21 |     void setIntensity(float intensity) { m_intensity = intensity; }
+      |          ^~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:14:13: error: redefinition of ‘const ygl::Vec3& ygl::Light::getDirection() const’
+   14 | const Vec3& Light::getDirection() const { return m_direction; }
+      |             ^~~~~
+/home/yannoo/Dev/YGL/include/core/light.hpp:23:17: note: ‘const ygl::Vec3& ygl::Light::getDirection() const’ previously defined here
+   23 |     const Vec3& getDirection() const { return m_direction; }
+      |                 ^~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:15:6: error: redefinition of ‘void ygl::Light::setDirection(const ygl::Vec3&)’
+   15 | void Light::setDirection(const Vec3& direction) { m_direction = direction.Normalize(); }
+      |      ^~~~~
+/home/yannoo/Dev/YGL/include/core/light.hpp:24:10: note: ‘void ygl::Light::setDirection(const ygl::Vec3&)’ previously defined here
+   24 |     void setDirection(const Vec3& direction) { m_direction = direction.Normalize(); }
+      |          ^~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:17:13: error: redefinition of ‘const ygl::Vec3& ygl::Light::getPosition() const’
+   17 | const Vec3& Light::getPosition() const { return m_position; }
+      |             ^~~~~
+/home/yannoo/Dev/YGL/include/core/light.hpp:26:17: note: ‘const ygl::Vec3& ygl::Light::getPosition() const’ previously defined here
+   26 |     const Vec3& getPosition() const { return m_position; }
+      |                 ^~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:18:6: error: redefinition of ‘void ygl::Light::setPosition(const ygl::Vec3&)’
+   18 | void Light::setPosition(const Vec3& position) { m_position = position; }
+      |      ^~~~~
+/home/yannoo/Dev/YGL/include/core/light.hpp:27:10: note: ‘void ygl::Light::setPosition(const ygl::Vec3&)’ previously defined here
+   27 |     void setPosition(const Vec3& position) { m_position = position; }
+      |          ^~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:20:7: error: redefinition of ‘float ygl::Light::getRange() const’
+   20 | float Light::getRange() const { return m_range; }
+      |       ^~~~~
+/home/yannoo/Dev/YGL/include/core/light.hpp:29:11: note: ‘float ygl::Light::getRange() const’ previously defined here
+   29 |     float getRange() const { return m_range; }
+      |           ^~~~~~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:21:6: error: redefinition of ‘void ygl::Light::setRange(float)’
+   21 | void Light::setRange(float range) { m_range = range; }
+      |      ^~~~~
+/home/yannoo/Dev/YGL/include/core/light.hpp:30:10: note: ‘void ygl::Light::setRange(float)’ previously defined here
+   30 |     void setRange(float range) { m_range = range; }
+      |          ^~~~~~~~
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
+                 from /home/yannoo/Dev/YGL/include/core/camera.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/camera.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float r, g, b; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
+/home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float x, y, z, w; };
+      |                ^
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:104 : CMakeFiles/ygl.dir/src/core/light.cpp.o] Erreur 1
+gmake[2]: *** Attente des tâches non terminées....
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
+                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/mesh.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float r, g, b; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
+/home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float x, y, z, w; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/mesh.hpp:5:
+/home/yannoo/Dev/YGL/include/math/vec2.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec2.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float u, v; };
+      |                ^
+gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
+gmake: *** [Makefile:91 : all] Erreur 2
