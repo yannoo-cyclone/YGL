@@ -1,32 +1,19 @@
 #include "loaders/md3_loader.hpp"
-#include "loaders/loader.hpp"
 #include "core/mesh.hpp"
-#include "math/vec3.hpp"
 #include <fstream>
-#include <vector>
 
 namespace ygl {
-
-#pragma pack(push, 1)
-struct MD3Header { char fileID[4]; int fileVersion; char fileName[64]; int numFrames, numTags, numSurfaces, numSkins, ofsFrames, ofsTags, ofsSurfaces, ofsEnd; };
-struct MD3Frame { float minBounds[3], maxBounds[3], localOrigin[3], radius; char name[16]; };
-struct MD3Surface { char surfaceID[4], surfaceName[64]; int flags, numFrames, numShaders, numVerts, numTris, ofsTris, ofsShaders, ofsSt, ofsXyzNormal, ofsEnd; };
-struct MD3Vertex { short xyz[3]; unsigned char normal[2]; };
-struct MD3TexCoord { float st[2]; };
-struct MD3Triangle { int indexes[3]; };
-#pragma pack(pop)
-
 bool MD3Loader::LoadMD3(const std::string& filepath, Mesh& mesh) {
     std::ifstream file(filepath, std::ios::binary);
     if (!file.is_open()) return false;
 
     MD3Header header;
     file.read(reinterpret_cast<char*>(&header), sizeof(MD3Header));
-    if (std::string(header.fileID, 4) != "IDP3" || header.fileVersion != 15) return false;
+    if (std::string(header.magic, 4) != "IDP3" || header.version != 15) return false;
 
     file.seekg(header.ofsFrames);
-    std::vector<MD3Frame> frames(header.numFrames);
-    file.read(reinterpret_cast<char*>(frames.data()), header.numFrames * sizeof(MD3Frame));
+    m_frames.resize(header.numFrames);
+    file.read(reinterpret_cast<char*>(m_frames.data()), header.numFrames * sizeof(MD3Frame));
 
     file.seekg(header.ofsSurfaces);
     std::vector<Vertex> vertices;
@@ -51,9 +38,9 @@ bool MD3Loader::LoadMD3(const std::string& filepath, Mesh& mesh) {
         size_t base = vertices.size();
         for (int i = 0; i < surface.numVerts; ++i) {
             Vertex v;
-            v.position = vec3(verts[i].xyz[0] / 64.0f, verts[i].xyz[1] / 64.0f, verts[i].xyz[2] / 64.0f);
-            v.texcoord = vec2(tcs[i].st[0], tcs[i].st[1]);
-            v.normal = vec3(0.0f);
+            v.position = Vec3(verts[i].xyz[0] / 64.0f, verts[i].xyz[1] / 64.0f, verts[i].xyz[2] / 64.0f);
+            v.texcoord = Vec2(tcs[i].st[0], tcs[i].st[1]);
+            v.normal = Vec3(0.0f);
             vertices.push_back(v);
         }
         for (const auto& tri : tris) {
@@ -65,9 +52,9 @@ bool MD3Loader::LoadMD3(const std::string& filepath, Mesh& mesh) {
 
     for (size_t i = 0; i < indices.size(); i += 3) {
         if (i + 2 >= indices.size()) break;
-        vec3 e1 = vertices[indices[i+1]].position - vertices[indices[i]].position;
-        vec3 e2 = vertices[indices[i+2]].position - vertices[indices[i]].position;
-        vec3 n = normalize(cross(e1, e2));
+        Vec3 e1 = vertices[indices[i+1]].position - vertices[indices[i]].position;
+        Vec3 e2 = vertices[indices[i+2]].position - vertices[indices[i]].position;
+        Vec3 n = normalize(cross(e1, e2));
         vertices[indices[i]].normal += n;
         vertices[indices[i+1]].normal += n;
         vertices[indices[i+2]].normal += n;
@@ -80,4 +67,17 @@ bool MD3Loader::LoadMD3(const std::string& filepath, Mesh& mesh) {
     return true;
 }
 
+std::vector<std::shared_ptr<Mesh>> MD3Loader::load(const std::string& filename) {
+    Mesh mesh;
+    return LoadMD3(filename, mesh) ? std::vector{std::make_shared<Mesh>(mesh)} : std::vector<std::shared_ptr<Mesh>>();
+}
+
+std::shared_ptr<Mesh> MD3Loader::loadSingle(const std::string& filename) {
+    Mesh mesh;
+    return LoadMD3(filename, mesh) ? std::make_shared<Mesh>(mesh) : nullptr;
+}
+
+MD3Loader::MD3Loader() = default;
+MD3Loader::~MD3Loader() = default;
+void MD3Loader::setCurrentFrame(int frame) { if (frame >= 0 && frame < static_cast<int>(m_frames.size())) m_currentFrame = frame; }
 } // namespace ygl
