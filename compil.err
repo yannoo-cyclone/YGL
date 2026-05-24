@@ -43,13 +43,13 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   GLEW Include: /usr/include
 --   GLFW3 Include: 
 --   OpenGL Include: 
--- Configuring done (0.7s)
+-- Configuring done (0.6s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
-[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
-[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
-[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
+[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
+[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
 [  8%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
+[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
 [ 13%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
 [ 16%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
 [ 19%] Building CXX object CMakeFiles/ygl.dir/src/loaders/loader.cpp.o
@@ -64,325 +64,64 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 [ 33%] Building CXX object CMakeFiles/ygl.dir/src/materials/material.cpp.o
 [ 36%] Building CXX object CMakeFiles/ygl.dir/src/materials/texture.cpp.o
 [ 38%] Building CXX object CMakeFiles/ygl.dir/src/math/mat4.cpp.o
-/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘bool ygl::Texture::loadFromFile(const std::string&)’:
-/home/yannoo/Dev/YGL/src/materials/texture.cpp:20:36: error: invalid conversion from ‘int’ to ‘unsigned char*’ [-fpermissive]
-   20 |     unsigned char* data = stbi_load(filename.c_str(), &w, &h, &c, 0);
-      |                           ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                    |
-      |                                    int
-/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘std::vector<unsigned char> ygl::Texture::loadImageData(const std::string&, int&, int&, int&)’:
-/home/yannoo/Dev/YGL/src/materials/texture.cpp:165:36: error: invalid conversion from ‘int’ to ‘unsigned char*’ [-fpermissive]
-  165 |     unsigned char* data = stbi_load(filename.c_str(), &width, &height, &channels, 0);
-      |                           ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                                    |
-      |                                    int
+[ 41%] Building CXX object CMakeFiles/ygl.dir/src/math/quat.cpp.o
+/home/yannoo/Dev/YGL/src/math/quat.cpp:1:9: warning: #pragma once in main file
+    1 | #pragma once
+      |         ^~~~
+In file included from /home/yannoo/Dev/YGL/src/materials/texture.cpp:1:
+/home/yannoo/Dev/YGL/include/materials/texture.hpp: In constructor ‘ygl::Texture::Texture(Type, const std::string&)’:
+/home/yannoo/Dev/YGL/include/materials/texture.hpp:87:17: warning: ‘ygl::Texture::m_name’ will be initialized after [-Wreorder]
+   87 |     std::string m_name;
+      |                 ^~~~~~
+/home/yannoo/Dev/YGL/include/materials/texture.hpp:82:18: warning:   ‘unsigned int ygl::Texture::m_id’ [-Wreorder]
+   82 |     unsigned int m_id = 0;
+      |                  ^~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:9:1: warning:   when initialized here [-Wreorder]
+    9 | Texture::Texture(Type type, const std::string& name)
+      | ^~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘bool ygl::Texture::create(int, int, Format)’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:77:21: error: ‘GL_TEXTURE_2’ was not declared in this scope; did you mean ‘GL_TEXTURE2’?
+   77 |     glTexParameteri(GL_TEXTURE_2
+      |                     ^~~~~~~~~~~~
+      |                     GL_TEXTURE2
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:77:33: error: expected ‘}’ at end of input
+   77 |     glTexParameteri(GL_TEXTURE_2
+      |                                 ^
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:68:60: note: to match this ‘{’
+   68 | bool Texture::create(int width, int height, Format format) {
+      |                                                            ^
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:77:33: warning: no return statement in function returning non-void [-Wreturn-type]
+   77 |     glTexParameteri(GL_TEXTURE_2
+      |                                 ^
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:77:33: error: expected ‘}’ at end of input
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:7:15: note: to match this ‘{’
+    7 | namespace ygl {
+      |               ^
 gmake[2]: *** [CMakeFiles/ygl.dir/build.make:244 : CMakeFiles/ygl.dir/src/materials/texture.cpp.o] Erreur 1
 gmake[2]: *** Attente des tâches non terminées....
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:12:1: error: redefinition of ‘ygl::mat4::mat4()’
-   12 | mat4::mat4() { *this = identity(); }
-      | ^~~~
-In file included from /home/yannoo/Dev/YGL/src/math/mat4.cpp:1:
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:15:5: note: ‘ygl::mat4::mat4()’ previously defined here
-   15 |     mat4() {
-      |     ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:13:1: error: no declaration matches ‘ygl::mat4::mat4(float)’
-   13 | mat4::mat4(float diagonal) {
-      | ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: candidates are: ‘constexpr ygl::mat4::mat4(ygl::mat4&&)’
-   10 | class mat4 {
+/home/yannoo/Dev/YGL/src/math/quat.cpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float x, y, z, w; };
+      |                ^
+/home/yannoo/Dev/YGL/src/math/quat.cpp: In constructor ‘ygl::Quat::Quat(const ygl::Vec3&, float)’:
+/home/yannoo/Dev/YGL/src/math/quat.cpp:23:13: error: invalid use of incomplete type ‘const class ygl::Vec3’
+   23 |         x = axis.x * sinHalf;
+      |             ^~~~
+/home/yannoo/Dev/YGL/src/math/quat.cpp:8:7: note: forward declaration of ‘class ygl::Vec3’
+    8 | class Vec3;
       |       ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note:                 ‘constexpr ygl::mat4::mat4(const ygl::mat4&)’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:18:14: note:                 ‘ygl::mat4::mat4(const float*)’
-   18 |     explicit mat4(const float* values) {
-      |              ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:15:5: note:                 ‘ygl::mat4::mat4()’
-   15 |     mat4() {
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
+/home/yannoo/Dev/YGL/src/math/quat.cpp:24:13: error: invalid use of incomplete type ‘const class ygl::Vec3’
+   24 |         y = axis.y * sinHalf;
+      |             ^~~~
+/home/yannoo/Dev/YGL/src/math/quat.cpp:8:7: note: forward declaration of ‘class ygl::Vec3’
+    8 | class Vec3;
       |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:18:1: error: redefinition of ‘ygl::mat4::mat4(const float*)’
-   18 | mat4::mat4(const float* array) {
-      | ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:18:14: note: ‘ygl::mat4::mat4(const float*)’ previously defined here
-   18 |     explicit mat4(const float* values) {
-      |              ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:21:1: error: no declaration matches ‘ygl::mat4::mat4(const ygl::Vec4&, const ygl::Vec4&, const ygl::Vec4&, const ygl::Vec4&)’
-   21 | mat4::mat4(const Vec4& col0, const Vec4& col1, const Vec4& col2, const Vec4& col3) {
-      | ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: candidates are: ‘constexpr ygl::mat4::mat4(ygl::mat4&&)’
-   10 | class mat4 {
+/home/yannoo/Dev/YGL/src/math/quat.cpp:25:13: error: invalid use of incomplete type ‘const class ygl::Vec3’
+   25 |         z = axis.z * sinHalf;
+      |             ^~~~
+/home/yannoo/Dev/YGL/src/math/quat.cpp:8:7: note: forward declaration of ‘class ygl::Vec3’
+    8 | class Vec3;
       |       ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note:                 ‘constexpr ygl::mat4::mat4(const ygl::mat4&)’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:18:14: note:                 ‘ygl::mat4::mat4(const float*)’
-   18 |     explicit mat4(const float* values) {
-      |              ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:15:5: note:                 ‘ygl::mat4::mat4()’
-   15 |     mat4() {
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:31:8: error: redefinition of ‘float& ygl::mat4::operator()(int, int)’
-   31 | float& mat4::operator()(int row, int col) { return data[col * 4 + row]; }
-      |        ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:23:12: note: ‘float& ygl::mat4::operator()(int, int)’ previously defined here
-   23 |     float& operator()(int row, int col) { return data[col * 4 + row]; }
-      |            ^~~~~~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:32:14: error: no declaration matches ‘const float& ygl::mat4::operator()(int, int) const’
-   32 | const float& mat4::operator()(int row, int col) const { return data[col * 4 + row]; }
-      |              ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:23:12: note: candidates are: ‘float& ygl::mat4::operator()(int, int)’
-   23 |     float& operator()(int row, int col) { return data[col * 4 + row]; }
-      |            ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:22:11: note:                 ‘float ygl::mat4::operator()(int, int) const’
-   22 |     float operator()(int row, int col) const { return data[col * 4 + row]; }
-      |           ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:35:7: error: no declaration matches ‘ygl::mat4& ygl::mat4::operator+=(const ygl::mat4&)’
-   35 | mat4& mat4::operator+=(const mat4& other) {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:35:7: note: no functions named ‘ygl::mat4& ygl::mat4::operator+=(const ygl::mat4&)’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:38:7: error: no declaration matches ‘ygl::mat4& ygl::mat4::operator-=(const ygl::mat4&)’
-   38 | mat4& mat4::operator-=(const mat4& other) {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:38:7: note: no functions named ‘ygl::mat4& ygl::mat4::operator-=(const ygl::mat4&)’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:41:7: error: no declaration matches ‘ygl::mat4& ygl::mat4::operator*=(const ygl::mat4&)’
-   41 | mat4& mat4::operator*=(const mat4& other) { *this = *this * other; return *this; }
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:41:7: note: no functions named ‘ygl::mat4& ygl::mat4::operator*=(const ygl::mat4&)’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:42:7: error: no declaration matches ‘ygl::mat4& ygl::mat4::operator*=(float)’
-   42 | mat4& mat4::operator*=(float scalar) {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:42:7: note: no functions named ‘ygl::mat4& ygl::mat4::operator*=(float)’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:45:7: error: no declaration matches ‘ygl::mat4& ygl::mat4::operator/=(float)’
-   45 | mat4& mat4::operator/=(float scalar) {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:45:7: note: no functions named ‘ygl::mat4& ygl::mat4::operator/=(float)’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:51:6: error: no declaration matches ‘ygl::mat4 ygl::mat4::operator+(const ygl::mat4&) const’
-   51 | mat4 mat4::operator+(const mat4& other) const {
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:51:6: note: no functions named ‘ygl::mat4 ygl::mat4::operator+(const ygl::mat4&) const’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:54:6: error: no declaration matches ‘ygl::mat4 ygl::mat4::operator-(const ygl::mat4&) const’
-   54 | mat4 mat4::operator-(const mat4& other) const {
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:54:6: note: no functions named ‘ygl::mat4 ygl::mat4::operator-(const ygl::mat4&) const’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:57:6: error: no declaration matches ‘ygl::mat4 ygl::mat4::operator-() const’
-   57 | mat4 mat4::operator-() const {
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:57:6: note: no functions named ‘ygl::mat4 ygl::mat4::operator-() const’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:60:6: error: redefinition of ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
-   60 | mat4 mat4::operator*(const mat4& other) const {
-      |      ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’ previously defined here
-   25 |     mat4 operator*(const mat4& other) const {
-      |          ^~~~~~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:72:6: error: no declaration matches ‘ygl::mat4 ygl::mat4::operator*(float) const’
-   72 | mat4 mat4::operator*(float scalar) const {
-      |      ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate is: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
-   25 |     mat4 operator*(const mat4& other) const {
-      |          ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:75:6: error: no declaration matches ‘ygl::mat4 ygl::mat4::operator/(float) const’
-   75 | mat4 mat4::operator/(float scalar) const {
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:75:6: note: no functions named ‘ygl::mat4 ygl::mat4::operator/(float) const’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:80:6: error: no declaration matches ‘ygl::Vec4 ygl::mat4::operator*(const ygl::Vec4&) const’
-   80 | Vec4 mat4::operator*(const Vec4& v) const {
-      |      ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate is: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
-   25 |     mat4 operator*(const mat4& other) const {
-      |          ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:89:6: error: no declaration matches ‘ygl::Vec3 ygl::mat4::operator*(const ygl::Vec3&) const’
-   89 | Vec3 mat4::operator*(const Vec3& v) const {
-      |      ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate is: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
-   25 |     mat4 operator*(const mat4& other) const {
-      |          ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:95:6: error: no declaration matches ‘bool ygl::mat4::operator==(const ygl::mat4&) const’
-   95 | bool mat4::operator==(const mat4& other) const {
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:95:6: note: no functions named ‘bool ygl::mat4::operator==(const ygl::mat4&) const’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:99:6: error: no declaration matches ‘bool ygl::mat4::operator!=(const ygl::mat4&) const’
-   99 | bool mat4::operator!=(const mat4& other) const { return !(*this == other); }
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:99:6: note: no functions named ‘bool ygl::mat4::operator!=(const ygl::mat4&) const’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:102:6: error: redefinition of ‘ygl::mat4 ygl::mat4::transposed() const’
-  102 | mat4 mat4::transposed() const {
-      |      ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:117:10: note: ‘ygl::mat4 ygl::mat4::transposed() const’ previously defined here
-  117 |     mat4 transposed() const {
-      |          ^~~~~~~~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:109:6: error: no declaration matches ‘void ygl::mat4::transpose()’
-  109 | void mat4::transpose() { *this = transposed(); }
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:109:6: note: no functions named ‘void ygl::mat4::transpose()’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:111:7: error: redefinition of ‘float ygl::mat4::determinant() const’
-  111 | float mat4::determinant() const {
-      |       ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:127:11: note: ‘float ygl::mat4::determinant() const’ previously defined here
-  127 |     float determinant() const {
-      |           ^~~~~~~~~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:130:6: error: redefinition of ‘ygl::mat4 ygl::mat4::inverted() const’
-  130 | mat4 mat4::inverted() const {
-      |      ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:92:10: note: ‘ygl::mat4 ygl::mat4::inverted() const’ previously defined here
-   92 |     mat4 inverted() const {
-      |          ^~~~~~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:153:6: error: no declaration matches ‘void ygl::mat4::invert()’
-  153 | void mat4::invert() { *this = inverted(); }
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:153:6: note: no functions named ‘void ygl::mat4::invert()’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:156:6: error: no declaration matches ‘ygl::mat4 ygl::mat4::identity()’
-  156 | mat4 mat4::identity() { mat4 m; for (int i = 0; i < 16; i += 5) m.data[i] = 1.0f; return m; }
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:156:6: note: no functions named ‘ygl::mat4 ygl::mat4::identity()’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:157:6: error: no declaration matches ‘ygl::mat4 ygl::mat4::zero()’
-  157 | mat4 mat4::zero() { mat4 m; for (int i = 0; i < 16; ++i) m.data[i] = 0.0f; return m; }
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:157:6: note: no functions named ‘ygl::mat4 ygl::mat4::zero()’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:159:6: error: no declaration matches ‘ygl::mat4 ygl::mat4::translation(const ygl::Vec3&)’
-  159 | mat4 mat4::translation(const Vec3& t) {
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:159:6: note: no functions named ‘ygl::mat4 ygl::mat4::translation(const ygl::Vec3&)’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:163:6: error: no declaration matches ‘ygl::mat4 ygl::mat4::rotationX(float)’
-  163 | mat4 mat4::rotationX(float angle) {
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:163:6: note: no functions named ‘ygl::mat4 ygl::mat4::rotationX(float)’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:167:6: error: no declaration matches ‘ygl::mat4 ygl::mat4::rotationY(float)’
-  167 | mat4 mat4::rotationY(float angle) {
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:167:6: note: no functions named ‘ygl::mat4 ygl::mat4::rotationY(float)’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:171:6: error: no declaration matches ‘ygl::mat4 ygl::mat4::rotationZ(float)’
-  171 | mat4 mat4::rotationZ(float angle) {
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:171:6: note: no functions named ‘ygl::mat4 ygl::mat4::rotationZ(float)’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:176:6: error: no declaration matches ‘ygl::mat4 ygl::mat4::rotation(const ygl::Vec3&, float)’
-  176 | mat4 mat4::rotation(const Vec3& axis, float angle) {
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:176:6: note: no functions named ‘ygl::mat4 ygl::mat4::rotation(const ygl::Vec3&, float)’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:185:6: error: no declaration matches ‘ygl::mat4 ygl::mat4::scale(const ygl::Vec3&)’
-  185 | mat4 mat4::scale(const Vec3& s) {
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:185:6: note: no functions named ‘ygl::mat4 ygl::mat4::scale(const ygl::Vec3&)’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:188:6: error: no declaration matches ‘ygl::mat4 ygl::mat4::scale(float)’
-  188 | mat4 mat4::scale(float s) { return scale(Vec3(s)); }
-      |      ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:188:6: note: no functions named ‘ygl::mat4 ygl::mat4::scale(float)’
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:10:7: note: ‘class ygl::mat4’ defined here
-   10 | class mat4 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:190:6: error: redefinition of ‘static ygl::mat4 ygl::mat4::lookAt(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&)’
-  190 | mat4 mat4::lookAt(const Vec3& eye, const Vec3& center, const Vec3& up) {
-      |      ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:56:17: note: ‘static ygl::mat4 ygl::mat4::lookAt(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&)’ previously defined here
-   56 |     static mat4 lookAt(const Vec3& eye, const Vec3& target, const Vec3& up) {
-      |                 ^~~~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:200:6: error: redefinition of ‘static ygl::mat4 ygl::mat4::perspective(float, float, float, float)’
-  200 | mat4 mat4::perspective(float fov, float aspect, float near, float far) {
-      |      ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:69:17: note: ‘static ygl::mat4 ygl::mat4::perspective(float, float, float, float)’ previously defined here
-   69 |     static mat4 perspective(float fov, float aspect, float near, float far) {
-      |                 ^~~~~~~~~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:211:6: error: redefinition of ‘static ygl::mat4 ygl::mat4::orthographic(float, float, float, float, float, float)’
-  211 | mat4 mat4::orthographic(float left, float right, float bottom, float top, float near, float far) {
-      |      ^~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:80:17: note: ‘static ygl::mat4 ygl::mat4::orthographic(float, float, float, float, float, float)’ previously defined here
-   80 |     static mat4 orthographic(float left, float right, float bottom, float top, float near, float far) {
-      |                 ^~~~~~~~~~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp: In function ‘ygl::mat4 ygl::operator*(float, const mat4&)’:
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:237:56: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘float’)
-  237 | mat4 operator*(float scalar, const mat4& m) { return m * scalar; }
-      |                                                      ~ ^ ~~~~~~
-      |                                                      |   |
-      |                                                      |   float
-      |                                                      const ygl::mat4
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
-   25 |     mat4 operator*(const mat4& other) const {
-      |          ^~~~~~~~
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘float’ to ‘const ygl::mat4&’
-   25 |     mat4 operator*(const mat4& other) const {
-      |                    ~~~~~~~~~~~~^~~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:237:6: note: candidate: ‘ygl::mat4 ygl::operator*(float, const mat4&)’
-  237 | mat4 operator*(float scalar, const mat4& m) { return m * scalar; }
-      |      ^~~~~~~~
-/home/yannoo/Dev/YGL/src/math/mat4.cpp:237:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
-  237 | mat4 operator*(float scalar, const mat4& m) { return m * scalar; }
-      |                ~~~~~~^~~~~~
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:258 : CMakeFiles/ygl.dir/src/math/mat4.cpp.o] Erreur 1
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:272 : CMakeFiles/ygl.dir/src/math/quat.cpp.o] Erreur 1
 gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
 gmake: *** [Makefile:91 : all] Erreur 2
