@@ -26,7 +26,7 @@ const std::vector<std::shared_ptr<Mesh>>& Scene::getMeshes() const { return m_me
 void Scene::setBackgroundColor(const Vec3& color) { m_backgroundColor = color; }
 const Vec3& Scene::getBackgroundColor() const { return m_backgroundColor; }
 
-void Scene::renderScene(const Camera& camera) {
+void Scene::renderScene(const Camera& /*camera*/) {
     glClearColor(m_backgroundColor.x, m_backgroundColor.y, m_backgroundColor.z, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     for (auto& mesh : m_meshes) mesh->render();

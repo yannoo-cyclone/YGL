@@ -47,17 +47,13 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 -- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
 [  2%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
-[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
-[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
+[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
+[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
 [ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
 [ 13%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
 [ 16%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
 [ 19%] Building CXX object CMakeFiles/ygl.dir/src/loaders/loader.cpp.o
 [ 22%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md2_loader.cpp.o
-/home/yannoo/Dev/YGL/src/core/scene.cpp: In member function ‘void ygl::Scene::renderScene(const ygl::Camera&)’:
-/home/yannoo/Dev/YGL/src/core/scene.cpp:29:39: warning: unused parameter ‘camera’ [-Wunused-parameter]
-   29 | void Scene::renderScene(const Camera& camera) {
-      |                         ~~~~~~~~~~~~~~^~~~~~
 [ 25%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md3_loader.cpp.o
 [ 27%] Building CXX object CMakeFiles/ygl.dir/src/loaders/md5_loader.cpp.o
 [ 30%] Building CXX object CMakeFiles/ygl.dir/src/loaders/obj_loader.cpp.o
@@ -65,37 +61,488 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 [ 36%] Building CXX object CMakeFiles/ygl.dir/src/materials/texture.cpp.o
 [ 38%] Building CXX object CMakeFiles/ygl.dir/src/math/mat4.cpp.o
 [ 41%] Building CXX object CMakeFiles/ygl.dir/src/math/quat.cpp.o
-In file included from /home/yannoo/Dev/YGL/src/materials/texture.cpp:1:
-/home/yannoo/Dev/YGL/include/materials/texture.hpp: In constructor ‘ygl::Texture::Texture(Type, const std::string&)’:
-/home/yannoo/Dev/YGL/include/materials/texture.hpp:87:17: warning: ‘ygl::Texture::m_name’ will be initialized after [-Wreorder]
-   87 |     std::string m_name;
-      |                 ^~~~~~
-/home/yannoo/Dev/YGL/include/materials/texture.hpp:82:18: warning:   ‘unsigned int ygl::Texture::m_id’ [-Wreorder]
-   82 |     unsigned int m_id = 0;
-      |                  ^~~~
-/home/yannoo/Dev/YGL/src/materials/texture.cpp:9:1: warning:   when initialized here [-Wreorder]
-    9 | Texture::Texture(Type type, const std::string& name)
-      | ^~~~~~~
-/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘bool ygl::Texture::create(int, int, Format)’:
-/home/yannoo/Dev/YGL/src/materials/texture.cpp:77:21: error: ‘GL_TEXTURE_2’ was not declared in this scope; did you mean ‘GL_TEXTURE2’?
-   77 |     glTexParameteri(GL_TEXTURE_2
-      |                     ^~~~~~~~~~~~
-      |                     GL_TEXTURE2
-/home/yannoo/Dev/YGL/src/materials/texture.cpp:77:33: error: expected ‘}’ at end of input
-   77 |     glTexParameteri(GL_TEXTURE_2
-      |                                 ^
-/home/yannoo/Dev/YGL/src/materials/texture.cpp:68:60: note: to match this ‘{’
-   68 | bool Texture::create(int width, int height, Format format) {
-      |                                                            ^
-/home/yannoo/Dev/YGL/src/materials/texture.cpp:77:33: warning: no return statement in function returning non-void [-Wreturn-type]
-   77 |     glTexParameteri(GL_TEXTURE_2
-      |                                 ^
-/home/yannoo/Dev/YGL/src/materials/texture.cpp: At global scope:
-/home/yannoo/Dev/YGL/src/materials/texture.cpp:77:33: error: expected ‘}’ at end of input
-/home/yannoo/Dev/YGL/src/materials/texture.cpp:7:15: note: to match this ‘{’
-    7 | namespace ygl {
+[ 44%] Building CXX object CMakeFiles/ygl.dir/src/math/ray.cpp.o
+[ 47%] Building CXX object CMakeFiles/ygl.dir/src/math/vec2.cpp.o
+/home/yannoo/Dev/YGL/src/math/vec2.cpp:1:9: warning: #pragma once in main file
+    1 | #pragma once
+      |         ^~~~
+[ 50%] Building CXX object CMakeFiles/ygl.dir/src/math/vec3.cpp.o
+/home/yannoo/Dev/YGL/src/math/vec3.cpp:1:9: warning: #pragma once in main file
+    1 | #pragma once
+      |         ^~~~
+In file included from /home/yannoo/Dev/YGL/src/math/ray.cpp:2:
+/home/yannoo/Dev/YGL/include/math/math_utils.hpp: In function ‘float ygl::FastInvSqrt(float)’:
+/home/yannoo/Dev/YGL/include/math/math_utils.hpp:71:18: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+   71 |     int32_t i = *reinterpret_cast<int32_t*>(&y);
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/include/math/math_utils.hpp:73:10: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+   73 |     y = *reinterpret_cast<float*>(&i);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In constructor ‘ygl::Ray::Ray()’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:10:7: error: class ‘ygl::Ray’ does not have any field named ‘t_min’
+   10 |       t_min(0.0f),
+      |       ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:11:7: error: class ‘ygl::Ray’ does not have any field named ‘t_max’
+   11 |       t_max(std::numeric_limits<float>::max()) {
+      |       ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:14:16: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+   14 | Ray::Ray(const vec3& origin, const vec3& direction, float t_min, float t_max)
+      |                ^~~~
+      |                Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp:14:36: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+   14 | Ray::Ray(const vec3& origin, const vec3& direction, float t_min, float t_max)
+      |                                    ^~~~
+      |                                    Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp:14:1: error: no declaration matches ‘ygl::Ray::Ray(const int&, const int&, float, float)’
+   14 | Ray::Ray(const vec3& origin, const vec3& direction, float t_min, float t_max)
+      | ^~~
+In file included from /home/yannoo/Dev/YGL/src/math/ray.cpp:1:
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: candidates are: ‘constexpr ygl::Ray::Ray(ygl::Ray&&)’
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note:                 ‘constexpr ygl::Ray::Ray(const ygl::Ray&)’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:15:5: note:                 ‘ygl::Ray::Ray(const ygl::Vec3&, const ygl::Vec3&)’
+   15 |     Ray(const Vec3& origin, const Vec3& direction);
+      |     ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:7:1: note:                 ‘ygl::Ray::Ray()’
+    7 | Ray::Ray()
+      | ^~~
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:22:1: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+   22 | vec3 Ray::operator()(float t) const {
+      | ^~~~
+      | Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp:26:1: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+   26 | vec3 Ray::at(float t) const {
+      | ^~~~
+      | Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp:31:7: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+   31 | const vec3& Ray::GetOrigin() const {
+      |       ^~~~
+      |       Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp:35:7: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+   35 | const vec3& Ray::GetDirection() const {
+      |       ^~~~
+      |       Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp:39:7: error: no declaration matches ‘float ygl::Ray::GetTMin() const’
+   39 | float Ray::GetTMin() const {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:39:7: note: no functions named ‘float ygl::Ray::GetTMin() const’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:43:7: error: no declaration matches ‘float ygl::Ray::GetTMax() const’
+   43 | float Ray::GetTMax() const {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:43:7: note: no functions named ‘float ygl::Ray::GetTMax() const’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:47:27: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+   47 | void Ray::SetOrigin(const vec3& o) {
+      |                           ^~~~
+      |                           Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp:47:6: error: no declaration matches ‘void ygl::Ray::SetOrigin(const int&)’
+   47 | void Ray::SetOrigin(const vec3& o) {
+      |      ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:47:6: note: no functions named ‘void ygl::Ray::SetOrigin(const int&)’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:51:30: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+   51 | void Ray::SetDirection(const vec3& d) {
+      |                              ^~~~
+      |                              Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp:51:6: error: no declaration matches ‘void ygl::Ray::SetDirection(const int&)’
+   51 | void Ray::SetDirection(const vec3& d) {
+      |      ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:51:6: note: no functions named ‘void ygl::Ray::SetDirection(const int&)’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:55:6: error: no declaration matches ‘void ygl::Ray::SetTMin(float)’
+   55 | void Ray::SetTMin(float t) {
+      |      ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:55:6: note: no functions named ‘void ygl::Ray::SetTMin(float)’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:59:6: error: no declaration matches ‘void ygl::Ray::SetTMax(float)’
+   59 | void Ray::SetTMax(float t) {
+      |      ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:59:6: note: no functions named ‘void ygl::Ray::SetTMax(float)’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:63:6: error: no declaration matches ‘void ygl::Ray::SetBounds(float, float)’
+   63 | void Ray::SetBounds(float min, float max) {
+      |      ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:63:6: note: no functions named ‘void ygl::Ray::SetBounds(float, float)’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:69:6: error: no declaration matches ‘bool ygl::Ray::is_valid() const’
+   69 | bool Ray::is_valid() const {
+      |      ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:69:6: note: no functions named ‘bool ygl::Ray::is_valid() const’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:77:5: error: no declaration matches ‘ygl::Ray ygl::Ray::transform(const ygl::mat4&) const’
+   77 | Ray Ray::transform(const mat4& matrix) const {
+      |     ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:77:5: note: no functions named ‘ygl::Ray ygl::Ray::transform(const ygl::mat4&) const’
+/home/yannoo/Dev/YGL/include/math/ray.hpp:7:7: note: ‘class ygl::Ray’ defined here
+    7 | class Ray {
+      |       ^~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:95:1: error: ‘DifferentialRay’ does not name a type
+   95 | DifferentialRay::DifferentialRay()
+      | ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:100:1: error: ‘DifferentialRay’ does not name a type
+  100 | DifferentialRay::DifferentialRay(const vec3& origin, const vec3& direction, float t_min, float t_max)
+      | ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:105:1: error: ‘DifferentialRay’ does not name a type
+  105 | DifferentialRay::DifferentialRay(
+      | ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:119:1: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+  119 | vec3 DifferentialRay::get_rx_origin() const {
+      | ^~~~
+      | Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp:123:1: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+  123 | vec3 DifferentialRay::get_ry_origin() const {
+      | ^~~~
+      | Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp:127:1: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+  127 | vec3 DifferentialRay::get_rx_direction() const {
+      | ^~~~
+      | Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp:131:1: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+  131 | vec3 DifferentialRay::get_ry_direction() const {
+      | ^~~~
+      | Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp:135:6: error: ‘DifferentialRay’ has not been declared
+  135 | bool DifferentialRay::get_has_differentials() const {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:135:47: error: non-member function ‘bool ygl::get_has_differentials()’ cannot have cv-qualifier
+  135 | bool DifferentialRay::get_has_differentials() const {
+      |                                               ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘bool ygl::get_has_differentials()’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:136:12: error: ‘has_differentials’ was not declared in this scope; did you mean ‘get_has_differentials’?
+  136 |     return has_differentials;
+      |            ^~~~~~~~~~~~~~~~~
+      |            get_has_differentials
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:139:6: error: ‘DifferentialRay’ has not been declared
+  139 | void DifferentialRay::set_has_differentials(bool has) {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘void ygl::set_has_differentials(bool)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:140:5: error: ‘has_differentials’ was not declared in this scope; did you mean ‘set_has_differentials’?
+  140 |     has_differentials = has;
+      |     ^~~~~~~~~~~~~~~~~
+      |     set_has_differentials
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:143:6: error: ‘DifferentialRay’ has not been declared
+  143 | void DifferentialRay::set_rx_origin(const vec3& o) {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:143:43: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+  143 | void DifferentialRay::set_rx_origin(const vec3& o) {
+      |                                           ^~~~
+      |                                           Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘void ygl::set_rx_origin(const int&)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:144:5: error: ‘rx_origin’ was not declared in this scope; did you mean ‘set_rx_origin’?
+  144 |     rx_origin = o;
+      |     ^~~~~~~~~
+      |     set_rx_origin
+/home/yannoo/Dev/YGL/src/math/ray.cpp:145:5: error: ‘has_differentials’ was not declared in this scope; did you mean ‘set_has_differentials’?
+  145 |     has_differentials = true;
+      |     ^~~~~~~~~~~~~~~~~
+      |     set_has_differentials
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:148:6: error: ‘DifferentialRay’ has not been declared
+  148 | void DifferentialRay::set_ry_origin(const vec3& o) {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:148:43: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+  148 | void DifferentialRay::set_ry_origin(const vec3& o) {
+      |                                           ^~~~
+      |                                           Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘void ygl::set_ry_origin(const int&)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:149:5: error: ‘ry_origin’ was not declared in this scope; did you mean ‘set_ry_origin’?
+  149 |     ry_origin = o;
+      |     ^~~~~~~~~
+      |     set_ry_origin
+/home/yannoo/Dev/YGL/src/math/ray.cpp:150:5: error: ‘has_differentials’ was not declared in this scope; did you mean ‘set_has_differentials’?
+  150 |     has_differentials = true;
+      |     ^~~~~~~~~~~~~~~~~
+      |     set_has_differentials
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:153:6: error: ‘DifferentialRay’ has not been declared
+  153 | void DifferentialRay::set_rx_direction(const vec3& d) {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:153:46: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+  153 | void DifferentialRay::set_rx_direction(const vec3& d) {
+      |                                              ^~~~
+      |                                              Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘void ygl::set_rx_direction(const int&)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:154:5: error: ‘rx_direction’ was not declared in this scope; did you mean ‘set_rx_direction’?
+  154 |     rx_direction = d;
+      |     ^~~~~~~~~~~~
+      |     set_rx_direction
+/home/yannoo/Dev/YGL/src/math/ray.cpp:155:5: error: ‘has_differentials’ was not declared in this scope; did you mean ‘set_has_differentials’?
+  155 |     has_differentials = true;
+      |     ^~~~~~~~~~~~~~~~~
+      |     set_has_differentials
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:158:6: error: ‘DifferentialRay’ has not been declared
+  158 | void DifferentialRay::set_ry_direction(const vec3& d) {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:158:46: error: ‘vec3’ does not name a type; did you mean ‘Vec3’?
+  158 | void DifferentialRay::set_ry_direction(const vec3& d) {
+      |                                              ^~~~
+      |                                              Vec3
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘void ygl::set_ry_direction(const int&)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:159:5: error: ‘ry_direction’ was not declared in this scope; did you mean ‘set_ry_direction’?
+  159 |     ry_direction = d;
+      |     ^~~~~~~~~~~~
+      |     set_ry_direction
+/home/yannoo/Dev/YGL/src/math/ray.cpp:160:5: error: ‘has_differentials’ was not declared in this scope; did you mean ‘set_has_differentials’?
+  160 |     has_differentials = true;
+      |     ^~~~~~~~~~~~~~~~~
+      |     set_has_differentials
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:164:6: error: ‘DifferentialRay’ has not been declared
+  164 | void DifferentialRay::scale_differentials(float s) {
+      |      ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘void ygl::scale_differentials(float)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:165:9: error: ‘has_differentials’ was not declared in this scope; did you mean ‘set_has_differentials’?
+  165 |     if (has_differentials) {
+      |         ^~~~~~~~~~~~~~~~~
+      |         set_has_differentials
+/home/yannoo/Dev/YGL/src/math/ray.cpp:166:9: error: ‘rx_origin’ was not declared in this scope; did you mean ‘set_rx_origin’?
+  166 |         rx_origin = origin + (rx_origin - origin) * s;
+      |         ^~~~~~~~~
+      |         set_rx_origin
+/home/yannoo/Dev/YGL/src/math/ray.cpp:166:21: error: ‘origin’ was not declared in this scope
+  166 |         rx_origin = origin + (rx_origin - origin) * s;
+      |                     ^~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:167:9: error: ‘ry_origin’ was not declared in this scope; did you mean ‘set_ry_origin’?
+  167 |         ry_origin = origin + (ry_origin - origin) * s;
+      |         ^~~~~~~~~
+      |         set_ry_origin
+/home/yannoo/Dev/YGL/src/math/ray.cpp:168:9: error: ‘rx_direction’ was not declared in this scope; did you mean ‘set_rx_direction’?
+  168 |         rx_direction = direction + (rx_direction - direction) * s;
+      |         ^~~~~~~~~~~~
+      |         set_rx_direction
+/home/yannoo/Dev/YGL/src/math/ray.cpp:168:24: error: ‘direction’ was not declared in this scope
+  168 |         rx_direction = direction + (rx_direction - direction) * s;
+      |                        ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:169:9: error: ‘ry_direction’ was not declared in this scope; did you mean ‘set_ry_direction’?
+  169 |         ry_direction = direction + (ry_direction - direction) * s;
+      |         ^~~~~~~~~~~~
+      |         set_ry_direction
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:174:1: error: ‘DifferentialRay’ does not name a type
+  174 | DifferentialRay DifferentialRay::transform(const mat4& matrix) const {
+      | ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘std::ostream& ygl::operator<<(std::ostream&, const Ray&)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:207:29: error: ‘const class ygl::Ray’ has no member named ‘t_min’
+  207 |        << ", t_min=" << ray.t_min
+      |                             ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:208:29: error: ‘const class ygl::Ray’ has no member named ‘t_max’
+  208 |        << ", t_max=" << ray.t_max << ")";
+      |                             ^~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:212:50: error: ‘DifferentialRay’ does not name a type
+  212 | std::ostream& operator<<(std::ostream& os, const DifferentialRay& ray) {
+      |                                                  ^~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/vec2.cpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y; };
+      |                ^
+/home/yannoo/Dev/YGL/src/math/vec2.cpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float u, v; };
+      |                ^
+/home/yannoo/Dev/YGL/src/math/ray.cpp: In function ‘std::ostream& ygl::operator<<(std::ostream&, const int&)’:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:213:33: error: invalid ‘static_cast’ from type ‘const int’ to type ‘const ygl::Ray&’
+  213 |     os << "DifferentialRay(" << static_cast<const Ray&>(ray);
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:214:13: error: request for member ‘has_differentials’ in ‘ray’, which is of non-class type ‘const int’
+  214 |     if (ray.has_differentials) {
+      |             ^~~~~~~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:215:37: error: request for member ‘rx_origin’ in ‘ray’, which is of non-class type ‘const int’
+  215 |         os << ", rx_origin=" << ray.rx_origin
+      |                                     ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:216:37: error: request for member ‘ry_origin’ in ‘ray’, which is of non-class type ‘const int’
+  216 |            << ", ry_origin=" << ray.ry_origin
+      |                                     ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:217:40: error: request for member ‘rx_direction’ in ‘ray’, which is of non-class type ‘const int’
+  217 |            << ", rx_direction=" << ray.rx_direction
+      |                                        ^~~~~~~~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:217:52: error: expected ‘}’ at end of input
+  217 |            << ", rx_direction=" << ray.rx_direction
+      |                                                    ^
+/home/yannoo/Dev/YGL/src/math/ray.cpp:214:32: note: to match this ‘{’
+  214 |     if (ray.has_differentials) {
+      |                                ^
+/home/yannoo/Dev/YGL/src/math/ray.cpp:217:52: error: expected ‘}’ at end of input
+  217 |            << ", rx_direction=" << ray.rx_direction
+      |                                                    ^
+/home/yannoo/Dev/YGL/src/math/ray.cpp:212:72: note: to match this ‘{’
+  212 | std::ostream& operator<<(std::ostream& os, const DifferentialRay& ray) {
+      |                                                                        ^
+/home/yannoo/Dev/YGL/src/math/ray.cpp:217:52: warning: no return statement in function returning non-void [-Wreturn-type]
+  217 |            << ", rx_direction=" << ray.rx_direction
+      |                                                    ^
+/home/yannoo/Dev/YGL/src/math/ray.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/ray.cpp:217:52: error: expected ‘}’ at end of input
+/home/yannoo/Dev/YGL/src/math/ray.cpp:4:15: note: to match this ‘{’
+    4 | namespace ygl {
       |               ^
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:244 : CMakeFiles/ygl.dir/src/materials/texture.cpp.o] Erreur 1
+[ 52%] Building CXX object CMakeFiles/ygl.dir/src/math/vec4.cpp.o
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:286 : CMakeFiles/ygl.dir/src/math/ray.cpp.o] Erreur 1
 gmake[2]: *** Attente des tâches non terminées....
+/home/yannoo/Dev/YGL/src/math/vec3.cpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/src/math/vec3.cpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float r, g, b; };
+      |                ^
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:9:1: error: no declaration matches ‘ygl::Vec4::Vec4(const ygl::Vec3&, float)’
+    9 | Vec4::Vec4(const Vec3& v, float w) : x(v.x), y(v.y), z(v.z), w(w) {}
+      | ^~~~
+In file included from /home/yannoo/Dev/YGL/src/math/vec4.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: candidates are: ‘constexpr ygl::Vec4::Vec4(ygl::Vec4&&)’
+    7 | class Vec4 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note:                 ‘constexpr ygl::Vec4::Vec4(const ygl::Vec4&)’
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:19:5: note:                 ‘ygl::Vec4::Vec4(float, float, float, float)’
+   19 |     Vec4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
+      |     ^~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:18:14: note:                 ‘ygl::Vec4::Vec4(float)’
+   18 |     explicit Vec4(float scalar) : x(scalar), y(scalar), z(scalar), w(scalar) {}
+      |              ^~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:17:5: note:                 ‘ygl::Vec4::Vec4()’
+   17 |     Vec4() : x(0), y(0), z(0), w(0) {}
+      |     ^~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: ‘class ygl::Vec4’ defined here
+    7 | class Vec4 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:12:7: error: no declaration matches ‘ygl::Vec4& ygl::Vec4::operator+=(const ygl::Vec4&)’
+   12 | Vec4& Vec4::operator+=(const Vec4& other) {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:12:7: note: no functions named ‘ygl::Vec4& ygl::Vec4::operator+=(const ygl::Vec4&)’
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: ‘class ygl::Vec4’ defined here
+    7 | class Vec4 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:15:7: error: no declaration matches ‘ygl::Vec4& ygl::Vec4::operator-=(const ygl::Vec4&)’
+   15 | Vec4& Vec4::operator-=(const Vec4& other) {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:15:7: note: no functions named ‘ygl::Vec4& ygl::Vec4::operator-=(const ygl::Vec4&)’
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: ‘class ygl::Vec4’ defined here
+    7 | class Vec4 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:18:7: error: no declaration matches ‘ygl::Vec4& ygl::Vec4::operator*=(float)’
+   18 | Vec4& Vec4::operator*=(float scalar) {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:18:7: note: no functions named ‘ygl::Vec4& ygl::Vec4::operator*=(float)’
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: ‘class ygl::Vec4’ defined here
+    7 | class Vec4 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:21:7: error: no declaration matches ‘ygl::Vec4& ygl::Vec4::operator/=(float)’
+   21 | Vec4& Vec4::operator/=(float scalar) {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:21:7: note: no functions named ‘ygl::Vec4& ygl::Vec4::operator/=(float)’
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: ‘class ygl::Vec4’ defined here
+    7 | class Vec4 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:26:6: error: redefinition of ‘ygl::Vec4 ygl::Vec4::operator+(const ygl::Vec4&) const’
+   26 | Vec4 Vec4::operator+(const Vec4& other) const {
+      |      ^~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:20:10: note: ‘ygl::Vec4 ygl::Vec4::operator+(const ygl::Vec4&) const’ previously defined here
+   20 |     Vec4 operator+(const Vec4& other) const { return Vec4(x + other.x, y + other.y, z + other.z, w + other.w); }
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:29:6: error: redefinition of ‘ygl::Vec4 ygl::Vec4::operator-(const ygl::Vec4&) const’
+   29 | Vec4 Vec4::operator-(const Vec4& other) const {
+      |      ^~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:21:10: note: ‘ygl::Vec4 ygl::Vec4::operator-(const ygl::Vec4&) const’ previously defined here
+   21 |     Vec4 operator-(const Vec4& other) const { return Vec4(x - other.x, y - other.y, z - other.z, w - other.w); }
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:32:6: error: redefinition of ‘ygl::Vec4 ygl::Vec4::operator-() const’
+   32 | Vec4 Vec4::operator-() const { return Vec4(-x, -y, -z, -w); }
+      |      ^~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:24:10: note: ‘ygl::Vec4 ygl::Vec4::operator-() const’ previously defined here
+   24 |     Vec4 operator-() const { return Vec4(-x, -y, -z, -w); }
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:33:6: error: redefinition of ‘ygl::Vec4 ygl::Vec4::operator*(float) const’
+   33 | Vec4 Vec4::operator*(float scalar) const {
+      |      ^~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:22:10: note: ‘ygl::Vec4 ygl::Vec4::operator*(float) const’ previously defined here
+   22 |     Vec4 operator*(float scalar) const { return Vec4(x * scalar, y * scalar, z * scalar, w * scalar); }
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:36:6: error: redefinition of ‘ygl::Vec4 ygl::Vec4::operator/(float) const’
+   36 | Vec4 Vec4::operator/(float scalar) const {
+      |      ^~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:23:10: note: ‘ygl::Vec4 ygl::Vec4::operator/(float) const’ previously defined here
+   23 |     Vec4 operator/(float scalar) const { return Vec4(x / scalar, y / scalar, z / scalar, w / scalar); }
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:41:6: error: no declaration matches ‘bool ygl::Vec4::operator==(const ygl::Vec4&) const’
+   41 | bool Vec4::operator==(const Vec4& other) const {
+      |      ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:41:6: note: no functions named ‘bool ygl::Vec4::operator==(const ygl::Vec4&) const’
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: ‘class ygl::Vec4’ defined here
+    7 | class Vec4 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:44:6: error: no declaration matches ‘bool ygl::Vec4::operator!=(const ygl::Vec4&) const’
+   44 | bool Vec4::operator!=(const Vec4& other) const {
+      |      ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:44:6: note: no functions named ‘bool ygl::Vec4::operator!=(const ygl::Vec4&) const’
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: ‘class ygl::Vec4’ defined here
+    7 | class Vec4 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:49:7: error: no declaration matches ‘float ygl::Vec4::length() const’
+   49 | float Vec4::length() const { return std::sqrt(x*x + y*y + z*z + w*w); }
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:49:7: note: no functions named ‘float ygl::Vec4::length() const’
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: ‘class ygl::Vec4’ defined here
+    7 | class Vec4 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:50:7: error: no declaration matches ‘float ygl::Vec4::lengthSquared() const’
+   50 | float Vec4::lengthSquared() const { return x*x + y*y + z*z + w*w; }
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:50:7: note: no functions named ‘float ygl::Vec4::lengthSquared() const’
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: ‘class ygl::Vec4’ defined here
+    7 | class Vec4 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:51:6: error: no declaration matches ‘ygl::Vec4 ygl::Vec4::normalized() const’
+   51 | Vec4 Vec4::normalized() const {
+      |      ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:51:6: note: no functions named ‘ygl::Vec4 ygl::Vec4::normalized() const’
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: ‘class ygl::Vec4’ defined here
+    7 | class Vec4 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:54:6: error: no declaration matches ‘void ygl::Vec4::normalize()’
+   54 | void Vec4::normalize() { *this = normalized(); }
+      |      ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:54:6: note: no functions named ‘void ygl::Vec4::normalize()’
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: ‘class ygl::Vec4’ defined here
+    7 | class Vec4 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:55:7: error: no declaration matches ‘float ygl::Vec4::dot(const ygl::Vec4&) const’
+   55 | float Vec4::dot(const Vec4& other) const {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:55:7: note: no functions named ‘float ygl::Vec4::dot(const ygl::Vec4&) const’
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:7:7: note: ‘class ygl::Vec4’ defined here
+    7 | class Vec4 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp: In function ‘float ygl::dot(const Vec4&, const Vec4&)’:
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:66:52: error: ‘const class ygl::Vec4’ has no member named ‘dot’
+   66 | float dot(const Vec4& a, const Vec4& b) { return a.dot(b); }
+      |                                                    ^~~
+/home/yannoo/Dev/YGL/src/math/vec4.cpp: In function ‘ygl::Vec4 ygl::normalize(const Vec4&)’:
+/home/yannoo/Dev/YGL/src/math/vec4.cpp:67:42: error: ‘const class ygl::Vec4’ has no member named ‘normalized’
+   67 | Vec4 normalize(const Vec4& v) { return v.normalized(); }
+      |                                          ^~~~~~~~~~
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:328 : CMakeFiles/ygl.dir/src/math/vec4.cpp.o] Erreur 1
 gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
 gmake: *** [Makefile:91 : all] Erreur 2

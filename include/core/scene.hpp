@@ -8,6 +8,7 @@
 #include <memory>
 
 namespace ygl {
+
 class Scene : public Object3D {
 public:
     Scene(const std::string& name = "Scene");
@@ -27,6 +28,8 @@ public:
     void renderScene(const Camera& camera);
 
 private:
+    unsigned int m_id = 0;  // Déplacé en premier
+    std::string m_name;
     std::vector<std::shared_ptr<Light>> m_lights;
     std::vector<std::shared_ptr<Mesh>> m_meshes;
     Vec3 m_backgroundColor;
