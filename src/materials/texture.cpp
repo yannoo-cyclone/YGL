@@ -1,3 +1,5 @@
+#include <GL/glew.h>
+#include <GL/gl.h>
 #include "materials/texture.hpp"
 #include <stb_image.hpp>
 #include <algorithm>

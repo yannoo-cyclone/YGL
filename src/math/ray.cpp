@@ -1,6 +1,6 @@
 #include "math/ray.hpp"
 #include "math/math_utils.hpp"
-#include <iostream>
+#include "math/mat4.hpp"
 
 namespace ygl {
 
@@ -14,7 +14,7 @@ Ray::Ray()
 
 Ray::Ray(const Vec3& origin, const Vec3& direction)
     : origin(origin),
-      direction(normalize(direction)),
+      direction(direction),
       t_min(0.0f),
       t_max(std::numeric_limits<float>::max()) {
 }
@@ -28,79 +28,40 @@ Vec3 Ray::at(float t) const {
     return (*this)(t);
 }
 
-// --- Getters/Setters ---
-const Vec3& Ray::GetOrigin() const {
-    return origin;
-}
+// --- Getters ---
+const Vec3& Ray::getOrigin() const { return origin; }
+const Vec3& Ray::getDirection() const { return direction; }
+float Ray::getTMin() const { return t_min; }
+float Ray::getTMax() const { return t_max; }
 
-const Vec3& Ray::GetDirection() const {
-    return direction;
-}
+// --- Setters ---
+void Ray::setOrigin(const Vec3& o) { origin = o; }
+void Ray::setDirection(const Vec3& d) { direction = d; }
+void Ray::setTMin(float t) { t_min = t; }
+void Ray::setTMax(float t) { t_max = t; }
+void Ray::setBounds(float min, float max) { t_min = min; t_max = max; }
 
-float Ray::GetTMin() const {
-    return t_min;
-}
-
-float Ray::GetTMax() const {
-    return t_max;
-}
-
-void Ray::SetOrigin(const Vec3& o) {
-    origin = o;
-}
-
-void Ray::SetDirection(const Vec3& d) {
-    direction = normalize(d);
-}
-
-void Ray::SetTMin(float t) {
-    t_min = t;
-}
-
-void Ray::SetTMax(float t) {
-    t_max = t;
-}
-
-void Ray::SetBounds(float min, float max) {
-    t_min = min;
-    t_max = max;
-}
-
-// --- Check validity ---
-bool Ray::is_valid() const {
+// --- Validity ---
+bool Ray::isValid() const {
     return !std::isnan(direction.x) &&
            !std::isnan(direction.y) &&
            !std::isnan(direction.z) &&
-           direction.length_squared() > 0.0f;
+           direction.lengthSquared() > 0.0f;
 }
 
-// --- Transform ray by matrix ---
+// --- Transform ---
 Ray Ray::transform(const mat4& matrix) const {
-    Vec4 origin_homogeneous = matrix * Vec4(origin, 1.0f);
-    Vec4 direction_homogeneous = matrix * Vec4(direction, 0.0f);
-
-    Vec3 new_origin = Vec3(origin_homogeneous) / origin_homogeneous.w;
-    Vec3 new_direction = Vec3(direction_homogeneous);
-
-    // Avoid division by zero for direction
-    if (new_direction.length_squared() < EPSILON) {
-        new_direction = Vec3(0.0f, 0.0f, 1.0f);
-    } else {
-        new_direction = normalize(new_direction);
-    }
-
+    Vec3 new_origin = matrix * Vec3(origin, 1.0f);
+    Vec3 new_direction = matrix * Vec3(direction, 0.0f);
     return Ray(new_origin, new_direction);
 }
 
 // --- DifferentialRay Constructors ---
 DifferentialRay::DifferentialRay()
-    : Ray(),
-      has_differentials(false) {
-}
+    : Ray(), has_differentials(false) {}
 
 DifferentialRay::DifferentialRay(const Vec3& origin, const Vec3& direction, float t_min, float t_max)
-    : Ray(origin, direction),
-      has_differentials(false) {
+    : Ray(origin, direction), has_differentials(false) {
     this->t_min = t_min;
     this->t_max = t_max;
 }
@@ -111,62 +72,29 @@ DifferentialRay::DifferentialRay(
     const Vec3& rx_direction, const Vec3& ry_direction,
     float t_min, float t_max
 ) : Ray(origin, direction),
-    rx_origin(rx_origin),
-    ry_origin(ry_origin),
-    rx_direction(rx_direction),
-    ry_direction(ry_direction),
+    rx_origin(rx_origin), ry_origin(ry_origin),
+    rx_direction(rx_direction), ry_direction(ry_direction),
     has_differentials(true) {
     this->t_min = t_min;
     this->t_max = t_max;
 }
 
-// --- Differential access ---
-Vec3 DifferentialRay::get_rx_origin() const {
-    return rx_origin;
-}
+// --- DifferentialRay Getters ---
+Vec3 DifferentialRay::getRxOrigin() const { return rx_origin; }
+Vec3 DifferentialRay::getRyOrigin() const { return ry_origin; }
+Vec3 DifferentialRay::getRxDirection() const { return rx_direction; }
+Vec3 DifferentialRay::getRyDirection() const { return ry_direction; }
+bool DifferentialRay::getHasDifferentials() const { return has_differentials; }
 
-Vec3 DifferentialRay::get_ry_origin() const {
-    return ry_origin;
-}
-
-Vec3 DifferentialRay::get_rx_direction() const {
-    return rx_direction;
-}
-
-Vec3 DifferentialRay::get_ry_direction() const {
-    return ry_direction;
-}
-
-bool DifferentialRay::get_has_differentials() const {
-    return has_differentials;
-}
-
-void DifferentialRay::set_has_differentials(bool has) {
-    has_differentials = has;
-}
-
-void DifferentialRay::set_rx_origin(const Vec3& o) {
-    rx_origin = o;
-    has_differentials = true;
-}
-
-void DifferentialRay::set_ry_origin(const Vec3& o) {
-    ry_origin = o;
-    has_differentials = true;
-}
-
-void DifferentialRay::set_rx_direction(const Vec3& d) {
-    rx_direction = d;
-    has_differentials = true;
-}
-
-void DifferentialRay::set_ry_direction(const Vec3& d) {
-    ry_direction = d;
-    has_differentials = true;
-}
+// --- DifferentialRay Setters ---
+void DifferentialRay::setHasDifferentials(bool has) { has_differentials = has; }
+void DifferentialRay::setRxOrigin(const Vec3& o) { rx_origin = o; has_differentials = true; }
+void DifferentialRay::setRyOrigin(const Vec3& o) { ry_origin = o; has_differentials = true; }
+void DifferentialRay::setRxDirection(const Vec3& d) { rx_direction = d; has_differentials = true; }
+void DifferentialRay::setRyDirection(const Vec3& d) { ry_direction = d; has_differentials = true; }
 
 // --- Scale differentials ---
-void DifferentialRay::scale_differentials(float s) {
+void DifferentialRay::scaleDifferentials(float s) {
     if (has_differentials) {
         rx_origin = origin + (rx_origin - origin) * s;
         ry_origin = origin + (ry_origin - origin) * s;
@@ -175,33 +103,20 @@ void DifferentialRay::scale_differentials(float s) {
     }
 }
 
-// --- Transform differential ray by matrix ---
+// --- Transform ---
 DifferentialRay DifferentialRay::transform(const mat4& matrix) const {
     DifferentialRay result;
-
-    // Transform main ray
-    Vec4 origin_homogeneous = matrix * Vec4(origin, 1.0f);
-    Vec4 direction_homogeneous = matrix * Vec4(direction, 0.0f);
-
-    result.origin = Vec3(origin_homogeneous) / origin_homogeneous.w;
-    result.direction = normalize(Vec3(direction_homogeneous));
+    result.origin = matrix * Vec3(origin, 1.0f);
+    result.direction = (matrix * Vec3(direction, 0.0f)).normalized();
     result.t_min = t_min;
     result.t_max = t_max;
-
-    // Transform differentials if present
     if (has_differentials) {
-        Vec4 rx_origin_homogeneous = matrix * Vec4(rx_origin, 1.0f);
-        Vec4 ry_origin_homogeneous = matrix * Vec4(ry_origin, 1.0f);
-        Vec4 rx_direction_homogeneous = matrix * Vec4(rx_direction, 0.0f);
-        Vec4 ry_direction_homogeneous = matrix * Vec4(ry_direction, 0.0f);
-
-        result.rx_origin = Vec3(rx_origin_homogeneous) / rx_origin_homogeneous.w;
-        result.ry_origin = Vec3(ry_origin_homogeneous) / ry_origin_homogeneous.w;
-        result.rx_direction = normalize(Vec3(rx_direction_homogeneous));
-        result.ry_direction = normalize(Vec3(ry_direction_homogeneous));
+        result.rx_origin = matrix * Vec3(rx_origin, 1.0f);
+        result.ry_origin = matrix * Vec3(ry_origin, 1.0f);
+        result.rx_direction = (matrix * Vec3(rx_direction, 0.0f)).normalized();
+        result.ry_direction = (matrix * Vec3(ry_direction, 0.0f)).normalized();
         result.has_differentials = true;
     }
-
     return result;
 }
 
