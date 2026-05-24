@@ -1,12 +1,11 @@
 #!/bin/sh
 
-# Installation des dépendances (si manquantes)
-sudo apt-get install -y libglfw3-dev libglew-dev
+# Vérification des dépendances (sans bloquer si déjà installées)
+sudo apt-get install -y libglfw3-dev libglew-dev 2>/dev/null || true
 
 # Nettoyage et compilation
-cd build
+cd build || exit 1
 rm -rf *
-cmake ..
-cmake --build . -j$(nproc)  # Utilise tous les cœurs disponibles
+cmake .. || exit 1
+cmake --build . -j$(nproc) || exit 1
 cd ..
-

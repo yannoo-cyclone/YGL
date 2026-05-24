@@ -78,7 +78,7 @@ set(MATERIALS_SOURCES
 # Fichiers sources (Math)
 # ======================
 set(MATH_SOURCES
-    src/math/mat4.cpp
+    # src/math/mat4.cpp
     src/math/quat.cpp
     src/math/ray.cpp
     src/math/vec2.cpp

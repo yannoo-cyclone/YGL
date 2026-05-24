@@ -44,20 +44,72 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   GLFW3 Include: 
 --   OpenGL Include: 
 -- Configuring done (0.6s)
-CMake Error at CMakeLists.txt:121 (add_library):
-  Cannot find source file:
-
-    src/math/mat4.cpp
-
-  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm
-  .ccm .cxxm .c++m .h .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90
-  .f95 .f03 .hip .ispc
-
-
-CMake Error at CMakeLists.txt:121 (add_library):
-  No SOURCES given to target: ygl
-
-
-CMake Generate step failed.  Build files cannot be regenerated correctly.
-gmake: Makefile : Aucun fichier ou dossier de ce nom
-gmake: *** Aucune règle pour fabriquer la cible « Makefile ». Arrêt.
+-- Generating done (0.0s)
+-- Build files have been written to: /home/yannoo/Dev/YGL/build
+[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
+[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
+[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
+[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:5,
+                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/mesh.cpp:1:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp: In static member function ‘static ygl::mat4 ygl::mat4::lookAt(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&)’:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:57:39: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
+   57 |         Vec3 forward = (target - eye).Normalize();
+      |                                       ^~~~~~~~~
+      |                                       normalize
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:58:41: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
+   58 |         Vec3 right = cross(forward, up).Normalize();
+      |                                         ^~~~~~~~~
+      |                                         normalize
+In file included from /home/yannoo/Dev/YGL/src/core/bounding_box.cpp:4:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp: In static member function ‘static ygl::mat4 ygl::mat4::lookAt(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&)’:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:57:39: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
+   57 |         Vec3 forward = (target - eye).Normalize();
+      |                                       ^~~~~~~~~
+      |                                       normalize
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:58:41: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
+   58 |         Vec3 right = cross(forward, up).Normalize();
+      |                                         ^~~~~~~~~
+      |                                         normalize
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:5,
+                 from /home/yannoo/Dev/YGL/include/core/light.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/light.cpp:1:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp: In static member function ‘static ygl::mat4 ygl::mat4::lookAt(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&)’:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:57:39: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
+   57 |         Vec3 forward = (target - eye).Normalize();
+      |                                       ^~~~~~~~~
+      |                                       normalize
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:58:41: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
+   58 |         Vec3 right = cross(forward, up).Normalize();
+      |                                         ^~~~~~~~~
+      |                                         normalize
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp: In member function ‘float ygl::BoundingBox::DistanceTo(const ygl::Vec3&) const’:
+/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:170:30: error: ‘class ygl::Vec3’ has no member named ‘Length’; did you mean ‘length’?
+  170 |     return (point - closest).Length();
+      |                              ^~~~~~
+      |                              length
+/home/yannoo/Dev/YGL/src/core/light.cpp: In member function ‘void ygl::Light::setDirection(const ygl::Vec3&)’:
+/home/yannoo/Dev/YGL/src/core/light.cpp:21:75: error: ‘const class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
+   21 | void Light::setDirection(const Vec3& direction) { m_direction = direction.Normalize(); }
+      |                                                                           ^~~~~~~~~
+      |                                                                           normalize
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:5,
+                 from /home/yannoo/Dev/YGL/include/core/camera.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/camera.cpp:1:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp: In static member function ‘static ygl::mat4 ygl::mat4::lookAt(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&)’:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:57:39: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
+   57 |         Vec3 forward = (target - eye).Normalize();
+      |                                       ^~~~~~~~~
+      |                                       normalize
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:58:41: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
+   58 |         Vec3 right = cross(forward, up).Normalize();
+      |                                         ^~~~~~~~~
+      |                                         normalize
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:76 : CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o] Erreur 1
+gmake[2]: *** Attente des tâches non terminées....
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:104 : CMakeFiles/ygl.dir/src/core/light.cpp.o] Erreur 1
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:90 : CMakeFiles/ygl.dir/src/core/camera.cpp.o] Erreur 1
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:118 : CMakeFiles/ygl.dir/src/core/mesh.cpp.o] Erreur 1
+gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
+gmake: *** [Makefile:91 : all] Erreur 2
