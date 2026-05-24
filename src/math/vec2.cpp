@@ -1,69 +1,70 @@
-#include "math/vec2.hpp"
+#pragma once
+
 #include <cmath>
-#include <algorithm>
+#include <iostream>
 
 namespace ygl {
 
-// Assignment operators
-Vec2& Vec2::operator+=(const Vec2& other) {
-    x += other.x; y += other.y; return *this;
-}
-Vec2& Vec2::operator-=(const Vec2& other) {
-    x -= other.x; y -= other.y; return *this;
-}
-Vec2& Vec2::operator*=(float scalar) {
-    x *= scalar; y *= scalar; return *this;
-}
-Vec2& Vec2::operator/=(float scalar) {
-    float inv = 1.0f / scalar; x *= inv; y *= inv; return *this;
-}
+class Vec3;
 
-// Arithmetic operators
-Vec2 Vec2::operator+(const Vec2& other) const {
-    return Vec2(x + other.x, y + other.y);
-}
-Vec2 Vec2::operator-(const Vec2& other) const {
-    return Vec2(x - other.x, y - other.y);
-}
-Vec2 Vec2::operator-() const { return Vec2(-x, -y); }
-Vec2 Vec2::operator*(float scalar) const {
-    return Vec2(x * scalar, y * scalar);
-}
-Vec2 Vec2::operator/(float scalar) const {
-    float inv = 1.0f / scalar; return Vec2(x * inv, y * inv);
-}
+class Vec2 {
+public:
+    union {
+        struct { float x, y; };
+        struct { float u, v; };
+        float data[2];  // AJOUTÉ pour operator[]
+    };
 
-// Comparison
-bool Vec2::operator==(const Vec2& other) const {
-    return x == other.x && y == other.y;
-}
-bool Vec2::operator!=(const Vec2& other) const {
-    return !(*this == other);
-}
+    // Constructeurs
+    Vec2() : x(0.0f), y(0.0f) {}
+    Vec2(float scalar) : x(scalar), y(scalar) {}
+    Vec2(float x, float y) : x(x), y(y) {}
+    Vec2(const float* array) : x(array[0]), y(array[1]) {}
 
-// Vector operations
-float Vec2::length() const { return std::sqrt(x*x + y*y); }
-float Vec2::lengthSquared() const { return x*x + y*y; }
-Vec2 Vec2::normalized() const {
-    float len = length(); return len > 0.0f ? *this / len : *this;
-}
-void Vec2::normalize() { *this = normalized(); }
-float Vec2::dot(const Vec2& other) const {
-    return x*other.x + y*other.y;
-}
-float Vec2::distanceTo(const Vec2& other) const {
-    return std::sqrt((x-other.x)*(x-other.x) + (y-other.y)*(y-other.y));
-}
-Vec2 Vec2::lerp(const Vec2& other, float t) const {
-    return Vec2(x + (other.x-x)*t, y + (other.y-y)*t);
-}
+    // Accès
+    float& operator[](int index) { return data[index]; }
+    const float& operator[](int index) const { return data[index]; }
 
-// Output
-std::ostream& operator<<(std::ostream& os, const Vec2& v) {
-    os << "Vec2(" << v.x << ", " << v.y << ")"; return os;
-}
+    // Opérateurs d'assignation
+    Vec2& operator+=(const Vec2& other) { x += other.x; y += other.y; return *this; }
+    Vec2& operator-=(const Vec2& other) { x -= other.x; y -= other.y; return *this; }
+    Vec2& operator*=(float scalar) { x *= scalar; y *= scalar; return *this; }
+    Vec2& operator/=(float scalar) { x /= scalar; y /= scalar; return *this; }
 
-// Non-member functions
+    // Opérateurs arithmétiques
+    Vec2 operator+(const Vec2& other) const { return Vec2(x + other.x, y + other.y); }
+    Vec2 operator-(const Vec2& other) const { return Vec2(x - other.x, y - other.y); }
+    Vec2 operator-() const { return Vec2(-x, -y); }
+    Vec2 operator*(float scalar) const { return Vec2(x * scalar, y * scalar); }
+    Vec2 operator/(float scalar) const { return Vec2(x / scalar, y / scalar); }
+
+    // Comparaison
+    bool operator==(const Vec2& other) const { return x == other.x && y == other.y; }
+    bool operator!=(const Vec2& other) const { return !(*this == other); }
+
+    // Opérations vectorielles
+    float length() const { return std::sqrt(x * x + y * y); }
+    float lengthSquared() const { return x * x + y * y; }
+    Vec2 normalized() const { float len = length(); return len > 0 ? *this / len : Vec2(); }
+    void normalize() { *this = normalized(); }
+    float dot(const Vec2& other) const { return x * other.x + y * other.y; }
+    float distanceTo(const Vec2& other) const { return (*this - other).length(); }
+    Vec2 lerp(const Vec2& other, float t) const { return *this + (other - *this) * t; }
+
+    // Constantes
+    static Vec2 zero() { return Vec2(0.0f); }
+    static Vec2 one() { return Vec2(1.0f); }
+    static Vec2 unitX() { return Vec2(1.0f, 0.0f); }
+    static Vec2 unitY() { return Vec2(0.0f, 1.0f); }
+
+    // Sortie
+    friend std::ostream& operator<<(std::ostream& os, const Vec2& v) {
+        os << "Vec2(" << v.x << ", " << v.y << ")";
+        return os;
+    }
+};
+
+// Fonctions non-membres
 Vec2 operator*(float scalar, const Vec2& v) { return v * scalar; }
 float dot(const Vec2& a, const Vec2& b) { return a.dot(b); }
 Vec2 normalize(const Vec2& v) { return v.normalized(); }

@@ -43,36 +43,15 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   GLEW Include: /usr/include
 --   GLFW3 Include: 
 --   OpenGL Include: 
--- Configuring done (0.9s)
+-- Configuring done (0.6s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
-[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
-[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
+[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
+[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
 [  8%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
-[ 10%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
-In file included from /home/yannoo/Dev/YGL/include/core/bounding_box.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/core/bounding_box.cpp:1:
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   13 |         struct { float x, y, z; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   14 |         struct { float r, g, b; };
-      |                ^
+[ 10%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
 In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
                  from /home/yannoo/Dev/YGL/src/core/object3d.cpp:1:
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   13 |         struct { float x, y, z; };
-      |                ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   14 |         struct { float r, g, b; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
-/home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
-   14 |         struct { float x, y, z, w; };
-      |                ^
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
-                 from /home/yannoo/Dev/YGL/include/core/camera.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/core/camera.cpp:1:
 /home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    13 |         struct { float x, y, z; };
       |                ^
@@ -92,29 +71,31 @@ In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
 /home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    14 |         struct { float r, g, b; };
       |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3,
+                 from /home/yannoo/Dev/YGL/include/core/camera.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/camera.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float r, g, b; };
+      |                ^
 In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
 /home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    14 |         struct { float x, y, z, w; };
       |                ^
-/home/yannoo/Dev/YGL/src/core/object3d.cpp: In member function ‘void ygl::Object3D::updateWorldMatrix(bool) const’:
-/home/yannoo/Dev/YGL/src/core/object3d.cpp:57:86: error: passing ‘const ygl::Vec3’ as ‘this’ argument discards qualifiers [-fpermissive]
-   57 |     m_worldPosition = Vec3(m_worldMatrix(0,3), m_worldMatrix(1,3), m_worldMatrix(2,3));
-      |                                                                                      ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:10:7: note:   in call to ‘constexpr ygl::Vec3& ygl::Vec3::operator=(ygl::Vec3&&)’
-   10 | class Vec3 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/core/object3d.cpp:62:5: error: passing ‘const ygl::Vec3’ as ‘this’ argument discards qualifiers [-fpermissive]
-   62 |     );
-      |     ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:10:7: note:   in call to ‘constexpr ygl::Vec3& ygl::Vec3::operator=(ygl::Vec3&&)’
-   10 | class Vec3 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/src/core/object3d.cpp:63:41: error: passing ‘const ygl::Quat’ as ‘this’ argument discards qualifiers [-fpermissive]
-   63 |     m_worldRotation = Quat(m_worldMatrix);
-      |                                         ^
-/home/yannoo/Dev/YGL/include/math/quat.hpp:11:7: note:   in call to ‘constexpr ygl::Quat& ygl::Quat::operator=(ygl::Quat&&)’
-   11 | class Quat {
-      |       ^~~~
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:4:
+/home/yannoo/Dev/YGL/include/math/quat.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float x, y, z, w; };
+      |                ^
+In file included from /home/yannoo/Dev/YGL/include/core/bounding_box.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/bounding_box.cpp:1:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   13 |         struct { float x, y, z; };
+      |                ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
+   14 |         struct { float r, g, b; };
+      |                ^
 In file included from /home/yannoo/Dev/YGL/include/core/mesh.hpp:5:
 /home/yannoo/Dev/YGL/include/math/vec2.hpp:13:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    13 |         struct { float x, y; };
@@ -122,7 +103,18 @@ In file included from /home/yannoo/Dev/YGL/include/core/mesh.hpp:5:
 /home/yannoo/Dev/YGL/include/math/vec2.hpp:14:16: warning: ISO C++ prohibits anonymous structs [-Wpedantic]
    14 |         struct { float u, v; };
       |                ^
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:118 : CMakeFiles/ygl.dir/src/core/object3d.cpp.o] Erreur 1
+[ 13%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
+[ 16%] Building CXX object CMakeFiles/ygl.dir/src/loaders/gltf_loader.cpp.o
+/home/yannoo/Dev/YGL/src/core/scene.cpp:4:10: fatal error: core/light.hpp: Aucun fichier ou dossier de ce nom
+    4 | #include "core/light.hpp"
+      |          ^~~~~~~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:132 : CMakeFiles/ygl.dir/src/core/scene.cpp.o] Erreur 1
 gmake[2]: *** Attente des tâches non terminées....
+/home/yannoo/Dev/YGL/src/loaders/gltf_loader.cpp:7:10: fatal error: nlohmann/json.hpp: Aucun fichier ou dossier de ce nom
+    7 | #include <nlohmann/json.hpp>
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:146 : CMakeFiles/ygl.dir/src/loaders/gltf_loader.cpp.o] Erreur 1
 gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
 gmake: *** [Makefile:91 : all] Erreur 2
