@@ -1,10 +1,14 @@
 #include "math/ray.hpp"
 #include "math/math_utils.hpp"
 #include "math/mat4.hpp"
+#include "math/vec4.hpp"
 
 namespace ygl {
 
-// --- Ray Constructors ---
+// ============================================
+// Ray Implementation
+// ============================================
+
 Ray::Ray()
     : origin(0.0f, 0.0f, 0.0f),
       direction(0.0f, 0.0f, 1.0f),
@@ -51,12 +55,32 @@ bool Ray::isValid() const {
 
 // --- Transform ---
 Ray Ray::transform(const mat4& matrix) const {
-    Vec3 new_origin = matrix * Vec3(origin, 1.0f);
-    Vec3 new_direction = matrix * Vec3(direction, 0.0f);
-    return Ray(new_origin, new_direction);
+    Vec4 origin4(origin.x, origin.y, origin.z, 1.0f);
+    Vec4 dir4(direction.x, direction.y, direction.z, 0.0f);
+    Vec4 new_origin4 = matrix * origin4;
+    Vec4 new_dir4 = matrix * dir4;
+
+    Vec3 new_origin(new_origin4.x, new_origin4.y, new_origin4.z);
+    Vec3 new_direction(new_dir4.x, new_dir4.y, new_dir4.z);
+
+    if (new_direction.lengthSquared() < EPSILON) {
+        new_direction = Vec3(0.0f, 0.0f, 1.0f);
+    } else {
+        new_direction = new_direction.normalized();
+    }
+
+    Ray result;
+    result.origin = new_origin;
+    result.direction = new_direction;
+    result.t_min = t_min;
+    result.t_max = t_max;
+    return result;
 }
 
-// --- DifferentialRay Constructors ---
+// ============================================
+// DifferentialRay Implementation
+// ============================================
+
 DifferentialRay::DifferentialRay()
     : Ray(), has_differentials(false) {}
 
@@ -106,17 +130,37 @@ void DifferentialRay::scaleDifferentials(float s) {
 // --- Transform ---
 DifferentialRay DifferentialRay::transform(const mat4& matrix) const {
     DifferentialRay result;
-    result.origin = matrix * Vec3(origin, 1.0f);
-    result.direction = (matrix * Vec3(direction, 0.0f)).normalized();
+
+    // Transform main ray
+    Vec4 origin4(origin.x, origin.y, origin.z, 1.0f);
+    Vec4 dir4(direction.x, direction.y, direction.z, 0.0f);
+    Vec4 new_origin4 = matrix * origin4;
+    Vec4 new_dir4 = matrix * dir4;
+
+    result.origin = Vec3(new_origin4.x, new_origin4.y, new_origin4.z);
+    result.direction = Vec3(new_dir4.x, new_dir4.y, new_dir4.z).normalized();
     result.t_min = t_min;
     result.t_max = t_max;
+
+    // Transform differentials if present
     if (has_differentials) {
-        result.rx_origin = matrix * Vec3(rx_origin, 1.0f);
-        result.ry_origin = matrix * Vec3(ry_origin, 1.0f);
-        result.rx_direction = (matrix * Vec3(rx_direction, 0.0f)).normalized();
-        result.ry_direction = (matrix * Vec3(ry_direction, 0.0f)).normalized();
+        Vec4 rx_origin4(rx_origin.x, rx_origin.y, rx_origin.z, 1.0f);
+        Vec4 ry_origin4(ry_origin.x, ry_origin.y, ry_origin.z, 1.0f);
+        Vec4 rx_dir4(rx_direction.x, rx_direction.y, rx_direction.z, 0.0f);
+        Vec4 ry_dir4(ry_direction.x, ry_direction.y, ry_direction.z, 0.0f);
+
+        Vec4 new_rx_origin4 = matrix * rx_origin4;
+        Vec4 new_ry_origin4 = matrix * ry_origin4;
+        Vec4 new_rx_dir4 = matrix * rx_dir4;
+        Vec4 new_ry_dir4 = matrix * ry_dir4;
+
+        result.rx_origin = Vec3(new_rx_origin4.x, new_rx_origin4.y, new_rx_origin4.z);
+        result.ry_origin = Vec3(new_ry_origin4.x, new_ry_origin4.y, new_ry_origin4.z);
+        result.rx_direction = Vec3(new_rx_dir4.x, new_rx_dir4.y, new_rx_dir4.z).normalized();
+        result.ry_direction = Vec3(new_ry_dir4.x, new_ry_dir4.y, new_ry_dir4.z).normalized();
         result.has_differentials = true;
     }
+
     return result;
 }
 

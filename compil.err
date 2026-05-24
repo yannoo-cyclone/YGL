@@ -37,12 +37,12 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   GLEW Include: /usr/include
 --   GLFW3 Include: 
 --   OpenGL Include: 
--- Configuring done (1.6s)
--- Generating done (0.1s)
+-- Configuring done (0.8s)
+-- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
-[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
-[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
-[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
+[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
+[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
+[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
 [ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
 [ 14%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
 [ 17%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
@@ -57,7 +57,6 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 [ 42%] Building CXX object CMakeFiles/ygl.dir/src/math/ray.cpp.o
 [ 45%] Building CXX object CMakeFiles/ygl.dir/src/math/vec2.cpp.o
 [ 48%] Building CXX object CMakeFiles/ygl.dir/src/math/vec3.cpp.o
-[ 51%] Building CXX object CMakeFiles/ygl.dir/src/math/vec4.cpp.o
 In file included from /home/yannoo/Dev/YGL/src/math/ray.cpp:2:
 /home/yannoo/Dev/YGL/include/math/math_utils.hpp: In function ‘float ygl::FastInvSqrt(float)’:
 /home/yannoo/Dev/YGL/include/math/math_utils.hpp:71:18: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
@@ -67,177 +66,153 @@ In file included from /home/yannoo/Dev/YGL/src/math/ray.cpp:2:
    73 |     y = *reinterpret_cast<float*>(&i);
       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /home/yannoo/Dev/YGL/src/math/ray.cpp: In member function ‘ygl::Ray ygl::Ray::transform(const ygl::mat4&) const’:
-/home/yannoo/Dev/YGL/src/math/ray.cpp:54:49: error: no matching function for call to ‘ygl::Vec3::Vec3(const ygl::Vec3&, float)’
-   54 |     Vec3 new_origin = matrix * Vec3(origin, 1.0f);
-      |                                                 ^
-In file included from /home/yannoo/Dev/YGL/include/math/ray.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/math/ray.cpp:1:
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note: candidate: ‘ygl::Vec3::Vec3(float, float, float)’
-   25 |     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note:   candidate expects 3 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note: candidate: ‘ygl::Vec3::Vec3(float)’
-   24 |     explicit Vec3(float scalar) : x(scalar), y(scalar), z(scalar) {}
-      |              ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note: candidate: ‘ygl::Vec3::Vec3()’
-   23 |     Vec3() : x(0), y(0), z(0) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note:   candidate expects 0 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(const ygl::Vec3&)’
-   12 | class Vec3 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(ygl::Vec3&&)’
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/src/math/ray.cpp:55:55: error: no matching function for call to ‘ygl::Vec3::Vec3(const ygl::Vec3&, float)’
-   55 |     Vec3 new_direction = matrix * Vec3(direction, 0.0f);
-      |                                                       ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note: candidate: ‘ygl::Vec3::Vec3(float, float, float)’
-   25 |     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note:   candidate expects 3 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note: candidate: ‘ygl::Vec3::Vec3(float)’
-   24 |     explicit Vec3(float scalar) : x(scalar), y(scalar), z(scalar) {}
-      |              ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note: candidate: ‘ygl::Vec3::Vec3()’
-   23 |     Vec3() : x(0), y(0), z(0) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note:   candidate expects 0 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(const ygl::Vec3&)’
-   12 | class Vec3 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(ygl::Vec3&&)’
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
+/home/yannoo/Dev/YGL/src/math/ray.cpp:60:31: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
+   60 |     Vec4 new_origin4 = matrix * origin4;
+      |                        ~~~~~~ ^ ~~~~~~~
+      |                        |        |
+      |                        |        ygl::Vec4
+      |                        const ygl::mat4
+In file included from /home/yannoo/Dev/YGL/src/math/ray.cpp:3:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
+   25 |     mat4 operator*(const mat4& other) const {
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
+   25 |     mat4 operator*(const mat4& other) const {
+      |                    ~~~~~~~~~~~~^~~~~
+In file included from /home/yannoo/Dev/YGL/include/math/mat4.hpp:3:
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |      ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |                ~~~~~~^~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:61:28: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
+   61 |     Vec4 new_dir4 = matrix * dir4;
+      |                     ~~~~~~ ^ ~~~~
+      |                     |        |
+      |                     |        ygl::Vec4
+      |                     const ygl::mat4
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
+   25 |     mat4 operator*(const mat4& other) const {
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
+   25 |     mat4 operator*(const mat4& other) const {
+      |                    ~~~~~~~~~~~~^~~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |      ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |                ~~~~~~^~~~~~
 /home/yannoo/Dev/YGL/src/math/ray.cpp: In member function ‘ygl::DifferentialRay ygl::DifferentialRay::transform(const ygl::mat4&) const’:
-/home/yannoo/Dev/YGL/src/math/ray.cpp:109:47: error: no matching function for call to ‘ygl::Vec3::Vec3(const ygl::Vec3&, float)’
-  109 |     result.origin = matrix * Vec3(origin, 1.0f);
-      |                                               ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note: candidate: ‘ygl::Vec3::Vec3(float, float, float)’
-   25 |     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note:   candidate expects 3 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note: candidate: ‘ygl::Vec3::Vec3(float)’
-   24 |     explicit Vec3(float scalar) : x(scalar), y(scalar), z(scalar) {}
-      |              ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note: candidate: ‘ygl::Vec3::Vec3()’
-   23 |     Vec3() : x(0), y(0), z(0) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note:   candidate expects 0 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(const ygl::Vec3&)’
-   12 | class Vec3 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(ygl::Vec3&&)’
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/src/math/ray.cpp:110:54: error: no matching function for call to ‘ygl::Vec3::Vec3(const ygl::Vec3&, float)’
-  110 |     result.direction = (matrix * Vec3(direction, 0.0f)).normalized();
-      |                                                      ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note: candidate: ‘ygl::Vec3::Vec3(float, float, float)’
-   25 |     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note:   candidate expects 3 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note: candidate: ‘ygl::Vec3::Vec3(float)’
-   24 |     explicit Vec3(float scalar) : x(scalar), y(scalar), z(scalar) {}
-      |              ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note: candidate: ‘ygl::Vec3::Vec3()’
-   23 |     Vec3() : x(0), y(0), z(0) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note:   candidate expects 0 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(const ygl::Vec3&)’
-   12 | class Vec3 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(ygl::Vec3&&)’
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/src/math/ray.cpp:114:57: error: no matching function for call to ‘ygl::Vec3::Vec3(const ygl::Vec3&, float)’
-  114 |         result.rx_origin = matrix * Vec3(rx_origin, 1.0f);
-      |                                                         ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note: candidate: ‘ygl::Vec3::Vec3(float, float, float)’
-   25 |     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note:   candidate expects 3 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note: candidate: ‘ygl::Vec3::Vec3(float)’
-   24 |     explicit Vec3(float scalar) : x(scalar), y(scalar), z(scalar) {}
-      |              ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note: candidate: ‘ygl::Vec3::Vec3()’
-   23 |     Vec3() : x(0), y(0), z(0) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note:   candidate expects 0 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(const ygl::Vec3&)’
-   12 | class Vec3 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(ygl::Vec3&&)’
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/src/math/ray.cpp:115:57: error: no matching function for call to ‘ygl::Vec3::Vec3(const ygl::Vec3&, float)’
-  115 |         result.ry_origin = matrix * Vec3(ry_origin, 1.0f);
-      |                                                         ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note: candidate: ‘ygl::Vec3::Vec3(float, float, float)’
-   25 |     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note:   candidate expects 3 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note: candidate: ‘ygl::Vec3::Vec3(float)’
-   24 |     explicit Vec3(float scalar) : x(scalar), y(scalar), z(scalar) {}
-      |              ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note: candidate: ‘ygl::Vec3::Vec3()’
-   23 |     Vec3() : x(0), y(0), z(0) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note:   candidate expects 0 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(const ygl::Vec3&)’
-   12 | class Vec3 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(ygl::Vec3&&)’
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/src/math/ray.cpp:116:64: error: no matching function for call to ‘ygl::Vec3::Vec3(const ygl::Vec3&, float)’
-  116 |         result.rx_direction = (matrix * Vec3(rx_direction, 0.0f)).normalized();
-      |                                                                ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note: candidate: ‘ygl::Vec3::Vec3(float, float, float)’
-   25 |     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note:   candidate expects 3 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note: candidate: ‘ygl::Vec3::Vec3(float)’
-   24 |     explicit Vec3(float scalar) : x(scalar), y(scalar), z(scalar) {}
-      |              ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note: candidate: ‘ygl::Vec3::Vec3()’
-   23 |     Vec3() : x(0), y(0), z(0) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note:   candidate expects 0 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(const ygl::Vec3&)’
-   12 | class Vec3 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(ygl::Vec3&&)’
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/src/math/ray.cpp:117:64: error: no matching function for call to ‘ygl::Vec3::Vec3(const ygl::Vec3&, float)’
-  117 |         result.ry_direction = (matrix * Vec3(ry_direction, 0.0f)).normalized();
-      |                                                                ^
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note: candidate: ‘ygl::Vec3::Vec3(float, float, float)’
-   25 |     Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:25:5: note:   candidate expects 3 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note: candidate: ‘ygl::Vec3::Vec3(float)’
-   24 |     explicit Vec3(float scalar) : x(scalar), y(scalar), z(scalar) {}
-      |              ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:24:14: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note: candidate: ‘ygl::Vec3::Vec3()’
-   23 |     Vec3() : x(0), y(0), z(0) {}
-      |     ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:23:5: note:   candidate expects 0 arguments, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(const ygl::Vec3&)’
-   12 | class Vec3 {
-      |       ^~~~
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3::Vec3(ygl::Vec3&&)’
-/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   candidate expects 1 argument, 2 provided
+/home/yannoo/Dev/YGL/src/math/ray.cpp:137:31: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
+  137 |     Vec4 new_origin4 = matrix * origin4;
+      |                        ~~~~~~ ^ ~~~~~~~
+      |                        |        |
+      |                        |        ygl::Vec4
+      |                        const ygl::mat4
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
+   25 |     mat4 operator*(const mat4& other) const {
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
+   25 |     mat4 operator*(const mat4& other) const {
+      |                    ~~~~~~~~~~~~^~~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |      ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |                ~~~~~~^~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:138:28: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
+  138 |     Vec4 new_dir4 = matrix * dir4;
+      |                     ~~~~~~ ^ ~~~~
+      |                     |        |
+      |                     |        ygl::Vec4
+      |                     const ygl::mat4
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
+   25 |     mat4 operator*(const mat4& other) const {
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
+   25 |     mat4 operator*(const mat4& other) const {
+      |                    ~~~~~~~~~~~~^~~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |      ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |                ~~~~~~^~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:152:38: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
+  152 |         Vec4 new_rx_origin4 = matrix * rx_origin4;
+      |                               ~~~~~~ ^ ~~~~~~~~~~
+      |                               |        |
+      |                               |        ygl::Vec4
+      |                               const ygl::mat4
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
+   25 |     mat4 operator*(const mat4& other) const {
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
+   25 |     mat4 operator*(const mat4& other) const {
+      |                    ~~~~~~~~~~~~^~~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |      ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |                ~~~~~~^~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:153:38: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
+  153 |         Vec4 new_ry_origin4 = matrix * ry_origin4;
+      |                               ~~~~~~ ^ ~~~~~~~~~~
+      |                               |        |
+      |                               |        ygl::Vec4
+      |                               const ygl::mat4
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
+   25 |     mat4 operator*(const mat4& other) const {
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
+   25 |     mat4 operator*(const mat4& other) const {
+      |                    ~~~~~~~~~~~~^~~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |      ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |                ~~~~~~^~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:154:35: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
+  154 |         Vec4 new_rx_dir4 = matrix * rx_dir4;
+      |                            ~~~~~~ ^ ~~~~~~~
+      |                            |        |
+      |                            |        ygl::Vec4
+      |                            const ygl::mat4
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
+   25 |     mat4 operator*(const mat4& other) const {
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
+   25 |     mat4 operator*(const mat4& other) const {
+      |                    ~~~~~~~~~~~~^~~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |      ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |                ~~~~~~^~~~~~
+/home/yannoo/Dev/YGL/src/math/ray.cpp:155:35: error: no match for ‘operator*’ (operand types are ‘const ygl::mat4’ and ‘ygl::Vec4’)
+  155 |         Vec4 new_ry_dir4 = matrix * ry_dir4;
+      |                            ~~~~~~ ^ ~~~~~~~
+      |                            |        |
+      |                            |        ygl::Vec4
+      |                            const ygl::mat4
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:10: note: candidate: ‘ygl::mat4 ygl::mat4::operator*(const ygl::mat4&) const’
+   25 |     mat4 operator*(const mat4& other) const {
+      |          ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:25:32: note:   no known conversion for argument 1 from ‘ygl::Vec4’ to ‘const ygl::mat4&’
+   25 |     mat4 operator*(const mat4& other) const {
+      |                    ~~~~~~~~~~~~^~~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:6: note: candidate: ‘ygl::Vec4 ygl::operator*(float, const Vec4&)’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |      ^~~~~~~~
+/home/yannoo/Dev/YGL/include/math/vec4.hpp:68:22: note:   no known conversion for argument 1 from ‘const ygl::mat4’ to ‘float’
+   68 | Vec4 operator*(float scalar, const Vec4& v);
+      |                ~~~~~~^~~~~~
 gmake[2]: *** [CMakeFiles/ygl.dir/build.make:272 : CMakeFiles/ygl.dir/src/math/ray.cpp.o] Erreur 1
 gmake[2]: *** Attente des tâches non terminées....
 gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
