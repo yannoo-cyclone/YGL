@@ -167,7 +167,7 @@ bool BoundingBox::Intersect(const Ray& ray, HitInfo& hit_info, float t_min, floa
 
 float BoundingBox::DistanceTo(const Vec3& point) const {
     Vec3 closest = Vec3::Clamp(point, min, max);
-    return (point - closest).Length();
+    return (point - closest).length();
 }
 
 float BoundingBox::DistanceTo(const BoundingBox& other) const {

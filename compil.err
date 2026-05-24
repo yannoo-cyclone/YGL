@@ -1,9 +1,3 @@
-Lecture des listes de paquets…
-Construction de l'arbre des dépendances…
-Lecture des informations d'état…
-libglfw3-dev est déjà la version la plus récente (3.3.10-1build1).
-libglew-dev est déjà la version la plus récente (2.2.0-4build1).
-0 mis à jour, 0 nouvellement installés, 0 à enlever et 1 non mis à jour.
 -- The CXX compiler identification is GNU 13.3.0
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
@@ -43,71 +37,70 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   GLEW Include: /usr/include
 --   GLFW3 Include: 
 --   OpenGL Include: 
--- Configuring done (0.6s)
+-- Configuring done (1.0s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
-[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
+[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
 [  5%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
-[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
+[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
 [ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
-In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:5,
-                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
-                 from /home/yannoo/Dev/YGL/src/core/mesh.cpp:1:
-/home/yannoo/Dev/YGL/include/math/mat4.hpp: In static member function ‘static ygl::mat4 ygl::mat4::lookAt(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&)’:
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:57:39: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
-   57 |         Vec3 forward = (target - eye).Normalize();
-      |                                       ^~~~~~~~~
-      |                                       normalize
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:58:41: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
-   58 |         Vec3 right = cross(forward, up).Normalize();
-      |                                         ^~~~~~~~~
-      |                                         normalize
-In file included from /home/yannoo/Dev/YGL/src/core/bounding_box.cpp:4:
-/home/yannoo/Dev/YGL/include/math/mat4.hpp: In static member function ‘static ygl::mat4 ygl::mat4::lookAt(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&)’:
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:57:39: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
-   57 |         Vec3 forward = (target - eye).Normalize();
-      |                                       ^~~~~~~~~
-      |                                       normalize
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:58:41: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
-   58 |         Vec3 right = cross(forward, up).Normalize();
-      |                                         ^~~~~~~~~
-      |                                         normalize
 In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:5,
                  from /home/yannoo/Dev/YGL/include/core/light.hpp:3,
                  from /home/yannoo/Dev/YGL/src/core/light.cpp:1:
 /home/yannoo/Dev/YGL/include/math/mat4.hpp: In static member function ‘static ygl::mat4 ygl::mat4::lookAt(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&)’:
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:57:39: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
-   57 |         Vec3 forward = (target - eye).Normalize();
-      |                                       ^~~~~~~~~
-      |                                       normalize
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:58:41: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
-   58 |         Vec3 right = cross(forward, up).Normalize();
-      |                                         ^~~~~~~~~
-      |                                         normalize
-/home/yannoo/Dev/YGL/src/core/bounding_box.cpp: In member function ‘float ygl::BoundingBox::DistanceTo(const ygl::Vec3&) const’:
-/home/yannoo/Dev/YGL/src/core/bounding_box.cpp:170:30: error: ‘class ygl::Vec3’ has no member named ‘Length’; did you mean ‘length’?
-  170 |     return (point - closest).Length();
-      |                              ^~~~~~
-      |                              length
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:57:48: error: conversion from ‘void’ to non-scalar type ‘ygl::Vec3’ requested
+   57 |         Vec3 forward = (target - eye).normalize();
+      |                        ~~~~~~~~~~~~~~~~~~~~~~~~^~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:58:50: error: conversion from ‘void’ to non-scalar type ‘ygl::Vec3’ requested
+   58 |         Vec3 right = cross(forward, up).normalize();
+      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+In file included from /home/yannoo/Dev/YGL/src/core/bounding_box.cpp:4:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp: In static member function ‘static ygl::mat4 ygl::mat4::lookAt(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&)’:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:57:48: error: conversion from ‘void’ to non-scalar type ‘ygl::Vec3’ requested
+   57 |         Vec3 forward = (target - eye).normalize();
+      |                        ~~~~~~~~~~~~~~~~~~~~~~~~^~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:58:50: error: conversion from ‘void’ to non-scalar type ‘ygl::Vec3’ requested
+   58 |         Vec3 right = cross(forward, up).normalize();
+      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
 /home/yannoo/Dev/YGL/src/core/light.cpp: In member function ‘void ygl::Light::setDirection(const ygl::Vec3&)’:
-/home/yannoo/Dev/YGL/src/core/light.cpp:21:75: error: ‘const class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
-   21 | void Light::setDirection(const Vec3& direction) { m_direction = direction.Normalize(); }
-      |                                                                           ^~~~~~~~~
-      |                                                                           normalize
+/home/yannoo/Dev/YGL/src/core/light.cpp:21:84: error: passing ‘const ygl::Vec3’ as ‘this’ argument discards qualifiers [-fpermissive]
+   21 | void Light::setDirection(const Vec3& direction) { m_direction = direction.normalize(); }
+      |                                                                 ~~~~~~~~~~~~~~~~~~~^~
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:3:
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:50:10: note:   in call to ‘void ygl::Vec3::normalize()’
+   50 |     void normalize() { *this = normalized(); }
+      |          ^~~~~~~~~
+/home/yannoo/Dev/YGL/src/core/light.cpp:21:85: error: no match for ‘operator=’ (operand types are ‘ygl::Vec3’ and ‘void’)
+   21 | void Light::setDirection(const Vec3& direction) { m_direction = direction.normalize(); }
+      |                                                                                     ^
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3& ygl::Vec3::operator=(const ygl::Vec3&)’
+   12 | class Vec3 {
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   no known conversion for argument 1 from ‘void’ to ‘const ygl::Vec3&’
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note: candidate: ‘constexpr ygl::Vec3& ygl::Vec3::operator=(ygl::Vec3&&)’
+/home/yannoo/Dev/YGL/include/math/vec3.hpp:12:7: note:   no known conversion for argument 1 from ‘void’ to ‘ygl::Vec3&&’
+In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:5,
+                 from /home/yannoo/Dev/YGL/include/core/mesh.hpp:3,
+                 from /home/yannoo/Dev/YGL/src/core/mesh.cpp:1:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp: In static member function ‘static ygl::mat4 ygl::mat4::lookAt(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&)’:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:57:48: error: conversion from ‘void’ to non-scalar type ‘ygl::Vec3’ requested
+   57 |         Vec3 forward = (target - eye).normalize();
+      |                        ~~~~~~~~~~~~~~~~~~~~~~~~^~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:58:50: error: conversion from ‘void’ to non-scalar type ‘ygl::Vec3’ requested
+   58 |         Vec3 right = cross(forward, up).normalize();
+      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:76 : CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o] Erreur 1
+gmake[2]: *** Attente des tâches non terminées....
 In file included from /home/yannoo/Dev/YGL/include/core/object3d.hpp:5,
                  from /home/yannoo/Dev/YGL/include/core/camera.hpp:3,
                  from /home/yannoo/Dev/YGL/src/core/camera.cpp:1:
 /home/yannoo/Dev/YGL/include/math/mat4.hpp: In static member function ‘static ygl::mat4 ygl::mat4::lookAt(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&)’:
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:57:39: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
-   57 |         Vec3 forward = (target - eye).Normalize();
-      |                                       ^~~~~~~~~
-      |                                       normalize
-/home/yannoo/Dev/YGL/include/math/mat4.hpp:58:41: error: ‘class ygl::Vec3’ has no member named ‘Normalize’; did you mean ‘normalize’?
-   58 |         Vec3 right = cross(forward, up).Normalize();
-      |                                         ^~~~~~~~~
-      |                                         normalize
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:76 : CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o] Erreur 1
-gmake[2]: *** Attente des tâches non terminées....
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:57:48: error: conversion from ‘void’ to non-scalar type ‘ygl::Vec3’ requested
+   57 |         Vec3 forward = (target - eye).normalize();
+      |                        ~~~~~~~~~~~~~~~~~~~~~~~~^~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:58:50: error: conversion from ‘void’ to non-scalar type ‘ygl::Vec3’ requested
+   58 |         Vec3 right = cross(forward, up).normalize();
+      |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
 gmake[2]: *** [CMakeFiles/ygl.dir/build.make:104 : CMakeFiles/ygl.dir/src/core/light.cpp.o] Erreur 1
 gmake[2]: *** [CMakeFiles/ygl.dir/build.make:90 : CMakeFiles/ygl.dir/src/core/camera.cpp.o] Erreur 1
 gmake[2]: *** [CMakeFiles/ygl.dir/build.make:118 : CMakeFiles/ygl.dir/src/core/mesh.cpp.o] Erreur 1
