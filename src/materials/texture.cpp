@@ -1,111 +1,173 @@
 #include "materials/texture.hpp"
-#include <stb_image.hpp>
+#include "stb_image.hpp"
+#include <GL/glew.h>
 #include <algorithm>
 
 namespace ygl {
 
-// --- Texture2D ---
-Texture::Texture()
-    : id(0), width(0), height(0), channels(0),
-      internal_format(GL_RGBA), format(GL_RGBA), type(GL_UNSIGNED_BYTE), wrapped(false) {
-    glGenTextures(1, &id);
+Texture::Texture(Type type, const std::string& name)
+    : m_type(type), m_name(name), m_id(0), m_width(0), m_height(0), m_format(Format::RGBA8) {
+    glGenTextures(1, &m_id);
 }
-
-Texture::Texture(const std::string& filepath, bool flip)
-    : Texture() { LoadFromFile(filepath, flip); }
 
 Texture::~Texture() {
-    if (id != 0) glDeleteTextures(1, &id);
+    if (m_id != 0) glDeleteTextures(1, &m_id);
 }
 
-bool Texture::LoadFromFile(const std::string& filepath, bool flip) {
+bool Texture::loadFromFile(const std::string& filename) {
     int w, h, c;
-    stbi_set_flip_vertically_on_load(flip);
-    unsigned char* data = stbi_load(filepath.c_str(), &w, &h, &c, 0);
+    stbi_set_flip_vertically_on_load(true);
+    unsigned char* data = stbi_load(filename.c_str(), &w, &h, &c, 0);
     if (!data) return false;
 
-    width = w; height = h; channels = c;
-    if (channels == 1) { internal_format = GL_R8; format = GL_RED; }
-    else if (channels == 2) { internal_format = GL_RG8; format = GL_RG; }
-    else if (channels == 3) { internal_format = GL_RGB8; format = GL_RGB; }
-    else if (channels == 4) { internal_format = GL_RGBA8; format = GL_RGBA; }
+    m_width = w;
+    m_height = h;
+    m_filename = filename;
 
-    glBindTexture(GL_TEXTURE_2D, id);
-    glTexImage2D(GL_TEXTURE_2D, 0, internal_format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+    GLenum gl_format;
+    if (c == 1) { m_format = Format::R8; gl_format = GL_RED; }
+    else if (c == 2) { m_format = Format::RG8; gl_format = GL_RG; }
+    else if (c == 3) { m_format = Format::RGB8; gl_format = GL_RGB; }
+    else { m_format = Format::RGBA8; gl_format = GL_RGBA; }
+
+    glBindTexture(GL_TEXTURE_2D, m_id);
+    glTexImage2D(GL_TEXTURE_2D, 0, getGLInternalFormat(m_format), m_width, m_height, 0, gl_format, GL_UNSIGNED_BYTE, data);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glGenerateMipmap(GL_TEXTURE_2D);
     stbi_image_free(data);
     return true;
 }
 
-bool Texture::LoadFromMemory(int w, int h, int c, const unsigned char* data) {
-    width = w; height = h; channels = c;
-    if (channels == 1) { internal_format = GL_R8; format = GL_RED; }
-    else if (channels == 2) { internal_format = GL_RG8; format = GL_RG; }
-    else if (channels == 3) { internal_format = GL_RGB8; format = GL_RGB; }
-    else if (channels == 4) { internal_format = GL_RGBA8; format = GL_RGBA; }
+bool Texture::create(int width, int height, Format format) {
+    m_width = width;
+    m_height = height;
+    m_format = format;
 
-    glBindTexture(GL_TEXTURE_2D, id);
-    glTexImage2D(GL_TEXTURE_2D, 0, internal_format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+    glBindTexture(GL_TEXTURE_2D, m_id);
+    glTexImage2D(GL_TEXTURE_2D, 0, getGLInternalFormat(format), width, height, 0, getGLFormat(format), getGLType(format), nullptr);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glGenerateMipmap(GL_TEXTURE_2D);
     return true;
 }
 
-void Texture::Bind(GLenum unit) const { glActiveTexture(unit); glBindTexture(GL_TEXTURE_2D, id); }
-void Texture::Unbind() const { glBindTexture(GL_TEXTURE_2D, 0); }
-void Texture::SetWrapMode(GLenum s, GLenum t) { glBindTexture(GL_TEXTURE_2D, id); glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, s); glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, t); wrapped = true; }
-void Texture::SetFilterMode(GLenum min, GLenum mag) { glBindTexture(GL_TEXTURE_2D, id); glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, min); glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, mag); }
-void Texture::GenerateMipmaps() { glBindTexture(GL_TEXTURE_2D, id); glGenerateMipmap(GL_TEXTURE_2D); }
-unsigned int Texture::GetID() const { return id; }
-int Texture::GetWidth() const { return width; }
-int Texture::GetHeight() const { return height; }
-int Texture::GetChannels() const { return channels; }
-GLenum Texture::GetInternalFormat() const { return internal_format; }
-GLenum Texture::GetFormat() const { return format; }
-GLenum Texture::GetType() const { return type; }
-vec4 Texture::Sample(const vec2& tc) const { return vec4(1.0f); } // Placeholder
+bool Texture::create(int width, int height, Format format, const void* data) {
+    m_width = width;
+    m_height = height;
+    m_format = format;
 
-// --- TextureCubeMap ---
-TextureCubeMap::TextureCubeMap() : Texture() {
-    glBindTexture(GL_TEXTURE_CUBE_MAP, id);
-    for (unsigned int i = 0; i < 6; ++i)
-        glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGBA8, 1, 1, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
-    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+    glBindTexture(GL_TEXTURE_2D, m_id);
+    glTexImage2D(GL_TEXTURE_2D, 0, getGLInternalFormat(format), width, height, 0, getGLFormat(format), getGLType(format), data);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    return true;
 }
 
-TextureCubeMap::TextureCubeMap(const std::vector<std::string>& faces) : Texture() { LoadFromFiles(faces); }
+void Texture::bind(int textureUnit) const {
+    glActiveTexture(GL_TEXTURE0 + textureUnit);
+    glBindTexture(GL_TEXTURE_2D, m_id);
+}
 
-bool TextureCubeMap::LoadFromFiles(const std::vector<std::string>& faces) {
-    if (faces.size() != 6) return false;
-    glBindTexture(GL_TEXTURE_CUBE_MAP, id);
-    for (unsigned int i = 0; i < 6; ++i) {
-        int w, h, c;
-        unsigned char* data = stbi_load(faces[i].c_str(), &w, &h, &c, 0);
-        if (!data) return false;
-        if (i == 0) { width = w; height = h; channels = c; }
-        GLenum fmt = c == 3 ? GL_RGB : GL_RGBA;
-        glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, fmt, w, h, 0, fmt, GL_UNSIGNED_BYTE, data);
-        stbi_image_free(data);
+void Texture::unbind(int textureUnit) {
+    glActiveTexture(GL_TEXTURE0 + textureUnit);
+    glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void Texture::setWrapMode(WrapMode mode) {
+    setWrapMode(mode, mode);
+}
+
+void Texture::setWrapMode(WrapMode s, WrapMode t) {
+    glBindTexture(GL_TEXTURE_2D, m_id);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, static_cast<GLint>(s));
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, static_cast<GLint>(t));
+    m_wrapS = s;
+    m_wrapT = t;
+}
+
+void Texture::setFilterMode(FilterMode minFilter, FilterMode magFilter) {
+    glBindTexture(GL_TEXTURE_2D, m_id);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, static_cast<GLint>(minFilter));
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, static_cast<GLint>(magFilter));
+    m_minFilter = minFilter;
+    m_magFilter = magFilter;
+}
+
+void Texture::setAnisotropicFiltering(float level) {
+    if (level > 1.0f) {
+        glBindTexture(GL_TEXTURE_2D, m_id);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY, level);
+        m_anisotropicLevel = level;
     }
-    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
-    return true;
 }
 
-void TextureCubeMap::Bind(GLenum unit) const { glActiveTexture(unit); glBindTexture(GL_TEXTURE_CUBE_MAP, id); }
+void Texture::generateMipmaps() {
+    glBindTexture(GL_TEXTURE_2D, m_id);
+    glGenerateMipmap(GL_TEXTURE_2D);
+}
+
+int Texture::getGLInternalFormat(Format format) const {
+    switch (format) {
+        case Format::RGB8: return GL_RGB8;
+        case Format::RGBA8: return GL_RGBA8;
+        case Format::RGB16F: return GL_RGB16F;
+        case Format::RGBA16F: return GL_RGBA16F;
+        case Format::RGB32F: return GL_RGB32F;
+        case Format::RGBA32F: return GL_RGBA32F;
+        case Format::R8: return GL_R8;
+        case Format::R16F: return GL_R16F;
+        case Format::R32F: return GL_R32F;
+        case Format::DEPTH: return GL_DEPTH_COMPONENT;
+        case Format::DEPTH_STENCIL: return GL_DEPTH_STENCIL;
+        default: return GL_RGBA8;
+    }
+}
+
+int Texture::getGLFormat(Format format) const {
+    switch (format) {
+        case Format::RGB8: return GL_RGB;
+        case Format::RGBA8: return GL_RGBA;
+        case Format::RGB16F: return GL_RGB;
+        case Format::RGBA16F: return GL_RGBA;
+        case Format::RGB32F: return GL_RGB;
+        case Format::RGBA32F: return GL_RGBA;
+        case Format::R8: return GL_RED;
+        case Format::R16F: return GL_RED;
+        case Format::R32F: return GL_RED;
+        case Format::DEPTH: return GL_DEPTH_COMPONENT;
+        case Format::DEPTH_STENCIL: return GL_DEPTH_STENCIL;
+        default: return GL_RGBA;
+    }
+}
+
+int Texture::getGLType(Format format) const {
+    switch (format) {
+        case Format::R16F:
+        case Format::R32F:
+        case Format::RGB16F:
+        case Format::RGBA16F:
+        case Format::RGB32F:
+        case Format::RGBA32F: return GL_FLOAT;
+        case Format::DEPTH:
+        case Format::DEPTH_STENCIL: return GL_UNSIGNED_SHORT;
+        default: return GL_UNSIGNED_BYTE;
+    }
+}
+
+std::vector<unsigned char> Texture::loadImageData(const std::string& filename, int& width, int& height, int& channels) {
+    stbi_set_flip_vertically_on_load(true);
+    unsigned char* data = stbi_load(filename.c_str(), &width, &height, &channels, 0);
+    if (!data) return {};
+
+    std::vector<unsigned char> result(data, data + width * height * channels);
+    stbi_image_free(data);
+    return result;
+}
 
 } // namespace ygl

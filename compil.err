@@ -43,13 +43,13 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   GLEW Include: /usr/include
 --   GLFW3 Include: 
 --   OpenGL Include: 
--- Configuring done (0.7s)
+-- Configuring done (0.5s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/yannoo/Dev/YGL/build
-[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
-[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
-[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
-[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
+[  2%] Building CXX object CMakeFiles/ygl.dir/src/core/bounding_box.cpp.o
+[  5%] Building CXX object CMakeFiles/ygl.dir/src/core/light.cpp.o
+[  8%] Building CXX object CMakeFiles/ygl.dir/src/core/camera.cpp.o
+[ 11%] Building CXX object CMakeFiles/ygl.dir/src/core/mesh.cpp.o
 [ 13%] Building CXX object CMakeFiles/ygl.dir/src/core/object3d.cpp.o
 [ 16%] Building CXX object CMakeFiles/ygl.dir/src/core/scene.cpp.o
 [ 19%] Building CXX object CMakeFiles/ygl.dir/src/loaders/loader.cpp.o
@@ -63,11 +63,497 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 [ 30%] Building CXX object CMakeFiles/ygl.dir/src/loaders/obj_loader.cpp.o
 [ 33%] Building CXX object CMakeFiles/ygl.dir/src/materials/material.cpp.o
 [ 36%] Building CXX object CMakeFiles/ygl.dir/src/materials/texture.cpp.o
-/home/yannoo/Dev/YGL/src/materials/texture.cpp:2:10: fatal error: stb_image.hpp: Aucun fichier ou dossier de ce nom
-    2 | #include <stb_image.hpp>
-      |          ^~~~~~~~~~~~~~~
-compilation terminated.
-gmake[2]: *** [CMakeFiles/ygl.dir/build.make:244 : CMakeFiles/ygl.dir/src/materials/texture.cpp.o] Erreur 1
+[ 38%] Building CXX object CMakeFiles/ygl.dir/src/math/mat4.cpp.o
+In file included from /home/yannoo/Dev/YGL/src/math/mat4.cpp:1:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp: In static member function ‘static ygl::mat4 ygl::mat4::Translation(const ygl::Vec3&)’:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:55:19: error: invalid use of incomplete type ‘const class ygl::Vec3’
+   55 |         m(0, 3) = vec.x;
+      |                   ^~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:8:7: note: forward declaration of ‘class ygl::Vec3’
+    8 | class Vec3;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:56:19: error: invalid use of incomplete type ‘const class ygl::Vec3’
+   56 |         m(1, 3) = vec.y;
+      |                   ^~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:8:7: note: forward declaration of ‘class ygl::Vec3’
+    8 | class Vec3;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:57:19: error: invalid use of incomplete type ‘const class ygl::Vec3’
+   57 |         m(2, 3) = vec.z;
+      |                   ^~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:8:7: note: forward declaration of ‘class ygl::Vec3’
+    8 | class Vec3;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp: In static member function ‘static ygl::mat4 ygl::mat4::Scale(const ygl::Vec3&)’:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:63:19: error: invalid use of incomplete type ‘const class ygl::Vec3’
+   63 |         m(0, 0) = vec.x;
+      |                   ^~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:8:7: note: forward declaration of ‘class ygl::Vec3’
+    8 | class Vec3;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:64:19: error: invalid use of incomplete type ‘const class ygl::Vec3’
+   64 |         m(1, 1) = vec.y;
+      |                   ^~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:8:7: note: forward declaration of ‘class ygl::Vec3’
+    8 | class Vec3;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:65:19: error: invalid use of incomplete type ‘const class ygl::Vec3’
+   65 |         m(2, 2) = vec.z;
+      |                   ^~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:8:7: note: forward declaration of ‘class ygl::Vec3’
+    8 | class Vec3;
+      |       ^~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp: In static member function ‘static ygl::mat4 ygl::mat4::lookAt(const ygl::Vec3&, const ygl::Vec3&, const ygl::Vec3&)’:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:70:14: error: variable ‘ygl::Vec3 forward’ has initializer but incomplete type
+   70 |         Vec3 forward = (target - eye).Normalize();
+      |              ^~~~~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:70:32: error: no match for ‘operator-’ (operand types are ‘const ygl::Vec3’ and ‘const ygl::Vec3’)
+   70 |         Vec3 forward = (target - eye).Normalize();
+      |                         ~~~~~~ ^ ~~~
+      |                         |        |
+      |                         |        const ygl::Vec3
+      |                         const ygl::Vec3
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:71:14: error: variable ‘ygl::Vec3 right’ has initializer but incomplete type
+   71 |         Vec3 right = cross(forward, up).Normalize();
+      |              ^~~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:71:22: error: ‘cross’ was not declared in this scope
+   71 |         Vec3 right = cross(forward, up).Normalize();
+      |                      ^~~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:72:14: error: variable ‘ygl::Vec3 newUp’ has initializer but incomplete type
+   72 |         Vec3 newUp = cross(right, forward);
+      |              ^~~~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:75:89: error: ‘dot’ was not declared in this scope
+   75 |         view(0, 0) = right.x; view(0, 1) = right.y; view(0, 2) = right.z; view(0, 3) = -dot(right, eye);
+      |                                                                                         ^~~
+/home/yannoo/Dev/YGL/include/math/mat4.hpp: In static member function ‘static ygl::mat4 ygl::mat4::perspective(float, float, float, float)’:
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:83:33: error: ‘tan’ is not a member of ‘std’
+   83 |         float tanHalfFov = std::tan(fov / 2.0f);
+      |                                 ^~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:9:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+    9 | Mat4::Mat4() { *this = identity(); }
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:10:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   10 | Mat4::Mat4(float diagonal) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:15:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   15 | Mat4::Mat4(const float* array) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:18:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   18 | Mat4::Mat4(const Vec4& col0, const Vec4& col1, const Vec4& col2, const Vec4& col3) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:28:8: error: ‘Mat4’ has not been declared
+   28 | float& Mat4::operator()(int row, int col) { return data[col * 4 + row]; }
+      |        ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:28:8: error: ‘float& ygl::operator()(int, int)’ must be a member function
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:29:14: error: ‘Mat4’ has not been declared
+   29 | const float& Mat4::operator()(int row, int col) const { return data[col * 4 + row]; }
+      |              ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:29:49: error: non-member function ‘const float& ygl::operator()(int, int)’ cannot have cv-qualifier
+   29 | const float& Mat4::operator()(int row, int col) const { return data[col * 4 + row]; }
+      |                                                 ^~~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:29:14: error: ‘const float& ygl::operator()(int, int)’ must be a member function
+   29 | const float& Mat4::operator()(int row, int col) const { return data[col * 4 + row]; }
+      |              ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:32:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   32 | Mat4& Mat4::operator+=(const Mat4& other) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:35:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   35 | Mat4& Mat4::operator-=(const Mat4& other) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:38:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   38 | Mat4& Mat4::operator*=(const Mat4& other) { *this = *this * other; return *this; }
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:39:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   39 | Mat4& Mat4::operator*=(float scalar) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:42:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   42 | Mat4& Mat4::operator/=(float scalar) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:48:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   48 | Mat4 Mat4::operator+(const Mat4& other) const {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:51:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   51 | Mat4 Mat4::operator-(const Mat4& other) const {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:54:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   54 | Mat4 Mat4::operator-() const {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:57:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   57 | Mat4 Mat4::operator*(const Mat4& other) const {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:69:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   69 | Mat4 Mat4::operator*(float scalar) const {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:72:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   72 | Mat4 Mat4::operator/(float scalar) const {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:77:6: error: ‘Mat4’ has not been declared
+   77 | Vec4 Mat4::operator*(const Vec4& v) const {
+      |      ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:77:37: error: non-member function ‘ygl::Vec4 ygl::operator*(const Vec4&)’ cannot have cv-qualifier
+   77 | Vec4 Mat4::operator*(const Vec4& v) const {
+      |                                     ^~~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:77:37: error: return type ‘class ygl::Vec4’ is incomplete
+/home/yannoo/Dev/YGL/src/math/mat4.cpp: In function ‘void ygl::operator*(const Vec4&)’:
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:79:11: error: invalid use of ‘this’ in non-member function
+   79 |         (*this)(0,0)*v.x + (*this)(0,1)*v.y + (*this)(0,2)*v.z + (*this)(0,3)*v.w,
+      |           ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:79:22: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   79 |         (*this)(0,0)*v.x + (*this)(0,1)*v.y + (*this)(0,2)*v.z + (*this)(0,3)*v.w,
+      |                      ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:79:30: error: invalid use of ‘this’ in non-member function
+   79 |         (*this)(0,0)*v.x + (*this)(0,1)*v.y + (*this)(0,2)*v.z + (*this)(0,3)*v.w,
+      |                              ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:79:41: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   79 |         (*this)(0,0)*v.x + (*this)(0,1)*v.y + (*this)(0,2)*v.z + (*this)(0,3)*v.w,
+      |                                         ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:79:49: error: invalid use of ‘this’ in non-member function
+   79 |         (*this)(0,0)*v.x + (*this)(0,1)*v.y + (*this)(0,2)*v.z + (*this)(0,3)*v.w,
+      |                                                 ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:79:60: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   79 |         (*this)(0,0)*v.x + (*this)(0,1)*v.y + (*this)(0,2)*v.z + (*this)(0,3)*v.w,
+      |                                                            ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:79:68: error: invalid use of ‘this’ in non-member function
+   79 |         (*this)(0,0)*v.x + (*this)(0,1)*v.y + (*this)(0,2)*v.z + (*this)(0,3)*v.w,
+      |                                                                    ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:79:79: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   79 |         (*this)(0,0)*v.x + (*this)(0,1)*v.y + (*this)(0,2)*v.z + (*this)(0,3)*v.w,
+      |                                                                               ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:80:11: error: invalid use of ‘this’ in non-member function
+   80 |         (*this)(1,0)*v.x + (*this)(1,1)*v.y + (*this)(1,2)*v.z + (*this)(1,3)*v.w,
+      |           ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:80:22: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   80 |         (*this)(1,0)*v.x + (*this)(1,1)*v.y + (*this)(1,2)*v.z + (*this)(1,3)*v.w,
+      |                      ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:80:30: error: invalid use of ‘this’ in non-member function
+   80 |         (*this)(1,0)*v.x + (*this)(1,1)*v.y + (*this)(1,2)*v.z + (*this)(1,3)*v.w,
+      |                              ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:80:41: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   80 |         (*this)(1,0)*v.x + (*this)(1,1)*v.y + (*this)(1,2)*v.z + (*this)(1,3)*v.w,
+      |                                         ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:80:49: error: invalid use of ‘this’ in non-member function
+   80 |         (*this)(1,0)*v.x + (*this)(1,1)*v.y + (*this)(1,2)*v.z + (*this)(1,3)*v.w,
+      |                                                 ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:80:60: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   80 |         (*this)(1,0)*v.x + (*this)(1,1)*v.y + (*this)(1,2)*v.z + (*this)(1,3)*v.w,
+      |                                                            ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:80:68: error: invalid use of ‘this’ in non-member function
+   80 |         (*this)(1,0)*v.x + (*this)(1,1)*v.y + (*this)(1,2)*v.z + (*this)(1,3)*v.w,
+      |                                                                    ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:80:79: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   80 |         (*this)(1,0)*v.x + (*this)(1,1)*v.y + (*this)(1,2)*v.z + (*this)(1,3)*v.w,
+      |                                                                               ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:81:11: error: invalid use of ‘this’ in non-member function
+   81 |         (*this)(2,0)*v.x + (*this)(2,1)*v.y + (*this)(2,2)*v.z + (*this)(2,3)*v.w,
+      |           ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:81:22: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   81 |         (*this)(2,0)*v.x + (*this)(2,1)*v.y + (*this)(2,2)*v.z + (*this)(2,3)*v.w,
+      |                      ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:81:30: error: invalid use of ‘this’ in non-member function
+   81 |         (*this)(2,0)*v.x + (*this)(2,1)*v.y + (*this)(2,2)*v.z + (*this)(2,3)*v.w,
+      |                              ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:81:41: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   81 |         (*this)(2,0)*v.x + (*this)(2,1)*v.y + (*this)(2,2)*v.z + (*this)(2,3)*v.w,
+      |                                         ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:81:49: error: invalid use of ‘this’ in non-member function
+   81 |         (*this)(2,0)*v.x + (*this)(2,1)*v.y + (*this)(2,2)*v.z + (*this)(2,3)*v.w,
+      |                                                 ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:81:60: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   81 |         (*this)(2,0)*v.x + (*this)(2,1)*v.y + (*this)(2,2)*v.z + (*this)(2,3)*v.w,
+      |                                                            ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:81:68: error: invalid use of ‘this’ in non-member function
+   81 |         (*this)(2,0)*v.x + (*this)(2,1)*v.y + (*this)(2,2)*v.z + (*this)(2,3)*v.w,
+      |                                                                    ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:81:79: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   81 |         (*this)(2,0)*v.x + (*this)(2,1)*v.y + (*this)(2,2)*v.z + (*this)(2,3)*v.w,
+      |                                                                               ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:82:11: error: invalid use of ‘this’ in non-member function
+   82 |         (*this)(3,0)*v.x + (*this)(3,1)*v.y + (*this)(3,2)*v.z + (*this)(3,3)*v.w
+      |           ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:82:22: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   82 |         (*this)(3,0)*v.x + (*this)(3,1)*v.y + (*this)(3,2)*v.z + (*this)(3,3)*v.w
+      |                      ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:82:30: error: invalid use of ‘this’ in non-member function
+   82 |         (*this)(3,0)*v.x + (*this)(3,1)*v.y + (*this)(3,2)*v.z + (*this)(3,3)*v.w
+      |                              ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:82:41: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   82 |         (*this)(3,0)*v.x + (*this)(3,1)*v.y + (*this)(3,2)*v.z + (*this)(3,3)*v.w
+      |                                         ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:82:49: error: invalid use of ‘this’ in non-member function
+   82 |         (*this)(3,0)*v.x + (*this)(3,1)*v.y + (*this)(3,2)*v.z + (*this)(3,3)*v.w
+      |                                                 ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:82:60: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   82 |         (*this)(3,0)*v.x + (*this)(3,1)*v.y + (*this)(3,2)*v.z + (*this)(3,3)*v.w
+      |                                                            ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:82:68: error: invalid use of ‘this’ in non-member function
+   82 |         (*this)(3,0)*v.x + (*this)(3,1)*v.y + (*this)(3,2)*v.z + (*this)(3,3)*v.w
+      |                                                                    ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:82:79: error: invalid use of incomplete type ‘const class ygl::Vec4’
+   82 |         (*this)(3,0)*v.x + (*this)(3,1)*v.y + (*this)(3,2)*v.z + (*this)(3,3)*v.w
+      |                                                                               ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:83:5: error: invalid use of incomplete type ‘class ygl::Vec4’
+   83 |     );
+      |     ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:9:7: note: forward declaration of ‘class ygl::Vec4’
+    9 | class Vec4;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:86:6: error: ‘Mat4’ has not been declared
+   86 | Vec3 Mat4::operator*(const Vec3& v) const {
+      |      ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:86:37: error: non-member function ‘ygl::Vec3 ygl::operator*(const Vec3&)’ cannot have cv-qualifier
+   86 | Vec3 Mat4::operator*(const Vec3& v) const {
+      |                                     ^~~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:86:37: error: return type ‘class ygl::Vec3’ is incomplete
+/home/yannoo/Dev/YGL/src/math/mat4.cpp: In function ‘void ygl::operator*(const Vec3&)’:
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:87:13: error: variable ‘ygl::Vec4 v4’ has initializer but incomplete type
+   87 |     Vec4 v4(v, 1.0f); Vec4 result = *this * v4;
+      |             ^
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:87:28: error: variable ‘ygl::Vec4 result’ has initializer but incomplete type
+   87 |     Vec4 v4(v, 1.0f); Vec4 result = *this * v4;
+      |                            ^~~~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:87:38: error: invalid use of ‘this’ in non-member function
+   87 |     Vec4 v4(v, 1.0f); Vec4 result = *this * v4;
+      |                                      ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:88:45: error: invalid use of incomplete type ‘class ygl::Vec3’
+   88 |     return Vec3(result.x, result.y, result.z);
+      |                                             ^
+/home/yannoo/Dev/YGL/include/math/mat4.hpp:8:7: note: forward declaration of ‘class ygl::Vec3’
+    8 | class Vec3;
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:92:6: error: ‘Mat4’ has not been declared
+   92 | bool Mat4::operator==(const Mat4& other) const {
+      |      ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:92:29: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   92 | bool Mat4::operator==(const Mat4& other) const {
+      |                             ^~~~
+      |                             mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:92:42: error: non-member function ‘bool ygl::operator==(const int&)’ cannot have cv-qualifier
+   92 | bool Mat4::operator==(const Mat4& other) const {
+      |                                          ^~~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:92:6: error: ‘bool ygl::operator==(const int&)’ must have an argument of class or enumerated type
+   92 | bool Mat4::operator==(const Mat4& other) const {
+      |      ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:96:6: error: ‘Mat4’ has not been declared
+   96 | bool Mat4::operator!=(const Mat4& other) const { return !(*this == other); }
+      |      ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:96:29: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   96 | bool Mat4::operator!=(const Mat4& other) const { return !(*this == other); }
+      |                             ^~~~
+      |                             mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:96:42: error: non-member function ‘bool ygl::operator!=(const int&)’ cannot have cv-qualifier
+   96 | bool Mat4::operator!=(const Mat4& other) const { return !(*this == other); }
+      |                                          ^~~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:96:6: error: ‘bool ygl::operator!=(const int&)’ must have an argument of class or enumerated type
+   96 | bool Mat4::operator!=(const Mat4& other) const { return !(*this == other); }
+      |      ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:99:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+   99 | Mat4 Mat4::transposed() const {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:106:6: error: ‘Mat4’ has not been declared
+  106 | void Mat4::transpose() { *this = transposed(); }
+      |      ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp: In function ‘void ygl::transpose()’:
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:106:27: error: invalid use of ‘this’ in non-member function
+  106 | void Mat4::transpose() { *this = transposed(); }
+      |                           ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:106:34: error: ‘transposed’ was not declared in this scope; did you mean ‘transpose’?
+  106 | void Mat4::transpose() { *this = transposed(); }
+      |                                  ^~~~~~~~~~
+      |                                  transpose
+/home/yannoo/Dev/YGL/src/math/mat4.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:108:7: error: ‘Mat4’ has not been declared
+  108 | float Mat4::determinant() const {
+      |       ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:108:27: error: non-member function ‘float ygl::determinant()’ cannot have cv-qualifier
+  108 | float Mat4::determinant() const {
+      |                           ^~~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp: In function ‘float ygl::determinant()’:
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:115:43: error: invalid use of ‘this’ in non-member function
+  115 |                 submatrix[subIndex++] = (*this)(row, c);
+      |                                           ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:121:25: error: invalid use of ‘this’ in non-member function
+  121 |         det += sign * (*this)(0, col) * subDet;
+      |                         ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:127:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  127 | Mat4 Mat4::inverted() const {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:150:6: error: ‘Mat4’ has not been declared
+  150 | void Mat4::invert() { *this = inverted(); }
+      |      ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp: In function ‘void ygl::invert()’:
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:150:24: error: invalid use of ‘this’ in non-member function
+  150 | void Mat4::invert() { *this = inverted(); }
+      |                        ^~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:150:31: error: ‘inverted’ was not declared in this scope; did you mean ‘invert’?
+  150 | void Mat4::invert() { *this = inverted(); }
+      |                               ^~~~~~~~
+      |                               invert
+/home/yannoo/Dev/YGL/src/math/mat4.cpp: At global scope:
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:153:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  153 | Mat4 Mat4::identity() { Mat4 m; for (int i = 0; i < 16; i += 5) m.data[i] = 1.0f; return m; }
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:154:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  154 | Mat4 Mat4::zero() { Mat4 m; for (int i = 0; i < 16; ++i) m.data[i] = 0.0f; return m; }
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:156:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  156 | Mat4 Mat4::translation(const Vec3& t) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:160:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  160 | Mat4 Mat4::rotationX(float angle) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:164:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  164 | Mat4 Mat4::rotationY(float angle) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:168:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  168 | Mat4 Mat4::rotationZ(float angle) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:173:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  173 | Mat4 Mat4::rotation(const Vec3& axis, float angle) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:182:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  182 | Mat4 Mat4::scale(const Vec3& s) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:185:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  185 | Mat4 Mat4::scale(float s) { return scale(Vec3(s)); }
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:187:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  187 | Mat4 Mat4::lookAt(const Vec3& eye, const Vec3& center, const Vec3& up) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:197:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  197 | Mat4 Mat4::perspective(float fov, float aspect, float near, float far) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:208:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  208 | Mat4 Mat4::orthographic(float left, float right, float bottom, float top, float near, float far) {
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:220:6: error: ‘ostream’ in namespace ‘std’ does not name a type
+  220 | std::ostream& operator<<(std::ostream& os, const Mat4& m) {
+      |      ^~~~~~~
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:4:1: note: ‘std::ostream’ is defined in header ‘<ostream>’; did you forget to ‘#include <ostream>’?
+    3 | #include <cstring>
+  +++ |+#include <ostream>
+    4 | #include <algorithm>
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:234:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  234 | Mat4 operator*(float scalar, const Mat4& m) { return m * scalar; }
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:235:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  235 | Mat4 transpose(const Mat4& m) { return m.transposed(); }
+      | ^~~~
+      | mat4
+/home/yannoo/Dev/YGL/src/math/mat4.cpp:236:1: error: ‘Mat4’ does not name a type; did you mean ‘mat4’?
+  236 | Mat4 invert(const Mat4& m) { return m.inverted(); }
+      | ^~~~
+      | mat4
+In file included from /home/yannoo/Dev/YGL/src/materials/texture.cpp:1:
+/home/yannoo/Dev/YGL/include/materials/texture.hpp: In constructor ‘ygl::Texture::Texture(Type, const std::string&)’:
+/home/yannoo/Dev/YGL/include/materials/texture.hpp:87:17: warning: ‘ygl::Texture::m_name’ will be initialized after [-Wreorder]
+   87 |     std::string m_name;
+      |                 ^~~~~~
+/home/yannoo/Dev/YGL/include/materials/texture.hpp:82:18: warning:   ‘unsigned int ygl::Texture::m_id’ [-Wreorder]
+   82 |     unsigned int m_id = 0;
+      |                  ^~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:8:1: warning:   when initialized here [-Wreorder]
+    8 | Texture::Texture(Type type, const std::string& name)
+      | ^~~~~~~
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘bool ygl::Texture::loadFromFile(const std::string&)’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:20:36: error: invalid conversion from ‘int’ to ‘unsigned char*’ [-fpermissive]
+   20 |     unsigned char* data = stbi_load(filename.c_str(), &w, &h, &c, 0);
+      |                           ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    int
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:29:43: error: ‘RG8’ is not a member of ‘ygl::Texture::Format’; did you mean ‘RGB8’?
+   29 |     else if (c == 2) { m_format = Format::RG8; gl_format = GL_RG; }
+      |                                           ^~~
+      |                                           RGB8
+/home/yannoo/Dev/YGL/src/materials/texture.cpp: In member function ‘std::vector<unsigned char> ygl::Texture::loadImageData(const std::string&, int&, int&, int&)’:
+/home/yannoo/Dev/YGL/src/materials/texture.cpp:165:36: error: invalid conversion from ‘int’ to ‘unsigned char*’ [-fpermissive]
+  165 |     unsigned char* data = stbi_load(filename.c_str(), &width, &height, &channels, 0);
+      |                           ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                    |
+      |                                    int
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:258 : CMakeFiles/ygl.dir/src/math/mat4.cpp.o] Erreur 1
 gmake[2]: *** Attente des tâches non terminées....
+gmake[2]: *** [CMakeFiles/ygl.dir/build.make:244 : CMakeFiles/ygl.dir/src/materials/texture.cpp.o] Erreur 1
 gmake[1]: *** [CMakeFiles/Makefile2:89 : CMakeFiles/ygl.dir/all] Erreur 2
 gmake: *** [Makefile:91 : all] Erreur 2
