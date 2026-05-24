@@ -1,0 +1,27 @@
+# Build
+build/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+*.o
+*.a
+*.so
+*.exe
+
+# IDE
+.idea/
+.vs/
+*.swp
+*.swo
+
+# Logs
+*.log
+*.tmp
+
+# External (git submodules)
+extern/nlohmann/
+extern/stb_image.h
+
+# Assets cache
+assets/thumbnails/
+

@@ -1,0 +1,14 @@
+#version 330 core
+
+// Composite Vertex Shader
+// Final pass to composite spherical G-Buffer results with direct lighting
+
+layout(location = 0) in vec3 aPosition;
+layout(location = 1) in vec2 aTexCoord;
+
+out vec2 vTexCoord;
+
+void main() {
+    vTexCoord = aTexCoord;
+    gl_Position = vec4(aPosition, 1.0);
+}
