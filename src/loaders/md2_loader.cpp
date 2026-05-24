@@ -1,4 +1,5 @@
 #include "loaders/md2_loader.hpp"
+#include "loaders/md2_format.hpp"  // AJOUTÉ
 #include <fstream>
 #include <sstream>
 
@@ -12,7 +13,7 @@ bool MD2Loader::LoadMD2(const std::string& filepath, Mesh& mesh) {
     file.read(reinterpret_cast<char*>(&header), sizeof(MD2Header));
     if (header.magic != 0x32504449 || header.version != 8) return false;
 
-    std::vector<Vec3> positions;  // vec3 → Vec3
+    std::vector<Vec3> positions;
     std::vector<Vec2> texcoords;
     file.seekg(header.offset_frames);
     MD2Frame frame;
@@ -43,7 +44,7 @@ bool MD2Loader::LoadMD2(const std::string& filepath, Mesh& mesh) {
             Vertex v;
             v.position = positions[tri.vertex[j]];
             v.texcoord = texcoords[tri.st[j]];
-            v.normal = Vec3(0.0f);  // vec3 → Vec3
+            v.normal = Vec3(0.0f);
             vertices.push_back(v);
             indices.push_back(indices.size());
         }
@@ -52,7 +53,7 @@ bool MD2Loader::LoadMD2(const std::string& filepath, Mesh& mesh) {
     // Compute normals
     for (size_t i = 0; i < indices.size(); i += 3) {
         if (i + 2 >= indices.size()) break;
-        Vec3 e1 = vertices[indices[i+1]].position - vertices[indices[i]].position;  // vec3 → Vec3
+        Vec3 e1 = vertices[indices[i+1]].position - vertices[indices[i]].position;
         Vec3 e2 = vertices[indices[i+2]].position - vertices[indices[i]].position;
         Vec3 n = normalize(cross(e1, e2));
         vertices[indices[i]].normal += n;
@@ -61,8 +62,7 @@ bool MD2Loader::LoadMD2(const std::string& filepath, Mesh& mesh) {
     }
     for (auto& v : vertices) v.normal = normalize(v.normal);
 
-    // CORRECTIONS :
-    // 1. Extraire les positions/texcoords/normales des vertices
+    // Extraire les données pour Mesh
     std::vector<Vec3> finalPositions;
     std::vector<Vec2> finalTexCoords;
     std::vector<Vec3> finalNormals;
@@ -75,7 +75,7 @@ bool MD2Loader::LoadMD2(const std::string& filepath, Mesh& mesh) {
     mesh.setTexCoords(finalTexCoords);
     mesh.setNormals(finalNormals);
     mesh.setIndices(indices);
-    mesh.updateBoundingBox();  // ComputeBoundingBox → updateBoundingBox
+    mesh.updateBoundingBox();
     return true;
 }
 

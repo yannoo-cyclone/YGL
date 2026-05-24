@@ -5,7 +5,7 @@
 namespace ygl {
 
 bool Loader::LoadMesh(const std::string& filepath, Mesh& mesh) {
-    // Implémentation par défaut (à surcharger)
+    // Implémentation par défaut (à surcharger par les classes dérivées)
     return false;
 }
 

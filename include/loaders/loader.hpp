@@ -8,11 +8,11 @@ namespace ygl {
 
 class Loader {
 public:
-    Loader() = default;  // AJOUTÉ
+    Loader() = default;
     virtual ~Loader() = default;
 
-    virtual bool LoadMesh(const std::string& filepath, Mesh& mesh);  // AJOUTÉ
-    static std::vector<std::string> SplitLine(const std::string& line);  // AJOUTÉ
+    virtual bool LoadMesh(const std::string& filepath, Mesh& mesh);
+    static std::vector<std::string> SplitLine(const std::string& line);
 };
 
 } // namespace ygl

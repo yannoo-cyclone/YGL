@@ -1,10 +1,11 @@
 #include "core/scene.hpp"
 #include "core/light.hpp"
-#include <GL/glew.h>  // AJOUTÉ pour glClearColor, GL_COLOR_BUFFER_BIT, etc.
+#include "core/mesh.hpp"
+#include <GL/glew.h>
 
 namespace ygl {
 
-Scene::Scene() : m_backgroundColor(0.2f, 0.2f, 0.2f) {}
+Scene::Scene(const std::string& name) : Object3D(name), m_backgroundColor(0.2f, 0.2f, 0.2f) {}
 
 Scene::~Scene() {
     clearMeshes();
@@ -14,14 +15,14 @@ Scene::~Scene() {
 // Lights
 void Scene::addLight(std::shared_ptr<Light> light) {
     if (!light) return;
-    addChild(std::static_pointer_cast<Object3D>(light));  // CAST AJOUTÉ
+    addChild(std::dynamic_pointer_cast<Object3D>(light));  // static → dynamic
     m_lights.push_back(light);
 }
 
 void Scene::removeLight(std::shared_ptr<Light> light) {
     for (auto it = m_lights.begin(); it != m_lights.end(); ++it) {
         if (*it == light) {
-            removeChild(std::static_pointer_cast<Object3D>(light));  // CAST AJOUTÉ
+            removeChild(std::dynamic_pointer_cast<Object3D>(light));
             m_lights.erase(it);
             return;
         }
@@ -30,14 +31,14 @@ void Scene::removeLight(std::shared_ptr<Light> light) {
 
 void Scene::removeLight(size_t index) {
     if (index < m_lights.size()) {
-        removeChild(std::static_pointer_cast<Object3D>(m_lights[index]));  // CAST AJOUTÉ
+        removeChild(std::dynamic_pointer_cast<Object3D>(m_lights[index]));
         m_lights.erase(m_lights.begin() + index);
     }
 }
 
 void Scene::clearLights() {
     for (auto& light : m_lights) {
-        removeChild(std::static_pointer_cast<Object3D>(light));  // CAST AJOUTÉ
+        removeChild(std::dynamic_pointer_cast<Object3D>(light));
     }
     m_lights.clear();
 }
@@ -49,14 +50,14 @@ const std::vector<std::shared_ptr<Light>>& Scene::getLights() const {
 // Meshes
 void Scene::addMesh(std::shared_ptr<Mesh> mesh) {
     if (!mesh) return;
-    addChild(std::static_pointer_cast<Object3D>(mesh));  // CAST AJOUTÉ
+    addChild(std::dynamic_pointer_cast<Object3D>(mesh));
     m_meshes.push_back(mesh);
 }
 
 void Scene::removeMesh(std::shared_ptr<Mesh> mesh) {
     for (auto it = m_meshes.begin(); it != m_meshes.end(); ++it) {
         if (*it == mesh) {
-            removeChild(std::static_pointer_cast<Object3D>(mesh));  // CAST AJOUTÉ
+            removeChild(std::dynamic_pointer_cast<Object3D>(mesh));
             m_meshes.erase(it);
             return;
         }
@@ -65,14 +66,14 @@ void Scene::removeMesh(std::shared_ptr<Mesh> mesh) {
 
 void Scene::removeMesh(size_t index) {
     if (index < m_meshes.size()) {
-        removeChild(std::static_pointer_cast<Object3D>(m_meshes[index]));  // CAST AJOUTÉ
+        removeChild(std::dynamic_pointer_cast<Object3D>(m_meshes[index]));
         m_meshes.erase(m_meshes.begin() + index);
     }
 }
 
 void Scene::clearMeshes() {
     for (auto& mesh : m_meshes) {
-        removeChild(std::static_pointer_cast<Object3D>(mesh));  // CAST AJOUTÉ
+        removeChild(std::dynamic_pointer_cast<Object3D>(mesh));
     }
     m_meshes.clear();
 }
