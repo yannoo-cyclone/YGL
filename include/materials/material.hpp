@@ -1,6 +1,6 @@
 #pragma once
 
-#include <algorithm> // Pour std::clamp
+#include <algorithm>
 #include <memory>
 
 namespace ygl {
@@ -14,10 +14,14 @@ public:
     float getMetallic() const { return m_metallic; }
     float getOpacity() const { return m_opacity; }
 
-    // Setters (avec clamp pour rester dans [0, 1])
+    // Setters
     void setRoughness(float roughness) { m_roughness = std::clamp(roughness, 0.0f, 1.0f); }
     void setMetallic(float metallic) { m_metallic = std::clamp(metallic, 0.0f, 1.0f); }
     void setOpacity(float opacity) { m_opacity = std::clamp(opacity, 0.0f, 1.0f); }
+
+    // Méthodes virtuelles pour bind/unbind
+    virtual void bind() const {}
+    virtual void unbind() const {}
 
 private:
     float m_roughness;

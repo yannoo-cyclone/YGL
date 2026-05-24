@@ -3,11 +3,12 @@
 #include "math/vec3.hpp"
 #include "math/ray.hpp"
 #include <vector>
+#include <ostream> // AJOUTÉ
 
 namespace ygl {
 
 class Ray;
-class HitInfo;  // Forward declaration (ou inclure le header si HitInfo est défini ailleurs)
+class HitInfo;
 
 class BoundingBox {
 public:

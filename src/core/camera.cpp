@@ -45,35 +45,35 @@ const Vec3& Camera::getForward() const { return m_forward; }
 const Vec3& Camera::getRight() const { return m_right; }
 
 // Matrices
-const Mat4& Camera::getViewMatrix() {
+const mat4& Camera::getViewMatrix() {
     if (m_viewDirty) updateViewMatrix();
     return m_viewMatrix;
 }
 
-const Mat4& Camera::getProjectionMatrix() {
+const mat4& Camera::getProjectionMatrix() {
     if (m_projectionDirty) updateProjectionMatrix();
     return m_projectionMatrix;
 }
 
-const Mat4& Camera::getViewProjectionMatrix() {
+const mat4& Camera::getViewProjectionMatrix() {
     if (m_viewProjectionDirty) updateViewProjectionMatrix();
     return m_viewProjectionMatrix;
 }
 
 void Camera::updateViewMatrix() const {
     Vec3 pos = getWorldPosition();
-    m_viewMatrix = Mat4::lookAt(pos, m_target, m_up);
+    m_viewMatrix = mat4::lookAt(pos, m_target, m_up);
     m_viewDirty = false;
     m_viewProjectionDirty = true;
 }
 
 void Camera::updateProjectionMatrix() const {
     if (m_projectionType == ProjectionType::PERSPECTIVE) {
-        m_projectionMatrix = Mat4::perspective(
+        m_projectionMatrix = mat4::perspective(
             m_fov * 3.14159265359f / 180.0f, m_aspect, m_near, m_far);
     } else {
         float halfSize = m_orthographicSize * 0.5f;
-        m_projectionMatrix = Mat4::orthographic(
+        m_projectionMatrix = mat4::orthographic(
             -halfSize * m_aspect, halfSize * m_aspect,
             -halfSize, halfSize, m_near, m_far);
     }
@@ -89,9 +89,9 @@ void Camera::updateViewProjectionMatrix() const {
 
 void Camera::updateVectors() {
     Vec3 pos = getWorldPosition();
-    m_forward = normalize(m_target - pos);
-    m_right = normalize(cross(m_forward, m_up));
-    m_up = cross(m_right, m_forward);
+    m_forward = ::normalize(m_target - pos);
+    m_right = ::normalize(::cross(m_forward, m_up));
+    m_up = ::cross(m_right, m_forward);
 }
 
 // Movement
@@ -170,9 +170,9 @@ void Camera::update(float deltaTime) {
     Vec3 pos = getWorldPosition();
     Vec3 dir = m_target - pos;
     if (dir.lengthSquared() > 0.0001f) {
-        m_forward = normalize(dir);
-        m_right = normalize(cross(m_forward, m_up));
-        m_up = cross(m_right, m_forward);
+        m_forward = ::normalize(dir);
+        m_right = ::normalize(::cross(m_forward, m_up));
+        m_up = ::cross(m_right, m_forward);
     }
     m_viewDirty = true;
 }

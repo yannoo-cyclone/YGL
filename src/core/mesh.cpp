@@ -52,20 +52,21 @@ void Mesh::clear() {
 
 // Material
 void Mesh::setMaterial(std::shared_ptr<Material> material) { m_material = material; }
-std::shared_ptr<Material> Mesh::getMaterial() const { return m_material; }
+// SUPPRIMÉ: std::shared_ptr<Material> Mesh::getMaterial() const { return m_material; } (déjà dans le header)
 
 void Mesh::setPrimitiveType(PrimitiveType type) { m_primitiveType = type; }
-Mesh::PrimitiveType Mesh::getPrimitiveType() const { return m_primitiveType; }
+// SUPPRIMÉ: Mesh::PrimitiveType Mesh::getPrimitiveType() const { return m_primitiveType; } (déjà dans le header)
 
 // Bounding box
 const BoundingBox& Mesh::getBoundingBox() const {
-    if (m_boundingBoxDirty) updateBoundingBox();
+    if (m_boundingBoxDirty) {
+        const_cast<Mesh*>(this)->updateBoundingBox();
+    }
     return m_boundingBox;
 }
 
 void Mesh::updateBoundingBox() const {
-    m_boundingBox.reset();
-    for (const auto& pos : m_positions) m_boundingBox.expand(pos);
+    m_boundingBox = BoundingBox::FromPoints(m_positions);
     m_boundingBoxDirty = false;
 }
 

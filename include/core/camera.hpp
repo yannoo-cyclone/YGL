@@ -42,9 +42,9 @@ public:
     const Vec3& getForward() const;
     const Vec3& getRight() const;
 
-    const Mat4& getViewMatrix();
-    const Mat4& getProjectionMatrix();
-    const Mat4& getViewProjectionMatrix();
+    const mat4& getViewMatrix();  // Mat4 → mat4
+    const mat4& getProjectionMatrix();  // Mat4 → mat4
+    const mat4& getViewProjectionMatrix();  // Mat4 → mat4
 
     void moveForward(float distance);
     void moveBackward(float distance);
@@ -81,9 +81,9 @@ private:
     Vec3 m_forward;
     Vec3 m_right;
 
-    mutable Mat4 m_viewMatrix;
-    mutable Mat4 m_projectionMatrix;
-    mutable Mat4 m_viewProjectionMatrix;
+    mutable mat4 m_viewMatrix;  // Mat4 → mat4
+    mutable mat4 m_projectionMatrix;  // Mat4 → mat4
+    mutable mat4 m_viewProjectionMatrix;  // Mat4 → mat4
 
     mutable bool m_viewDirty = true;
     mutable bool m_projectionDirty = true;
@@ -98,4 +98,3 @@ private:
 };
 
 } // namespace ygl
-

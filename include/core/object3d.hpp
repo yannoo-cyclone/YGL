@@ -30,9 +30,9 @@ public:
     const Quat& getWorldRotation() const { return m_worldRotation; }
     const Vec3& getWorldScale() const { return m_worldScale; }
 
-    const Mat4& getLocalMatrix() const;
-    const Mat4& getWorldMatrix() const;
-    const Mat4& getNormalMatrix() const;
+    const mat4& getLocalMatrix() const;  // Mat4 → mat4
+    const mat4& getWorldMatrix() const;  // Mat4 → mat4
+    const mat4& getNormalMatrix() const;  // Mat4 → mat4
 
     void updateMatrix(bool force = false) const;
     void updateWorldMatrix(bool force = false) const;
@@ -67,9 +67,9 @@ protected:
     Quat m_worldRotation;
     Vec3 m_worldScale;
 
-    mutable Mat4 m_localMatrix;
-    mutable Mat4 m_worldMatrix;
-    mutable Mat4 m_normalMatrix;
+    mutable mat4 m_localMatrix;  // Mat4 → mat4
+    mutable mat4 m_worldMatrix;  // Mat4 → mat4
+    mutable mat4 m_normalMatrix;  // Mat4 → mat4
 
     mutable bool m_localMatrixDirty = true;
     mutable bool m_worldMatrixDirty = true;

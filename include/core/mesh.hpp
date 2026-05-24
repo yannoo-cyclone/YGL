@@ -3,13 +3,13 @@
 #include "core/object3d.hpp"
 #include "math/vec3.hpp"
 #include "math/vec2.hpp"
+#include "core/bounding_box.hpp"  // Remplace la forward declaration
 #include <vector>
 #include <memory>
 
 namespace ygl {
 
 class Material;
-class BoundingBox;
 
 class Mesh : public Object3D {
 public:
@@ -56,7 +56,7 @@ public:
     PrimitiveType getPrimitiveType() const { return m_primitiveType; }
 
     const BoundingBox& getBoundingBox() const;
-    void updateBoundingBox();
+    void updateBoundingBox() const;  // AJOUTÉ const
 
     size_t getVertexCount() const { return m_positions.size(); }
     size_t getFaceCount() const { return m_indices.size() / 3; }
@@ -87,4 +87,3 @@ protected:
 };
 
 } // namespace ygl
-

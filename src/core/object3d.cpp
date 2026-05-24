@@ -37,9 +37,9 @@ void Object3D::scale(const Vec3& scale) {
 // Matrix
 void Object3D::updateMatrix(bool force) const {
     if (!force && !m_localMatrixDirty) return;
-    Mat4 translation = Mat4::translation(m_position);
-    Mat4 rotation = m_rotation.toMatrix();
-    Mat4 scale = Mat4::scale(m_scale);
+    mat4 translation = mat4::Translation(m_position);  // Mat4 → mat4
+    mat4 rotation = m_rotation.toMatrix();
+    mat4 scale = mat4::Scale(m_scale);  // Mat4 → mat4
     m_localMatrix = translation * rotation * scale;
     m_localMatrixDirty = false;
 }
@@ -56,19 +56,19 @@ void Object3D::updateWorldMatrix(bool force) const {
     }
     m_worldPosition = Vec3(m_worldMatrix(0,3), m_worldMatrix(1,3), m_worldMatrix(2,3));
     m_worldScale = Vec3(
-        Vec3(m_worldMatrix(0,0), m_worldMatrix(1,0), m_worldMatrix(2,0)).length(),
-        Vec3(m_worldMatrix(0,1), m_worldMatrix(1,1), m_worldMatrix(2,1)).length(),
-        Vec3(m_worldMatrix(0,2), m_worldMatrix(1,2), m_worldMatrix(2,2)).length()
+        Vec3(m_worldMatrix(0,0), m_worldMatrix(1,0), m_worldMatrix(2,0)).Length(),
+        Vec3(m_worldMatrix(0,1), m_worldMatrix(1,1), m_worldMatrix(2,1)).Length(),
+        Vec3(m_worldMatrix(0,2), m_worldMatrix(1,2), m_worldMatrix(2,2)).Length()
     );
     m_worldRotation = Quat(m_worldMatrix);
     m_worldMatrixDirty = false;
     m_normalMatrixDirty = true;
 }
 
-const Mat4& Object3D::getLocalMatrix() const { updateMatrix(); return m_localMatrix; }
-const Mat4& Object3D::getWorldMatrix() const { updateWorldMatrix(); return m_worldMatrix; }
+const mat4& Object3D::getLocalMatrix() const { updateMatrix(); return m_localMatrix; }  // Mat4 → mat4
+const mat4& Object3D::getWorldMatrix() const { updateWorldMatrix(); return m_worldMatrix; }  // Mat4 → mat4
 
-const Mat4& Object3D::getNormalMatrix() const {
+const mat4& Object3D::getNormalMatrix() const {
     if (m_normalMatrixDirty) {
         updateWorldMatrix();
         m_normalMatrix = m_worldMatrix.inverted().transposed();
