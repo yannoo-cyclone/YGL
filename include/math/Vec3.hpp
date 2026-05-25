@@ -17,12 +17,16 @@ public:
     Vec3& operator*=(float scalar); Vec3& operator/=(float scalar);
     Vec3 operator+(const Vec3& other) const; Vec3 operator-(const Vec3& other) const;
     Vec3 operator-() const; Vec3 operator*(float scalar) const; Vec3 operator/(float scalar) const;
+    Vec3 operator*(const Vec3& other) const;  // <-- NOUVEAU
     bool operator==(const Vec3& other) const; bool operator!=(const Vec3& other) const;
     float dot(const Vec3& other) const; Vec3 cross(const Vec3& other) const;
     float length() const; float lengthSquared() const;
     Vec3 normalized() const; void normalize();
     Vec3 Transform(const Mat4& matrix) const;
     static Vec3 zero(); static Vec3 one(); static Vec3 unitX(); static Vec3 unitY(); static Vec3 unitZ();
+    static Vec3 Min(const Vec3& a, const Vec3& b);  // <-- NOUVEAU
+    static Vec3 Max(const Vec3& a, const Vec3& b);  // <-- NOUVEAU
+    static Vec3 Clamp(const Vec3& v, const Vec3& min, const Vec3& max);  // <-- NOUVEAU
     friend std::ostream& operator<<(std::ostream& os, const Vec3& vec);
 };
 Vec3 operator*(float scalar, const Vec3& v);

@@ -1,7 +1,7 @@
-#include "scene/light.hpp"
+#include "core/light.hpp"
 #include "math/Vec3.hpp"
 #include "math/Vec4.hpp"
-#include "math/math_utils.hpp"
+#include "math/MathUtils.hpp"
 
 namespace ygl {
 

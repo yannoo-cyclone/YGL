@@ -2,7 +2,7 @@
 #include "core/object3d.hpp"
 #include "core/mesh.hpp"
 #include "core/bounding_box.hpp"
-#include "scene/light.hpp"
+#include "core/light.hpp"
 #include "scene/animation.hpp"
 #include <algorithm>
 
