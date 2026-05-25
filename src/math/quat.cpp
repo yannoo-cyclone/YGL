@@ -5,7 +5,49 @@
 
 namespace ygl {
 
-// Constructeur depuis mat4 (SEUL constructeur non inline dans le .hpp)
+// Constructeurs
+Quat::Quat() : x(0), y(0), z(0), w(1) {}
+Quat::Quat(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
+Quat::Quat(const Vec3& axis, float angle) {
+    float halfAngle = angle * 0.5f;
+    float sinHalf = std::sin(halfAngle);
+    x = axis.x * sinHalf;
+    y = axis.y * sinHalf;
+    z = axis.z * sinHalf;
+    w = std::cos(halfAngle);
+}
+
+// Opérateurs
+Quat Quat::operator+(const Quat& other) const { return Quat(x + other.x, y + other.y, z + other.z, w + other.w); }
+Quat Quat::operator-(const Quat& other) const { return Quat(x - other.x, y - other.y, z - other.z, w - other.w); }
+Quat Quat::operator*(float scalar) const { return Quat(x * scalar, y * scalar, z * scalar, w * scalar); }
+Quat Quat::operator-() const { return Quat(-x, -y, -z, -w); }
+
+Quat Quat::operator*(const Quat& other) const {
+    return Quat(
+        w * other.x + x * other.w + y * other.z - z * other.y,
+        w * other.y - x * other.z + y * other.w + z * other.x,
+        w * other.z + x * other.y - y * other.x + z * other.w,
+        w * other.w - x * other.x - y * other.y - z * other.z
+    );
+}
+
+Vec3 Quat::operator*(const Vec3& vec) const {
+    Vec3 u(x, y, z);
+    Vec3 cross1 = u.cross(vec);
+    Vec3 cross2 = u.cross(cross1);
+    return vec + cross1 * (2.0f * w) + cross2 * 2.0f;
+}
+
+// Normalisation
+Quat Quat::Normalize() const {
+    float len = std::sqrt(x * x + y * y + z * z + w * w);
+    return len > 0 ? Quat(x / len, y / len, z / len, w / len) : Quat();
+}
+
+Quat Quat::identity() { return Quat(0.0f, 0.0f, 0.0f, 1.0f); }
+
+// Conversion
 Quat::Quat(const mat4& matrix) {
     float trace = matrix(0,0) + matrix(1,1) + matrix(2,2) + matrix(3,3);
     if (trace > 0) {
@@ -37,7 +79,6 @@ Quat::Quat(const mat4& matrix) {
     }
 }
 
-// toMatrix (non inline dans le .hpp)
 mat4 Quat::toMatrix() const {
     mat4 m;
     float xx = x * x, yy = y * y, zz = z * z;

@@ -17,52 +17,50 @@ public:
     #pragma GCC diagnostic pop
 
     // Constructeurs
-    Vec2() : x(0.0f), y(0.0f) {}
-    explicit Vec2(float scalar) : x(scalar), y(scalar) {}
-    Vec2(float x, float y) : x(x), y(y) {}
-    Vec2(const float* array) : x(array[0]), y(array[1]) {}
+    Vec2();
+    explicit Vec2(float scalar);
+    Vec2(float x, float y);
+    Vec2(const float* array);
 
     // Accès
-    float& operator[](int index) { return data[index]; }
-    const float& operator[](int index) const { return data[index]; }
+    float& operator[](int index);
+    const float& operator[](int index) const;
 
     // Opérateurs de modification
-    Vec2& operator+=(const Vec2& other) { x += other.x; y += other.y; return *this; }
-    Vec2& operator-=(const Vec2& other) { x -= other.x; y -= other.y; return *this; }
-    Vec2& operator*=(float scalar) { x *= scalar; y *= scalar; return *this; }
-    Vec2& operator/=(float scalar) { x /= scalar; y /= scalar; return *this; }
+    Vec2& operator+=(const Vec2& other);
+    Vec2& operator-=(const Vec2& other);
+    Vec2& operator*=(float scalar);
+    Vec2& operator/=(float scalar);
 
     // Opérateurs arithmétiques
-    Vec2 operator+(const Vec2& other) const { return Vec2(x + other.x, y + other.y); }
-    Vec2 operator-(const Vec2& other) const { return Vec2(x - other.x, y - other.y); }
-    Vec2 operator-() const { return Vec2(-x, -y); }
-    Vec2 operator*(float scalar) const { return Vec2(x * scalar, y * scalar); }
-    Vec2 operator/(float scalar) const { return Vec2(x / scalar, y / scalar); }
+    Vec2 operator+(const Vec2& other) const;
+    Vec2 operator-(const Vec2& other) const;
+    Vec2 operator-() const;
+    Vec2 operator*(float scalar) const;
+    Vec2 operator/(float scalar) const;
 
     // Comparaison
-    bool operator==(const Vec2& other) const { return x == other.x && y == other.y; }
-    bool operator!=(const Vec2& other) const { return !(*this == other); }
+    bool operator==(const Vec2& other) const;
+    bool operator!=(const Vec2& other) const;
 
     // Calculs
-    float length() const { return std::sqrt(x * x + y * y); }
-    float lengthSquared() const { return x * x + y * y; }
-    Vec2 normalized() const { float len = length(); return len > 0 ? *this / len : Vec2(); }
-    void normalize() { *this = normalized(); }
-    float dot(const Vec2& other) const { return x * other.x + y * other.y; }
+    float length() const;
+    float lengthSquared() const;
+    Vec2 normalized() const;
+    void normalize();
+    float dot(const Vec2& other) const;
 
     // Méthodes statiques
-    static Vec2 zero() { return Vec2(0.0f); }
-    static Vec2 one() { return Vec2(1.0f); }
-    static Vec2 unitX() { return Vec2(1.0f, 0.0f); }
-    static Vec2 unitY() { return Vec2(0.0f, 1.0f); }
+    static Vec2 zero();
+    static Vec2 one();
+    static Vec2 unitX();
+    static Vec2 unitY();
 
     // Output
-    friend std::ostream& operator<<(std::ostream& os, const Vec2& v) {
-        os << "Vec2(" << v.x << ", " << v.y << ")";
-        return os;
-    }
+    friend std::ostream& operator<<(std::ostream& os, const Vec2& v);
 };
 
+// Opérateur non-member
 Vec2 operator*(float scalar, const Vec2& v);
 
 } // namespace ygl
