@@ -1,9 +1,9 @@
 #pragma once
 
 #include "loaders/loader.hpp"
-#include "math/vec3.hpp"
-#include "math/vec2.hpp"
-#include "math/mat4.hpp"
+#include "math/Vec3.hpp"
+#include "math/Vec2.hpp"
+#include "math/Mat4.hpp"
 #include <vector>
 #include <string>
 #include <memory>

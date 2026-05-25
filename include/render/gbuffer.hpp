@@ -1,7 +1,7 @@
 #pragma once
 
-#include "math/vec3.hpp"
-#include "math/vec2.hpp"
+#include "math/Vec3.hpp"
+#include "math/Vec2.hpp"
 #include <vector>
 
 namespace ygl {

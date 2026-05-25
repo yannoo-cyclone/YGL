@@ -1,7 +1,7 @@
 #include "core/bounding_box.hpp"
-#include "math/vec3.hpp"
-#include "math/ray.hpp"
-#include "math/mat4.hpp"
+#include "math/Vec3.hpp"
+#include "math/Ray.hpp"
+#include "math/Mat4.hpp"
 #include <vector>
 #include <algorithm>
 #include <ostream>
@@ -198,7 +198,7 @@ std::vector<Vec3> BoundingBox::GetCorners() const {
 // ============================================
 // Transformations
 // ============================================
-BoundingBox BoundingBox::Transform(const mat4& matrix) const {
+BoundingBox BoundingBox::Transform(const Mat4& matrix) const {
     Vec3 corners[8];
     GetCorners(corners);
     Vec3 new_min = corners[0].Transform(matrix);

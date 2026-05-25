@@ -1,8 +1,8 @@
 #pragma once
 
 #include "core/object3d.hpp"
-#include "math/vec3.hpp"
-#include "math/mat4.hpp"
+#include "math/Vec3.hpp"
+#include "math/Mat4.hpp"
 
 namespace ygl {
 
@@ -42,9 +42,9 @@ public:
     const Vec3& getForward() const;
     const Vec3& getRight() const;
 
-    const mat4& getViewMatrix();  // Mat4 → mat4
-    const mat4& getProjectionMatrix();  // Mat4 → mat4
-    const mat4& getViewProjectionMatrix();  // Mat4 → mat4
+    const Mat4& getViewMatrix();  // Mat4 → Mat4
+    const Mat4& getProjectionMatrix();  // Mat4 → Mat4
+    const Mat4& getViewProjectionMatrix();  // Mat4 → Mat4
 
     void moveForward(float distance);
     void moveBackward(float distance);
@@ -81,9 +81,9 @@ private:
     Vec3 m_forward;
     Vec3 m_right;
 
-    mutable mat4 m_viewMatrix;  // Mat4 → mat4
-    mutable mat4 m_projectionMatrix;  // Mat4 → mat4
-    mutable mat4 m_viewProjectionMatrix;  // Mat4 → mat4
+    mutable Mat4 m_viewMatrix;  // Mat4 → Mat4
+    mutable Mat4 m_projectionMatrix;  // Mat4 → Mat4
+    mutable Mat4 m_viewProjectionMatrix;  // Mat4 → Mat4
 
     mutable bool m_viewDirty = true;
     mutable bool m_projectionDirty = true;

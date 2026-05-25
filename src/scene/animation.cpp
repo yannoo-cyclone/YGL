@@ -1,7 +1,7 @@
 #include "scene/animation.hpp"
 #include "core/object3d.hpp"
-#include "math/vec3.hpp"
-#include "math/quat.hpp"
+#include "math/Vec3.hpp"
+#include "math/Quat.hpp"
 #include "math/math_utils.hpp"
 #include <algorithm>
 

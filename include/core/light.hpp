@@ -1,8 +1,8 @@
 #pragma once
 
 #include "core/object3d.hpp"
-#include "math/vec3.hpp"
-#include "math/vec2.hpp"
+#include "math/Vec3.hpp"
+#include "math/Vec2.hpp"
 
 namespace ygl {
 

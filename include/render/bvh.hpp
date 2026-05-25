@@ -2,7 +2,7 @@
 
 #include "core/mesh.hpp"
 #include "core/bounding_box.hpp"
-#include "math/ray.hpp"
+#include "math/Ray.hpp"
 #include <vector>
 #include <memory>
 

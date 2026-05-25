@@ -190,7 +190,7 @@ void Scene::UpdateBoundingBox() {
     for (Object3D* object : objects) {
         if (object && object->GetMesh()) {
             BoundingBox obj_box = object->GetMesh()->GetBoundingBox();
-            mat4 transform = object->GetTransformMatrix();
+            Mat4 transform = object->GetTransformMatrix();
 
             vec3 corners[8];
             obj_box.GetCorners(corners);

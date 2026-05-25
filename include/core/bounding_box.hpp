@@ -1,7 +1,7 @@
 #pragma once
 
-#include "math/vec3.hpp"
-#include "math/ray.hpp"
+#include "math/Vec3.hpp"
+#include "math/Ray.hpp"
 #include <vector>
 #include <ostream> // AJOUTÉ
 
@@ -55,7 +55,7 @@ public:
     void GetCorners(Vec3 corners[8]) const;
     std::vector<Vec3> GetCorners() const;
 
-    BoundingBox Transform(const class mat4& matrix) const;
+    BoundingBox Transform(const class Mat4& matrix) const;
 
     static BoundingBox FromPoints(const std::vector<Vec3>& points);
     static BoundingBox FromCenterAndSize(const Vec3& center, const Vec3& size);

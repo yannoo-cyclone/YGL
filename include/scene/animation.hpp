@@ -1,7 +1,7 @@
 #pragma once
 
-#include "math/vec3.hpp"
-#include "math/quat.hpp"
+#include "math/Vec3.hpp"
+#include "math/Quat.hpp"
 #include <vector>
 #include <string>
 #include <memory>

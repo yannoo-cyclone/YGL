@@ -3,7 +3,7 @@
 #include "core/mesh.hpp"
 #include "core/light.hpp"
 #include "core/camera.hpp"
-#include "math/vec3.hpp"
+#include "math/Vec3.hpp"
 #include <vector>
 #include <memory>
 

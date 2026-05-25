@@ -1,8 +1,8 @@
 #pragma once
 #include "loaders/loader.hpp"
-#include "math/vec3.hpp"
-#include "math/vec2.hpp"
-#include "math/quat.hpp"
+#include "math/Vec3.hpp"
+#include "math/Vec2.hpp"
+#include "math/Quat.hpp"
 #include <vector>
 #include <string>
 #include <map>

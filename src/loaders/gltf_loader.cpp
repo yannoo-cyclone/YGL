@@ -1,9 +1,9 @@
 #include "loaders/gltf_loader.hpp"
 #include "loaders/loader.hpp"
 #include "core/mesh.hpp"
-#include "math/vec3.hpp"
-#include "math/vec2.hpp"
-#include "math/vec4.hpp"
+#include "math/Vec3.hpp"
+#include "math/Vec2.hpp"
+#include "math/Vec4.hpp"
 #include <nlohmann/json.hpp>
 #include <fstream>
 

@@ -8,12 +8,12 @@
 // -----------------------------------------------------------------------------
 // Math
 // -----------------------------------------------------------------------------
-#include "math/vec2.hpp"
-#include "math/vec3.hpp"
-#include "math/vec4.hpp"
-#include "math/mat4.hpp"
-#include "math/quat.hpp"
-#include "math/ray.hpp"
+#include "math/Vec2.hpp"
+#include "math/Vec3.hpp"
+#include "math/Vec4.hpp"
+#include "math/Mat4.hpp"
+#include "math/Quat.hpp"
+#include "math/Ray.hpp"
 
 // -----------------------------------------------------------------------------
 // Core
